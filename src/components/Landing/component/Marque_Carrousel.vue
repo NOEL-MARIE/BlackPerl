@@ -1,4 +1,6 @@
-<script setup>
+<script setup lang="ts">
+import { onMounted } from 'vue'
+
 import SendChap from '@/assets/images/SendChap.svg'
 import CELESTE from '@/assets/images/CELESTE.svg'
 import CAT from '@/assets/images/CAT.svg'
@@ -6,32 +8,37 @@ import CarreDOR from '@/assets/images/Carre D\'OR.svg'
 import Nivea from '@/assets/images/Nivea.svg'
 import AMGS from '@/assets/images/AMGS.svg'
 
+// Liste des images avec descriptions accessibles
 const images = [
-  { src: SendChap, alt: 'SendChap' },
-  { src: CELESTE, alt: 'CELESTE' },
-  { src: CAT, alt: 'CAT' },
-  { src: CarreDOR, alt: "Carre D'OR" },
-  { src: Nivea, alt: 'Nivea' },
-  { src: AMGS, alt: 'AMGS' }
+  { src: SendChap, alt: 'Logo de SendChap, plateforme d’envoi de messages sécurisés' },
+  { src: CELESTE, alt: 'Logo de CELESTE, fournisseur de solutions internet et cloud' },
+  { src: CAT, alt: 'Logo de CAT, entreprise de transport et logistique internationale' },
+  { src: CarreDOR, alt: 'Logo de Carré d’OR, marque de cosmétique et beauté haut de gamme' },
+  { src: Nivea, alt: 'Logo de Nivea, marque de soins de la peau et de beauté' },
+  { src: AMGS, alt: 'Logo d’AMGS, société de services médicaux et de santé' }
 ]
 
-// On triple les images pour la boucle
+// Triple les images pour créer l'effet de défilement infini
 const extendedImages = [...images, ...images, ...images]
+
+onMounted(() => {
+  // Rien de spécial ici, l'animation est gérée par CSS
+})
 </script>
 
 <template>
-  <div class="w-screen overflow-hidden">
-    <div class="relative h-64">
-      <div class="carousel-track" :style="trackStyle">
+  <div class="w-screen overflow-hidden mt-8 mb-11 bg-white">
+    <div class="carousel-container">
+      <div class="carousel-track">
         <div 
           v-for="(img, index) in extendedImages"
           :key="index"
-          class="inline-block mx-8"
+          class="carousel-item"
         >
           <img
             :src="img.src"
             :alt="img.alt"
-            class="h-48 w-auto object-contain"
+            class="h-24 w-auto object-contain"
           />
         </div>
       </div>
@@ -39,53 +46,30 @@ const extendedImages = [...images, ...images, ...images]
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      scrollPosition: 0,
-      scrollSpeed: 60 // Plus petit = plus rapide
-    }
-  },
-  computed: {
-    trackStyle() {
-      return {
-        transform: `translateX(${this.scrollPosition}px)`, // Sens inversé !
-        animation: `scroll-right ${this.scrollSpeed}s linear infinite`
-      }
-    }
-  },
-  mounted() {
-    this.startAutoScroll()
-  },
-  methods: {
-    startAutoScroll() {
-      setInterval(() => {
-        this.scrollPosition += 1 // Plus grand = plus rapide
-        // Largeur totale d'une image + marge (300px + 64px de mx-8)
-        if (this.scrollPosition > 100 * this.extendedImages.length / 3) {
-          this.scrollPosition = 0
-        }
-      }, 700) // Plus petit = plus rapide
-    }
-  }
+<style scoped>
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
 }
-</script>
 
-<style>
 .carousel-track {
-  display: inline-flex;
-  white-space: nowrap;
-  will-change: transform;
-}
-
-@keyframes scroll-right {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(300px * 9)); }
+  display: flex;
+  animation: scroll 25s linear infinite;
+  width: max-content;
 }
 
 .carousel-item {
-  flex-shrink: 0;
-  width: 300px;
+  flex: 0 0 auto;
+  margin: 0 2rem; /* équivalent à mx-8 */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 </style>

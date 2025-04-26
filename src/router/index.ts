@@ -1,5 +1,6 @@
 import { AppRoute } from '@/constants/app-route'
 import { createRouter, createWebHistory } from 'vue-router'
+import ImageViewer from '@/components/Landing/component/ChessboardGallery.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,6 +14,12 @@ const router = createRouter({
         title: 'Accueil',
       },
     },
+    {
+      path: '/image/:id',
+      name: 'ImageViewer',
+      component: ImageViewer,
+      props: true
+    }
   ],
 })
 
