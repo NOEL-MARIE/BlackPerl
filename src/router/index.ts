@@ -1,26 +1,51 @@
-import { AppRoute } from '@/constants/app-route'
 import { createRouter, createWebHistory } from 'vue-router'
-import ImageViewer from '@/components/Landing/component/ChessboardGallery.vue'
+
+// Importation des vues
+import Home from '@/views/Home.vue'
+import ImageViewer from '@/views/ImageViewer.vue'
+import AboutView from '@/views/AboutView.vue'
+import ExpertiseView from '@/views/ExpertiseView.vue'
+import RealisationsView from '@/views/RealisationsView.vue'
+import CarriereView from '@/views/CarriereView.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
-      path: AppRoute.HOME.path,
-      name: AppRoute.HOME.name,
-      component: () => import('@/views/HomeView.vue'),
-      meta: {
-        requiresAuth: false,
-        title: 'Accueil',
-      },
+      path: '/',
+      name: 'Home',
+      component: Home,
     },
     {
       path: '/image/:id',
       name: 'ImageViewer',
       component: ImageViewer,
-      props: true
-    }
+      props: true,
+    },
+    {
+      path: '/about',
+      name: 'À propos',
+      component: AboutView,
+    },
+    {
+      path: '/expertise',
+      name: 'Expertise',
+      component: ExpertiseView,
+    },
+    {
+      path: '/realisations',
+      name: 'Réalisations',
+      component: RealisationsView,
+    },
+    {
+      path: '/carriere',
+      name: 'Carrière',
+      component: CarriereView,
+    },
   ],
+  scrollBehavior() {
+    return { top: 0 }
+  },
 })
 
 export default router

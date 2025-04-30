@@ -26,8 +26,7 @@ module.exports = {
     extend: {
       fontFamily: {
         worksans: ['Work Sans', 'sans-serif'],
-        merriweather: ['Merriweather', 'serif'],
-        merriweathersans: ['Merriweather Sans', 'sans-serif'],
+        open: ['"Open Sans"', 'sans-serif'],
       },
       colors: {
         border: 'hsl(var(--border))',

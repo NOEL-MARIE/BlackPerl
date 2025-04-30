@@ -4,6 +4,7 @@ body {
   width: 100%;
 }
 
+
 .local-ring {
   @apply focus:ring-4 ring-primary-70 transition-all duration-300;
 }

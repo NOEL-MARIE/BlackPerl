@@ -1,45 +1,5 @@
-<template>
-  <div class="">
-    <!-- Section haute -->
-    <div class="w-screen pt-20 flex justify-around h-52">
-      <div><img :src="Echec" alt="Illustration d'échec" height="125px" /></div>
-      <div><img :src="Logo_BlackPurl" alt="Logo Black Pearl" /></div>
-      <div><img :src="Echec" alt="Illustration d'échec" /></div>
-    </div>
-
-    <!-- Carrousel -->
-    <div class="w-screen mt-40 h-30 overflow-hidden">
-      <div class="carousel-container">
-        <div class="carousel-track" :style="trackStyle">
-          <div
-            v-for="(img, index) in extendedImages"
-            :key="index"
-            class="carousel-item ml-8 relative group"
-          >
-            <img
-              :src="img"
-              :alt="'Image ' + ((index % images.length) + 1)"
-              class="w-full h-64 object-cover mx-2 "
-            />
-            <!-- Icône Play centré -->
-            <img
-              :src="PlayIcons"
-              alt="Play"
-              class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 opacity-65 transition-all duration-300 scale-100 group-hover:animate-accordion-down group-hover:cursor-pointer group-hover:scale-125 group-hover:opacity-100"
-            />
-            <img
-              :src="PlayIcons"
-              alt="Play"
-              class="absolute left-1/2  top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 opacity-65 transition-all duration-300 scale-100 group-hover:animate-accordion-down group-hover:cursor-pointer group-hover:scale-150 group-hover:opacity-100"
-            />
-          </div>
-        </div>
-      </div> 
-    </div>
-  </div>
-</template>
-
-<script  lang="ts">
+<script lang="ts">
+import { Motion } from '@motionone/vue'
 import Echec from '@/assets/images/Home_fou.svg'
 import Logo_BlackPurl from '@/assets/images/Logo_Black_Pearl.svg'
 import Img1 from '@/assets/images/CARR_IMG1.png'
@@ -48,66 +8,90 @@ import Img3 from '@/assets/images/CARR_IMG3.png'
 import PlayIcons from '@/assets/images/Play_Icon.png'
 
 export default {
+  components: {
+    Motion,
+  },
   data() {
     return {
       Echec,
       Logo_BlackPurl,
       images: [Img1, Img2, Img3],
-      scrollPosition: 0,
-      scrollSpeed: 50, // Plus la valeur est basse, plus c'est lent
-      PlayIcons: PlayIcons
+      PlayIcons,
     }
   },
   computed: {
     extendedImages() {
-      return [...this.images, ...this.images, ...this.images] // Triple le contenu pour la boucle
-    },
-    trackStyle() {
-      return {
-        transform: `translateX(-${this.scrollPosition}px)`,
-        animation: `scroll ${this.scrollSpeed}s linear infinite`,
-      }
-    },
-  },
-  mounted() {
-    this.startAutoScroll()
-  },
-  methods: {
-    startAutoScroll() {
-      setInterval(() => {
-        this.scrollPosition += 0.5
-        if (this.scrollPosition > this.images.length * 300) {
-          this.scrollPosition = 0
-        }
-      }, 50)
+      return [...this.images, ...this.images, ...this.images] // Triple les images pour un défilement plus fluide
     },
   },
 }
 </script>
 
-<style>
-.carousel-container {
-  width: 100%;
-  overflow: hidden;
-}
+<template>
+  <div class="w-screen overflow-hidden">
+    <!-- Section haute -->
+    <div class="w-screen pt-20 flex justify-around h-52">
+      <Motion
+        tag="div"
+        :initial="{ opacity: 0, y: -50 }"
+        :animate="{ opacity: 1, y: 0 }"
+        :transition="{ duration: 1 }"
+      >
+        <img :src="Echec" alt="Illustration d'échec" height="125px" width="190px" class="mt-20" />
+      </Motion>
 
-.carousel-track {
-  display: flex;
-  width: max-content;
-  will-change: transform;
-}
+      <Motion
+        tag="div"
+        :initial="{ opacity: 0, scale: 0.8 }"
+        :animate="{ opacity: 1, scale: 1 }"
+        :transition="{ duration: 1.2 }"
+      >
+        <img :src="Logo_BlackPurl" alt="Logo Black Pearl" height="225px" width="490px" />
+      </Motion>
 
-.carousel-item {
-  flex: 0 0 auto;
-  width: 300px; /* Ajustez selon la taille de vos images */
-}
+      <Motion
+        tag="div"
+        :initial="{ opacity: 0, y: 50 }"
+        :animate="{ opacity: 1, y: 0 }"
+        :transition="{ duration: 1 }"
+      >
+        <img :src="Echec" alt="Illustration d'échec" height="125px" width="190px" class="mt-20" />
+      </Motion>
+    </div>
 
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-300px * 3));
-  } /* 3 = nombre d'images originales */
-}
-</style>
+    <!-- Carrousel -->
+    <div class="w-screen mt-20 overflow-hidden relative">
+      <Motion
+        tag="div"
+        class="flex "
+        :initial="{ x: '0%' }"
+        :animate="{ x: '-100%' }"
+        :transition="{ duration: 50, repeat: Infinity, ease: 'linear' }"
+      >
+        <div
+          v-for="(img, index) in extendedImages"
+          :key="index"
+          class="relative group flex-none w-[400px]"
+        >
+          <img
+            :src="img"
+            :alt="'Image ' + ((index % images.length) + 1)"
+            class="w-full h-64 object-contain"
+          />
+
+          <!-- Play icon avec classes Tailwind (comme avant) -->
+          <img
+            :src="PlayIcons"
+            alt="Play"
+            class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 opacity-65 transition-all duration-300 scale-100 group-hover:animate-accordion-down group-hover:cursor-pointer group-hover:scale-125 group-hover:opacity-100"
+          />
+          <img
+            :src="PlayIcons"
+            alt="Play"
+            class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 opacity-65 transition-all duration-300 scale-100 group-hover:animate-accordion-down group-hover:cursor-pointer group-hover:scale-150 group-hover:opacity-100"
+          />
+        </div>
+      </Motion>
+    </div>
+  </div>
+</template>

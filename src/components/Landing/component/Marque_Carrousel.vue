@@ -27,7 +27,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-screen overflow-hidden mt-8 mb-11 bg-white">
+  <div class="w-screen overflow-hidden mt- mb-11 bg-white">
     <div class="carousel-container">
       <div class="carousel-track">
         <div 
@@ -62,6 +62,7 @@ onMounted(() => {
 .carousel-item {
   flex: 0 0 auto;
   margin: 0 2rem; /* équivalent à mx-8 */
+  width: 200px;
 }
 
 @keyframes scroll {
