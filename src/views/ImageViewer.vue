@@ -152,7 +152,7 @@ function scrollToActiveThumbnail() {
 
     <!-- IMAGE VIEWER -->
     <div class="image-viewer  flex h-screen text-white pt-32">
-      <div class="main-content">
+      <div class="main-content mt-9">
         <!-- Colonne gauche -->
         <div class="left-side flex flex-col ml-40 justify-around w-1/2">
           <div class="back-button" @click="goBack"><span>x</span> Fermer</div>
@@ -166,13 +166,13 @@ function scrollToActiveThumbnail() {
 
         <!-- Colonne droite -->
         <div class="right-sid mr-40 flex flex-col items-center space-y-48 justify-end w-1/2">
-          <div class="flex flex-col items-center justify-center text-center">
-            <h2>{{ currentImage.title }}</h2>
+          <div class="flex flex-col items-center justify-center gap-20 font-bold  text-center">
+            <h2 class="text-7xl">{{ currentImage.title }}</h2>
             <p>{{ currentImage.description }}</p>
           </div>
 
           <div class="navigation-section">
-            <div class="thumbnails-carousel" ref="thumbnailsContainer">
+            <div class="thumbnails-carousel w-[444px]" ref="thumbnailsContainer">
               <div
                 class="thumbnail mr-3"
                 :class="{ active: image.id === currentImageId }"
@@ -258,7 +258,7 @@ function scrollToActiveThumbnail() {
 .navigation-section {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1px;
 }
 
 .thumbnails-carousel {
