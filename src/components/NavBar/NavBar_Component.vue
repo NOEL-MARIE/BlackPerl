@@ -1,61 +1,38 @@
 <template>
   <nav
     :class="[
-      'w-full fixed font-sans transition-all mb-9 duration-300 z-50',
-      isScrolled
-        ? 'bg-white shadow-md'
-        : ''
+      'w-full  font-sans z-50 transition-all duration-300',
+      isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4',
     ]"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
-        <!-- Liens centrés - visible sur desktop -->
+        <!-- Liens desktop -->
         <div class="hidden md:flex items-center space-x-8 mx-auto">
           <router-link
-            to="/"
-            class="text-gray-900 px-3 py-2 text-sm font-medium"
-            active-class=""
+            v-for="item in links"
+            :key="item.name"
+            :to="item.to"
+            class="relative group inline-block px-3 py-2 text-sm font-medium transition-colors duration-300"
+            :class="route.path === item.to ? 'text-[#F8D065]' : 'text-gray-900'"
           >
-            Accueil
-          </router-link>
-
-          <router-link
-            to="/about"
-            class="text-gray-900 px-3 py-2 text-sm font-medium"
-            active-class=""
-          >
-            À propos
-          </router-link>
-
-          <router-link
-            to="/expertise"
-            class="text-gray-900 px-3 py-2 text-sm font-medium"
-            active-class=""
-          >
-            Expertise
-          </router-link>
-
-          <router-link
-            to="/realisations"
-            class="text-gray-900 px-3 py-2 text-sm font-medium"
-            active-class=""
-          >
-            Réalisations
-          </router-link>
-
-          <router-link
-            to="/carriere"
-            class="text-gray-900 px-3 py-2 text-sm font-medium"
-            active-class=""
-          >
-            Carrière
+            {{ item.name }}
+            <span
+              class="absolute left-0 bottom-0 h-[2px] bg-[#F8D065] transition-all duration-300"
+              :class="route.path === item.to ? 'w-full' : 'w-0 group-hover:w-full'"
+            ></span>
           </router-link>
         </div>
 
-        <!-- Bouton téléphone - visible sur desktop -->
+        <!-- Bouton téléphone desktop -->
         <div class="hidden md:flex items-center">
-          <a href="tel:+1234567890" class="flex items-center text-gray-900">
+          <a
+            href="tel:+2250160242220"
+            class="flex items-center text-gray-900 hover:text-[#F8D065] transition-colors duration-300"
+          >
+            <!-- Icône téléphone -->
             <svg
+              class=""
               width="15"
               height="21"
               viewBox="0 0 15 21"
@@ -70,9 +47,9 @@
           </a>
         </div>
 
-        <!-- Menu mobile -->
+        <!-- Bouton menu mobile -->
         <div class="md:hidden flex items-center">
-          <button @click="isOpen = !isOpen" class="text-gray-900">
+          <button @click="isOpen = true" class="text-gray-900">
             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 stroke-linecap="round"
@@ -86,105 +63,79 @@
       </div>
     </div>
 
-    <!-- Menu mobile déplié avec animation -->
-    <motion.div
-      v-if="isOpen"
-      class="md:hidden bg-white shadow-md"
-      :initial="{ opacity: 0, y: -50 }"
-      :animate="{ opacity: 1, y: 0 }"
-      :exit="{ opacity: 0, y: -50 }"
-      transition="0.3s ease"
-    >
-      <div class="px-2 pt-2 pb-3 space-y-1">
-        <motion.router-link
-          to="/"
-          class="block px-3 py-2 text-gray-900"
-          :initial="{ opacity: 0 }"
-          :animate="{ opacity: 1 }"
-          transition="0.5s ease 0.1s"
+    <!-- Menu mobile -->
+    <div v-show="isOpen" ref="menuRef" class="md:hidden bg-white shadow-md px-4 pt-4 pb-6">
+      <div class="space-y-3">
+        <router-link
+          v-for="item in links"
+          :key="item.name"
+          :to="item.to"
+          class="block text-base font-medium px-2 py-1 transition-colors duration-300"
+          :class="route.path === item.to ? 'text-[#F8D065]' : 'text-gray-900'"
+          @click="isOpen = false"
         >
-          Accueil
-        </motion.router-link>
-
-        <motion.router-link
-          to="/about"
-          class="block px-3 py-2 text-gray-900"
-          :initial="{ opacity: 0 }"
-          :animate="{ opacity: 1 }"
-          transition="0.5s ease 0.2s"
+          {{ item.name }}
+        </router-link>
+        <a
+          href="tel:+1234567890"
+          class="flex items-center text-gray-900 px-2 py-1 hover:text-[#F8D065]"
         >
-          À propos
-        </motion.router-link>
-
-        <motion.router-link
-          to="/expertise"
-          class="block px-3 py-2 text-gray-900"
-          :initial="{ opacity: 0 }"
-          :animate="{ opacity: 1 }"
-          transition="0.5s ease 0.3s"
-        >
-          Expertise
-        </motion.router-link>
-
-        <motion.router-link
-          to="/realisations"
-          class="block px-3 py-2 text-gray-900"
-          :initial="{ opacity: 0 }"
-          :animate="{ opacity: 1 }"
-          transition="0.5s ease 0.4s"
-        >
-          Réalisations
-        </motion.router-link>
-
-        <motion.router-link
-          to="/carriere"
-          class="block px-3 py-2 text-gray-900"
-          :initial="{ opacity: 0 }"
-          :animate="{ opacity: 1 }"
-          transition="0.5s ease 0.5s"
-        >
-          Carrière
-        </motion.router-link>
-
-        <a href="tel:+1234567890" class="flex items-center px-3 py-2 text-gray-900">
-          <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-            />
-          </svg>
+          <!-- Icône téléphone mobile -->
         </a>
       </div>
-    </motion.div>
+    </div>
   </nav>
 </template>
 
-<script lang="ts">
-import { motion } from 'framer-motion'
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted, nextTick, watch } from 'vue'
+import gsap from 'gsap'
+import { useRoute } from 'vue-router'
 
-export default {
-  components: {
-    // eslint-disable-next-line vue/no-unused-components
-    motion
-  },
-  data() {
-    return {
-      isOpen: false,
-      isScrolled: false
-    }
-  },
-  mounted() {
-    window.addEventListener('scroll', this.handleScroll)
-  },
-  beforeUnmount() {
-    window.removeEventListener('scroll', this.handleScroll)
-  },
-  methods: {
-    handleScroll() {
-      this.isScrolled = window.scrollY > 10
-    }
-  }
+const isOpen = ref(false)
+const isScrolled = ref(false)
+const menuRef = ref<HTMLElement | null>(null)
+const route = useRoute()
+
+const links = [
+  { name: 'Accueil', to: '/' },
+  { name: 'À propos', to: '/about' },
+  { name: 'Expertise', to: '/expertise' },
+  { name: 'Réalisations', to: '/realisations' },
+  { name: 'Carrière', to: '/carriere' },
+]
+
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 10
 }
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
+
+// Gérer l'ouverture avec animation GSAP
+watch(isOpen, async (val) => {
+  await nextTick()
+  if (val && menuRef.value) {
+    gsap.fromTo(
+      menuRef.value,
+      { opacity: 0, y: -30 },
+      { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' },
+    )
+  } else if (!val && menuRef.value) {
+    gsap.to(menuRef.value, {
+      opacity: 0,
+      y: -30,
+      duration: 0.3,
+      ease: 'power2.in',
+      onComplete: () => {
+        isOpen.value = false
+      },
+    })
+  }
+})
 </script>

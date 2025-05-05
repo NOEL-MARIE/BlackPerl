@@ -25,8 +25,9 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        worksans: ['Work Sans', 'sans-serif'],
-        open: ['"Open Sans"', 'sans-serif'],
+        cinzel:["Cinzel", 'sans-serif' ],
+        // sans: ["Cinzel", 'sans-serif' ],
+        poppins :["Poppins", 'sans-serif' ]
       },
       colors: {
         border: 'hsl(var(--border))',
