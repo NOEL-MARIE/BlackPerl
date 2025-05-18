@@ -82,7 +82,7 @@ import { ref, onMounted, onBeforeUnmount, computed, watch } from 'vue'
 import gsap from 'gsap'
 
 // Import images locales
-import imgI from '@/assets/images/IMG_8281.jpg'
+import imgI from '@/assets/images/IMG_8281(2).jpg'
 import imgFi from '@/assets/images/img_carr_2.jpg'
 import imgIe from '@/assets/images/img_carr_3.jpg'
 import img from '@/assets/images/img_carr_4.jpg'
