@@ -1,28 +1,10 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-    <Image_Forme />
-
   <section class="team-section">
     <h2 class="section-title">Notre équipe</h2>
+    <Dot_Gamme />
 
-    <div class="team-carousel">
-      <div class="carousel-container" ref="carouselContainer">
-        <div
-          v-for="(member, index) in team"
-          :key="index"
-          class="team-member"
-          :class="{ 'mt-3': index % 2 === 1 }"
-        >
-          <img :src="member.photo" :alt="member.name" class="member-photo" />
-          <div class="member-info">
-            <p class="member-name">{{ member.name }}</p>
-            <p class="member-role">{{ member.role }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="stats">
+    <div class="stats flex items-center justify-center">
       <div>
         <p class="stat-title">Clients</p>
         <div class="stat-item">
@@ -68,67 +50,67 @@
 </template>
 
 <script setup lang="ts">
- import Image_Forme from '@/components/Image_Forme.vue'
-
+//  import Image_Forme from '@/components/Image_Forme.vue'
+import Dot_Gamme from '@/components/Profile_Squad.vue'
 import { ref, onMounted } from 'vue'
 import gsap from 'gsap'
 
-interface TeamMember {
-  name: string
-  role: string
-  photo: string
-}
+// interface TeamMember {
+//   name: string
+//   role: string
+//   photo: string
+// }
 
-const team = ref<TeamMember[]>([
-  {
-    name: 'Mike',
-    role: 'Directeur Artistique',
-    photo:
-      'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    name: 'Mike',
-    role: 'Directeur Artistique',
-    photo:
-      'https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    name: 'Mike',
-    role: 'Directeur Artistique',
-    photo:
-      'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    name: 'Mike',
-    role: 'Directeur Artistique',
-    photo:
-      'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    name: 'Mike',
-    role: 'Directeur Artistique',
-    photo:
-      'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    name: 'Mike',
-    role: 'Directeur Artistique',
-    photo:
-      'https://images.unsplash.com/photo-1531427186611-ecfd6d936e79?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    name: 'Mike',
-    role: 'Directeur Artistique',
-    photo:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b2933e?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    name: 'Mike',
-    role: 'Directeur Artistique',
-    photo:
-      'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80',
-  },
-])
+// const team = ref<TeamMember[]>([
+//   {
+//     name: 'Mike',
+//     role: 'Directeur Artistique',
+//     photo:
+//       'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80',
+//   },
+//   {
+//     name: 'Mike',
+//     role: 'Directeur Artistique',
+//     photo:
+//       'https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=400&q=80',
+//   },
+//   {
+//     name: 'Mike',
+//     role: 'Directeur Artistique',
+//     photo:
+//       'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80',
+//   },
+//   {
+//     name: 'Mike',
+//     role: 'Directeur Artistique',
+//     photo:
+//       'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80',
+//   },
+//   {
+//     name: 'Mike',
+//     role: 'Directeur Artistique',
+//     photo:
+//       'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80',
+//   },
+//   {
+//     name: 'Mike',
+//     role: 'Directeur Artistique',
+//     photo:
+//       'https://images.unsplash.com/photo-1531427186611-ecfd6d936e79?auto=format&fit=crop&w=400&q=80',
+//   },
+//   {
+//     name: 'Mike',
+//     role: 'Directeur Artistique',
+//     photo:
+//       'https://images.unsplash.com/photo-1494790108377-be9c29b2933e?auto=format&fit=crop&w=400&q=80',
+//   },
+//   {
+//     name: 'Mike',
+//     role: 'Directeur Artistique',
+//     photo:
+//       'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80',
+//   },
+// ])
 
 const carouselContainer = ref<HTMLElement | null>(null)
 
@@ -146,7 +128,6 @@ onMounted(() => {
 
 <style scoped>
 .team-section {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px 80px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -230,6 +211,8 @@ onMounted(() => {
 
 /* Statistiques */
 .stats {
+  max-width: 1200px;
+  margin: 48px auto 0; /* centre horizontalement et ajoute un espace en haut */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 40px;

@@ -9,13 +9,13 @@
   <BlackSection ref="blackRef" />
   <!-- <VideoSection ref="videoRef" />
   <ChessboardGallery ref="chessRef" /> -->
-  <Dot_Gamme /> 
+  <Dot_Gamme />
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import gsap from 'gsap'
-import Dot_Gamme from '@/components/Dot_Gamme.vue'
+import Dot_Gamme from '@/components/Profile_Squad.vue'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import First from './First.vue'
