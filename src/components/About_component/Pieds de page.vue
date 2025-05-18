@@ -69,11 +69,11 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import facebook from '@/assets/images/facebook.png'
-import instagram from '@/assets/images/instagram.png'
-import linkedin from '@/assets/images/linkedin.png'
+import facebook from '@/assets/images/Facebook.png'
+import instagram from '@/assets/images/Instagram.png'
+import linkedin from '@/assets/images/LinkedIn.png'
 import tiktok from '@/assets/images/TikTok.png'
-import youtube from '@/assets/images/youtube.png'
+import youtube from '@/assets/images/YouTube.png'
 const email = ref('')
 
 function subscribe() {
