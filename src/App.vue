@@ -1,15 +1,17 @@
-<script setup lang="ts">
-// App.vue is now a simple container for the router view
-</script>
-
 <template>
-  <router-view />
+  <div class="app-wrapper">
+    <router-view v-slot="{ Component }">
+      <transition name="fade">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+  </div>
 </template>
 
+<script setup lang="ts">
+// Composant App principal - aucune logique spécifique ici
+</script>
+
 <style>
-#app {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-}
+
 </style>

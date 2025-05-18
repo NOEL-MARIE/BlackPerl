@@ -1,8 +1,18 @@
+
 @import './base.css';
 body {
   height: 100vh;
   width: 100%;
 }
+
+@font-face {
+  font-family: 'HouseOfCardsW03Bold';
+  src: url('@/public/Fonts/FontsFree-Net-House-of-cards-W03-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 
 
 .local-ring {

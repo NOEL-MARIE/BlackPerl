@@ -30,7 +30,7 @@ onMounted(() => {
   <div class="w-screen overflow-hidden mt- mb-11 bg-white">
     <div class="carousel-container">
       <div class="carousel-track">
-        <div 
+        <div
           v-for="(img, index) in extendedImages"
           :key="index"
           class="carousel-item"
@@ -38,7 +38,7 @@ onMounted(() => {
           <img
             :src="img.src"
             :alt="img.alt"
-            class="h-24 w-auto object-contain"
+            class="h-24 w-auto object-cover"
           />
         </div>
       </div>

@@ -2,6 +2,8 @@
 
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
+import TestProfilView from '@/components/About_component/TestProfilView[1].vue'
+
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import NavBar_Component from '@/components/NavBar/NavBar_Component.vue'
 const images = [
@@ -21,19 +23,6 @@ const wrapper = ref<HTMLElement | null>(null)
 let animationFrame: number | null = null
 let offset = 0
 // Ajouter cette fonction dans le <script setup>
-function getArcStyle(index: number) {
-  const total = images.length
-  const center = (total - 1) / 2
-  const offset = index - center
-
-  // Ici, la translation Y est POSITIVE pour descendre sur les côtés (arc inversé)
-  const translateY = Math.abs(offset) * 40 + 10
-  const rotate = offset * 10
-
-  return {
-    transform: `translateY(${translateY}px) rotate(${rotate}deg)`,
-  }
-}
 
 function animate() {
   if (wrapper.value) {
@@ -58,41 +47,23 @@ onBeforeUnmount(() => {
 
 <template>
   <NavBar_Component />
-  <div class="w-screen h-screen mt-8 mb-20 ">
-    <div class="h-1/2 items-center w-fullX justify-center flex">
-      <h1 class="text-6xl font-cinzel text-center  text-[120px] flex-col">
-        bien plus qu’une agence <br />
-        de communication <br />
-        <p class="font-bold">360°</p>
+  <div class="w-screen h-screen z-0">
+    <div class="h-1/2 w-fullX justify-center flex">
+      <h1 class="text-6xl font-cinzel text-center text-[98px] flex-col">
+        DONNEZ VIE À VOTRE <br />
+        MARQUE
       </h1>
     </div>
     <div class="h-1/2 flex oblique-carousel-viewport">
-      <div class="oblique-carousel-wrapper" ref="wrapper">
-        <div
-          v-for="(img, i) in images.concat(images)"
-          :key="i"
-          class="oblique-carousel-img"
-          :style="getArcStyle(i % images.length)"
-        >
-          <img :src="img" alt="" />
-        </div>
-      </div>
-      <div class="w-full mt-40 flex flex-col items-center justify-center">
-        <p>Scrollez</p>
-        <img src="@/assets/images/boat.gif" alt="" width="84px" />
-      </div>
+      <TestProfilView />
     </div>
   </div>
-
 </template>
 
 <style scoped>
 .oblique-carousel-viewport {
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
-  background: white;
-  user-select: none;
-  pointer-events: none;
 }
 .oblique-carousel-wrapper {
   display: flex;
@@ -100,8 +71,7 @@ onBeforeUnmount(() => {
   gap: 40px;
   will-change: transform;
   position: absolute;
-  left: 0;
-  top: 0;
+
 }
 .oblique-carousel-img {
   width: 240px;

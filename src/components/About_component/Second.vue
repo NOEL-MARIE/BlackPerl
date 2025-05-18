@@ -5,7 +5,7 @@ import Carrousel_Right from '@/components/About_component/Carrousel_Right.vue'
 </script>
 
 <template>
-  <div class="w-full FORME flex items-center justify-center relative z-10">
+  <div class="w-screen  FORME flex items-center mt-24 justify-center relative ">
     <!-- Images en arrière-plan gauche et droite -->
     <img
       src="@/assets/images/BOAT_DRAW.png"
@@ -24,11 +24,11 @@ import Carrousel_Right from '@/components/About_component/Carrousel_Right.vue'
     <div class="folder relative z-10">
       <div class="tab "></div>
       <div class="body">
-        <div class="text-white h-full flex flex-col">
+        <div class="text-white h-full flex flex-col ">
           <div class="flex-1">
-            <div class="flex flex-col justify-center items-center gap-10">
-              <div class="flex items-center justify-between mx-20 mt-7 gap-96 space-x-10">
-                <div class="flex-col flex gap-6 text-sm">
+            <div class="flex flex-col justify-center items-center gap-16">
+              <div class="flex  justify-between  mt-11 gap-9 ">
+                <div class="flex-col flex gap-6 text-[20px] font-Opensans font-bold">
                   <p>
                     L’équipage créatif d’un navire enraciné dans <br />
                     l’Afrique moderne
@@ -38,7 +38,7 @@ import Carrousel_Right from '@/components/About_component/Carrousel_Right.vue'
                     qu’une agence de communication 360°.
                   </p>
                 </div>
-                <div class="flex-col flex gap-6 text-sm">
+                <div class="flex-col flex gap-6 text-[15px]   font-Opensans">
                   <p>
                     C’est un bateau pirate créatif, où stratégie, storytelling et technologie
                     s’unissent <br />
@@ -55,7 +55,7 @@ import Carrousel_Right from '@/components/About_component/Carrousel_Right.vue'
                 </div>
               </div>
               <div>
-                <p class="text-4xl text-center">
+                <p class="text-6xl uppercase text-center font-HouseOfCardsW03Bold">
                   Ce n’est pas une campagne. C’est une <br />
                   <span class="text-[rgba(251,221,120,1)]">conquête</span>.
                 </p>

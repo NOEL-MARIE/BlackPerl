@@ -6,7 +6,7 @@ import { useRouter } from 'vue-router'
 import imageOne from '@/assets/images/image 10first.jpg'
 import imageTwo from '@/assets/images/image 11seconde.png'
 import imageThree from '@/assets/images/image 9three.png'
-import NavBar_Component from '@/components/NavBar/NavBar_Component.vue'
+// import NavBar_Component from '@/components/NavBar/NavBar_Component.vue'
 
 // Router
 const router = useRouter()
@@ -138,7 +138,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <NavBar_Component class="fixed" />
 
   <section class="h-screen w-screen flex justify-center items-center relative">
     <!-- Arrière-plan -->
@@ -211,7 +210,7 @@ onMounted(() => {
 .image-container img {
   width: 150px;
   height: 150px;
-  transition: 
+  transition:
     transform 0.5s ease,
     filter 0.5s ease;
   filter: grayscale(100%);

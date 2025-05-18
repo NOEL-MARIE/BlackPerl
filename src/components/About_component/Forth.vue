@@ -1,5 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
+    <Image_Forme />
+
   <section class="team-section">
     <h2 class="section-title">Notre équipe</h2>
 
@@ -66,6 +68,8 @@
 </template>
 
 <script setup lang="ts">
+ import Image_Forme from '@/components/Image_Forme.vue'
+
 import { ref, onMounted } from 'vue'
 import gsap from 'gsap'
 

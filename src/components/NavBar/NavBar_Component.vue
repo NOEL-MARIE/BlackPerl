@@ -1,7 +1,7 @@
 <template>
   <nav
     :class="[
-      'w-full  font-sans z-50 transition-all duration-300',
+      'w-full est font-sans z-50 transition-all duration-300',
       isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4',
     ]"
   >

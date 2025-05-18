@@ -1,27 +1,66 @@
 <script lang="ts">
 import { Motion } from '@motionone/vue'
-import Echec from '@/assets/images/Home_fou.svg'
+import Echec from '@/assets/images/image 10first.jpg'
+import Echec1 from '@/assets/images/image 9three.png'
 import Logo_BlackPurl from '@/assets/images/Logo_Black_Pearl.svg'
-import Img1 from '@/assets/images/CARR_IMG1.png'
-import Img2 from '@/assets/images/CARR_IMG2.png'
-import Img3 from '@/assets/images/CARR_IMG3.png'
+import Img1 from '@/assets/images/Kraoké.jpg'
+import Img2 from '@/assets/images/Laity.jpg'
+import Img3 from '@/assets/images/Christaline.png'
 import PlayIcons from '@/assets/images/Play_Icon.png'
+import BANNER_TOP from '@/assets/images/66d8fb8ddb89c6bbf01deb18_top.svg'
 
 export default {
-  components: {
-    Motion,
-  },
+  components: { Motion },
   data() {
     return {
+      BANNER_TOP,
       Echec,
+      Echec1,
       Logo_BlackPurl,
       images: [Img1, Img2, Img3],
       PlayIcons,
+      scrollX: 0,
+      animationFrame: null as number | null,
+      isHovered: false,
     }
   },
   computed: {
-    extendedImages() {
-      return [...this.images, ...this.images, ...this.images] // Triple les images pour un défilement plus fluide
+    duplicatedImages() {
+      return [...this.images, ...this.images]
+    },
+  },
+  mounted() {
+    this.startAutoScroll()
+  },
+  beforeUnmount() {
+    this.stopAutoScroll()
+  },
+  methods: {
+    startAutoScroll() {
+      const totalWidth = this.duplicatedImages.length * (590 + 32) // largeur image + gap en px
+      const scroll = () => {
+        if (!this.isHovered) {
+          this.scrollX -= 2 // vitesse de défilement
+          if (Math.abs(this.scrollX) >= totalWidth / 2) {
+            // reset après la moitié (une série d’images)
+            this.scrollX = 0
+          }
+        }
+        this.animationFrame = requestAnimationFrame(scroll)
+      }
+      scroll()
+    },
+    stopAutoScroll() {
+      if (this.animationFrame) {
+        cancelAnimationFrame(this.animationFrame)
+        this.animationFrame = null
+      }
+    },
+    handleMouseEnter() {
+      this.isHovered = true
+    },
+    handleMouseLeave() {
+      this.isHovered = false
     },
   },
 }
@@ -29,17 +68,16 @@ export default {
 
 <template>
   <div class="w-screen overflow-hidden">
-    <!-- Section haute -->
-    <div class="w-screen pt-20 flex justify-around h-52">
+    <!-- Section haute avec images fixes -->
+    <div class="w-screen flex justify-around h-36 pb-12">
       <Motion
         tag="div"
         :initial="{ opacity: 0, y: -50 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 1 }"
       >
-        <img :src="Echec" alt="Illustration d'échec" height="125px" width="190px" class="mt-20" />
+        <img :src="Echec" alt="Illustration d'échec" height="125px" width="290px" />
       </Motion>
-
       <Motion
         tag="div"
         :initial="{ opacity: 0, scale: 0.8 }"
@@ -48,50 +86,74 @@ export default {
       >
         <img :src="Logo_BlackPurl" alt="Logo Black Pearl" height="225px" width="490px" />
       </Motion>
-
       <Motion
         tag="div"
         :initial="{ opacity: 0, y: 50 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 1 }"
       >
-        <img :src="Echec" alt="Illustration d'échec" height="125px" width="190px" class="mt-20" />
+        <img :src="Echec1" alt="Illustration d'échec" height="125px" width="290px" />
       </Motion>
     </div>
 
     <!-- Carrousel -->
-    <div class="w-screen mt-20 overflow-hidden relative">
-      <Motion
-        tag="div"
-        class="flex "
-        :initial="{ x: '0%' }"
-        :animate="{ x: '-100%' }"
-        :transition="{ duration: 50, repeat: Infinity, ease: 'linear' }"
-      >
-        <div
-          v-for="(img, index) in extendedImages"
-          :key="index"
-          class="relative group flex-none w-[400px]"
-        >
-          <img
-            :src="img"
-            :alt="'Image ' + ((index % images.length) + 1)"
-            class="w-full h-64 object-contain"
-          />
+    <!-- Carrousel avec défilement automatique infini -->
+    <div
+      class="w-full relative h-[350px] mt-24 overflow-hidden group"
+      @mouseenter="handleMouseEnter"
+      @mouseleave="handleMouseLeave"
+    >
+      <img :src="BANNER_TOP" alt="" class="absolute w-[4090px] h-16 object-cover z-10" />
 
-          <!-- Play icon avec classes Tailwind (comme avant) -->
-          <img
-            :src="PlayIcons"
-            alt="Play"
-            class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 opacity-65 transition-all duration-300 scale-100 group-hover:animate-accordion-down group-hover:cursor-pointer group-hover:scale-125 group-hover:opacity-100"
-          />
-          <img
-            :src="PlayIcons"
-            alt="Play"
-            class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 opacity-65 transition-all duration-300 scale-100 group-hover:animate-accordion-down group-hover:cursor-pointer group-hover:scale-150 group-hover:opacity-100"
-          />
+      <div class="relative w-full flex justify-center items-center overflow-visible h-[320px]">
+        <img
+          :src="BANNER_TOP"
+          alt=""
+          class="absolute bottom-[-40px] left-0 right-0 h-16 object-cover rotate-180 z-10 w-full"
+        />
+
+        <div
+          class="flex gap-8"
+          :style="{
+            transform: `translateX(${scrollX}px)`,
+            transition: 'transform 0.01s linear',
+            width: `${duplicatedImages.length * 590 + duplicatedImages.length * 32}px`, // 32 = gap-8 en px
+          }"
+        >
+          <div
+            v-for="(img, i) in duplicatedImages"
+            :key="i"
+            class="relative flex-shrink-0"
+            style="width: 590px; height: 750px"
+          >
+            <img
+              :src="img"
+              :alt="'Image ' + (i + 1)"
+              class="object-cover w-full h-full z-0"
+              style="position: relative; z-index: 1"
+            />
+            <img
+              :src="PlayIcons"
+              alt="Play"
+              class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer z-10"
+            />
+            <img
+              :src="BANNER_TOP"
+              alt=""
+              class="absolute w-[4090px] top-10 pt-40 h-16 object-cover rotate-180 z-10"
+            />
+          </div>
         </div>
-      </Motion>
+      </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+html,
+body {
+  width: 100%;
+  height: 100%;
+  user-select: none;
+}
+</style>

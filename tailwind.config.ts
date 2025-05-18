@@ -26,8 +26,9 @@ module.exports = {
     extend: {
       fontFamily: {
         cinzel:["Cinzel", 'sans-serif' ],
-        // sans: ["Cinzel", 'sans-serif' ],
-        poppins :["Poppins", 'sans-serif' ]
+        Opensans: ["Open Sans", 'sans-serif' ],
+        poppins :["Poppins", 'sans-serif' ],
+        HouseOfCardsW03Bold :['HouseOfCardsW03Bold', 'cursive']
       },
       colors: {
         border: 'hsl(var(--border))',
@@ -237,6 +238,7 @@ module.exports = {
   },
   plugins: [
     // animate,
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     require('tailwindcss-animate'),
     // require('tailwindcss-animated'),
     // animations,
