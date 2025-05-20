@@ -35,7 +35,7 @@
               <div class="flex flex-col">
                 <div>
                   <div
-                    class="flex  text-3xl text-black ml-44 items-center justify-end rounded-full w-[20px] h-[20px] bg-[#F8D065]"
+                    class="flex text-3xl text-black ml-44 items-center justify-end rounded-full w-[20px] h-[20px] bg-[#F8D065]"
                   >
                     +
                   </div>
@@ -197,7 +197,7 @@
   </section>
 
   <!-- Bloc à placer juste en dessous -->
-  <div class="flex items-center justify-center flex-col">
+  <div class="flex items-center justify-center pb-12 flex-col">
     <span class="font-Opensans">Scrollez</span>
     <img :src="boatGif" alt="" width="84px" height="84px" />
   </div>

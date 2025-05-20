@@ -5,7 +5,6 @@
 import TestProfilView from '@/components/About_component/TestProfilView[1].vue'
 
 import { ref, onMounted, onBeforeUnmount } from 'vue'
-import NavBar_Component from '@/components/NavBar/NavBar_Component.vue'
 const images = [
   'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80',
   'https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=400&q=80',
@@ -46,7 +45,6 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <NavBar_Component />
   <div class="w-screen h-screen z-0">
     <div class="h-1/2 w-fullX justify-center flex">
       <h1 class="text-6xl font-cinzel text-center text-[98px] flex-col">

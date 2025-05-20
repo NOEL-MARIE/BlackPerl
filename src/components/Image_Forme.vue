@@ -8,7 +8,7 @@
     }"
     style="transition: opacity 0.3s;"
   >
-    <a href="/contact/" class="w-28 h-28 relative bg-blue-600 rounded-full flex items-center justify-center group">
+    <a href="/contact" class="w-28 h-28 relative bg-blue-600 rounded-full flex items-center justify-center group">
       <div class="text-2xl relative top-0.5">... 👀</div>
       <div class="absolute top-0 left-0 w-full h-full p-2.5 animate-spin-slow">
         <div

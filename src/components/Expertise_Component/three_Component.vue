@@ -1,11 +1,11 @@
 <template>
   <div class="carousel-container flex items-center justify-center flex-col h-screen w-screen">
-    <h2 class="title">STRATÉGIE MARKETING 360°</h2>
-    <p class="subtitle">
-      Nous avons imaginé et déployé des campagnes à <b>360°</b>, ancrées dans la culture ivoirienne,
-      pour repositionner, faire émerger ou renforcer des marques à fort potentiel.
+    <h2 class="title font-HouseOfCardsW03Bold uppercase text-[#808080]">STRATÉGIE MARKETING 360°</h2>
+    <p class="subtitl w-[800px] text-xl top-center">
+      Nous avons imaginé et déployé des campagnes à <b>360°</b>, ancrées dans la culture <br> ivoirienne,
+      pour repositionner, faire émerger ou renforcer des marques à fort <br> potentiel.
     </p>
-    <div class="carousel">
+    <div class="carousl flex mt-7 w-[1276px]">
       <button class="arrow left Right rotate-180" @click="prevSlide">
         <img :src="Right" alt="" width="74px"/>
       </button>
@@ -118,13 +118,7 @@ function nextSlide() {
 .slide-content {
   display: flex;
   align-items: flex-start;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  margin: 0 20px;
-  min-width: 650px;
-  max-width: 700px;
-  padding: 24px 32px;
+
   gap: 32px;
 }
 

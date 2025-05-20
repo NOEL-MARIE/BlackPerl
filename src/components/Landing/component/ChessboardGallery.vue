@@ -138,7 +138,6 @@ onMounted(() => {
 </script>
 
 <template>
-
   <section class="h-screen w-screen flex justify-center items-center relative">
     <!-- Arrière-plan -->
     <div class="absolute z-10 flex justify-between items-center">
@@ -161,7 +160,11 @@ onMounted(() => {
               black: (Math.floor((index - 1) / 7) + ((index - 1) % 7)) % 2 === 0,
               white: (Math.floor((index - 1) / 7) + ((index - 1) % 7)) % 2 === 1,
             }"
-            @click="imagePositions.includes(index) ? openImage(images[imagePositions.indexOf(index)].id) : null"
+            @click="
+              imagePositions.includes(index)
+                ? openImage(images[imagePositions.indexOf(index)].id)
+                : null
+            "
           >
             <div class="image-container" v-if="imagePositions.includes(index)">
               <img

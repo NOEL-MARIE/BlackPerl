@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     duplicatedImages() {
-      return [...this.images, ...this.images]
+      return [...this.images, ...this.images, ...this.images]
     },
   },
   mounted() {
@@ -37,12 +37,15 @@ export default {
   },
   methods: {
     startAutoScroll() {
-      const totalWidth = this.duplicatedImages.length * (590 + 32) // largeur image + gap en px
+      const imageWidth = 590 + 32 // largeur image + gap en px
+      const resetPoint = this.images.length * imageWidth // largeur d’une série d’images (non dupliquée)
+
       const scroll = () => {
         if (!this.isHovered) {
-          this.scrollX -= 2 // vitesse de défilement
-          if (Math.abs(this.scrollX) >= totalWidth / 2) {
-            // reset après la moitié (une série d’images)
+          this.scrollX -= 0.4 // vitesse de défilement
+
+          // Remise à zéro pour boucle infinie fluide
+          if (Math.abs(this.scrollX) >= resetPoint) {
             this.scrollX = 0
           }
         }
@@ -97,7 +100,6 @@ export default {
     </div>
 
     <!-- Carrousel -->
-    <!-- Carrousel avec défilement automatique infini -->
     <div
       class="w-full relative h-[350px] mt-24 overflow-hidden group"
       @mouseenter="handleMouseEnter"
@@ -116,8 +118,7 @@ export default {
           class="flex gap-8"
           :style="{
             transform: `translateX(${scrollX}px)`,
-            transition: 'transform 0.01s linear',
-            width: `${duplicatedImages.length * 590 + duplicatedImages.length * 32}px`, // 32 = gap-8 en px
+            width: `${duplicatedImages.length * 590 + duplicatedImages.length * 32}px`
           }"
         >
           <div

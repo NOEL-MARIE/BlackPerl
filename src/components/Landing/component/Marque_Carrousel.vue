@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
+import gsap from 'gsap'
 
 import SendChap from '@/assets/images/SendChap.svg'
 import CELESTE from '@/assets/images/CELESTE.svg'
@@ -8,7 +9,6 @@ import CarreDOR from '@/assets/images/Carre D\'OR.svg'
 import Nivea from '@/assets/images/Nivea.svg'
 import AMGS from '@/assets/images/AMGS.svg'
 
-// Liste des images avec descriptions accessibles
 const images = [
   { src: SendChap, alt: 'Logo de SendChap, plateforme d’envoi de messages sécurisés' },
   { src: CELESTE, alt: 'Logo de CELESTE, fournisseur de solutions internet et cloud' },
@@ -18,22 +18,38 @@ const images = [
   { src: AMGS, alt: 'Logo d’AMGS, société de services médicaux et de santé' }
 ]
 
-// Triple les images pour créer l'effet de défilement infini
 const extendedImages = [...images, ...images, ...images]
 
+// Ref pour la track du carrousel
+const trackRef = ref<HTMLElement | null>(null)
+
 onMounted(() => {
-  // Rien de spécial ici, l'animation est gérée par CSS
+  if (trackRef.value) {
+    // Sélectionne tous les items du carrousel
+    const items = trackRef.value.querySelectorAll('.carousel-item')
+
+    // Timeline GSAP pour animer le fondu des images en boucle
+    const tl = gsap.timeline({  defaults: { ease: 'power1.inOut' } })
+
+    // Animation : chaque image passe de opacity 0 à 1 puis 0, en décalé
+tl.to(items, {
+  opacity: 1,
+  duration: 0.1,    // apparition très rapide (100 ms)
+  stagger: 0.2,     // images qui apparaissent toutes les 0.2s
+})
+  }
 })
 </script>
 
 <template>
   <div class="w-screen overflow-hidden mt- mb-11 bg-white">
     <div class="carousel-container">
-      <div class="carousel-track">
+      <div ref="trackRef" class="carousel-track">
         <div
           v-for="(img, index) in extendedImages"
           :key="index"
           class="carousel-item"
+          style="opacity: 0"
         >
           <img
             :src="img.src"
@@ -55,7 +71,7 @@ onMounted(() => {
 
 .carousel-track {
   display: flex;
-  animation: scroll 25s linear infinite;
+  animation: scroll 100s linear infinite;
   width: max-content;
 }
 
@@ -63,6 +79,8 @@ onMounted(() => {
   flex: 0 0 auto;
   margin: 0 2rem; /* équivalent à mx-8 */
   width: 200px;
+  opacity: 0; /* caché par défaut */
+  transition: opacity 0.5s ease;
 }
 
 @keyframes scroll {

@@ -26,6 +26,7 @@ module.exports = {
     extend: {
       fontFamily: {
         cinzel:["Cinzel", 'sans-serif' ],
+        Roboto:["Roboto", 'sans-serif' ],
         Opensans: ["Open Sans", 'sans-serif' ],
         poppins :["Poppins", 'sans-serif' ],
         HouseOfCardsW03Bold :['HouseOfCardsW03Bold', 'cursive']

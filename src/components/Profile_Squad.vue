@@ -1,7 +1,7 @@
 <template>
   <div
     ref="carouselWrapper"
-    class="w-full h-[420px] pt-12 js-profile-card-189 relative overflow-hidden rounded-2xl dark:bg-grayDark-400"
+    class="w-full h-[420px] pt-12 js-profile-card-189 relative  rounded-2xl dark:bg-grayDark-400"
     @mouseenter="hovering = true"
     @mouseleave="hovering = false"
   >
@@ -11,9 +11,9 @@
         v-for="(item, index) in duplicatedImages"
         :key="index"
         :class="[
-          'flex-shrink-0 w-[300px] group h-full relative rounded-2xl overflow-hidden bg-white dark:bg-grayDark-600',
+          'flex-shrink-0 w-[300px] group h-full relative rounded-2xl  bg-white dark:bg-grayDark-600',
         ]"
-        :style="index % 2 === 0 ? 'margin-top: -30px;' : 'margin-top: 0;'"
+        :style="index % 2 === 1 ? 'margin-top: -30px;' : 'margin-top: 0;'"
       >
         <picture class="w-full h-full absolute top-0 left-0">
           <img
@@ -30,7 +30,7 @@
           aria-label="Profile link"
         >
           <svg
-            class="w-4 h-4 text-gray-600 fill-current"
+            class="w-4 h-4  fill-current"
             width="14"
             height="16"
             xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@
           </svg>
         </div>
 
-        <div class="w-full absolute bottom-0 left-0 pr-14 z-20">
+        <div class="w-full  absolute bottom-0 left-0 pr-14 z-20">
           <div
             class="w-auto relative inline-flex flex-wrap rounded-tr-2xl pt-3 pointer-events-none pr-5 lg:rounded-tr-3xl lg:pr-8 bg-white dark:bg-grayDark-600"
           >

@@ -1,7 +1,7 @@
 <template>
   <nav
     :class="[
-      'w-full est font-sans z-50 transition-all duration-300',
+      'w-full font-sans z-50 transition-all duration-300',
       isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4',
     ]"
   >
@@ -14,21 +14,32 @@
             :key="item.name"
             :to="item.to"
             class="relative group inline-block px-3 py-2 text-sm font-medium transition-colors duration-300"
-            :class="route.path === item.to ? 'text-[#F8D065]' : 'text-gray-900'"
+            :class="[
+              isImageRoute ? 'text-white' : 'text-gray-900',
+              route.path === item.to ? 'font-bold' : '',
+            ]"
           >
             {{ item.name }}
             <span
               class="absolute left-0 bottom-0 h-[2px] bg-[#F8D065] transition-all duration-300"
-              :class="route.path === item.to ? 'w-full' : 'w-0 group-hover:w-full'"
+              :class="[
+                route.path === item.to ? 'w-full' : 'w-0 group-hover:w-full',
+                isImageRoute ? 'absolute left-0 bottom-0 h-[2px] bg-[#F8D065] transition-all duration-300' : 'bg-[#F8D065]',
+              ]"
             ></span>
           </router-link>
         </div>
 
-
         <!-- Bouton menu mobile -->
         <div class="md:hidden flex items-center">
-          <button @click="isOpen = true" class="text-gray-900">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <button @click="toggleMenu" :class="{ 'text-white': isImageRoute }" aria-label="Toggle menu">
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              :class="{ 'stroke-white': isImageRoute }"
+            >
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -42,31 +53,30 @@
     </div>
 
     <!-- Menu mobile -->
-    <div v-show="isOpen" ref="menuRef" class="md:hidden bg-white shadow-md px-4 pt-4 pb-6">
-      <div class="space-y-3">
-        <router-link
-          v-for="item in links"
-          :key="item.name"
-          :to="item.to"
-          class="block text-base font-medium px-2 py-1 transition-colors duration-300"
-          :class="route.path === item.to ? 'text-[#F8D065]' : 'text-gray-900'"
-          @click="isOpen = false"
-        >
-          {{ item.name }}
-        </router-link>
-        <a
-          href="tel:+1234567890"
-          class="flex items-center text-gray-900 px-2 py-1 hover:text-[#F8D065]"
-        >
-          <!-- Icône téléphone mobile -->
-        </a>
+    <transition name="fade-slide">
+      <div v-if="isOpen" ref="menuRef" class="md:hidden bg-white shadow-md px-4 pt-4 pb-6">
+        <div class="space-y-3">
+          <router-link
+            v-for="item in links"
+            :key="item.name"
+            :to="item.to"
+            class="block text-base font-medium px-2 py-1 transition-colors duration-300"
+            :class="[
+              route.path === item.to ? 'text-[#F8D065]' : 'text-gray-900',
+              isImageRoute ? 'text-white' : 'text-gray-900',
+            ]"
+            @click="closeMenu"
+          >
+            {{ item.name }}
+          </router-link>
+        </div>
       </div>
-    </div>
+    </transition>
   </nav>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, nextTick, watch } from 'vue'
+import { ref, onMounted, onUnmounted, watch, nextTick, computed } from 'vue'
 import gsap from 'gsap'
 import { useRoute } from 'vue-router'
 
@@ -83,6 +93,10 @@ const links = [
   { name: 'Carrière', to: '/carriere' },
 ]
 
+const isImageRoute = computed(() => {
+  return route.path.startsWith('/image/')
+})
+
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 10
 }
@@ -95,25 +109,51 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 
-// Gérer l'ouverture avec animation GSAP
+const toggleMenu = () => {
+  isOpen.value = !isOpen.value
+}
+
+const closeMenu = () => {
+  if (!menuRef.value) {
+    isOpen.value = false
+    return
+  }
+  gsap.to(menuRef.value, {
+    opacity: 0,
+    y: -20,
+    duration: 0.3,
+    ease: 'power2.in',
+    onComplete: () => {
+      isOpen.value = false
+    },
+  })
+}
+
 watch(isOpen, async (val) => {
-  await nextTick()
   if (val && menuRef.value) {
+    await nextTick()
     gsap.fromTo(
       menuRef.value,
-      { opacity: 0, y: -30 },
+      { opacity: 0, y: -20 },
       { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' },
     )
-  } else if (!val && menuRef.value) {
-    gsap.to(menuRef.value, {
-      opacity: 0,
-      y: -30,
-      duration: 0.3,
-      ease: 'power2.in',
-      onComplete: () => {
-        isOpen.value = false
-      },
-    })
   }
 })
 </script>
+
+<style scoped>
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+.fade-slide-enter-to,
+.fade-slide-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
