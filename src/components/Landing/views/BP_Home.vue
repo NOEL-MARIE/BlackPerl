@@ -72,36 +72,46 @@ export default {
 <template>
   <div class="w-screen overflow-hidden">
     <!-- Section haute avec images fixes -->
-    <div class="w-screen flex justify-around h-36 pb-12">
+    <div class="relative w-full h-[200px]  flex justify-around">
+      <!-- conteneur parent relatif -->
+
+      <!-- Logo Echec à gauche, positionné à 10% de la largeur -->
       <Motion
         tag="div"
         :initial="{ opacity: 0, y: -50 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 1 }"
+        class="absolute top-[-50px]  left-[5%] bottom-[90%]"
       >
-        <img :src="Echec" alt="Illustration d'échec" height="125px" width="290px" />
+        <img :src="Echec" alt="Illustration d'échec" style="width: 28vw; height: auto" class=" rotate-12"/>
       </Motion>
+
+      <!-- Logo Black Pearl centré -->
       <Motion
         tag="div"
         :initial="{ opacity: 0, scale: 0.8 }"
         :animate="{ opacity: 1, scale: 1 }"
         :transition="{ duration: 1.2 }"
+        class="absolute  z-10 "
       >
-        <img :src="Logo_BlackPurl" alt="Logo Black Pearl" height="225px" width="490px" />
+        <img :src="Logo_BlackPurl" alt="Logo Black Pearl" style="width: 35vw; height: auto" />
       </Motion>
+
+      <!-- Logo Echec1 à droite, positionné à 80% de la largeur -->
       <Motion
         tag="div"
         :initial="{ opacity: 0, y: 50 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 1 }"
+        class="absolute z-0 top-[-80px] right-[10%] "
       >
-        <img :src="Echec1" alt="Illustration d'échec" height="125px" width="290px" />
+        <img :src="Echec1" alt="Illustration d'échec" style="width: 28vw; height: auto" class=" -rotate-12"/>
       </Motion>
     </div>
 
     <!-- Carrousel -->
     <div
-      class="w-full relative h-[350px] mt-24 overflow-hidden group"
+      class="w-full relative h-[390px] bg-white mt-24 overflow-hidden group"
       @mouseenter="handleMouseEnter"
       @mouseleave="handleMouseLeave"
     >
@@ -111,14 +121,14 @@ export default {
         <img
           :src="BANNER_TOP"
           alt=""
-          class="absolute bottom-[-40px] left-0 right-0 h-16 object-cover rotate-180 z-10 w-full"
+          class="absolute bottom-[-20px] left-0 right-0 h-16 object-cover rotate-180 z-10 w-full"
         />
 
         <div
           class="flex gap-8"
           :style="{
             transform: `translateX(${scrollX}px)`,
-            width: `${duplicatedImages.length * 590 + duplicatedImages.length * 32}px`
+            width: `${duplicatedImages.length * 590 + duplicatedImages.length * 32}px`,
           }"
         >
           <div
@@ -138,11 +148,7 @@ export default {
               alt="Play"
               class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer z-10"
             />
-            <img
-              :src="BANNER_TOP"
-              alt=""
-              class="absolute w-[4090px] top-10 pt-40 h-16 object-cover rotate-180 z-10"
-            />
+
           </div>
         </div>
       </div>

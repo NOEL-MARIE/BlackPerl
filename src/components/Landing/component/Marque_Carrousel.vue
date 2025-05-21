@@ -42,7 +42,7 @@ tl.to(items, {
 </script>
 
 <template>
-  <div class="w-screen overflow-hidden mt- mb-11 bg-white">
+  <div class="w-screen overflow-hidden   ">
     <div class="carousel-container">
       <div ref="trackRef" class="carousel-track">
         <div
@@ -54,7 +54,7 @@ tl.to(items, {
           <img
             :src="img.src"
             :alt="img.alt"
-            class="h-24 w-auto object-cover"
+            class="h-24 mb-36  object-cover"
           />
         </div>
       </div>
@@ -72,12 +72,13 @@ tl.to(items, {
 .carousel-track {
   display: flex;
   animation: scroll 100s linear infinite;
-  width: max-content;
+  /* width: max-content; */
 }
 
 .carousel-item {
   flex: 0 0 auto;
-  margin: 0 2rem; /* équivalent à mx-8 */
+  /* margin: 0 2rem; */
+   /* équivalent à mx-8 */
   width: 200px;
   opacity: 0; /* caché par défaut */
   transition: opacity 0.5s ease;

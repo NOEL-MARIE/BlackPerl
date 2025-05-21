@@ -8,7 +8,7 @@ import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-import First from './First.vue'
+import First from './First_Component.vue'
 import BlackSection from '@/components/Landing/component/BlackSection.vue'
 
 gsap.registerPlugin(ScrollTrigger)

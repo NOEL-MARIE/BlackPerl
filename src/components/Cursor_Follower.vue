@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="custom-cursor border-amber-500 border"
-    ref="cursor"
-  ></div>
+  <div class="custom-cursor border-amber-500 border" ref="cursor"></div>
 </template>
 
 <script setup lang="ts">
@@ -24,7 +21,6 @@ function updateCursor(e: MouseEvent) {
     ease: 'power3.out',
   })
 }
-
 
 function onMouseOver(e: MouseEvent) {
   if (!cursor.value) return
@@ -61,16 +57,53 @@ function onMouseOut(e: MouseEvent) {
   })
 }
 
+// --- Ajout des fonctions clic et drag ---
+
+function onMouseDown() {
+  if (!cursor.value) return
+
+  gsap.to(cursor.value, {
+    // duration: 0,
+    scale: 0.7,
+    // On conserve les couleurs d'origine (jaune)
+    backgroundColor: 'rgb(255, 255, 0)',
+    borderColor: 'rgb(255, 255, 0)',
+    // ease: 'power3.out',
+  })
+}
+
+function onMouseUp() {
+  if (cursor.value) return
+
+  gsap.to(cursor.value, {
+    // duration: 0,
+    scale: 1,
+    backgroundColor: 'rgb(255, 255, 0)',
+    borderColor: 'rgb(255, 255, 0)',
+    ease: 'power3.out',
+  })
+}
+
 onMounted(() => {
   window.addEventListener('mousemove', updateCursor)
   window.addEventListener('mouseover', onMouseOver)
   window.addEventListener('mouseout', onMouseOut)
+
+  window.addEventListener('mousedown', onMouseDown)
+  window.addEventListener('mouseup', onMouseUp)
+  window.addEventListener('dragstart', onMouseDown) // effet clic aussi au drag start
+  window.addEventListener('dragend', onMouseUp)
 })
 
 onUnmounted(() => {
   window.removeEventListener('mousemove', updateCursor)
   window.removeEventListener('mouseover', onMouseOver)
   window.removeEventListener('mouseout', onMouseOut)
+
+  window.removeEventListener('mousedown', onMouseDown)
+  window.removeEventListener('mouseup', onMouseUp)
+  window.removeEventListener('dragstart', onMouseDown)
+  window.removeEventListener('dragend', onMouseUp)
 })
 </script>
 
@@ -86,7 +119,9 @@ onUnmounted(() => {
   pointer-events: none;
   transform: translate3d(0, 0, 0) scale(1);
   border: 1px solid rgb(255, 255, 0);
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
   z-index: 9999;
 }
 </style>
