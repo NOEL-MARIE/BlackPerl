@@ -13,9 +13,9 @@
     </div>
     <div>
       <footer
-        class="footer-blur h-[250px] mx-14 mb-9 items-center justify-items-center flex rounded-2xl"
+        class="footer-blur h-[250px] mx-14 mb-9 items-center justify-between flex rounded-2xl"
       >
-        <div class="footer-grid">
+      <div class="footer-gri w-full  flex  mx-11">
           <!-- Bloc Inscription -->
           <div class="footer-newsletter">
             <label class="newsletter-label">
@@ -29,17 +29,17 @@
               <input
                 v-model="email"
                 type="email"
-                class="newsletter-input text-xs"
+                class="newsletter-input text-xs w-[244px]"
                 placeholder="Entrez votre e-mail"
                 required
               />
-              <button type="submit" class="newsletter-btn">S’inscrire</button>
+              <button type="submit" class="newsletter-btn W-[43px]">S’inscrire</button>
             </form>
           </div>
           <div class="footer-links grid grid-cols-3 gap-16 space-x-7 texxs">
             <div class="footer-col flex flex-col gap-2">
               <a href="/" class="footer-link">Accueil</a>
-              <a href="/about" class="footer-link mt-10  flex">À propos</a>
+              <a href="/about" class="footer-link mt-10 flex">À propos</a>
             </div>
             <div class="footer-col flex flex-col gap-2">
               <a href="/expertise" class="footer-link">Expertise</a>
@@ -56,8 +56,6 @@
               </div>
             </div>
           </div>
-
-
         </div>
       </footer>
       <div class="footer-copy">
@@ -111,13 +109,8 @@ function subscribe() {
   padding: 32px 0 12px 0;
 }
 .footer-grid {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
 
-  gap: 24px;
+
 }
 .footer-newsletter {
   flex: 1 1 260px;

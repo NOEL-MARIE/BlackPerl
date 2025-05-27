@@ -63,6 +63,7 @@
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",
+    "@types/gsap": "^1.20.2",
     "@types/jquery": "^3.5.32",
     "@types/node": "^22.10.7",
     "@vitejs/plugin-vue": "^5.2.1",

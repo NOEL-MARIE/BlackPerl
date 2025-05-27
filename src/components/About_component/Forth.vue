@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <section class="team-section">
+  <section class="team-section ">
     <h2 class="section-title">Notre équipe</h2>
     <Dot_Gamme />
 

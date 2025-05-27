@@ -164,7 +164,7 @@ function selectImage(id: number) {
 }
 
 function goBack() {
-  router.push({ name: '/' })
+  window.location.href = '/'  
 }
 
 function scrollToActiveThumbnail() {
@@ -196,7 +196,7 @@ function scrollToActiveThumbnail() {
       <div class="main-content gap-80 mt-9 relative z-10">
         <!-- Colonne gauche -->
         <div class="left-side flex flex-col ml-40 justify-around w-1/2">
-          <button class="back-button mt-6 hover:cursor-pointer" @click="goBack">
+          <button class="back-button mt-6 hover:cursor-pointer " @click="goBack">
             <span class="cursor-pointer font-Opensans flex items-center gap-2 mb-14">
               <svg
                 width="11"

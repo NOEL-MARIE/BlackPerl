@@ -6,6 +6,9 @@ import Logo_BlackPurl from '@/assets/images/Logo_Black_Pearl.svg'
 import Img1 from '@/assets/images/Kraoké.jpg'
 import Img2 from '@/assets/images/Laity.jpg'
 import Img3 from '@/assets/images/Christaline.png'
+import Img4 from '@/assets/images/lait-rever.jpg'
+import Img5 from '@/assets/images/josey.jpg'
+import Img6 from '@/assets/images/cristaline-rever.png'
 import PlayIcons from '@/assets/images/Play_Icon.png'
 import BANNER_TOP from '@/assets/images/66d8fb8ddb89c6bbf01deb18_top.svg'
 
@@ -17,7 +20,7 @@ export default {
       Echec,
       Echec1,
       Logo_BlackPurl,
-      images: [Img1, Img2, Img3],
+      images: [Img1, Img2, Img3, Img4, Img5, Img6],
       PlayIcons,
       scrollX: 0,
       animationFrame: null as number | null,
@@ -72,7 +75,7 @@ export default {
 <template>
   <div class="w-screen overflow-hidden">
     <!-- Section haute avec images fixes -->
-    <div class="relative w-full h-[200px]  flex justify-around">
+    <div class="relative w-full h-[150px]  flex justify-around">
       <!-- conteneur parent relatif -->
 
       <!-- Logo Echec à gauche, positionné à 10% de la largeur -->
@@ -81,9 +84,9 @@ export default {
         :initial="{ opacity: 0, y: -50 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 1 }"
-        class="absolute top-[-50px]  left-[5%] bottom-[90%]"
+        class="absolute top-[-80px]  left-[5%] bottom-[90%]"
       >
-        <img :src="Echec" alt="Illustration d'échec" style="width: 28vw; height: auto" class=" rotate-12"/>
+        <img :src="Echec" alt="Illustration d'échec" style="width: 28vw; height: auto" class=" bg-cont rotate-12"/>
       </Motion>
 
       <!-- Logo Black Pearl centré -->
@@ -103,7 +106,7 @@ export default {
         :initial="{ opacity: 0, y: 50 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 1 }"
-        class="absolute z-0 top-[-80px] right-[10%] "
+        class="absolute z-0 top-[-90px] right-[10%] "
       >
         <img :src="Echec1" alt="Illustration d'échec" style="width: 28vw; height: auto" class=" -rotate-12"/>
       </Motion>
@@ -111,7 +114,7 @@ export default {
 
     <!-- Carrousel -->
     <div
-      class="w-full relative h-[390px] bg-white mt-24 overflow-hidden group"
+      class="w-full relative h-[990px] bg-white mt-24 overflow-hidden group"
       @mouseenter="handleMouseEnter"
       @mouseleave="handleMouseLeave"
     >
@@ -121,7 +124,7 @@ export default {
         <img
           :src="BANNER_TOP"
           alt=""
-          class="absolute bottom-[-20px] left-0 right-0 h-16 object-cover rotate-180 z-10 w-full"
+          class="absolute bottom-[-100px] left-0 right-0 h-16 object-cover rotate-180 z-10 w-full"
         />
 
         <div

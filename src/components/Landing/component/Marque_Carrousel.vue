@@ -42,8 +42,8 @@ tl.to(items, {
 </script>
 
 <template>
-  <div class="w-screen overflow-hidden   ">
-    <div class="carousel-container">
+  <div class="w-screen overflow-hidden rounded-t-3xl  ">
+    <div class="carousel-containe">
       <div ref="trackRef" class="carousel-track">
         <div
           v-for="(img, index) in extendedImages"
@@ -54,7 +54,7 @@ tl.to(items, {
           <img
             :src="img.src"
             :alt="img.alt"
-            class="h-24 mb-36  object-cover"
+            class="h-24 mb-72  object-cover"
           />
         </div>
       </div>

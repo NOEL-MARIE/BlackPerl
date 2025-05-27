@@ -1,5 +1,6 @@
 <template>
-  <div class="custom-cursor border-amber-500 border" ref="cursor"></div>
+  <!-- Élément représentant le curseur personnalisé -->
+  <div class="custom-cursor border-white border" ref="cursor"></div>
 </template>
 
 <script setup lang="ts">
@@ -8,11 +9,12 @@ import gsap from 'gsap'
 
 const cursor = ref<HTMLElement | null>(null)
 
+// Met à jour la position du curseur en fonction des mouvements de la souris
 function updateCursor(e: MouseEvent) {
   if (!cursor.value) return
 
-  const cursorSize = 10 // largeur/hauteur du cercle en px
-  const offset = cursorSize / 2
+  const cursorSize = 80 // Diamètre du curseur en px
+  const offset = cursorSize / 2 // Centre le curseur
 
   gsap.to(cursor.value, {
     duration: 0.3,
@@ -22,84 +24,77 @@ function updateCursor(e: MouseEvent) {
   })
 }
 
+// Lorsqu’on survole un élément interactif ou textuel
 function onMouseOver(e: MouseEvent) {
   if (!cursor.value) return
 
-  // Vérifie si la cible est un élément de texte (ajuste la liste selon tes besoins)
   const target = e.target as HTMLElement
   if (target.closest('p, span, h1, h2, h3, h4, h5, h6, a, button, li')) {
     gsap.to(cursor.value, {
       duration: 0.3,
-      scale: 2,
-      backgroundColor: 'rgba(255, 213, 0, 0.6)', // couleur orange semi-transparente
-      borderColor: 'rgba(255, 213, 0, 1)',
+      scale: 2, // Agrandit le curseur
+      backgroundColor: 'rgba(255, 255, 255, 0.6)', // 🔵 Blanc semi-transparent
+      borderColor: 'rgba(0, 0, 0)', // 🔵 Blanc opaque
       ease: 'power3.out',
     })
   }
 }
 
+// Quand on quitte un élément interactif ou textuel
 function onMouseOut(e: MouseEvent) {
   if (!cursor.value) return
 
-  // Quand on quitte un élément texte, on revient à l’état normal
   const related = e.relatedTarget as HTMLElement | null
-  // Si on quitte vers un autre élément texte, ne pas réduire
-  if (related && related.closest('p, span, h1, h2, h3, h4, h5, h6, a, button, li')) {
-    return
-  }
+  if (related && related.closest('p, span, h1, h2, h3, h4, h5, h6, a, button, li')) return
 
   gsap.to(cursor.value, {
     duration: 0.3,
-    scale: 5,
-    // backgroundColor: 'rgba()', // transparent
-    borderColor: 'rgba(255, 213, 0)',
+    scale: 1, // Revient à la taille normale
+    backgroundColor: 'rgba(255, 255, 255, 0)', // ⚫ Noir opaque
+    borderColor: 'rgba(0, 0, 0)', // 🔵 Bordure blanche
     ease: 'power3.out',
   })
 }
 
-// --- Ajout des fonctions clic et drag ---
-
+// Quand on clique (mousedown)
 function onMouseDown() {
   if (!cursor.value) return
 
   gsap.to(cursor.value, {
-    // duration: 0,
-    scale: 0.7,
-    // On conserve les couleurs d'origine (jaune)
-    backgroundColor: 'rgb(255, 255, 0)',
-    borderColor: 'rgb(255, 255, 0)',
-    // ease: 'power3.out',
+    scale: 0.7, // Rétrécit
+    backgroundColor: 'rgba(255, 255, 255, 1)', // 🔵 Blanc opaque
+    borderColor: 'rgba(0, 0, 0)', // 🔵 Blanc
   })
 }
 
+// Quand on relâche le clic (mouseup)
 function onMouseUp() {
-  if (cursor.value) return
+  if (!cursor.value) return
 
   gsap.to(cursor.value, {
-    // duration: 0,
     scale: 1,
-    backgroundColor: 'rgb(255, 255, 0)',
-    borderColor: 'rgb(255, 255, 0)',
+    backgroundColor: 'rgba(255, 255, 0,0)', // ⚫ Noir
+    borderColor: 'rgba(255, 255, 255, 1)', // 🔵 Blanc
     ease: 'power3.out',
   })
 }
 
+// Ajout des écouteurs au montage du composant
 onMounted(() => {
   window.addEventListener('mousemove', updateCursor)
   window.addEventListener('mouseover', onMouseOver)
   window.addEventListener('mouseout', onMouseOut)
-
   window.addEventListener('mousedown', onMouseDown)
   window.addEventListener('mouseup', onMouseUp)
-  window.addEventListener('dragstart', onMouseDown) // effet clic aussi au drag start
+  window.addEventListener('dragstart', onMouseDown)
   window.addEventListener('dragend', onMouseUp)
 })
 
+// Suppression des écouteurs à la destruction du composant
 onUnmounted(() => {
   window.removeEventListener('mousemove', updateCursor)
   window.removeEventListener('mouseover', onMouseOver)
   window.removeEventListener('mouseout', onMouseOut)
-
   window.removeEventListener('mousedown', onMouseDown)
   window.removeEventListener('mouseup', onMouseUp)
   window.removeEventListener('dragstart', onMouseDown)
@@ -112,16 +107,16 @@ onUnmounted(() => {
   position: fixed;
   top: 0;
   left: 0;
-  width: 10px;
-  height: 10px;
-  background-color: rgb(255, 255, 0);
-  border-radius: 50%;
-  pointer-events: none;
+  width: 80px;
+  height: 80px;
+  background-color: rgba(255, 255, 255, 0); /* ⚫ Couleur par défaut : noir */
+  border-radius: 50%; /* Cercle parfait */
+  pointer-events: none; /* Ne bloque pas les clics */
   transform: translate3d(0, 0, 0) scale(1);
-  border: 1px solid rgb(255, 255, 0);
+  border: 1px solid rgba(0, 0, 0, 0); /* 🔵 Bordure blanche */
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease;
-  z-index: 9999;
+  z-index: 9999; /* Toujours au-dessus */
 }
 </style>

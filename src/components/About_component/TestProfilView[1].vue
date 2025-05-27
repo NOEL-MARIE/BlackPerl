@@ -1,21 +1,21 @@
 <template>
-  <div class="">
+  <div class="z-0">
     <section class="h-1/2">
-      <div class="wheel " ref="wheel">
+      <div class="wheel" ref="wheel">
         <div
           v-for="(image, index) in images"
           :key="index"
           class="wheel__card"
           @click="onClickCard($event, index)"
         >
-          <img :src="image" :alt="'Image ' + (index + 1)" class="rounded-3xl " />
+          <img :src="image" :alt="'Image ' + (index + 1)" class="rounded-3xl" />
         </div>
       </div>
     </section>
   </div>
 
   <!-- Bloc à placer juste en dessous -->
-  <div class="w-full flex flex-col items-center space-y-16 justify-center">
+  <div class="w-full flex flex-col items-center mt-64 justify-center">
     <span class="font-Opensans">Scrollez</span>
     <img :src="boatGif" alt="" width="84px" height="84px" />
   </div>
@@ -47,13 +47,8 @@ const images = [
   Maman,
   Ketchup,
   Maman,
-  Alyssa,
-  Riziere,
   Ketchup,
-  Maman,
-  Ketchup,
-  Maman,
-  Ketchup,
+  Maman,  Ketchup,
   Maman,
   Ketchup,
   Maman,
@@ -92,7 +87,7 @@ function setupWheel() {
   const cardWidth = (cards[0] as HTMLElement).offsetWidth
 
   // Calcul de l'angle slice pour que les cartes soient côte à côte
-  const slice = ((cardWidth + 40) / radius) * (180 / Math.PI)
+  const slice = ((cardWidth + 30) / radius) * (180 / Math.PI)
 
   const DEG2RAD = Math.PI / 180
 
@@ -100,8 +95,8 @@ function setupWheel() {
     x: (i: number) => center + radius * Math.sin(i * slice * DEG2RAD),
     y: (i: number) => center - radius * Math.cos(i * slice * DEG2RAD),
     rotation: (i: number) => i * slice,
-    xPercent: -50,
-    yPercent: -50,
+    xPercent: -60,
+    yPercent: -60,
   })
 
   gsap.to(wheelElement, {
@@ -146,8 +141,8 @@ function onClickCard(event: MouseEvent, _index: number) {
       ease: 'power1.inOut',
       onComplete: () => {
         gsap.to(image, {
-          width: '10vw',
-          height: '10vw',
+          width: '20vw',
+          height: '20vw',
           maxWidth: '50px',
           maxHeight: '50px',
         })
@@ -170,7 +165,7 @@ function closeCurrentCard() {
       ease: 'power1.inOut',
       scale: true,
       onComplete: () => {
-        gsap.set(img, { width: '100px', height: 'auto' })
+        gsap.set(img, { width: '200px', height: 'auto' })
       },
     })
 
@@ -181,11 +176,9 @@ function closeCurrentCard() {
 
 <style scoped>
 body {
-
   height: 600vh;
   width: 100vw;
 }
-
 
 .header {
   top: 0;
@@ -203,48 +196,89 @@ body {
   z-index: 1;
 }
 
+/* Responsive wheel */
 .wheel {
   position: absolute;
   top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 300vw;
-  height: 300vw;
-  max-width: 2000px;
-  max-height: 2000px;
+  width: 270vw;
+  height: 500vw;
+  max-width: 3000px;
+  max-height: 3000px;
   left: 50%;
-
   transform: translateX(-50%);
 }
 
+/* Responsive cards */
 .wheel__card {
   position: absolute;
   top: 0;
   left: 0;
-  width: 250px; /* Mets ici la largeur désirée pour tes images */
-  height: 250px; /* Mets ici la hauteur désirée pour tes images */
+  margin-top: 2vh;
+  width: clamp(150px, 25vw, 320px);
+  height: clamp(150px, 25vw, 300px);
   cursor: pointer;
 }
 
 .wheel__card img {
-  /* width: 100%;
-  height: 100%; */
   object-fit: contain;
-  position: static;
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5rem;
 }
 
+/* Responsive scrollez gif */
 img {
+  margin-left: 0;
   z-index: 999;
   cursor: pointer;
-  position: absolute;
+  position: static;
   will-change: transform;
 }
 
+/* Responsive image header lorsqu'elle est animée */
 .header img {
-  width: 40vw;
-  height: 40vw;
+  width: clamp(100px, 30vw, 350px);
+  height: clamp(100px, 45vw, 350px);
   max-height: 350px;
   max-width: 350px;
 }
+
+/* Media queries */
+@media (max-width: 768px) {
+  .wheel {
+    width: 200vw;
+    height: 350vw;
+  }
+
+  .wheel__card {
+    width: clamp(120px, 40vw, 200px);
+    height: clamp(120px, 40vw, 200px);
+  }
+
+  .header img {
+    width: clamp(80px, 50vw, 200px);
+    height: clamp(100px, 60vw, 250px);
+  }
+}
+
+@media (max-width: 480px) {
+  .wheel {
+    width: 150vw;
+    height: 300vw;
+  }
+
+  .wheel__card {
+    width: clamp(100px, 60vw, 160px);
+    height: clamp(100px, 60vw, 160px);
+  }
+
+  .header img {
+    width: clamp(60px, 70vw, 180px);
+    height: clamp(80px, 80vw, 200px);
+  }
+}
 </style>
+
