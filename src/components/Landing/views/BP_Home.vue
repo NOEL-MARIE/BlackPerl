@@ -113,49 +113,58 @@ export default {
     </div>
 
     <!-- Carrousel -->
+<!-- Carrousel -->
+<div
+  class="w-full relative h-[990px] bg-white mt-24 overflow-hidden group"
+  @mouseenter="handleMouseEnter"
+  @mouseleave="handleMouseLeave"
+>
+  <!-- ✅ Cette image faisait office de bordure top, mais elle ne s'affichait pas bien
+       car elle était en absolute sans z-index approprié et mal positionnée -->
+  <img
+    :src="BANNER_TOP"
+    alt="Bordure supérieure"
+    class="absolute top-0 left-0 w-full h-16 object-cover z-[5]"
+  />
+
+  <div class="relative w-full flex justify-center items-center h-[320px]">
+    <!-- Bordure inférieure, retournée -->
+    <img
+      :src="BANNER_TOP"
+      alt="Bordure inférieure"
+      class="absolute bottom-[-100px] left-0 right-0 h-16 object-cover rotate-180 z-[10] w-full"
+    />
+
+    <!-- Carrousel d’images -->
     <div
-      class="w-full relative h-[990px] bg-white mt-24 overflow-hidden group"
-      @mouseenter="handleMouseEnter"
-      @mouseleave="handleMouseLeave"
+      class="flex gap-8"
+      :style="{
+        transform: `translateX(${scrollX}px)`,
+        width: `${duplicatedImages.length * 590 + duplicatedImages.length * 32}px`,
+      }"
     >
-      <img :src="BANNER_TOP" alt="" class="absolute w-[4090px] h-16 object-cover z-10" />
-
-      <div class="relative w-full flex justify-center items-center overflow-visible h-[320px]">
+      <div
+        v-for="(img, i) in duplicatedImages"
+        :key="i"
+        class="relative flex-shrink-0"
+        style="width: 590px; height: 750px"
+      >
         <img
-          :src="BANNER_TOP"
-          alt=""
-          class="absolute bottom-[-100px] left-0 right-0 h-16 object-cover rotate-180 z-10 w-full"
+          :src="img"
+          :alt="'Image ' + (i + 1)"
+          class="object-cover w-full h-full z-0"
+          style="position: relative; z-index: 1"
         />
-
-        <div
-          class="flex gap-8"
-          :style="{
-            transform: `translateX(${scrollX}px)`,
-            width: `${duplicatedImages.length * 590 + duplicatedImages.length * 32}px`,
-          }"
-        >
-          <div
-            v-for="(img, i) in duplicatedImages"
-            :key="i"
-            class="relative flex-shrink-0"
-            style="width: 590px; height: 750px"
-          >
-            <img
-              :src="img"
-              :alt="'Image ' + (i + 1)"
-              class="object-cover w-full h-full z-0"
-              style="position: relative; z-index: 1"
-            />
-            <img
-              :src="PlayIcons"
-              alt="Play"
-              class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer z-10"
-            />
-
-          </div>
-        </div>
+        <img
+          :src="PlayIcons"
+          alt="Play"
+          class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer z-10"
+        />
       </div>
     </div>
+  </div>
+</div>
+
   </div>
 </template>
 
