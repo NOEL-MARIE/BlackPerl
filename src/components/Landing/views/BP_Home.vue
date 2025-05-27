@@ -129,11 +129,11 @@ export default {
 
   <div class="relative w-full flex justify-center items-center h-[320px]">
     <!-- Bordure inférieure, retournée -->
-    <img
+    <!-- <img
       :src="BANNER_TOP"
       alt="Bordure inférieure"
       class="absolute bottom-[-100px] left-0 right-0 h-16 object-cover rotate-180 z-[10] w-full"
-    />
+    /> -->
 
     <!-- Carrousel d’images -->
     <div
@@ -162,6 +162,11 @@ export default {
         />
       </div>
     </div>
+      <img
+    :src="BANNER_TOP"
+    alt="Bordure supérieure"
+    class="absolute bottom-[-80px] rotate-180 left-0 w-full h-16 object-cover z-[5]"
+  />
   </div>
 </div>
 
