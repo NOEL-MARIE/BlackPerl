@@ -138,6 +138,7 @@ onMounted(() => {
 </script>
 
 <template>
+
   <section class="h-screen w-screen flex justify-center items-center relative">
     <!-- Arrière-plan -->
     <div class="absolute z-10 flex justify-between items-center">

@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="flex justify-around mt-5 text-white">
-                  <div class="uppercase font-HouseOfCardsW03Bold text-[29px] flex">
+                  <div class="uppercase text-start font-HouseOfCardsW03Bold text-[29px] flex">
                     Stratégie <br />
                     marketing <br />
                     360°
@@ -37,40 +37,40 @@
           <!-- DEUXIEME BLOC DES DEUX DU BAS  -->
           <div class="flex flex-row mt-2 gap-5">
             <!-- DEUX SECTION DU BAS  -->
-            <div class="w-[246px] h-[274px] bg-black rounded-xl pl-8  pr-8 flex">
+            <div class="w-[246px] h-[274px] bg-black rounded-xl pl-8 pr-8 flex">
               <!-- PREMIER BLOC AVEC router-link to="/Strategie_360" -->
               <button>
-                <router-link to="/ActivationsView" >
-                <div class="flex group flex-col">
-                  <div>
-                    <div
-                      class="ml-[180px] top4 right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065]"
-                    >
-                      <span
-                        class="text-xl group-hover:rotate-90 group-hover:duration-700 text-black font-bold"
-                        >+</span
+                <router-link to="/ActivationsView">
+                  <div class="flex group flex-col">
+                    <div>
+                      <div
+                        class="ml-[180px] top4 right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065]"
                       >
+                        <span
+                          class="text-xl group-hover:rotate-90 group-hover:duration-700 text-black font-bold"
+                          >+</span
+                        >
+                      </div>
+                    </div>
+                    <div class="gap-7 flex flex-col">
+                      <div
+                        class="font-HouseOfCardsW03Bold uppercase text-start text-3xl text-cente flex flex-col"
+                      >
+                        Activations
+                        <span class="font-HouseOfCardsW03Bold uppercase text-[24px]"
+                          >événementielles</span
+                        >
+                      </div>
+                      <div class="flex flex-col text-sm text-start font-Opensans font-light">
+                        Du concept au terrain, nous <br />
+                        imaginons et réalisons des <br />
+                        événements impactants,<br />
+                        expérientiels et alignés avec <br />
+                        votre ADN de marque.
+                      </div>
                     </div>
                   </div>
-                  <div class="gap-7 flex flex-col">
-                    <div
-                      class="font-HouseOfCardsW03Bold uppercase text-start text-3xl text-cente flex flex-col"
-                    >
-                      Activations
-                      <span class="font-HouseOfCardsW03Bold uppercase text-[24px]"
-                        >événementielles</span
-                      >
-                    </div>
-                    <div class="flex flex-col text-sm text-start font-Opensans font-light">
-                      Du concept au terrain, nous <br />
-                      imaginons et réalisons des <br />
-                      événements impactants,<br />
-                      expérientiels et alignés avec <br />
-                      votre ADN de marque.
-                    </div>
-                  </div>
-                </div>
-              </router-link>
+                </router-link>
               </button>
             </div>
             <div class="w-[246px] h-[274px] bg-black rounded-xl flex items-center justify-center">
@@ -87,33 +87,37 @@
       <div class="w-[890px] h-[555px] flex flex-col">
         <div class="h-[330px] gap-3 flex">
           <!-- deuxieme partie section du haut -->
-          <div class="w-[240px] h-[320px] group gap-2 bg-black rounded-xl p-3">
-            <div class="flex flex-col">
-              <div
-                class="ml-[199px] top-4 right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065] shadow"
-              >
-                <span
-                  class="text-xl group-hover:rotate-90 group-hover:duration-700 text-black font-bold"
-                  >+</span
-                >
-              </div>
-              <div class="flex justify-between flex-col gap-9">
-                <div class="font-HouseOfCardsW03Bold text-4xl">
-                  Médias <br />
-                  immersifs
+          <button>
+            <router-link to="MediasImmersifsView">
+              <div class="w-[240px] h-[320px] group gap-2 bg-black rounded-xl p-3">
+                <div class="flex flex-col">
+                  <div
+                    class="ml-[199px] top-4 right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065] shadow"
+                  >
+                    <span
+                      class="text-xl group-hover:rotate-90 group-hover:duration-700 text-black font-bold"
+                      >+</span
+                    >
+                  </div>
+                  <div class="flex justify-between text-start flex-col gap-9">
+                    <div class="font-HouseOfCardsW03Bold uppercase text-5xl">
+                      Médias <br />
+                      immersifs
+                    </div>
+                    <div class="text-xs font-light font-Opensans">
+                      Nous créons des formats <br />
+                      innovants (vidéos <br />
+                      interactives, contenus 3D, <br />
+                      mini-sites, motion design…) <br />
+                      pour capter l’attention et <br />
+                      immerger vos audiences <br />
+                      dans votre univers.
+                    </div>
+                  </div>
                 </div>
-                <div class="text-xs font-light font-Opensans">
-                  Nous créons des formats <br />
-                  innovants (vidéos <br />
-                  interactives, contenus 3D, <br />
-                  mini-sites, motion design…) <br />
-                  pour capter l’attention et <br />
-                  immerger vos audiences <br />
-                  dans votre univers.
-                </div>
               </div>
-            </div>
-          </div>
+            </router-link>
+          </button>
           <div class="w-[476px] h-[300px] flex gap-2 flex-col">
             <div class="flex gap-3 justify-between">
               <!-- LES DEUX BLOCS DU HAUT -->
@@ -128,14 +132,74 @@
                 />
               </div>
               <div class="w-[350px] h-[169px] group bg-black text-white rounded-xl">
-                <div class="flex flex-col p-4">
-                  <div class="flex justify-between">
-                    <div class="font-HouseOfCardsW03Bold uppercase text-3xl">
-                      Branding & <br />
-                      contenus
+                <button>
+                  <router-link to="BrandingContenusView">
+                    <div class="flex flex-col p-4">
+                      <div class="flex justify-between text-start">
+                        <div class="font-HouseOfCardsW03Bold uppercase text-3xl">
+                          Branding & <br />
+                          contenus
+                        </div>
+                        <div
+                          class="top-4 right-4 ml-24 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065]"
+                        >
+                          <span
+                            class="text-xl group-hover:rotate-90 group-hover:duration-700 text-black font-bold"
+                            >+</span
+                          >
+                        </div>
+                      </div>
+                      <div class="font-light text-xs text-start font-Opensans">
+                        Nous bâtissons des identités fortes, <br />
+                        cohérentes et mémorables, à travers <br />
+                        des contenus visuels et narratifs de <br />
+                        haute qualité.
+                      </div>
+                    </div>
+                  </router-link>
+                </button>
+              </div>
+            </div>
+            <div class="w-[476px] h-[635px] rounded-xl group bg-black">
+              <button>
+                <router-link to="StudioCreationView">
+                  <div class="flex-col flex p-4">
+                    <div class="flex">
+                      <div class="font-HouseOfCardsW03Bold text-start text-2xl uppercase">
+                        Studio de <br />Création
+                      </div>
+                      <div
+                        class="top-4 ml-80 right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065]"
+                      >
+                        <span
+                          class="text-xl group-hover:rotate-90 group-hover:duration-700 text-black font-bold"
+                          >+</span
+                        >
+                      </div>
+                    </div>
+                    <div class="text-xs font-Opensans text-start font-light">
+                      Notre studio interne conçoit et produit vos visuels, vidéos, <br />
+                      capsules motion, jingles, spots et supports multi-formats <br />
+                      avec exigence et créativité.
+                    </div>
+                  </div>
+                </router-link>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="w-[729px] h-[210px] gap-2 flex group">
+          <div class="w-[405px] h-[150px] bg-black rounded-xl">
+            <button>
+              <router-link to="AnalyseIAView">
+                <div class="flex-col flex p-4">
+                  <div class="flex">
+                    <div class="font-HouseOfCardsW03Bold text-start text-2xl uppercase">
+                      Analyse de <br />
+                      performance IA
                     </div>
                     <div
-                      class="top-4 right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065]"
+                      class="top-4 ml-[155px] right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065]"
                     >
                       <span
                         class="text-xl group-hover:rotate-90 group-hover:duration-700 text-black font-bold"
@@ -143,90 +207,46 @@
                       >
                     </div>
                   </div>
-                  <div class="font-light text-xs font-Opensans">
-                    Nous bâtissons des identités fortes, <br />
-                    cohérentes et mémorables, à travers <br />
-                    des contenus visuels et narratifs de <br />
-                    haute qualité.
+                  <div class="text-xs font-light text-start font-Opensans">
+                    Grâce à nos outils intelligents, nous mesurons l’efficacité <br />
+                    de chaque action en temps réel et optimisons vos <br />
+                    campagnes en continu.
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="w-[476px] h-[635px] rounded-xl group bg-black">
-              <div class="flex-col flex p-4">
-                <div class="flex">
-                  <div class="font-HouseOfCardsW03Bold text-2xl uppercase">
-                    Studio de <br />Création
-                  </div>
-                  <div
-                    class="top-4 ml-auto right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065]"
-                  >
-                    <span
-                      class="text-xl group-hover:rotate-90 group-hover:duration-700 text-black font-bold"
-                      >+</span
-                    >
-                  </div>
-                </div>
-                <div class="text-xs font-Opensans font-light">
-                  Notre studio interne conçoit et produit vos visuels, vidéos, <br />
-                  capsules motion, jingles, spots et supports multi-formats <br />
-                  avec exigence et créativité.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="w-[729px] h-[210px] gap-2 flex group">
-          <div class="w-[405px] h-[150px] bg-black rounded-xl">
-            <div class="flex-col flex p-4">
-              <div class="flex">
-                <div class="font-HouseOfCardsW03Bold text-2xl uppercase">
-                  Analyse de <br />
-                  performance IA
-                </div>
-                <div
-                  class="top-4 ml-auto right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065]"
-                >
-                  <span
-                    class="text-xl group-hover:rotate-90 group-hover:duration-700 text-black font-bold"
-                    >+</span
-                  >
-                </div>
-              </div>
-              <div class="text-xs font-light font-Opensans">
-                Grâce à nos outils intelligents, nous mesurons l’efficacité <br />
-                de chaque action en temps réel et optimisons vos <br />
-                campagnes en continu.
-              </div>
-            </div>
+              </router-link>
+            </button>
           </div>
           <div class="w-[390px] h-[150px] group bg-black rounded-xl">
-            <div class="flex-col flex p-4">
-              <div class="flex">
-                <div class="font-HouseOfCardsW03Bold text-2xl uppercase leading-6">
-                  Activation <br />
-                  d’influence
+            <button>
+              <router-link to="ActivationInfluenceView">
+                <div class="flex-col flex p-4">
+                  <div class="flex">
+                    <div class="font-HouseOfCardsW03Bold text-start text-2xl uppercase leading-6">
+                      Activation <br />
+                      d’influence
+                    </div>
+                    <div
+                      class="top-4 ml-auto right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065]"
+                    >
+                      <span
+                        class="text-xl group-hover:rotate-90 group-hover:duration-700 text-black font-bold"
+                        >+</span
+                      >
+                    </div>
+                  </div>
+                  <div class="text-xs font-Opensans text-start mt-4 font-light">
+                    Notre studio interne conçoit et produit vos visuels, vidéos, capsules motion,
+                    jingles, spots et supports multi-formats avec exigence et créativité.
+                  </div>
                 </div>
-                <div
-                  class="top-4 ml-auto right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065]"
-                >
-                  <span
-                    class="text-xl group-hover:rotate-90 group-hover:duration-700 text-black font-bold"
-                    >+</span
-                  >
-                </div>
-              </div>
-              <div class="text-xs font-Opensans text-justify font-light">
-                Notre studio interne conçoit et produit vos visuels, vidéos, capsules motion,
-                jingles, spots et supports multi-formats avec exigence et créativité.
-              </div>
-            </div>
+              </router-link>
+            </button>
           </div>
         </div>
       </div>
     </div>
     <div class="flex items-center justify-center pb-12 flex-col">
-      <span class="font-Opensans texb">Scrollez</span>
+      <span class="font-Opensans texb">Scrollez ff</span>
       <img :src="boatGif" alt="" width="84px" height="84px" />
     </div>
   </section>

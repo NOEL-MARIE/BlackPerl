@@ -53,7 +53,7 @@ onMounted(async () => {
         duration: 3,
         scrollTrigger: {
           trigger: blackEl,
-          start: 'top 80%',
+          start: 'top 50%',
           end: 'top 30%',
           scrub: true,
         },

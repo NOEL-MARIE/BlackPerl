@@ -8,7 +8,7 @@
           class="wheel__card"
           @click="onClickCard($event, index)"
         >
-          <img :src="image" :alt="'Image ' + (index + 1)" class="rounded-3xl" />
+          <img :src="image" :alt="'Image ' + (index + 1)" class="rounde" />
         </div>
       </div>
     </section>
@@ -48,7 +48,18 @@ const images = [
   Ketchup,
   Maman,
   Ketchup,
-  Maman,  Ketchup,
+  Maman,
+  Ketchup,
+  Maman,
+  Ketchup,
+  Maman,
+  Ketchup,
+  Maman,
+  Ketchup,
+  Maman,
+  Ketchup,
+  Maman,
+  Ketchup,
   Maman,
   Ketchup,
   Maman,
@@ -216,7 +227,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  margin-top: 2vh;
+
   width: clamp(150px, 25vw, 320px);
   height: clamp(150px, 25vw, 300px);
   cursor: pointer;
@@ -224,9 +235,12 @@ body {
 
 .wheel__card img {
   object-fit: contain;
-  width: 100%;
-  height: 100%;
-  border-radius: 1.5rem;
+  border-radius: 2.5rem;
+}
+
+.wheel__card:hover{
+  border: 4px solid #2333; /* Exemple : bordure bleue de 4px */
+  border-radius: 2.5rem;
 }
 
 /* Responsive scrollez gif */
@@ -281,4 +295,3 @@ img {
   }
 }
 </style>
-
