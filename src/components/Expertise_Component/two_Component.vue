@@ -115,7 +115,7 @@ function removeBottomCard(index: number) {
         class="relative shadow-lg overflow-hidden transition-transform duration-200 hover:-translate-y-1 hover:scale-105"
         :style="{
           borderRadius: card.radius + 'px',
-          width: card.width + '%',
+          width: card.width + 'px',
           height: card.height + 'px',
         }"
         :data-bottom-index="i"
