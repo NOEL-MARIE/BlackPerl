@@ -123,7 +123,7 @@ function removeBottomCard(index: number) {
         <img
           :src="card.image"
           :alt="'Image ' + (i + topCards.length)"
-          class="w-full h-full object-cover select-none pointer-events-none"
+          class=" object-cover select-none pointer-events-none"
           :style="{ borderRadius: card.radius + 'px' }"
           draggable="false"
         />
