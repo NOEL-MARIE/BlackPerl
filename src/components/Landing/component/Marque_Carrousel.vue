@@ -18,7 +18,7 @@ const images = [
   { src: AMGS, alt: 'Logo d’AMGS, société de services médicaux et de santé' },
 ]
 
-const extendedImages = [...images, ...images, ...images]
+const extendedImages = [...images, ...images, ...images, ...images]
 
 // Ref pour la track du carrousel
 const trackRef = ref<HTMLElement | null>(null)
@@ -51,7 +51,7 @@ onMounted(() => {
           class="carousel-item"
           style="opacity: 0"
         >
-          <img :src="img.src" :alt="img.alt" class="h-20 mb-72 object-cover" />
+          <img :src="img.src" :alt="img.alt" class="h-20 lg:h-24 mb-72 object-cover" />
         </div>
       </div>
     </div>

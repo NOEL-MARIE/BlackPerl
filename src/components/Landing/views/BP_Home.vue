@@ -125,7 +125,7 @@ export default {
     <!-- Carrousel -->
     <!-- Carrousel -->
     <div
-      class="w-full relative h-[990px] bg-white mt-24 overflow-hidden group"
+      class="w-full relative h-[990px] bg-white mt-24 lg:mt-52 overflow-hidden group"
       @mouseenter="handleMouseEnter"
       @mouseleave="handleMouseLeave"
     >
@@ -142,7 +142,7 @@ export default {
         <img
           :src="BANNER_TOP"
           alt="Bordure inférieure retournée"
-          class="absolute bottom-[-17px] left-0 right-0 h-16 object-cover rotate-180 z-20 w-full"
+          class="absolute bottom-[-17px] lg:bottom-[-160px] left-0 right-0 h-16 object-cover rotate-180 z-20 w-full"
         />
 
         <!-- Carrousel d’images -->
@@ -162,19 +162,21 @@ export default {
             <img
               :src="img"
               :alt="'Image ' + (i + 1)"
-              class="object-cover w-full h-full z-0"
+              class="object-cover w-full h-[130%] lg:h-[90%] z-0"
               style="position: relative; z-index: 1"
             />
-            <img
-              :src="PlayIcons"
-              alt="Play"
-              class="absolute left-1/2 mt-7 top-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer z-10"
-            />
-            <img
-              :src="PlayIcons"
-              alt="Play"
-              class="absolute left-1/2 group-hover:scale-150 mt-7 top-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer z-10"
-            />
+            <div class="flex items-center justify-center">
+              <img
+                :src="PlayIcons"
+                alt="Play"
+                class="absolute left-1/2 mt-7 lg:mt-24 top-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer z-10"
+              />
+              <img
+                :src="PlayIcons"
+                alt="Play"
+                class="absolute left-1/2 group-hover:scale-150 mt-7 lg:mt-24 top-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer z-10"
+              />
+            </div>
           </div>
         </div>
       </div>
