@@ -7,7 +7,7 @@
     <BP_Home />
 
     <!-- Composant affichant un carrousel de marques -->
-    <Marque_Carrousel class="bg-white/50 " />
+    <Marque_Carrousel class="bg-transparent overflow-hidden" />
   </main>
 </template>
 

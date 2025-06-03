@@ -5,7 +5,7 @@ import gsap from 'gsap'
 import SendChap from '@/assets/images/SendChap.svg'
 import CELESTE from '@/assets/images/CELESTE.svg'
 import CAT from '@/assets/images/CAT.svg'
-import CarreDOR from '@/assets/images/Carre D\'OR.svg'
+import CarreDOR from "@/assets/images/Carre D'OR.svg"
 import Nivea from '@/assets/images/Nivea.svg'
 import AMGS from '@/assets/images/AMGS.svg'
 
@@ -15,7 +15,7 @@ const images = [
   { src: CAT, alt: 'Logo de CAT, entreprise de transport et logistique internationale' },
   { src: CarreDOR, alt: 'Logo de Carré d’OR, marque de cosmétique et beauté haut de gamme' },
   { src: Nivea, alt: 'Logo de Nivea, marque de soins de la peau et de beauté' },
-  { src: AMGS, alt: 'Logo d’AMGS, société de services médicaux et de santé' }
+  { src: AMGS, alt: 'Logo d’AMGS, société de services médicaux et de santé' },
 ]
 
 const extendedImages = [...images, ...images, ...images]
@@ -29,20 +29,20 @@ onMounted(() => {
     const items = trackRef.value.querySelectorAll('.carousel-item')
 
     // Timeline GSAP pour animer le fondu des images en boucle
-    const tl = gsap.timeline({  defaults: { ease: 'power1.inOut' } })
+    const tl = gsap.timeline({ defaults: { ease: 'power1.inOut' } })
 
     // Animation : chaque image passe de opacity 0 à 1 puis 0, en décalé
-tl.to(items, {
-  opacity: 1,
-  duration: 0.1,    // apparition très rapide (100 ms)
-  stagger: 0.2,     // images qui apparaissent toutes les 0.2s
-})
+    tl.to(items, {
+      opacity: 1,
+      duration: 0.1, // apparition très rapide (100 ms)
+      stagger: 0.2, // images qui apparaissent toutes les 0.2s
+    })
   }
 })
 </script>
 
 <template>
-  <div class="w-screen overflow-hidden rounded-t-3xl  ">
+  <div class="w-screen overflow-hidden h-96  rounded-t-3xl">
     <div class="carousel-containe">
       <div ref="trackRef" class="carousel-track">
         <div
@@ -51,11 +51,7 @@ tl.to(items, {
           class="carousel-item"
           style="opacity: 0"
         >
-          <img
-            :src="img.src"
-            :alt="img.alt"
-            class="h-24 mb-72  object-cover"
-          />
+          <img :src="img.src" :alt="img.alt" class="h-20 mb-72 object-cover" />
         </div>
       </div>
     </div>
@@ -64,7 +60,7 @@ tl.to(items, {
 
 <style scoped>
 .carousel-container {
-  width: 100%;
+  /* width: 100%; */
   overflow: hidden;
   position: relative;
 }
@@ -78,7 +74,7 @@ tl.to(items, {
 .carousel-item {
   flex: 0 0 auto;
   /* margin: 0 2rem; */
-   /* équivalent à mx-8 */
+  /* équivalent à mx-8 */
   width: 200px;
   opacity: 0; /* caché par défaut */
   transition: opacity 0.5s ease;

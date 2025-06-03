@@ -1,6 +1,6 @@
 <template>
   <div class="z-0">
-    <section class="h-1/2">
+    <section class="h-1/2 mt-28">
       <div class="wheel" ref="wheel">
         <div
           v-for="(image, index) in images"
@@ -8,17 +8,17 @@
           class="wheel__card"
           @click="onClickCard($event, index)"
         >
-          <img :src="image" :alt="'Image ' + (index + 1)" class="rounde" />
+          <img :src="image" :alt="'Image ' + (index + 1)" class=" " />
         </div>
       </div>
     </section>
   </div>
 
   <!-- Bloc à placer juste en dessous -->
-  <div class="w-full flex flex-col items-center mt-64 justify-center">
+  <!-- <div class="w-full flex flex-col items-center mt-64 justify-center">
     <span class="font-Opensans">Scrollez</span>
     <img :src="boatGif" alt="" width="84px" height="84px" />
-  </div>
+  </div> -->
 </template>
 
 <script setup lang="ts">
@@ -31,7 +31,9 @@ import Alyssa from '@/assets/images/petit poids.png'
 import Riziere from '@/assets/images/meilleur riz.png'
 import Ketchup from '@/assets/images/le ketchup.png'
 import Maman from '@/assets/images/mama.png'
-import boatGif from '@/assets/images/boat.gif'
+import cleo from '@/assets/images/cleo.png'
+import coca from '@/assets/images/Josey curved.png'
+// import boatGif from '@/assets/images/boat.gif'
 
 gsap.registerPlugin(Draggable, Flip)
 
@@ -39,32 +41,32 @@ const wheel = ref<HTMLElement | null>(null)
 const header = ref<HTMLElement | null>(null)
 
 const images = [
-  Alyssa,
+  coca,
   Riziere,
   Ketchup,
   Maman,
+  cleo,
+  Alyssa,
+  coca,
+  Riziere,
   Ketchup,
   Maman,
-  Ketchup,
+  cleo,
+  Alyssa,
+  cleo,
   Maman,
   Ketchup,
-  Maman,
+  Riziere,
+  cleo,
+  Alyssa,
   Ketchup,
   Maman,
+  cleo,
   Ketchup,
+  Riziere,
+
   Maman,
-  Ketchup,
-  Maman,
-  Ketchup,
-  Maman,
-  Ketchup,
-  Maman,
-  Ketchup,
-  Maman,
-  Ketchup,
-  Maman,
-  Ketchup,
-  Maman,
+
   // Ajoute ou duplique plus d'images ici si besoin
 ]
 
@@ -98,7 +100,7 @@ function setupWheel() {
   const cardWidth = (cards[0] as HTMLElement).offsetWidth
 
   // Calcul de l'angle slice pour que les cartes soient côte à côte
-  const slice = ((cardWidth + 30) / radius) * (180 / Math.PI)
+  const slice = ((cardWidth + 40) / radius) * (190 / Math.PI)
 
   const DEG2RAD = Math.PI / 180
 
@@ -106,8 +108,8 @@ function setupWheel() {
     x: (i: number) => center + radius * Math.sin(i * slice * DEG2RAD),
     y: (i: number) => center - radius * Math.cos(i * slice * DEG2RAD),
     rotation: (i: number) => i * slice,
-    xPercent: -60,
-    yPercent: -60,
+    xPercent: -40,
+    yPercent: -40,
   })
 
   gsap.to(wheelElement, {
@@ -214,8 +216,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 270vw;
-  height: 500vw;
+  width: 370vw;
+  height: 530vw;
   max-width: 3000px;
   max-height: 3000px;
   left: 50%;
@@ -227,7 +229,6 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-
   width: clamp(150px, 25vw, 320px);
   height: clamp(150px, 25vw, 300px);
   cursor: pointer;
@@ -238,8 +239,7 @@ body {
   border-radius: 2.5rem;
 }
 
-.wheel__card:hover{
-  border: 4px solid #2333; /* Exemple : bordure bleue de 4px */
+.wheel__card:hover {
   border-radius: 2.5rem;
 }
 
@@ -248,7 +248,6 @@ img {
   margin-left: 0;
   z-index: 999;
   cursor: pointer;
-  position: static;
   will-change: transform;
 }
 

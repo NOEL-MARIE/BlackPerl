@@ -42,7 +42,7 @@ let animationFrameId: number | null = null
 const track = ref<HTMLElement | null>(null)
 
 // On concatène les logos pour un défilement infini
-const logosConcat = computed(() => [...logos, ...logos])
+const logosConcat = computed(() => [...logos, ...logos, ...logos])
 
 function animate() {
   translateX.value += speed
@@ -55,7 +55,7 @@ function animate() {
 onMounted(() => {
   nextTick(() => {
     if (track.value) {
-      trackWidth.value = track.value.scrollWidth / 2 // largeur d'une série de logos
+      trackWidth.value = track.value.scrollWidth / 3 // largeur d'une série de logos
       animate()
     }
   })
@@ -72,31 +72,27 @@ onBeforeUnmount(() => {
 .carousel {
   width: 100%;
   overflow: hidden;
-  margin: 40px auto;
-  padding: 10px 0;
+  /* margin: 40px auto; */
+  padding: 1vw 0;
 }
 
 .carousel-track {
   display: flex;
-  transition: transform 0.1s linear;
+  transition: transform 0.1s linear ;
   will-change: transform;
 }
 
 .carousel-item {
   flex: 0 0 auto;
-  margin: 0 40px;
+  margin: 0 2vw;
   display: flex;
   align-items: center;
 }
 
-/* Fond blanc derrière chaque image */
-.carousel-item.bg-white {
-  background-color: white;
-  padding: 10px; /* ajustez selon besoin */
-}
+
 
 .carousel-item img {
-  max-height: 50px;
+  max-height: 3.3vw;
   width: auto;
   user-select: none;
   pointer-events: none;

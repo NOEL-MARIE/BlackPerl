@@ -18,15 +18,15 @@ type Card = {
 }
 
 const topCards = ref<Card[]>([
-  { image: AlyssaImg, width: 712, height: 400, radius: 24 },
-  { image: Visuel_tabaskyImg, width: 531, height: 400, radius: 24 },
-  { image: Visuel_mitstubichiImg, width: 531, height: 400, radius: 24 },
+  { image: AlyssaImg, width: 712, height: 359, radius: 24 },
+  { image: Visuel_tabaskyImg, width: 531, height: 359, radius: 24 },
+  { image: Visuel_mitstubichiImg, width: 531, height: 359, radius: 24 },
 ])
 
 const bottomCards = ref<Card[]>([
-  { image: Visuel_celesteImg, width: 531, height: 400, radius: 24 },
-  { image: Visuel_infirmierImg, width: 531, height: 400, radius: 24 },
-  { image: Visuel_don_de_sangImg, width: 712, height: 400, radius: 24 },
+  { image: Visuel_celesteImg, width: 531, height: 359, radius: 24 },
+  { image: Visuel_infirmierImg, width: 531, height: 359, radius: 24 },
+  { image: Visuel_don_de_sangImg, width: 712, height: 359, radius: 24 },
 ])
 
 function removeTopCard(index: number) {

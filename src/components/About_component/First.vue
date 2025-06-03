@@ -46,13 +46,13 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="w-screen flex justify-around flex-col h-screen z-0">
-    <div class="h-52 w-fullX justify-center flex">
+    <div class="h-52 w-full justify-center flex">
       <h1 class="text-6xl font-cinzel text-center text-[98px] flex-col">
         DONNEZ VIE À VOTRE <br />
         MARQUE
       </h1>
     </div>
-    <div class="h-1/2 z-0 flex oblique-carousel-viewport">
+    <div class="h-1/2  z-0 flex oblique-carousel-viewport mt-44">
       <TestProfilView />
     </div>
   </div>
@@ -66,8 +66,6 @@ onBeforeUnmount(() => {
 .oblique-carousel-wrapper {
   display: flex;
   align-items: flex-start;
-  gap: 40px;
-  will-change: transform;
   position: absolute;
 
 }

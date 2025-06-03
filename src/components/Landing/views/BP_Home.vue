@@ -134,16 +134,16 @@ export default {
       <img
         :src="BANNER_TOP"
         alt="Bordure supérieure"
-        class="absolute top-0 left-0 w-full h-16 object-cover z-[5]"
+        class="absolute top-[-25px] left-0 w-full h-16 object-cover z-[5]"
       />
 
       <div class="relative w-full flex justify-center items-center h-[320px]">
         <!-- Bordure inférieure, retournée -->
-        <!-- <img
-      :src="BANNER_TOP"
-      alt="Bordure inférieure"
-      class="absolute bottom-[-100px] left-0 right-0 h-16 object-cover rotate-180 z-[10] w-full"
-    /> -->
+        <img
+          :src="BANNER_TOP"
+          alt="Bordure inférieure retournée"
+          class="absolute bottom-[-17px] left-0 right-0 h-16 object-cover rotate-180 z-20 w-full"
+        />
 
         <!-- Carrousel d’images -->
         <div
@@ -173,25 +173,13 @@ export default {
             <img
               :src="PlayIcons"
               alt="Play"
-              class="absolute left-1/2 group-hover:scale-150  mt-7 top-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer z-10"
+              class="absolute left-1/2 group-hover:scale-150 mt-7 top-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer z-10"
             />
           </div>
         </div>
-        <img
-          :src="BANNER_TOP"
-          alt="Bordure supérieure"
-          class="absolute bottom-[-80px] rotate-180 left-0 w-full h-16 object-cover z-[5]"
-        />
       </div>
     </div>
   </div>
 </template>
 
-<style scoped>
-html,
-body {
-  width: 100%;
-  height: 100%;
-  user-select: none;
-}
-</style>
+<style scoped></style>

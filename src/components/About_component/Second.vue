@@ -64,7 +64,7 @@ import Carrousel_Right from '@/components/About_component/Carrousel_Right.vue'
             </div>
           </div>
 
-          <div class="flex-1">
+          <div class="flex-1 mb">
             <Carrousel_Left />
             <Carrousel_Right />
           </div>
@@ -79,7 +79,7 @@ import Carrousel_Right from '@/components/About_component/Carrousel_Right.vue'
   position: relative;
   width: 90vw;        /* Largeur relative à la fenêtre */
   max-width: 1434px;  /* Largeur max desktop */
-  height: 90vh;       /* Hauteur relative à la fenêtre */
+  height: 100vh;       /* Hauteur relative à la fenêtre */
   max-height: 960px;  /* Hauteur max desktop */
   margin: 0 auto;
 }

@@ -11,7 +11,7 @@
         v-for="(logo, index) in logosConcat"
         :key="index"
       >
-        <img :src="logo.src" :alt="logo.alt" width="800px"  height="800px"/>
+        <img :src="logo.src" :alt="logo.alt" width="800px" height="800px" />
       </div>
     </div>
   </div>
@@ -42,7 +42,7 @@ let animationFrameId: number | null = null
 const track = ref<HTMLElement | null>(null)
 
 // On concatène les logos pour un défilement infini
-const logosConcat = computed(() => [...logos, ...logos])
+const logosConcat = computed(() => [...logos, ...logos, ...logos])
 
 function animate() {
   translateX.value -= speed
@@ -69,9 +69,15 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+.carousel-item {
+  flex: 0 0 auto;
+  margin: 0 2vw;
+  display: flex;
+  align-items: center;
+}
 
 .carousel-item img {
-  max-height: 400px; /* Augmenté de 50px à 100px */
+   max-height: 3.3vw; /* équivalent à 50px */
   width: auto;
   user-select: none;
   pointer-events: none;
@@ -80,33 +86,13 @@ onBeforeUnmount(() => {
 .carousel {
   width: 100%;
   overflow: hidden;
-  margin: 40px auto;
-  padding: 10px 0;
+  margin: vw auto; /* marge verticale importante */
+  padding: 1vw 0;
 }
 
 .carousel-track {
   display: flex;
   transition: transform 0.1s linear;
   will-change: transform;
-}
-
-.carousel-item {
-  flex: 0 0 auto;
-  margin: 0 40px;
-  display: flex;
-  align-items: center;
-}
-
-/* Fond blanc derrière chaque image */
-.carousel-item.bg-white {
-  background-color: white;
-  padding: 10px; /* ajustez selon besoin */
-}
-
-.carousel-item img {
-  max-height: 50px;
-  width: auto;
-  user-select: none;
-  pointer-events: none;
 }
 </style>
