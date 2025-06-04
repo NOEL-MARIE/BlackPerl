@@ -164,7 +164,7 @@ function selectImage(id: number) {
 }
 
 function goBack() {
-  window.location.href = '/'  
+  window.location.href = '/'
 }
 
 function scrollToActiveThumbnail() {
@@ -185,7 +185,7 @@ function scrollToActiveThumbnail() {
       <NavBar_Component class="bg-transparent" />
     </header>
     <!-- IMAGE VIEWER -->
-    <div class="image-viewer flex h-screen text-white pt-32 relative overflow-hidden">
+    <div class="image-viewer  w-full flex h-screen text-white pt-32 relative overflow-hidden">
       <!-- Fond en <img> flou -->
       <img
         src="@/assets/images/BackgroundImgViews.jpg"
@@ -193,14 +193,15 @@ function scrollToActiveThumbnail() {
         class="bg-img-blur w-full h-full bg-contain"
         aria-hidden="true"
       />
-      <div class="main-content gap-80 mt-9 relative z-10">
+      <div class="main-conten flex justify-between w-full gap-80 mt-9 relative z-10">
         <!-- Colonne gauche -->
         <div class="left-side flex flex-col ml-40 justify-around w-1/2">
           <button class="back-button mt-6 hover:cursor-pointer " @click="goBack">
-            <span class="cursor-pointer font-Opensans flex items-center gap-2 mb-14">
+            <span class="cursor-pointer gap-4 text-2xl font-Opensans flex items-center mb-14">
               <svg
                 width="11"
                 height="11"
+                class=" scale-150"
                 viewBox="0 0 11 11"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -216,12 +217,12 @@ function scrollToActiveThumbnail() {
           <img
             :src="currentImage.url"
             :alt="currentImage.title"
-            class="main-image w-[452px] h-[505px]"
+            class="main-image w-[452px] lg:w-fi h-[505px] lg:h-[705px]"
           />
           <img
-            class="current-titl w-[100px] h-[60px]"
+            class="current-titl  lg:w-[200px]  lg:h-fit"
             :src="currentImage.Logo"
-            alt="currentImage.description"
+            :alt="currentImage.description"
           />
         </div>
 
@@ -232,7 +233,7 @@ function scrollToActiveThumbnail() {
             <p class="font-poppins text-start">{{ currentImage.description }}</p>
           </div>
 
-          <div class="navigation-section">
+          <div class="navigation-section fix">
             <div class="thumbnails-carousel w-[444px]" ref="thumbnailsContainer">
               <div
                 class="thumbnail mr-3"

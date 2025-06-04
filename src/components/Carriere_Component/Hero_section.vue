@@ -2,20 +2,20 @@
   <section class=" h-screen w-screen">
 
     <!-- Header -->
-    <div class="carriere-heade  z-0 flex items-center max-w-9xl h-[250px] gap-60 justify-center">
+    <div class="carriere-heade lg:h-1/2 z-0 flex items-center max-w-9xl h-[250px] gap-60 justify-center">
       <div class="carriere-titles">
-        <span class="carriere-label mb-6 font-HouseOfCardsW03Bold uppercase text-[#808080] text-[25px]">CARRIÈRE</span>
-        <h1 class="font-cinzel  text-[40px]">
+        <span class="carriere-label mb-6 font-HouseOfCardsW03Bold uppercase text-[#808080] text-[25px] lg:text-[40px]">CARRIÈRE</span>
+        <h1 class="font-cinzel  text-[40px] lg:text-[90px]">
           EMBARQUEZ SUR LE<br />
           BATEAU PIRATE
         </h1>
-        <p class="font-Opensans">
+        <p class="font-Opensans lg:text-[25px] w-[130%]">
           Chez Black Pearl, chaque talent a un rôle stratégique. Rejoignez une équipe passionnée où
           l’on joue pour gagner.
         </p>
       </div>
       <img
-        class="pirate-ship mt-20 "
+        class="pirate-ship mt-20 w-[600px]"
         src="@/assets/images/BateauPirate_Carriere.jpg"
         alt="Bateau pirate"
         width="300px"

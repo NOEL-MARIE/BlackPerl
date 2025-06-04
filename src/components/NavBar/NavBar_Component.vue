@@ -1,19 +1,19 @@
 <template>
   <nav
     :class="[
-      'w-full font-sans z-50 transition-all duration-300',
+      'w-full font-sans z-50 transition-all duration-300 flex items-center justify-center lg:pr-64',
       isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4',
     ]"
   >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl lg:max-w-4xl mx-auto lg:mx-0 px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
         <!-- Liens desktop -->
-        <div class="hidden md:flex items-center space-x-8 mx-auto">
+        <div class="hidden md:flex items-center space-x-8 lg:space-x-44 mx-auto">
           <router-link
             v-for="item in links"
             :key="item.name"
             :to="item.to"
-            class="relative group inline-block px-3 py-2 text-sm font-medium transition-colors duration-300"
+            class="relative w-fit lg:text-xl flex group  px-3 py-2 text-sm font-medium transition-colors duration-300"
             :class="[
               isImageRoute ? 'text-white' : 'text-gray-900',
               route.path === item.to ? 'font-bold' : '',
@@ -23,7 +23,7 @@
             <span
               class="absolute left-0 bottom-0 h-[2px] bg-[#F8D065] transition-all duration-300"
               :class="[
-                route.path === item.to ? 'w-full' : 'w-0 group-hover:w-full',
+                route.path === item.to ? 'w-full' : 'w-0 group-hover:w-fit',
                 isImageRoute ? 'absolute left-0 bottom-0 h-[2px] bg-[#F8D065] transition-all duration-300' : 'bg-[#F8D065]',
               ]"
             ></span>
