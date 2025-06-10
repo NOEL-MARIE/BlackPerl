@@ -1,32 +1,26 @@
 <template>
   <nav
     :class="[
-      'w-full font-sans z-50 transition-all duration-300 flex items-center justify-center ',
+      'w-full font-sans z-50 transition-all duration-300 flex items-center justify-center',
       isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4',
     ]"
   >
-    <div class="px-4 max-w-7xl ">
-      <div class="flex justify-between h-16">
+    <div class="px-4 max-w-7xl">
+      <div class="flex justify-between w-full h-16">
         <!-- Liens desktop -->
-        <div class="items-center hidden mx-auto md:flex ">
+        <div class="items-center hidden mx-auto w-fit md:flex">
           <router-link
             v-for="item in links"
             :key="item.name"
             :to="item.to"
-            class="relative flex justify-center px-3 py-2 font-medium transition-colors duration-300 text-xm w-fit group"
+            class="relative flex justify-center px-3 py-2 font-medium transition-colors duration-300 text-xm w-fit"
             :class="[
               isImageRoute ? 'text-white' : 'text-gray-900',
-              route.path === item.to ? 'font-bold' : '',
+              route.path === item.to ? 'font-bold active' : '',
             ]"
           >
             {{ item.name }}
-            <span
-              class="absolute left-0 bottom-0 h-[2px] hover:h-[2px] bg-[#F8D065] hover:bg-[#F8D065] transition-all duration-300"
-              :class="[
-                route.path === item.to ? 'w-full' : 'w-0 group-hover:w-fit',
-                isImageRoute ? 'absolute left-0 bottom-0 h-[2px] bg-[#F8D065] transition-all duration-300' : 'bg-[#F8D065]',
-              ]"
-            ></span>
+            <span></span>
           </router-link>
         </div>
 
@@ -40,12 +34,7 @@
               stroke="currentColor"
               :class="{ 'stroke-white': isImageRoute }"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
@@ -93,9 +82,7 @@ const links = [
   { name: 'Carrière', to: '/carriere' },
 ]
 
-const isImageRoute = computed(() => {
-  return route.path.startsWith('/image/')
-})
+const isImageRoute = computed(() => route.path.startsWith('/image/'))
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 10
@@ -141,19 +128,24 @@ watch(isOpen, async (val) => {
 })
 </script>
 
-<style scoped>
-.fade-slide-enter-active,
-.fade-slide-leave-active {
-  transition: opacity 0.4s ease, transform 0.4s ease;
+<style>
+/* Soulignement animé sous les liens */
+a > span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px; /* hauteur de la ligne */
+  background-color: #F8D065; /* ta couleur jaune */
+  transform-origin: right center;
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
+  width: 100%;
+  z-index: -1;
 }
-.fade-slide-enter-from,
-.fade-slide-leave-to {
-  opacity: 0;
-  transform: translateY(-20px);
-}
-.fade-slide-enter-to,
-.fade-slide-leave-from {
-  opacity: 1;
-  transform: translateY(0);
+
+a:hover > span,
+a.active > span {
+  transform-origin: left center;
+  transform: scaleX(1);
 }
 </style>
