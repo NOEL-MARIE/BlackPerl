@@ -15,14 +15,6 @@ module.exports = {
   ],
 
   theme: {
-    container: {
-      center: true,
-      padding: '2rem',
-      screens: {
-        xs: '425px',
-        '2xl': '1400px',
-      },
-    },
     extend: {
       fontFamily: {
         cinzel:["Cinzel", 'sans-serif' ],
@@ -178,12 +170,12 @@ module.exports = {
           '5': 'hsl(var(--chart-5))',
         },
       },
-      borderRadius: {
-        xl: 'calc(var(--radius) + 4px)',
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
-      },
+      // borderRadius: {
+      //   xl: 'calc(var(--radius) + 4px)',
+      //   lg: 'var(--radius)',
+      //   md: 'calc(var(--radius) - 2px)',
+      //   sm: 'calc(var(--radius) - 4px)',
+      // },
       keyframes: {
         'accordion-down': {
           from: {

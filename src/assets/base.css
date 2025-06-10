@@ -8,9 +8,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
 /* === TAILWIND UTILITIES === */
 @layer utilities {
   .pause {
@@ -18,6 +15,18 @@
   }
   .running {
     animation-play-state: running;
+  }
+  .border-border {
+    border-color: hsl(var(--border));
+  }
+  .bg-background {
+    background-color: hsl(var(--background));
+  }
+  .text-foreground {
+    color: hsl(var(--foreground));
+  }
+  .ring-primary-70 {
+    --tw-ring-color: hsl(var(--primary) / 0.7);
   }
 }
 

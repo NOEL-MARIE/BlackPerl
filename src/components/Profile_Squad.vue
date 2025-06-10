@@ -1,11 +1,11 @@
 <template>
   <div
     ref="carouselWrapper"
-    class="w-full h-[420px] pt-12 js-profile-card-189 relative  rounded-2xl dark:bg-grayDark-400"
+    class="w-screen h-[420px] pt-12 js-profile-card-189 relative  rounded-2xl "
     @mouseenter="hovering = true"
     @mouseleave="hovering = false"
   >
-    <div ref="carousel" class="flex gap-4 h-full" style="will-change: transform">
+    <div ref="carousel" class="flex h-full gap-4" style="will-change: transform">
       <!-- Dupliquer images pour boucle infinie -->
       <div
         v-for="(item, index) in duplicatedImages"
@@ -15,11 +15,11 @@
         ]"
         :style="index % 2 === 1 ? 'margin-top: -30px;' : 'margin-top: 0;'"
       >
-        <picture class="w-full h-full absolute top-0 left-0">
+        <picture class="absolute top-0 left-0 w-full h-full">
           <img
             :src="item.src"
             :alt="item.alt"
-            class="w-full h-full object-cover rounded-2xl"
+            class="object-cover w-full h-full rounded-2xl"
             draggable="true"
           />
         </picture>
@@ -30,7 +30,7 @@
           aria-label="Profile link"
         >
           <svg
-            class="w-4 h-4  fill-current"
+            class="w-4 h-4 fill-current"
             width="14"
             height="16"
             xmlns="http://www.w3.org/2000/svg"
@@ -40,12 +40,12 @@
           </svg>
         </div>
 
-        <div class="w-full  absolute bottom-0 left-0 pr-14 z-20">
+        <div class="absolute bottom-0 left-0 z-20 w-full pr-14">
           <div
-            class="w-auto relative inline-flex flex-wrap rounded-tr-2xl pt-3 pointer-events-none pr-5 lg:rounded-tr-3xl lg:pr-8 bg-white dark:bg-grayDark-600"
+            class="relative inline-flex flex-wrap w-auto pt-3 pr-5 bg-white pointer-events-none rounded-tr-2xl lg:rounded-tr-3xl lg:pr-8 dark:bg-grayDark-600"
           >
             <svg
-              class="w-10 h-10 lg:w-12 lg:h-12 fill-current absolute -bottom-px right-px transform translate-x-full rotate-180 text-white dark:text-grayDark-600"
+              class="absolute w-10 h-10 text-white transform rotate-180 translate-x-full fill-current lg:w-12 lg:h-12 -bottom-px right-px dark:text-grayDark-600"
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 100 100"
@@ -54,7 +54,7 @@
               <path d="M98.1 0h1.9v51.9h-1.9c0-27.6-22.4-50-50-50V0h50z"></path>
             </svg>
             <svg
-              class="w-10 h-10 lg:w-12 lg:h-12 fill-current absolute top-px left-0 transform -translate-y-full rotate-180 text-white dark:text-grayDark-600"
+              class="absolute left-0 w-10 h-10 text-white transform rotate-180 -translate-y-full fill-current lg:w-12 lg:h-12 top-px dark:text-grayDark-600"
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 100 100"
@@ -63,9 +63,9 @@
               <path d="M98.1 0h1.9v51.9h-1.9c0-27.6-22.4-50-50-50V0h50z"></path>
             </svg>
             <div>
-              <div class="dark:text-white font-semibold text-lg">{{ item.title }}</div>
+              <div class="text-lg font-semibold dark:text-white">{{ item.title }}</div>
               <div
-                class="font-light font-Opensans ml-1 text-gray-800 leading-tight text-sm 4xl:text-base dark:text-gray-200"
+                class="ml-1 text-sm font-light leading-tight text-gray-800 font-Opensans 4xl:text-base dark:text-gray-200"
               >
                 {{ item.subtitle }}
               </div>

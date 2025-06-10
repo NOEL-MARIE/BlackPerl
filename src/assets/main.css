@@ -16,7 +16,7 @@ body {
 
 
 .local-ring {
-  @apply focus:ring-4 ring-primary-70 transition-all duration-300;
+  @apply transition-all duration-300 focus:ring-4 ring-primary-70;
 }
 
 /* Scrollbar Styling */

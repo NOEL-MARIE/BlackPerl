@@ -1,5 +1,5 @@
 <template>
-  <section class=" h-screen w-screen">
+  <section class="w-screen h-screen ">
 
     <!-- Header -->
     <div class="carriere-heade lg:h-1/2 z-0 flex items-center max-w-9xl h-[250px] gap-60 justify-center">
@@ -15,7 +15,7 @@
         </p>
       </div>
       <img
-        class="pirate-ship mt-20 w-[600px]"
+        class="pirate-ship mt-20 w-[300px]"
         src="@/assets/images/BateauPirate_Carriere.jpg"
         alt="Bateau pirate"
         width="300px"

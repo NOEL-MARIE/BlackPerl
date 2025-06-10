@@ -40,14 +40,12 @@ export default {
   },
   methods: {
     startAutoScroll() {
-      const imageWidth = 590 + 32 // largeur image + gap en px
-      const resetPoint = this.images.length * imageWidth // largeur d’une série d’images (non dupliquée)
+      const imageWidth = 590 + 32 // en px, nécessaire pour le scroll
+      const resetPoint = this.images.length * imageWidth
 
       const scroll = () => {
         if (!this.isHovered) {
-          this.scrollX -= 0.4 // vitesse de défilement
-
-          // Remise à zéro pour boucle infinie fluide
+          this.scrollX -= 0.4
           if (Math.abs(this.scrollX) >= resetPoint) {
             this.scrollX = 0
           }
@@ -74,23 +72,20 @@ export default {
 
 <template>
   <div class="w-screen overflow-hidden">
-    <!-- Section haute avec images fixes -->
-    <div class="relative w-full h-[150px] flex justify-around">
-      <!-- conteneur parent relatif -->
-
+    <div class="relative w-full h-[150px] flex ">
       <!-- Logo Echec à gauche, positionné à 10% de la largeur -->
       <Motion
         tag="div"
         :initial="{ opacity: 0, y: -50 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 1 }"
-        class="absolute top-[-80px] left-[5%] bottom-[90%]"
+        class="absolute top-[-60%] left-[14%] bottom-[90%]"
       >
         <img
           :src="Echec"
           alt="Illustration d'échec"
-          style="width: 28vw; height: auto"
-          class="bg-cont rotate-12"
+          style="width: 68%; height: auto"
+          class="bg-cont rotate-12 "
         />
       </Motion>
 
@@ -100,9 +95,9 @@ export default {
         :initial="{ opacity: 0, scale: 0.8 }"
         :animate="{ opacity: 1, scale: 1 }"
         :transition="{ duration: 1.2 }"
-        class="absolute z-10"
+        class="absolute z-10 left-[35%] "
       >
-        <img :src="Logo_BlackPurl" alt="Logo Black Pearl" style="width: 35vw; height: auto" />
+        <img :src="Logo_BlackPurl" alt="Logo Black Pearl" style="width: 65%; height: auto" />
       </Motion>
 
       <!-- Logo Echec1 à droite, positionné à 80% de la largeur -->
@@ -111,41 +106,36 @@ export default {
         :initial="{ opacity: 0, y: 50 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 1 }"
-        class="absolute z-0 top-[-90px] right-[10%]"
+        class="absolute z-0 top-[-80%] right-[4%]"
       >
         <img
           :src="Echec1"
           alt="Illustration d'échec"
-          style="width: 28vw; height: auto"
+          style="width: 68%; height: auto"
           class="-rotate-12"
         />
       </Motion>
     </div>
 
     <!-- Carrousel -->
-    <!-- Carrousel -->
     <div
-      class="w-full relative h-[990px] bg-white mt-24 lg:mt-52 overflow-hidden group"
+      class="w-full relative h-[990px] bg-white mt-[5%] overflow-hidden group"
       @mouseenter="handleMouseEnter"
       @mouseleave="handleMouseLeave"
     >
-      <!-- ✅ Cette image faisait office de bordure top, mais elle ne s'affichait pas bien
-       car elle était en absolute sans z-index approprié et mal positionnée -->
       <img
         :src="BANNER_TOP"
         alt="Bordure supérieure"
-        class="absolute top-[-25px] left-0 w-full h-16 object-cover z-[5]"
+        class="absolute top-[-28px] left-0 w-full mt-[0.8%] h-16 object-cover z-[5]"
       />
 
-      <div class="relative w-full flex justify-center items-center h-[320px]">
-        <!-- Bordure inférieure, retournée -->
+      <div class="relative w-screen flex justify-center items-center h-[320px]">
         <img
           :src="BANNER_TOP"
           alt="Bordure inférieure retournée"
-          class="absolute bottom-[-17px] lg:bottom-[-160px] left-0 right-0 h-16 object-cover rotate-180 z-20 w-full"
+          class="absolute bottom-[-7%] left-0 right-0 h-16 object-cover rotate-180 z-20 w-screen"
         />
 
-        <!-- Carrousel d’images -->
         <div
           class="flex gap-8 group"
           :style="{
@@ -157,24 +147,24 @@ export default {
             v-for="(img, i) in duplicatedImages"
             :key="i"
             class="relative flex-shrink-0"
-            style="width: 590px; height: 750px"
+            style="width: 29.3%; height: 750px"
           >
             <img
               :src="img"
               :alt="'Image ' + (i + 1)"
-              class="object-cover w-full h-[130%] lg:h-[90%] z-0"
+              class="object-contain w-full h-[90%] mt-11  z-0"
               style="position: relative; z-index: 1"
             />
             <div class="flex items-center justify-center">
               <img
                 :src="PlayIcons"
                 alt="Play"
-                class="absolute left-1/2 mt-7 lg:mt-24 top-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer z-10"
+                class="absolute z-10 transition-all duration-300 -translate-x-1/2 -translate-y-1/2 cursor-pointer left-1/2 mt-7 top-1/2 w-14 h-14 opacity-80 hover:opacity-100"
               />
               <img
                 :src="PlayIcons"
                 alt="Play"
-                class="absolute left-1/2 group-hover:scale-150 mt-7 lg:mt-24 top-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 opacity-80 hover:opacity-100 transition-all duration-300 cursor-pointer z-10"
+                class="absolute z-10 transition-all duration-300 -translate-x-1/2 -translate-y-1/2 cursor-pointer left-1/2 group-hover:scale-150 mt-7 top-1/2 w-14 h-14 opacity-80 hover:opacity-25"
               />
             </div>
           </div>

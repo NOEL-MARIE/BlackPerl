@@ -42,16 +42,16 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-screen overflow-hidden h-96  rounded-t-3xl">
+  <div class="w-screen overflow-hidden h-96 ">
     <div class="carousel-containe">
       <div ref="trackRef" class="carousel-track">
         <div
           v-for="(img, index) in extendedImages"
           :key="index"
-          class="carousel-item"
+          class="mb-6 carousel-item"
           style="opacity: 0"
         >
-          <img :src="img.src" :alt="img.alt" class="h-20 lg:h-24 mb-72 object-cover" />
+          <img :src="img.src" :alt="img.alt" class="object-cover h-20 mb-32" />
         </div>
       </div>
     </div>

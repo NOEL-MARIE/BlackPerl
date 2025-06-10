@@ -1,19 +1,19 @@
 <template>
   <nav
     :class="[
-      'w-full font-sans z-50 transition-all duration-300 flex items-center justify-center lg:pr-64',
+      'w-full font-sans z-50 transition-all duration-300 flex items-center justify-center ',
       isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4',
     ]"
   >
-    <div class="max-w-7xl lg:max-w-4xl mx-auto lg:mx-0 px-4 sm:px-6 lg:px-8">
+    <div class="px-4 max-w-7xl ">
       <div class="flex justify-between h-16">
         <!-- Liens desktop -->
-        <div class="hidden md:flex items-center space-x-8 lg:space-x-44 mx-auto">
+        <div class="items-center hidden mx-auto md:flex ">
           <router-link
             v-for="item in links"
             :key="item.name"
             :to="item.to"
-            class="relative w-fit lg:text-xl flex group  px-3 py-2 text-sm font-medium transition-colors duration-300"
+            class="relative flex justify-center px-3 py-2 font-medium transition-colors duration-300 text-xm w-fit group"
             :class="[
               isImageRoute ? 'text-white' : 'text-gray-900',
               route.path === item.to ? 'font-bold' : '',
@@ -21,7 +21,7 @@
           >
             {{ item.name }}
             <span
-              class="absolute left-0 bottom-0 h-[2px] bg-[#F8D065] transition-all duration-300"
+              class="absolute left-0 bottom-0 h-[2px] hover:h-[2px] bg-[#F8D065] hover:bg-[#F8D065] transition-all duration-300"
               :class="[
                 route.path === item.to ? 'w-full' : 'w-0 group-hover:w-fit',
                 isImageRoute ? 'absolute left-0 bottom-0 h-[2px] bg-[#F8D065] transition-all duration-300' : 'bg-[#F8D065]',
@@ -31,10 +31,10 @@
         </div>
 
         <!-- Bouton menu mobile -->
-        <div class="md:hidden flex items-center">
+        <div class="flex items-center md:hidden">
           <button @click="toggleMenu" :class="{ 'text-white': isImageRoute }" aria-label="Toggle menu">
             <svg
-              class="h-6 w-6"
+              class="w-6 h-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -54,13 +54,13 @@
 
     <!-- Menu mobile -->
     <transition name="fade-slide">
-      <div v-if="isOpen" ref="menuRef" class="md:hidden bg-white shadow-md px-4 pt-4 pb-6">
+      <div v-if="isOpen" ref="menuRef" class="px-4 pt-4 pb-6 bg-white shadow-md md:hidden">
         <div class="space-y-3">
           <router-link
             v-for="item in links"
             :key="item.name"
             :to="item.to"
-            class="block text-base font-medium px-2 py-1 transition-colors duration-300"
+            class="block px-2 py-1 text-base font-medium transition-colors duration-300"
             :class="[
               route.path === item.to ? 'text-[#F8D065]' : 'text-gray-900',
               isImageRoute ? 'text-white' : 'text-gray-900',
