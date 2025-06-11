@@ -80,6 +80,7 @@ const links = [
   { name: 'Expertise', to: '/expertise' },
   { name: 'Réalisations', to: '/realisations' },
   { name: 'Carrière', to: '/carriere' },
+  { name: 'Test.vue', to: '/RealisationsViewRealisationsView' },
 ]
 
 const isImageRoute = computed(() => route.path.startsWith('/image/'))

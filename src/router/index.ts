@@ -7,6 +7,7 @@ import AboutView from '@/views/AboutView.vue'
 import ExpertiseView from '@/views/ExpertiseView.vue'
 import CarriereView from '@/views/CarriereView.vue'
 import RealisationsView from '@/components/gsap-3d-position-v1.vue'
+import RealisationsViewRealisationsView from '@/views/RealisationsView.vue'
 import Strategie_360View from '@/components/Expertise_Component/three_Component.vue'
 import ActivationsView from '@/views/ActivationsView.vue'
 import MediasImmersifsView from '@/views/MediasImmersifsView.vue'
@@ -89,6 +90,11 @@ const router = createRouter({
       path: '/carriere',
       name: 'Carrière',
       component: CarriereView,
+    },
+    {
+      path: '/RealisationsViewRealisationsView',
+      name: 'RealisationsViewRealisationsView',
+      component: RealisationsViewRealisationsView,
     },
   ],
   scrollBehavior() {
