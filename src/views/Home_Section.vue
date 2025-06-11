@@ -1,7 +1,7 @@
 <template>
   <First ref="firstRef" />
   <BlackSection ref="blackRef" />
-  <Test_Component  />
+  <!-- <gsap3dpositionv1  /> -->
 </template>
 
 <script setup lang="ts">
@@ -11,7 +11,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import First from './First_Component.vue'
 import BlackSection from '@/components/Landing/component/BlackSection.vue'
-import Test_Component from '@/components/Test_Component.vue'
+// import gsap3dpositionv1 from '@/components/gsap-3d-position-v1.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 

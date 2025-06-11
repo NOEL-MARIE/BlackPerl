@@ -72,8 +72,7 @@ export default {
 
 <template>
   <div class="w-screen overflow-hidden">
-    <div class="relative w-full h-[150px] flex ">
-      <!-- Logo Echec à gauche, positionné à 10% de la largeur -->
+    <div class="relative w-full h-[33%]   flex justify-center items-center">
       <Motion
         tag="div"
         :initial="{ opacity: 0, y: -50 }"
@@ -85,22 +84,24 @@ export default {
           :src="Echec"
           alt="Illustration d'échec"
           style="width: 68%; height: auto"
-          class="bg-cont rotate-12 "
+          class="bg-cont rotate-12"
         />
       </Motion>
 
-      <!-- Logo Black Pearl centré -->
       <Motion
         tag="div"
         :initial="{ opacity: 0, scale: 0.8 }"
         :animate="{ opacity: 1, scale: 1 }"
         :transition="{ duration: 1.2 }"
-        class="absolute z-10 left-[35%] "
+        class="absolute z-10 flex items-center justify-center w-full h-full"
       >
-        <img :src="Logo_BlackPurl" alt="Logo Black Pearl" style="width: 65%; height: auto" />
+        <img
+          :src="Logo_BlackPurl"
+          alt="Logo Black Pearl"
+          class="object-contain max-w-full max-h-full"
+        />
       </Motion>
 
-      <!-- Logo Echec1 à droite, positionné à 80% de la largeur -->
       <Motion
         tag="div"
         :initial="{ opacity: 0, y: 50 }"
@@ -119,23 +120,17 @@ export default {
 
     <!-- Carrousel -->
     <div
-      class="w-full relative h-[990px] bg-white mt-[5%] overflow-hidden group"
+      class="w-full  relative h-[990px] bg-white mt-[5%] overflow-hidden group"
       @mouseenter="handleMouseEnter"
       @mouseleave="handleMouseLeave"
     >
       <img
         :src="BANNER_TOP"
         alt="Bordure supérieure"
-        class="absolute top-[-28px] left-0 w-full mt-[0.8%] h-16 object-cover z-[5]"
+        class="absolute top-[-3%] left-0 w-full mt-[0.8%] h-16 object-cover z-[5]"
       />
 
       <div class="relative w-screen flex justify-center items-center h-[320px]">
-        <img
-          :src="BANNER_TOP"
-          alt="Bordure inférieure retournée"
-          class="absolute bottom-[-7%] left-0 right-0 h-16 object-cover rotate-180 z-20 w-screen"
-        />
-
         <div
           class="flex gap-8 group"
           :style="{
@@ -147,13 +142,18 @@ export default {
             v-for="(img, i) in duplicatedImages"
             :key="i"
             class="relative flex-shrink-0"
-            style="width: 29.3%; height: 750px"
+            style="width: 29.3%; height: auto"
           >
             <img
               :src="img"
               :alt="'Image ' + (i + 1)"
-              class="object-contain w-full h-[90%] mt-11  z-0"
+              class="object-contain w-full h-[90%] mt-11 z-0"
               style="position: relative; z-index: 1"
+            />
+            <img
+              :src="BANNER_TOP"
+              alt="Bordure inférieure retournée"
+              class="absolute bottom-[-5%] left-0 right-0 h-16 object-cover rotate-180 z-20 w-screen"
             />
             <div class="flex items-center justify-center">
               <img

@@ -1,20 +1,13 @@
-
 <template>
-  <!-- Conteneur principal en flex column qui répartit l'espace verticalement sur toute la hauteur de l'écran -->
-  <main class="flex flex-col relative space-y-16 h-screen">
-
-    <!-- Composant principal de la page d'accueil -->
+  <main class="relative flex flex-col h-screen space-y-16">
     <BP_Home />
 
-    <!-- Composant affichant un carrousel de marques -->
-    <Marque_Carrousel class="bg-transparent overflow-hidden" />
+    <Marque_Carrousel class="overflow-hidden bg-transparent" />
   </main>
 </template>
 
 <script lang="ts" setup>
-  // Import du composant BP_Home depuis le dossier components/Landing/views
-  import BP_Home from '@/components/Landing/views/BP_Home.vue'
+import BP_Home from '@/components/Landing/views/BP_Home.vue'
 
-  // Import du composant Marque_Carrousel depuis components/Landing/component
-  import Marque_Carrousel from '@/components/Landing/component/Marque_Carrousel.vue'
+import Marque_Carrousel from '@/components/Landing/component/Marque_Carrousel.vue'
 </script>
