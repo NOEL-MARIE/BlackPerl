@@ -54,7 +54,7 @@ const animateHeadline = () => {
   // Ensure the element is mounted and accessible
   if (animatedHeadline.value) {
     // Initialize SplitText on the headline element
-    const mySplitText = new SplitText(animatedHeadline.value, { type: 'lines' });
+    const mySplitText = new SplitText(animatedHeadline.value, { type: 'chars words lines' });
     const lines = mySplitText.lines; // Get the array of split lines
 
     // Set initial state for the animation (optional, but good for smooth transitions)
@@ -64,7 +64,7 @@ const animateHeadline = () => {
     gsap.to(lines, {
       opacity: 1,
       y: 0,
-      duration: 0.8, // Duration for each line's animation
+      duration: 0.5, // Duration for each line's animation
       ease: 'power3.out', // Easing function
       stagger: 0.15, // Stagger the start time of each line's animation
       delay: 0.5 // Delay before the entire animation sequence begins

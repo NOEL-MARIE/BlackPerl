@@ -85,9 +85,9 @@ onUnmounted(() => {
     <section
       v-if="!showVideoSection"
       ref="sectionRef"
-      class="h-screen font-sans bg-black pb-10 pt-4 flex flex-col items-center justify-center"
+      class="flex flex-col items-center justify-center h-screen pt-4 pb-10 font-sans bg-black"
     >
-      <div class="logo mb-10">
+      <div class="mb-10 logo">
         <img
           ref="logoRef"
           width="303"
@@ -98,7 +98,7 @@ onUnmounted(() => {
           draggable="false"
         />
       </div>
-      <p class="text-white mb-6">Tirez l’ancre vers le haut, et commencez le jeu</p>
+      <p class="mb-6 text-white">Tirez l’ancre vers le haut, et commencez le jeu</p>
       <img
         ref="anchorRef"
         src="@/assets/images/Anchor.gif"

@@ -3,7 +3,7 @@
     <Cursor_Follower/>
     <NavBar_Component v-if="!isImageRoute"/>
     <router-view v-slot="{ Component }">
-      <transition name="">
+      <transition >
         <component :is="Component" />
       </transition>
     </router-view>
