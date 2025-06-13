@@ -1,45 +1,45 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <section class="team-section ">
-    <h2 class="section-title">Notre équipe</h2>
+  <section class="team-section">
+    <h2 class="section-title" ref="sectionTitleRef">Notre équipe</h2>
     <Dot_Gamme />
 
     <div class="stats flex items-center justify-center">
       <div>
-        <p class="stat-title">Clients</p>
+        <p class="stat-title" ref="clientTitleRef">Clients</p>
         <div class="stat-item">
-          <p class="stat-number">250+</p>
-          <p class="stat-desc">
+          <p class="stat-number" ref="clientNumberRef">0</p>
+          <p class="stat-desc" ref="clientDescRef">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
             tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
           </p>
         </div>
       </div>
       <div>
-        <p class="stat-title text-[#F8D065]">Références</p>
+        <p class="stat-title text-[#F8D065]" ref="referencesTitleRef">Références</p>
         <div class="stat-item highlight">
-          <p class="stat-number">55%</p>
-          <p class="stat-desc">
+          <p class="stat-number" ref="referencesNumberRef">0%</p>
+          <p class="stat-desc" ref="referencesDescRef">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
             tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
           </p>
         </div>
       </div>
       <div>
-        <p class="stat-title">Ration / Homme:Femme</p>
+        <p class="stat-title" ref="ratioTitleRef">Ration / Homme:Femme</p>
         <div class="stat-item">
-          <p class="stat-number">56:44</p>
-          <p class="stat-desc">
+          <p class="stat-number" ref="ratioNumberRef">0:0</p>
+          <p class="stat-desc" ref="ratioDescRef">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
             tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
           </p>
         </div>
       </div>
       <div>
-        <p class="stat-title">Projets réalisés</p>
+        <p class="stat-title" ref="projectsTitleRef">Projets réalisés</p>
         <div class="stat-item">
-          <p class="stat-number">380</p>
-          <p class="stat-desc">
+          <p class="stat-number" ref="projectsNumberRef">0</p>
+          <p class="stat-desc" ref="projectsDescRef">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
             tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
           </p>
@@ -50,77 +50,186 @@
 </template>
 
 <script setup lang="ts">
-//  import Image_Forme from '@/components/Image_Forme.vue'
 import Dot_Gamme from '@/components/Profile_Squad.vue'
 import { ref, onMounted } from 'vue'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger' // N'oubliez pas d'importer ScrollTrigger !
 
-// interface TeamMember {
-//   name: string
-//   role: string
-//   photo: string
-// }
+// Enregistrement du plugin ScrollTrigger
+gsap.registerPlugin(ScrollTrigger)
 
-// const team = ref<TeamMember[]>([
-//   {
-//     name: 'Mike',
-//     role: 'Directeur Artistique',
-//     photo:
-//       'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80',
-//   },
-//   {
-//     name: 'Mike',
-//     role: 'Directeur Artistique',
-//     photo:
-//       'https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=400&q=80',
-//   },
-//   {
-//     name: 'Mike',
-//     role: 'Directeur Artistique',
-//     photo:
-//       'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80',
-//   },
-//   {
-//     name: 'Mike',
-//     role: 'Directeur Artistique',
-//     photo:
-//       'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80',
-//   },
-//   {
-//     name: 'Mike',
-//     role: 'Directeur Artistique',
-//     photo:
-//       'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80',
-//   },
-//   {
-//     name: 'Mike',
-//     role: 'Directeur Artistique',
-//     photo:
-//       'https://images.unsplash.com/photo-1531427186611-ecfd6d936e79?auto=format&fit=crop&w=400&q=80',
-//   },
-//   {
-//     name: 'Mike',
-//     role: 'Directeur Artistique',
-//     photo:
-//       'https://images.unsplash.com/photo-1494790108377-be9c29b2933e?auto=format&fit=crop&w=400&q=80',
-//   },
-//   {
-//     name: 'Mike',
-//     role: 'Directeur Artistique',
-//     photo:
-//       'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80',
-//   },
-// ])
+// Références pour les éléments de la section "Notre équipe"
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const teamSectionRef = ref<HTMLElement | null>(null) // Référence à la section principale
+const sectionTitleRef = ref<HTMLElement | null>(null)
 
-const carouselContainer = ref<HTMLElement | null>(null)
+// Références pour les éléments "Clients"
+const clientTitleRef = ref<HTMLElement | null>(null)
+const clientNumberRef = ref<HTMLElement | null>(null)
+const clientDescRef = ref<HTMLElement | null>(null)
+
+// Références pour les éléments "Références"
+const referencesTitleRef = ref<HTMLElement | null>(null)
+const referencesNumberRef = ref<HTMLElement | null>(null)
+const referencesDescRef = ref<HTMLElement | null>(null)
+
+// Références pour les éléments "Ratio Homme:Femme"
+const ratioTitleRef = ref<HTMLElement | null>(null)
+const ratioNumberRef = ref<HTMLElement | null>(null)
+const ratioDescRef = ref<HTMLElement | null>(null)
+
+// Références pour les éléments "Projets réalisés"
+const projectsTitleRef = ref<HTMLElement | null>(null)
+const projectsNumberRef = ref<HTMLElement | null>(null)
+const projectsDescRef = ref<HTMLElement | null>(null)
 
 onMounted(() => {
-  if (carouselContainer.value) {
-    gsap.to(carouselContainer.value, {
-      xPercent: -50, // Déplace le carrousel de 50% de sa largeur (pour centrer)
-      duration: 20,
-      repeat: -1,
-      ease: 'none',
+  // Obtenez une référence à la section principale pour le ScrollTrigger
+  // On utilise querySelector ici car la `ref` sur la section elle-même est "teamSectionRef"
+  // mais la détection du ScrollTrigger peut être faite sur la classe.
+  const sectionTrigger = document.querySelector('.team-section')
+
+  if (!sectionTrigger) {
+    console.warn("La section '.team-section' n'a pas été trouvée. Les animations ne seront pas déclenchées.")
+    return
+  }
+
+  // Animation pour le titre de la section
+  gsap.from(sectionTitleRef.value, {
+    y: 50,
+    opacity: 0,
+    duration: 1,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: sectionTrigger,
+      start: 'top 80%', // Commence quand le haut de la section est à 80% du viewport
+      // markers: true, // Décommentez pour le débogage visuel
+      toggleActions: 'play none none none', // Joue l'animation une fois
+    },
+  })
+
+  // Animation pour le composant Dot_Gamme
+  // IMPORTANT : Assurez-vous que Dot_Gamme a bien la classe 'dot-gamme-component'
+  // ou changez le sélecteur si c'est un autre élément que vous voulez animer.
+  gsap.from('.dot-gamme-component', {
+    y: 50,
+    opacity: 0,
+    duration: 1,
+    delay: 0.2, // Petit délai pour qu'il apparaisse après le titre
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: sectionTrigger,
+      start: 'top 80%',
+      toggleActions: 'play none none none',
+    },
+  })
+
+  // Animation pour les titres des statistiques
+  gsap.from([clientTitleRef.value, referencesTitleRef.value, ratioTitleRef.value, projectsTitleRef.value], {
+    y: 30,
+    opacity: 0,
+    duration: 0.8,
+    ease: 'power2.out',
+    stagger: 0.15, // Délai entre chaque titre
+    scrollTrigger: {
+      trigger: sectionTrigger,
+      start: 'top 75%',
+      toggleActions: 'play none none none',
+    },
+  })
+
+  // Animation pour les descriptions des statistiques
+  gsap.from([clientDescRef.value, referencesDescRef.value, ratioDescRef.value, projectsDescRef.value], {
+    y: 20,
+    opacity: 0,
+    duration: 0.7,
+    ease: 'power1.out',
+    stagger: 0.1, // Délai entre chaque description
+    scrollTrigger: {
+      trigger: sectionTrigger,
+      start: 'top 70%',
+      toggleActions: 'play none none none',
+    },
+  })
+
+  // --- Animations de comptage pour les chiffres ---
+
+  // Clients (250+)
+  if (clientNumberRef.value) {
+    gsap.to(clientNumberRef.value, {
+      textContent: 250, // Anime la propriété textContent vers 250
+      duration: 2,
+      ease: 'power1.out',
+      snap: { textContent: 1 }, // S'assure que le nombre est toujours un entier
+      onUpdate: () => {
+        // Ajoute le '+' à la fin après chaque mise à jour du nombre
+        if (clientNumberRef.value) {
+          clientNumberRef.value.textContent = Math.round(Number(clientNumberRef.value.textContent)) + '+'
+        }
+      },
+      scrollTrigger: {
+        trigger: clientNumberRef.value, // Le trigger est l'élément du chiffre lui-même
+        start: 'top 85%', // L'animation démarre quand le chiffre est visible à 85% du viewport
+        toggleActions: 'play none none none',
+      },
+    })
+  }
+
+  // Références (55%)
+  if (referencesNumberRef.value) {
+    gsap.to(referencesNumberRef.value, {
+      textContent: 55, // Anime la propriété textContent vers 55
+      duration: 2,
+      ease: 'power1.out',
+      snap: { textContent: 1 },
+      onUpdate: () => {
+        // Ajoute le '%' à la fin
+        if (referencesNumberRef.value) {
+          referencesNumberRef.value.textContent = Math.round(Number(referencesNumberRef.value.textContent)) + '%'
+        }
+      },
+      scrollTrigger: {
+        trigger: referencesNumberRef.value,
+        start: 'top 85%',
+        toggleActions: 'play none none none',
+      },
+    })
+  }
+
+  // Ratio Homme:Femme (56:44)
+  if (ratioNumberRef.value) {
+    const ratio = { value1: 0, value2: 0 } // Objet pour animer les deux valeurs séparément
+    gsap.to(ratio, {
+      value1: 56,
+      value2: 44,
+      duration: 2,
+      ease: 'power1.out',
+      onUpdate: () => {
+        // Concatène les deux valeurs arrondies avec ':'
+        if (ratioNumberRef.value) {
+          ratioNumberRef.value.textContent = `${Math.round(ratio.value1)}:${Math.round(ratio.value2)}`
+        }
+      },
+      scrollTrigger: {
+        trigger: ratioNumberRef.value,
+        start: 'top 85%',
+        toggleActions: 'play none none none',
+      },
+    })
+  }
+
+  // Projets réalisés (380)
+  if (projectsNumberRef.value) {
+    gsap.to(projectsNumberRef.value, {
+      textContent: 380, // Anime la propriété textContent vers 380
+      duration: 2,
+      ease: 'power1.out',
+      snap: { textContent: 1 },
+      scrollTrigger: {
+        trigger: projectsNumberRef.value,
+        start: 'top 85%',
+        toggleActions: 'play none none none',
+      },
     })
   }
 })
@@ -139,74 +248,6 @@ onMounted(() => {
   font-weight: 600;
   font-size: 1.8rem;
   margin-bottom: 40px;
-}
-
-.team-carousel {
-  overflow: hidden;
-  position: relative;
-}
-
-.carousel-container {
-  display: flex;
-  width: max-content; /* Important: le conteneur prend la largeur de son contenu */
-  animation: scroll 20s linear infinite;
-}
-
-.team-member {
-  flex: 0 0 180px; /* Empêche les cartes de rétrécir */
-  width: 180px;
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
-  background: #fff;
-  margin: 0 12px; /* Ajoute un espacement entre les cartes */
-  transition: all 0.3s ease;
-}
-
-/* Ajoute une marge en haut sur certaines images */
-.team-member.mt-3 {
-  margin-top: 24px;
-}
-
-.team-member:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.member-photo {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-  border-radius: 16px;
-  display: block;
-}
-
-.member-info {
-  position: absolute;
-  bottom: 8px;
-  left: 12px;
-  background: rgba(255, 255, 255, 0.85);
-  padding: 6px 10px;
-  border-radius: 8px;
-  max-width: calc(100% - 24px);
-  box-sizing: border-box;
-}
-
-.member-name {
-  font-weight: 600;
-  font-size: 1rem;
-  margin: 0;
-  color: #222;
-}
-
-.member-role {
-  font-weight: 400;
-  font-size: 0.8rem;
-  color: #666;
-  margin: 0;
-  margin-top: 2px;
-  font-style: italic;
 }
 
 /* Statistiques */
@@ -234,6 +275,7 @@ onMounted(() => {
   font-weight: 700;
   margin: 0 0 6px 0;
   color: #111;
+  /* L'opacité est gérée par GSAP au début, pas besoin de la cacher ici */
 }
 
 .stat-item.highlight .stat-number {
@@ -256,14 +298,6 @@ onMounted(() => {
 
 /* Responsive */
 @media (max-width: 900px) {
-  .team-member {
-    width: 140px;
-  }
-
-  .member-photo {
-    height: 190px;
-  }
-
   .stats {
     grid-template-columns: 1fr 1fr;
     gap: 24px;
