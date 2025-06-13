@@ -1,7 +1,7 @@
 <template>
-  <section ref="firstSectionRef" class="relative w-full h-screen bg-white mt-44 first-component-section">
+  <section ref="firstSectionRef" class=" w-full h-screen bg-white mt-10 first-component-section">
     <div ref="ovalBackgroundWrapRef" class="oval-background-wrap is-taller">
-      <div ref="ovalBackgroundRef" class="oval-background"></div>
+      <div ref="ovalBackgroundRef" class="oval-background "></div>
     </div>
 
     <div class="relative z-10 first-component-conten">
@@ -39,7 +39,7 @@ onMounted(() => {
   ovalScrollTl = gsap.timeline({
     scrollTrigger: {
       trigger: firstSectionRef.value, // Cette section est le déclencheur de l'animation
-      start: 'top top', // L'animation démarre lorsque le haut de cette section atteint le haut du viewport
+      start: 'bottom top', // L'animation démarre lorsque le haut de cette section atteint le haut du viewport
       end: '+=1500', // L'animation se déroulera sur 1500 pixels de défilement (ajustez cette valeur !)
       scrub: true, // Lie la progression de l'animation directement au défilement de la page
       pin: true, // Épingle cette section au viewport pendant toute la durée de l'animation
@@ -100,10 +100,7 @@ onUnmounted(() => {
 
 <style scoped>
 /* Styles pour la section principale du composant */
-.first-component-section {
-  position: relative;
-  /* h-screen, w-full, overflow-hidden de Tailwind sont déjà appliqués. */
-}
+
 
 /* --- Reproduction des styles du .top-bubble-wrap --- */
 .oval-background-wrap {
@@ -119,7 +116,7 @@ onUnmounted(() => {
   transform-style: preserve-3d;
 
   /* Classe is-taller */
-  max-height: 180%; /* Rend le conteneur du wrap plus grand pour la bulle */
+  /* max-height: 180%; Rend le conteneur du wrap plus grand pour la bulle */
 }
 
 /* --- Reproduction des styles du .top-bubble --- */
@@ -130,7 +127,7 @@ onUnmounted(() => {
   background-color: #000000; /* Couleur orange de votre exemple */
   border-radius: 50%; /* Forme ovale/circulaire */
   width: 300vw; /* Largeur trois fois la largeur du viewport */
-  height: 150vw; /* Hauteur une fois et demie la largeur du viewport */
+  height: 100vw; /* Hauteur une fois et demie la largeur du viewport */
 
   /* margin-left: -100vw; est recréé par translate(-100vw, 0) */
   transform: translate(-100vw, 0px); /* Déplace de 100vw vers la gauche */
@@ -144,11 +141,6 @@ onUnmounted(() => {
 }
 
 /* Styles pour le contenu principal */
-.first-component-content {
-  position: relative;
-  z-index: 1; /* S'assure que votre contenu reste au-dessus de l'ovale */
-  opacity: 1; /* Le contenu est visible par défaut */
-  color: #333; /* Exemple de couleur de texte */
-}
+
 </style>
 

@@ -6,7 +6,7 @@
     ]"
   >
     <div class="px-4 max-w-7xl">
-      <div class="flex justify-between w-full h-16">
+      <div class="flex justify-between w-full h-9">
         <!-- Liens desktop -->
         <div class="items-center hidden mx-auto w-fit md:flex">
           <router-link
