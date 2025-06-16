@@ -1,5 +1,5 @@
 <template>
-  <div class="container h-screen w-screen  flex-shrink" ref="containerElement">
+  <div class="container h-screen w-screen   flex-shrink" ref="containerElement">
     <div id="ring" ref="ringElement">
       <div v-for="(imga, i) in img" :key="i" class="img space-x-7 ">
         <img
@@ -158,7 +158,7 @@ function startAutoScroll() {
   if (ringElement.value && !autoScrollTween) {
     // Vérifie qu'un tween n'est pas déjà actif
     autoScrollTween = gsap.to(ringElement.value, {
-      rotationY: `-=${360 * imageCount}`, // Fait tourner le carrousel de plusieurs tours complets (droite vers gauche)
+      rotationY: `+=${360 * imageCount}`, // Fait tourner le carrousel de plusieurs tours complets (droite vers gauche)
       duration: imageCount * 69, // *** DURÉE AJUSTÉE POUR UN DÉFILEMENT TRÈS LENT ***
       // Par exemple, 8 secondes par image, soit 14 * 8 = 112 secondes pour un tour complet
       ease: 'none', // Défilement linéaire pour un mouvement constant

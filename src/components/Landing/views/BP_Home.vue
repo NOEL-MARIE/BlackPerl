@@ -77,10 +77,8 @@ export default {
       </Motion>
     </div>
 
-    ---
-
-    <div class="w-full z-0  mt-10">
-      <RealisationsView class="h-]"/>
+    <div class="w-screen z-0 overflow-hidden  mt-10">
+      <RealisationsView class="w-screen"/>
     </div>H
   </div>
 </template>

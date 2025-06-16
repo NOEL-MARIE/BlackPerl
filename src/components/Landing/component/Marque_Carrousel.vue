@@ -18,7 +18,7 @@ const images = [
   { src: AMGS, alt: 'Logo d’AMGS, société de services médicaux et de santé' },
 ]
 
-const extendedImages = [...images, ...images, ...images, ...images]
+const extendedImages = [...images, ...images, ...images, ...images, ...images]
 
 // Ref pour la track du carrousel
 const trackRef = ref<HTMLElement | null>(null)
@@ -34,8 +34,8 @@ onMounted(() => {
     // Animation : chaque image passe de opacity 0 à 1 puis 0, en décalé
     tl.to(items, {
       opacity: 1,
-      duration: 0.1, // apparition très rapide (100 ms)
-      stagger: 0.2, // images qui apparaissent toutes les 0.2s
+      duration: 0.7, // apparition très rapide (100 ms)
+      stagger: 0.1, // images qui apparaissent toutes les 0.2s
     })
   }
 })
@@ -51,7 +51,7 @@ onMounted(() => {
           class="mb-6 carousel-item"
           style="opacity: 0"
         >
-          <img :src="img.src" :alt="img.alt" class="object-cover h-20 mb-32" />
+          <img :src="img.src" :alt="img.alt" class="object-cover h-24 mb-32" />
         </div>
       </div>
     </div>
@@ -67,7 +67,7 @@ onMounted(() => {
 
 .carousel-track {
   display: flex;
-  animation: scroll 100s linear infinite;
+  animation: scroll 20s linear infinite;
   /* width: max-content; */
 }
 
