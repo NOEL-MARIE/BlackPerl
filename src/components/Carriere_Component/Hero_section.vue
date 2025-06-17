@@ -1,21 +1,21 @@
 <template>
-  <section class="w-screen h-screen ">
+  <section class="w-screen h-screen overflow-hidden">
 
     <!-- Header -->
-    <div class="carriere-heade lg:h-1/2 z-0 flex items-center max-w-9xl h-[250px] gap-60 justify-center">
+    <div class="carriere-heade  z-0 flex items-center max-w-9xl h-[36%] gap-60 justify-center">
       <div class="carriere-titles">
-        <span class="carriere-label mb-6 font-HouseOfCardsW03Bold uppercase text-[#808080] text-[25px] lg:text-[40px]">CARRIÈRE</span>
-        <h1 class="font-cinzel  text-[40px] lg:text-[90px]">
+        <span class="carriere-label mb-6 font-HouseOfCardsW03Bold uppercase text-[#808080] text-[225%] ">CARRIÈRE</span>
+        <h1 class="font-cinzel leading-none pt-3  text-[290%] ">
           EMBARQUEZ SUR LE<br />
           BATEAU PIRATE
         </h1>
-        <p class="font-Opensans lg:text-[25px] w-[130%]">
-          Chez Black Pearl, chaque talent a un rôle stratégique. Rejoignez une équipe passionnée où
+        <p class="font-Opensans pt-4 w-fit">
+          Chez Black Pearl, chaque talent a un rôle stratégique. Rejoignez une équipe <br> passionnée où
           l’on joue pour gagner.
         </p>
       </div>
       <img
-        class="pirate-ship mt-20 w-[300px]"
+        class="pirate-ship mt-20 w-[250px]"
         src="@/assets/images/BateauPirate_Carriere.jpg"
         alt="Bateau pirate"
         width="300px"
@@ -24,7 +24,7 @@
     </div>
 
     <!-- Carrousel des profils -->
-    <div class=" mb-11">
+    <div class=" mb-11 overflow-hidden">
       <Profile_Squad_2 />
     </div>
   </section>
@@ -43,7 +43,7 @@ import Profile_Squad_2 from '@/components/Profile_Squad.vue'
 
 
 .carriere-titles p {
-  max-width: 420px;
+  /* max-width: 420px; */
 }
 
 .pirate-ship {
@@ -65,9 +65,7 @@ import Profile_Squad_2 from '@/components/Profile_Squad.vue'
     align-items: flex-start;
   }
   .pirate-ship {
-    margin: 30px 0 0 0;
-    width: 220px;
-    max-width: 60vw;
+
   }
 }
 </style>

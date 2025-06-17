@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 // Importation des vues
 import Home from '@/views/Home_Section.vue'
 import ImageViewer from '@/views/ImageViewer.vue'
+import ChessboardGallery from '@/components/Landing/component/ChessboardGallery.vue';
 import AboutView from '@/views/AboutView.vue'
 import ExpertiseView from '@/views/ExpertiseView.vue'
 import CarriereView from '@/views/CarriereView.vue'
@@ -15,6 +16,7 @@ import BrandingContenusView from '@/views/BrandingContenusView.vue'
 import StudioCreationView from '@/views/StudioCreationView.vue'
 import AnalyseIAView from '@/views/AnalyseIAView.vue'
 import ActivationInfluenceView from '@/views/ActivationInfluenceView.vue'
+import Scroll_Video from '@/components/Landing/component/VideoSection.vue'
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -96,6 +98,16 @@ const router = createRouter({
       name: 'RealisationsViewRealisationsView',
       component: RealisationsViewRealisationsView,
     },
+    {
+      path: '/Scroll_Video',
+      name: ' ScrollVideo',
+      component:  Scroll_Video,
+    },
+      {
+    path: '/ches', // C'est le chemin URL que vous voulez
+    name: 'ChessboardGallery', // Un nom unique pour cette route (optionnel mais recommandé)
+    component: ChessboardGallery // Le composant que cette route doit afficher
+  },
   ],
   scrollBehavior() {
     return { top: 0 }

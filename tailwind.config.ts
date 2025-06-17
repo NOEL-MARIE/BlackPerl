@@ -15,6 +15,15 @@ module.exports = {
   ],
 
   theme: {
+    // Définition explicite de tous les breakpoints ici
+    screens: {
+      'xs': '475px', // Votre breakpoint personnalisé
+      'sm': '640px', // 40rem
+      'md': '768px', // 48rem
+      'lg': '1024px', // 64rem
+      'xl': '1280px', // 80rem
+      '2xl': '1536px', // 96rem
+    },
     extend: {
       fontFamily: {
         cinzel:["Cinzel", 'sans-serif' ],
@@ -23,8 +32,6 @@ module.exports = {
         poppins :["Poppins", 'sans-serif' ],
         HouseOfCardsW03Bold :['HouseOfCardsW03Bold', 'cursive']
       },
-
-
     },
   },
   plugins: [

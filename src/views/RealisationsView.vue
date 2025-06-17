@@ -1,11 +1,11 @@
 <template>
-  <div class="container h-screen w-screen   flex-shrink" ref="containerElement">
+  <div class="container h-screen w-screen " ref="containerElement">
     <div id="ring" ref="ringElement">
-      <div v-for="(imga, i) in img" :key="i" class="img space-x-7 ">
+      <div v-for="(imga, i) in img" :key="i" class="img overflow-x-hidden">
         <img
           :src="imga"
           :alt="'Image ' + (i + 1)"
-          class="object-cover w-full h-full z-1 pl-20"
+          class="object-cover w-sceen h-screen  z-1 "
           style="position: absolute; top: 0; left: 0; z-index: 1"
         />
         <div class="flex hover:cursor-pointer items-center justify-center">
@@ -97,7 +97,7 @@ function setupGSAPAnimations() {
 
   // Calcule le rayon de l'anneau en fonction de la taille du conteneur
   // et du nombre d'images pour s'assurer qu'elles s'adaptent correctement.
-  const ringRadius = 1000 // Cette valeur doit correspondre à la translation z dans transformOrigin
+  const ringRadius = 2300 // Cette valeur doit correspondre à la translation z dans transformOrigin
 
   // Initialisation de la timeline GSAP pour définir les propriétés et animer
   gsap
@@ -220,7 +220,6 @@ body {
   padding: 0;
 }
 
-/* Propriétés communes pour les transformations 3D */
 .container,
 #dragger,
 #ring,
@@ -233,21 +232,76 @@ div {
 }
 
 .container {
-  perspective: 2000px;
-  width: 300px; /* Largeur de base pour le conteneur 3D */
-  height: 300px; /* Hauteur de base pour le conteneur 3D */
+  perspective: 1500px;
+  width: 600px; /* Largeur de base pour le conteneur 3D */
+  height: 600px; /* Hauteur de base pour le conteneur 3D */
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%); /* Centre le conteneur */
   /* Rend le conteneur réactif en utilisant des unités fluides, par exemple, vw/vh ou max-width */
-  max-width: 90vw;
-  max-height: 90vh;
-  aspect-ratio: 1 / 1; /* Maintient le rapport d'aspect */
+
+  /* aspect-ratio: 1 / 1; Maintient le rapport d'aspect */
+
+
 }
+
+
+@media (min-width: 540px) {
+  .container {
+    perspective:500px; /* Nouvelle perspective pour SM */
+  }
+}
+
+/*
+ * Styles pour 'MD' (>= 768px).
+ * Correspond au breakpoint 'MD' de votre configuration.
+ */
+@media (min-width: 768px) {
+  .mon-conteneur-3d {
+    perspective: 1200px; /* Nouvelle perspective pour MD */
+     /* Hauteur ajustée pour MD */
+  }
+}
+
+/*
+ * Styles pour 'LG' (>= 1024px).
+ * Correspond au breakpoint 'LG' de votre configuration.
+ */
+@media (min-width: 1024px) {
+  .mon-conteneur-3d {
+    perspective: 1500px; /* Nouvelle perspective pour LG */
+    height: 500px; /* Hauteur ajustée pour LG */
+  }
+}
+
+/*
+ * Styles pour 'XL' (>= 1280px).
+ * Correspond au breakpoint 'XL' de votre configuration.
+ */
+@media (min-width: 1280px) {
+  .mon-conteneur-3d {
+    perspective: 1800px; /* Nouvelle perspective pour XL */
+    height: 550px; /* Hauteur ajustée pour XL */
+  }
+}
+
+/*
+ * Styles pour '2XL' (>= 1536px).
+ * Correspond au breakpoint '2XL' de votre configuration.
+ */
+@media (min-width: 1536px) {
+  .mon-conteneur-3d {
+    perspective: 2000px; /* Nouvelle perspective pour 2XL */
+    height: 600px; /* Hauteur ajustée pour 2XL */
+  }
+}
+
+
 
 #ring {
   width: 100%;
   height: 100%;
+
 }
 
 .img {
@@ -266,15 +320,17 @@ div {
   object-fit: contain; /* S'assure que l'image s'adapte à son conteneur, en conservant le rapport d'aspect */
   width: 500%;
   height: 500%;
+  overflow: hidden;
 
   display: block; /* Supprime l'espace supplémentaire sous l'image */
 }
 
 #dragger {
-  width: 100vw; /* Le dragger couvre tout le viewport pour un glissement plus facile */
+  width: 100vw;
   height: 100vh;
   left: 0;
   top: 0;
-  cursor: grab; /* Indique la zone de glissement */
+  cursor: grab;
+  overflow: hidden;
 }
 </style>

@@ -26,21 +26,21 @@ const animateBoldTextByLines = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: boldTextRef.value, // L'élément qui déclenchera l'animation
-        start: 'top 80%', // Quand le haut de l'élément arrive à 80% de la fenêtre (du haut)
+        start: 'bottom 20%', // Quand le haut de l'élément arrive à 80% de la fenêtre (du haut)
         // markers: true, // Décommenter pour voir les marqueurs ScrollTrigger (utile pour le débogage)
         toggleActions: 'play none none none', // play, pause, resume, reverse, restart, reset, complete, none
         // onEnter, onLeave, onEnterBack, onLeaveBack
       },
     })
 
-    // Ajoutez l'animation à la timeline
-    tl.from(lines, {
-      opacity: 0,
-      y: 20,
-      stagger: 0.15,
-      duration: 0.8,
-      ease: 'power3.out',
-    })
+// Animation par lignes (plus rapide)
+tl.from(lines, {
+  opacity: 0,
+  y: 20,
+  stagger: 0.07,    // Avant : 0.15
+  duration: 0.8,    // Avant : 0.8
+  ease: 'power3.out',
+})
   }
 }
 
@@ -52,19 +52,20 @@ const animateRegularTextByWords = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: regularTextRef.value,
-        start: 'top 80%', // Déclenchement similaire au premier bloc
+        start: 'bottom 20%', // Déclenchement similaire au premier bloc
         // markers: true,
         toggleActions: 'play none none none',
       },
     })
 
-    tl.from(words, {
-      opacity: 0,
-      y: 10,
-      stagger: 0.02,
-      duration: 0.6,
-      ease: 'power2.out',
-    })
+// Animation par mots (plus rapide)
+tl.from(words, {
+  opacity: 0,
+  y: 10,
+  stagger: 0.01,    // Avant : 0.02
+  duration: 0.6,    // Avant : 0.6
+  ease: 'power2.out',
+})
   }
 }
 
@@ -76,19 +77,20 @@ const animateConquestTextByChars = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: conquestTextRef.value,
-        start: 'top 80%', // Déclenchement similaire
+        start: 'bottom 20%', // Déclenchement similaire
         // markers: true,
         toggleActions: 'play none none none',
       },
     })
 
-    tl.from(chars, {
-      opacity: 0,
-      y: -10,
-      stagger: 0.01,
-      duration: 0.4,
-      ease: 'power1.out',
-    })
+// Animation par caractères (plus rapide)
+tl.from(chars, {
+  opacity: 0,
+  y: 10,
+  stagger: 0.005,   // Avant : 0.01
+  duration: 0.4,    // Avant : 0.4
+  ease: 'power1.out',
+})
   }
 }
 
@@ -147,7 +149,7 @@ onBeforeUnmount(() => {
                     qu’une agence de communication 360°.
                   </p>
                 </div>
-                <div ref="regularTextRef" class="flex-col flex text-[15px] font-Opensans">
+                <div ref="regularTextRef" class="flex-col gap-5 flex text-[15px] font-Opensans">
                   <p>
                     C’est un bateau pirate créatif, où stratégie, storytelling et technologie
                     s’unissent <br />
@@ -155,7 +157,7 @@ onBeforeUnmount(() => {
                     <br />
                     transformons chaque campagne en jeu de pouvoir.
                   </p>
-                  <p>
+                  <p >
                     un terrain d’expérimentation où les marques deviennent des héros <br />
                     culturels. Nous croyons au pouvoir de la culture, à la magie de l’expérience et
                     à

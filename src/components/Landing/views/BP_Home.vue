@@ -30,14 +30,14 @@ export default {
 </script>
 
 <template>
-  <div class="w-screen h-[120%] overflow-hidden">
-    <div class="relative w-screen h-[40vh] flex justify-center items-center">
+  <div class="w-screen h-screen overflow-hidden">
+    <div class="relative w-screen overflow-hidden xs:h-[66%] xs:m-0 xs:p-0  md:h-[40vh] flex justify-center items-center">
       <Motion
         tag="div"
         :initial="{ opacity: 0, y: -50 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 1 }"
-        class="absolute top-[-30%] left-[7%]"
+        class="absolute top-[-30%] hidden lg:flex  left-[7%]"
       >
         <img
           :src="Echec"
@@ -52,12 +52,12 @@ export default {
         :initial="{ opacity: 0, scale: 0.8 }"
         :animate="{ opacity: 1, scale: 1 }"
         :transition="{ duration: 1.2 }"
-        class="absolute z-40 left-[1%] flex items-center justify-center w-full h-full"
+        class="absolute z-40 left-[1%] flex top-[-10%] items-center justify-center   w-full h-full"
       >
         <img
           :src="Logo_BlackPurl"
           alt="Logo Black Pearl"
-          class="object-contain  max-w-full max-h-full"
+          class="object-contain  md:h-[69%] xs:h-[40%] top-[30%]"
         />
       </Motion>
 
@@ -66,7 +66,7 @@ export default {
         :initial="{ opacity: 0, y: 50 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 1 }"
-        class="absolute z-0 top-[-40%] right-[-4%]"
+        class="absolute z-0 top-[-40%] hidden lg:flex right-[-4%]"
       >
         <img
           :src="Echec1"
@@ -77,8 +77,8 @@ export default {
       </Motion>
     </div>
 
-    <div class="w-screen z-0 overflow-hidden  mt-10">
-      <RealisationsView class="w-screen"/>
+    <div class="w-screen z-0 overflow-hidden xs:mt-0  md:mt-32">
+      <RealisationsView class="overflow-hidden "/>
     </div>H
   </div>
 </template>

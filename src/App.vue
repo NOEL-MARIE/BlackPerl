@@ -1,6 +1,7 @@
 <template>
   <div class="app-wrapper">
     <Cursor_Follower/>
+    <Responsible_Recall/>
     <NavBar_Component v-if="!isImageRoute"/>
     <router-view v-slot="{ Component }">
       <transition >
@@ -14,6 +15,7 @@
 import { computed } from 'vue';
 import { useRoute } from 'vue-router'; // Import useRoute
 import Cursor_Follower from '@/components/Cursor_Follower.vue';
+import Responsible_Recall from '@/components/BreakpointIndicator.vue';
 import NavBar_Component from './components/NavBar/NavBar_Component.vue';
 
 const route = useRoute(); // Get the current route object

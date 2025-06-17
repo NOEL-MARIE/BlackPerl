@@ -4,7 +4,7 @@
       <div ref="ovalBackgroundRef" class="oval-background "></div>
     </div>
 
-    <div class="relative z-10 first-component-conten">
+    <div class="relative z-10 bg-white">
       <BlackSection />
     </div>
   </section>
@@ -122,10 +122,10 @@ onUnmounted(() => {
 /* --- Reproduction des styles du .top-bubble --- */
 .oval-background {
   /* Positionnement relatif à son parent .oval-background-wrap */
-  position: relative; /* Ou absolute si le wrap est son seul parent direct pour le positionnement */
+  /* position: relative; Ou absolute si le wrap est son seul parent direct pour le positionnement */
 
   background-color: #000000; /* Couleur orange de votre exemple */
-  border-radius: 50%; /* Forme ovale/circulaire */
+  border-radius: 80%; /* Forme ovale/circulaire */
   width: 300vw; /* Largeur trois fois la largeur du viewport */
   height: 100vw; /* Hauteur une fois et demie la largeur du viewport */
 

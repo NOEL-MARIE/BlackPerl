@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import Scroll_Video from '@/components/Landing/component/VideoSection.vue'
 import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import gsap from 'gsap'
 import { Draggable } from 'gsap/Draggable'
+import { useRouter } from 'vue-router'
 
 gsap.registerPlugin(Draggable)
+
+const router = useRouter()
 
 const sectionRef = ref<HTMLElement | null>(null)
 const logoRef = ref<HTMLImageElement | null>(null)
@@ -12,6 +14,8 @@ const anchorRef = ref<HTMLImageElement | null>(null)
 const videoSectionRef = ref<HTMLElement | null>(null)
 
 const showVideoSection = ref(false)
+// buttonClicked n'est plus nécessaire si la navigation est automatique au scroll
+// const buttonClicked = ref(true)
 
 let draggableInstance: Draggable | null = null
 
@@ -20,9 +24,25 @@ function animateVideoSection() {
   gsap.fromTo(
     videoSectionRef.value,
     { opacity: 0, y: 50 },
-    { opacity: 1, y: 0, duration: 1, ease: 'power3.out' },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: 'power3.out',
+      onComplete: () => {
+        // C'EST ICI QUE LA NAVIGATION DOIT AVOIR LIEU !
+        // Une fois l'animation de la section vidéo terminée, naviguez automatiquement.
+        router.push('/Scroll_Video')
+      },
+    },
   )
 }
+
+// onButtonClick n'est plus nécessaire si la navigation est automatique
+// function onButtonClick() {
+//   buttonClicked.value = true
+//   router.push('/Scroll_Video')
+// }
 
 onMounted(() => {
   // Animation d'entrée du logo
@@ -113,9 +133,9 @@ onUnmounted(() => {
     <section
       v-if="showVideoSection"
       ref="videoSectionRef"
+      class="flex flex-col items-center bg-white justify-center h-screen"
     >
-      <Scroll_Video />
-    </section>
+      </section>
   </div>
 </template>
 
@@ -131,5 +151,9 @@ onUnmounted(() => {
 .logo img {
   user-select: none;
   pointer-events: none;
+}
+button {
+  user-select: none;
+  cursor: pointer;
 }
 </style>

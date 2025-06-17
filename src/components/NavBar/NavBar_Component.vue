@@ -7,12 +7,12 @@
   >
     <div class="px-4 max-w-7xl">
       <div class="flex justify-between w-full h-9">
-        <!-- Liens desktop -->
         <div class="items-center hidden mx-auto w-fit md:flex">
-          <router-link
+          <a
             v-for="item in links"
             :key="item.name"
-            :to="item.to"
+            :href="item.to"
+            @click="navigateToAndReload(item.to)"
             class="relative flex justify-center px-3 py-2 font-medium transition-colors duration-300 text-xm w-fit"
             :class="[
               isImageRoute ? 'text-white' : 'text-gray-900',
@@ -21,11 +21,10 @@
           >
             {{ item.name }}
             <span></span>
-          </router-link>
+          </a>
         </div>
 
-        <!-- Bouton menu mobile -->
-        <div class="flex items-center md:hidden">
+        <div class="flex items-center  md:hidden">
           <button @click="toggleMenu" :class="{ 'text-white': isImageRoute }" aria-label="Toggle menu">
             <svg
               class="w-6 h-6"
@@ -41,23 +40,22 @@
       </div>
     </div>
 
-    <!-- Menu mobile -->
     <transition name="fade-slide">
-      <div v-if="isOpen" ref="menuRef" class="px-4 pt-4 pb-6 bg-white shadow-md md:hidden">
+      <div v-if="isOpen" ref="menuRef" class="px-4 pt-4 pb-6 z-[9999] bg-white shadow-md md:hidden">
         <div class="space-y-3">
-          <router-link
+          <a
             v-for="item in links"
             :key="item.name"
-            :to="item.to"
+            :href="item.to"
+            @click="navigateToAndReload(item.to); closeMenu();"
             class="block px-2 py-1 text-base font-medium transition-colors duration-300"
             :class="[
               route.path === item.to ? 'text-[#F8D065]' : 'text-gray-900',
               isImageRoute ? 'text-white' : 'text-gray-900',
             ]"
-            @click="closeMenu"
           >
             {{ item.name }}
-          </router-link>
+          </a>
         </div>
       </div>
     </transition>
@@ -80,7 +78,7 @@ const links = [
   { name: 'Expertise', to: '/expertise' },
   { name: 'Réalisations', to: '/realisations' },
   { name: 'Carrière', to: '/carriere' },
-  { name: 'Test.vue', to: '/RealisationsViewRealisationsView' },
+  // { name: 'Test.vue', to: '/RealisationsViewRealisationsView' },
 ]
 
 const isImageRoute = computed(() => route.path.startsWith('/image/'))
@@ -115,6 +113,11 @@ const closeMenu = () => {
       isOpen.value = false
     },
   })
+}
+
+// Nouvelle fonction pour naviguer et recharger
+const navigateToAndReload = (path: string) => {
+  window.location.href = path // Cela naviguera vers le chemin et forcera un rechargement complet de la page
 }
 
 watch(isOpen, async (val) => {

@@ -1,6 +1,6 @@
 <template>
   <section class="flex items-center flex-col h-screen justify-center w-screen text-white">
-    <div class="h-[550px] ml-44 items-center justify-center w-screen flex flex-row">
+    <div class="h-[550px] pl-44 items-center justify-center w-screen flex flex-row">
       <div class="w-[530px] h-[550px]">
         <div class="flex flex-col gap-2 h-[512px]">
           <button class="hover:cursor-pointer">
@@ -13,7 +13,9 @@
                 </div>
 
                 <div class="flex justify-around mt-5 text-white">
-                  <div class="uppercase text-start font-HouseOfCardsW03Bold text-[29px] flex animated-text">
+                  <div
+                    class="uppercase text-start font-HouseOfCardsW03Bold text-[29px] flex animated-text"
+                  >
                     Stratégie <br />
                     marketing <br />
                     360°
@@ -53,7 +55,9 @@
                           >événementielles</span
                         >
                       </div>
-                      <div class="flex flex-col text-sm text-start font-Opensans font-light animated-text">
+                      <div
+                        class="flex flex-col text-sm text-start font-Opensans font-light animated-text"
+                      >
                         Du concept au terrain, nous <br />
                         imaginons et réalisons des <br />
                         événements impactants,<br />
@@ -151,12 +155,14 @@
                 </button>
               </div>
             </div>
-            <div class="w-[476px] h-[120px] rounded-xl group bg-black">
+            <div class="w-[476px] h-[151px] rounded-xl group bg-black">
               <button>
                 <router-link to="StudioCreationView">
                   <div class="flex-col flex p-4">
                     <div class="flex justify-between">
-                      <div class="font-HouseOfCardsW03Bold text-start text-2xl uppercase animated-text">
+                      <div
+                        class="font-HouseOfCardsW03Bold text-start text-2xl uppercase animated-text"
+                      >
                         Studio de <br />Création
                       </div>
                       <div
@@ -185,7 +191,9 @@
               <router-link to="AnalyseIAView">
                 <div class="flex-col flex p-4">
                   <div class="flex">
-                    <div class="font-HouseOfCardsW03Bold text-start text-2xl uppercase animated-text">
+                    <div
+                      class="font-HouseOfCardsW03Bold text-start text-2xl uppercase animated-text"
+                    >
                       Analyse de <br />
                       performance IA
                     </div>
@@ -212,7 +220,9 @@
               <router-link to="ActivationInfluenceView">
                 <div class="flex-col flex p-4">
                   <div class="flex">
-                    <div class="font-HouseOfCardsW03Bold text-start text-2xl uppercase leading-6 animated-text">
+                    <div
+                      class="font-HouseOfCardsW03Bold text-start text-2xl uppercase leading-6 animated-text"
+                    >
                       Activation <br />
                       d’influence
                     </div>
@@ -241,8 +251,7 @@
       <img :src="boatGif" alt="" width="84px" height="84px" ref="boatGifRef" />
     </div>
   </section>
-
-  </template>
+</template>
 
 <script lang="ts">
 import boatGif from '@/assets/images/boat.gif'
