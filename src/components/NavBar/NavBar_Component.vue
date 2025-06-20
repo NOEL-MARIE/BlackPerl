@@ -1,37 +1,46 @@
 <template>
   <nav
     :class="[
-      'w-full font-sans z-50 transition-all duration-300 flex items-center justify-center',
-      isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4',
+      '  absolute w-full font-sans z-50 transition-all duration-300 flex items-center justify-center top-0 left-0',
+      isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4', // <-- MODIFIÉ ICI
     ]"
   >
-    <div class="px-4 max-w-7xl">
-      <div class="flex justify-between w-full h-9">
+    <div class="px-4 max-w-7xl w-full">
+      <div class="flex justify-between w-full h-9 items-center">
         <div class="items-center hidden mx-auto w-fit md:flex">
-          <a
+          <router-link
             v-for="item in links"
             :key="item.name"
-            :href="item.to"
-            @click="navigateToAndReload(item.to)"
+            :to="item.to"
             class="relative flex justify-center px-3 py-2 font-medium transition-colors duration-300 text-xm w-fit"
             :class="[
-              isImageRoute ? 'text-white' : 'text-gray-900',
+              isImageRoute && !isScrolled ? 'text-white' : 'text-gray-900', // <-- Ajustement pour texte blanc sur fond transparent
               route.path === item.to ? 'font-bold active' : '',
             ]"
           >
             {{ item.name }}
             <span></span>
-          </a>
+          </router-link>
         </div>
 
-        <div class="flex items-center  md:hidden">
-          <button @click="toggleMenu" :class="{ 'text-white': isImageRoute }" aria-label="Toggle menu">
+        <div class="flex items-center md:hidden">
+          <button
+            @click="toggleMenu"
+            :class="{
+              'text-white': isImageRoute && !isScrolled,
+              'text-gray-900': isScrolled || !isImageRoute,
+            }"
+            aria-label="Toggle menu"
+          >
             <svg
               class="w-6 h-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              :class="{ 'stroke-white': isImageRoute }"
+              :class="{
+                'stroke-white': isImageRoute && !isScrolled,
+                'stroke-gray-900': isScrolled || !isImageRoute,
+              }"
             >
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
@@ -40,25 +49,30 @@
       </div>
     </div>
 
-    <transition name="fade-slide">
-      <div v-if="isOpen" ref="menuRef" class="px-4 pt-4 pb-6 z-[9999] bg-white shadow-md md:hidden">
-        <div class="space-y-3">
-          <a
-            v-for="item in links"
-            :key="item.name"
-            :href="item.to"
-            @click="navigateToAndReload(item.to); closeMenu();"
-            class="block px-2 py-1 text-base font-medium transition-colors duration-300"
-            :class="[
-              route.path === item.to ? 'text-[#F8D065]' : 'text-gray-900',
-              isImageRoute ? 'text-white' : 'text-gray-900',
-            ]"
-          >
-            {{ item.name }}
-          </a>
-        </div>
+    <div
+      v-if="isOpen"
+      ref="menuRef"
+      class="absolute top-full left-0 w-full px-4 pt-4 pb-6 bg-white shadow-md md:hidden"
+      :style="{ opacity: 0, transform: 'translateY(-20px)' }"
+    >
+
+      <div class="space-y-3">
+        <router-link
+          v-for="item in links"
+          :key="item.name"
+          :to="item.to"
+          @click="closeMenu"
+          class="block px-2 py-1 text-base font-medium transition-colors duration-300 relative"
+          :class="{
+            'text-[#F8D065]': route.path === item.to, // Active link color
+            'text-gray-900': route.path !== item.to, // Inactive link color
+          }"
+        >
+          {{ item.name }}
+          <span></span>
+        </router-link>
       </div>
-    </transition>
+    </div>
   </nav>
 </template>
 
@@ -78,7 +92,6 @@ const links = [
   { name: 'Expertise', to: '/expertise' },
   { name: 'Réalisations', to: '/realisations' },
   { name: 'Carrière', to: '/carriere' },
-  // { name: 'Test.vue', to: '/RealisationsViewRealisationsView' },
 ]
 
 const isImageRoute = computed(() => route.path.startsWith('/image/'))
@@ -87,48 +100,56 @@ const handleScroll = () => {
   isScrolled.value = window.scrollY > 10
 }
 
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
-
 const toggleMenu = () => {
   isOpen.value = !isOpen.value
 }
 
 const closeMenu = () => {
-  if (!menuRef.value) {
+  if (menuRef.value) {
+    gsap.to(menuRef.value, {
+      opacity: 0,
+      y: -20,
+      duration: 0.3,
+      ease: 'power2.in',
+      onComplete: () => {
+        isOpen.value = false
+      },
+    })
+  } else {
     isOpen.value = false
-    return
   }
-  gsap.to(menuRef.value, {
-    opacity: 0,
-    y: -20,
-    duration: 0.3,
-    ease: 'power2.in',
-    onComplete: () => {
-      isOpen.value = false
-    },
-  })
-}
-
-// Nouvelle fonction pour naviguer et recharger
-const navigateToAndReload = (path: string) => {
-  window.location.href = path // Cela naviguera vers le chemin et forcera un rechargement complet de la page
 }
 
 watch(isOpen, async (val) => {
-  if (val && menuRef.value) {
+  if (val) {
     await nextTick()
-    gsap.fromTo(
-      menuRef.value,
-      { opacity: 0, y: -20 },
-      { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' },
-    )
+    if (menuRef.value) {
+      gsap.fromTo(
+        menuRef.value,
+        { opacity: 0, y: -20 },
+        { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' },
+      )
+    }
   }
+})
+
+const handleClickOutside = (event: MouseEvent) => {
+  const isClickInsideMenu = menuRef.value && menuRef.value.contains(event.target as Node);
+  const isClickOnToggleButton = (event.target as HTMLElement).closest('button[aria-label="Toggle menu"]');
+
+  if (isOpen.value && !isClickInsideMenu && !isClickOnToggleButton) {
+    closeMenu();
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+  document.addEventListener('click', handleClickOutside)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+  document.removeEventListener('click', handleClickOutside)
 })
 </script>
 
@@ -138,8 +159,8 @@ a > span {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 2px; /* hauteur de la ligne */
-  background-color: #F8D065; /* ta couleur jaune */
+  height: 2px;
+  background-color: #F8D065;
   transform-origin: right center;
   transform: scaleX(0);
   transition: transform 0.5s ease;
@@ -148,8 +169,12 @@ a > span {
 }
 
 a:hover > span,
-a.active > span {
+.router-link-active > span {
   transform-origin: left center;
   transform: scaleX(1);
+}
+
+.router-link-active {
+  font-weight: bold;
 }
 </style>

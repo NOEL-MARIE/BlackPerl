@@ -1,13 +1,8 @@
 <template>
-  <div class="container h-screen w-screen " ref="containerElement">
+  <div class="container h-screen w-screen xs:mt-14 md:mt-20 "   ref="containerElement">
     <div id="ring" ref="ringElement">
-      <div v-for="(imga, i) in img" :key="i" class="img overflow-x-hidden">
-        <img
-          :src="imga"
-          :alt="'Image ' + (i + 1)"
-          class="object-cover w-sceen h-screen  z-1 "
-          style="position: absolute; top: 0; left: 0; z-index: 1"
-        />
+      <div v-for="(imga, i) in img" :key="i" class="img">
+        <img :src="imga" :alt="'Image ' + (i + 1)" class="image-content" />
         <div class="flex hover:cursor-pointer items-center justify-center">
           <img
             :src="PlayIcons"
@@ -71,20 +66,21 @@ const img = [
   Img11,
   Img12,
   Img13,
+  Img13,
+  Img13,
   Img14,
 ]
 
 // Nombre d'images dans l'anneau
-const imageCount = img.length // Défini dynamiquement en fonction du tableau `img`
+const imageCount = img.length
 
 // Variable pour stocker la position X initiale pendant le glissement
 let xPos = 0
-let draggableInstance: Draggable | null = null // Stocke l'instance Draggable pour le nettoyage
+let draggableInstance: Draggable | null = null
 
 // Variable pour gérer le défilement automatique
 let autoScrollTween: gsap.core.Tween | null = null
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-let isHovered = false // Ajouté pour gérer la pause au survol
+let isHovered = false // Variable d'état pour le survol
 
 // Fonction de configuration des animations GSAP et Draggable
 function setupGSAPAnimations() {
@@ -97,7 +93,28 @@ function setupGSAPAnimations() {
 
   // Calcule le rayon de l'anneau en fonction de la taille du conteneur
   // et du nombre d'images pour s'assurer qu'elles s'adaptent correctement.
-  const ringRadius = 2300 // Cette valeur doit correspondre à la translation z dans transformOrigin
+function calculateRingRadius(): number {
+  if (containerElement.value) {
+    const containerWidth = containerElement.value.offsetWidth;
+    let multiplier = 3.0; // Facteur par défaut pour les petits écrans (XS)
+
+    // Détecte la taille d'écran "md" (768px par défaut pour Tailwind CSS)
+    // Vous pouvez ajuster cette valeur de 768px si vos breakpoints Tailwind sont différents.
+    if (window.matchMedia('(min-width: 728px)').matches) {
+      multiplier = 4.3; // Facteur pour les écrans MD et plus grands
+    }
+
+    // Retourne le rayon calculé basé sur la largeur du conteneur et le multiplicateur approprié
+    return containerWidth * multiplier;
+  }
+
+  // Valeur de secours si le conteneur n'est pas encore monté.
+  // Idéalement, cette valeur devrait être une estimation raisonnable pour le cas par défaut.
+  // Vous pourriez la baser sur la largeur par défaut du conteneur en l'absence de JS.
+  return 3900; // La valeur par défaut de secours pourrait aussi être ajustée si nécessaire.
+}
+  // const ringRadius = 2300 // Cette valeur doit correspondre à la translation z dans transformOrigin
+  const ringRadius = calculateRingRadius() // Cette valeur doit correspondre à la translation z dans transformOrigin
 
   // Initialisation de la timeline GSAP pour définir les propriétés et animer
   gsap
@@ -113,10 +130,10 @@ function setupGSAPAnimations() {
     })
     .from(images, {
       // Anime les images en vue
-      duration: 1.5,
+      duration: 2.5,
       y: 200,
       opacity: 0,
-      stagger: 0.1, // Anime les images en décalé
+      stagger: 0.3, // Anime les images en décalé
       ease: 'expo',
       onComplete: startAutoScroll, // Démarre le défilement automatique une fois l'animation d'entrée terminée
     })
@@ -142,7 +159,11 @@ function setupGSAPAnimations() {
       xPos = currentClientX // Met à jour xPos pour le prochain événement de glissement
     },
     onDragEnd: () => {
-      startAutoScroll() // Reprend le défilement automatique après le glissement
+      // Reprend le défilement automatique après le glissement,
+      // mais seulement si la souris n'est pas en survol.
+      if (!isHovered) {
+        startAutoScroll()
+      }
       // Réinitialise la position du dragger pour éviter les sauts visuels
       gsap.set(draggerElement.value, { x: 0, y: 0 })
     },
@@ -156,15 +177,17 @@ function setupGSAPAnimations() {
 // Démarre le défilement automatique
 function startAutoScroll() {
   if (ringElement.value && !autoScrollTween) {
-    // Vérifie qu'un tween n'est pas déjà actif
+    // Crée le tween si n'existe pas encore
     autoScrollTween = gsap.to(ringElement.value, {
-      rotationY: `+=${360 * imageCount}`, // Fait tourner le carrousel de plusieurs tours complets (droite vers gauche)
-      duration: imageCount * 69, // *** DURÉE AJUSTÉE POUR UN DÉFILEMENT TRÈS LENT ***
-      // Par exemple, 8 secondes par image, soit 14 * 8 = 112 secondes pour un tour complet
+      rotationY: `+=${260 * imageCount}`, // Fait tourner le carrousel de plusieurs tours complets (droite vers gauche)
+      duration: imageCount * 99, // *** DURÉE AJUSTÉE POUR UN DÉFILEMENT TRÈS LENT ***
       ease: 'none', // Défilement linéaire pour un mouvement constant
       repeat: -1, // Répète l'animation à l'infini
       overwrite: true, // S'assure que ce tween remplace toute autre animation de rotationY
     })
+  } else if (autoScrollTween && autoScrollTween.paused()) {
+    // Si le tween existe et est en pause, le reprendre
+    autoScrollTween.play()
   }
 }
 
@@ -231,106 +254,92 @@ div {
   position: absolute;
 }
 
-.container {
-  perspective: 1500px;
-  width: 600px; /* Largeur de base pour le conteneur 3D */
-  height: 600px; /* Hauteur de base pour le conteneur 3D */
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%); /* Centre le conteneur */
-  /* Rend le conteneur réactif en utilisant des unités fluides, par exemple, vw/vh ou max-width */
-
-  /* aspect-ratio: 1 / 1; Maintient le rapport d'aspect */
-
-
-}
-
-
+/* Styles pour les petits écrans (min-width: 540px) */
 @media (min-width: 540px) {
   .container {
-    perspective:500px; /* Nouvelle perspective pour SM */
+    perspective: 800px;
+    width: 900px;
+    height: 900px;
+    left: 40%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+  }
+
+  .img {
+    /* Ces dimensions déterminent la taille de chaque "emplacement" d'image dans l'anneau 3D */
+    width: 100%; /* Ajuster si nécessaire pour la taille de l'image */
+    height: 100%; /* Ajuster si nécessaire pour la taille de l'image */
+    display: flex; /* Utilise flexbox pour centrer l'image dans le div */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Cache tout débordement si les images sont légèrement plus grandes que le conteneur */
+  }
+
+  .image-content {
+    /* Propriétés de l'image pour s'adapter au div .img */
+    object-fit: cover; /* S'assure que l'image s'adapte à son conteneur, en conservant le rapport d'aspect */
+    width: 100%;
+    height: 100%;
+    display: block; /* Supprime l'espace supplémentaire sous l'image */
   }
 }
 
-/*
- * Styles pour 'MD' (>= 768px).
- * Correspond au breakpoint 'MD' de votre configuration.
- */
-@media (min-width: 768px) {
-  .mon-conteneur-3d {
-    perspective: 1200px; /* Nouvelle perspective pour MD */
-     /* Hauteur ajustée pour MD */
-  }
-}
 
-/*
- * Styles pour 'LG' (>= 1024px).
- * Correspond au breakpoint 'LG' de votre configuration.
- */
-@media (min-width: 1024px) {
-  .mon-conteneur-3d {
+@media (min-width: 640px) {
+  .container {
     perspective: 1500px; /* Nouvelle perspective pour LG */
+    width: 580px; /* Largeur de base pour le conteneur 3D */
+
     height: 500px; /* Hauteur ajustée pour LG */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Centre le conteneur */
+  }
+  .img {
+    /* Ces dimensions déterminent la taille de chaque "emplacement" d'image dans l'anneau 3D */
+    width: 170%; /* Ajuster si nécessaire pour la taille de l'image */
+    height: 100%; /* Ajuster si nécessaire pour la taille de l'image */
+    display: flex; /* Utilise flexbox pour centrer l'image dans le div */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Cache tout débordement si les images sont légèrement plus grandes que le conteneur */
+  }
+
+  .image-content {
+    /* Propriétés de l'image pour s'adapter au div .img */
+    object-fit: contain; /* Assure que l'image s'adapte, en conservant le rapport d'aspect */
+    width: 100%; /* Ces valeurs semblent très grandes, assurez-vous que c'est intentionnel */
+    height: 250%; /* Ces valeurs semblent très grandes, assurez-vous que c'est intentionnel */
+    display: block; /* Supprime l'espace supplémentaire sous l'image */
   }
 }
 
-/*
- * Styles pour 'XL' (>= 1280px).
- * Correspond au breakpoint 'XL' de votre configuration.
- */
 @media (min-width: 1280px) {
-  .mon-conteneur-3d {
+  .container {
     perspective: 1800px; /* Nouvelle perspective pour XL */
     height: 550px; /* Hauteur ajustée pour XL */
   }
 }
 
-/*
- * Styles pour '2XL' (>= 1536px).
- * Correspond au breakpoint '2XL' de votre configuration.
- */
 @media (min-width: 1536px) {
-  .mon-conteneur-3d {
+  .container {
     perspective: 2000px; /* Nouvelle perspective pour 2XL */
     height: 600px; /* Hauteur ajustée pour 2XL */
   }
 }
 
-
-
 #ring {
   width: 100%;
   height: 100%;
-
 }
 
-.img {
-  /* Ces dimensions déterminent la taille de chaque "emplacement" d'image dans l'anneau 3D */
-  width: 170%; /* Ajuster si nécessaire pour la taille de l'image */
-  height: 100%; /* Ajuster si nécessaire pour la taille de l'image */
-  display: flex; /* Utilise flexbox pour centrer l'image dans le div */
-  justify-content: center;
-  align-items: center;
-  overflow: hidden; /* Cache tout débordement si les images sont légèrement plus grandes que le conteneur */
-}
-
-.img img {
-  /* Propriétés de l'image pour s'adapter au div .img */
-  position: relative !important; /* Annule la position absolue si nécessaire, ou la supprime si déjà absolue */
-  object-fit: contain; /* S'assure que l'image s'adapte à son conteneur, en conservant le rapport d'aspect */
-  width: 500%;
-  height: 500%;
-  overflow: hidden;
-
-  display: block; /* Supprime l'espace supplémentaire sous l'image */
-}
-
-#dragger {
-  width: 100vw;
-  height: 100vh;
+/* MASQUER LE GRAGGER */
+/* #dragger {
+  width:50vw;
+  height: 50vh;
   left: 0;
   top: 0;
   cursor: grab;
   overflow: hidden;
-}
+} */
 </style>

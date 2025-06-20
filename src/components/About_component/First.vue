@@ -76,7 +76,7 @@ const animateHeadline = () => {
 <template>
   <div class="z-0 flex flex-col justify-around w-screen h-screen">
     <div class="flex justify-center w-full h-52">
-      <h1 ref="animatedHeadline" class=" text-6xl font-cinzel text-center text-[98px] flex-col">
+      <h1 ref="animatedHeadline" class=" md:text-6xl  xs:text-5xl xs:mt-32 font-cinzel text-center text-[98px] flex-col">
         DONNEZ VIE À VOTRE <br />
         MARQUE
       </h1>

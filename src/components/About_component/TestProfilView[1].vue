@@ -234,6 +234,65 @@ body {
   cursor: pointer;
 }
 
+/* REPONSIVE SECTION ON CSS */
+/* Ajustements pour grand écran large (entre desktop et tablette) */
+@media (max-width: 1440px) {
+  .wheel {
+    width: 280vw;
+    height: 400vw;
+    max-width: 2200px;
+    max-height: 2200px;
+  }
+  .wheel__card {
+    width: clamp(140px, 22vw, 280px);
+    height: clamp(140px, 22vw, 280px);
+  }
+}
+
+/* Tablette */
+@media (max-width: 1024px) {
+  .wheel {
+    width: 220vw;
+    height: 320vw;
+    max-width: 1500px;
+    max-height: 1500px;
+  }
+  .wheel__card {
+    width: clamp(120px, 20vw, 250px);
+    height: clamp(120px, 20vw, 250px);
+  }
+}
+
+/* Petit tablette / grand mobile */
+@media (max-width: 768px) {
+  .wheel {
+    width: 180vw;
+    height: 280vw;
+    max-width: 1200px;
+    max-height: 1200px;
+  }
+  .wheel__card {
+    width: clamp(110px, 30vw, 200px);
+    height: clamp(110px, 30vw, 200px);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .wheel {
+    width: 150vw;
+    height: 250vw;
+    max-width: 900px;
+    max-height: 900px;
+  }
+  .wheel__card {
+    width: clamp(90px, 40vw, 150px);
+    height: clamp(90px, 40vw, 150px);
+  }
+}
+
+/* REPONSIVE SECTION ON CSS */
+
 .wheel__card img {
   object-fit: contain;
   border-radius: 2.5rem;

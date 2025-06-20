@@ -17,28 +17,22 @@ module.exports = {
   theme: {
     // Définition explicite de tous les breakpoints ici
     screens: {
-      'xs': '475px', // Votre breakpoint personnalisé
-      'sm': '640px', // 40rem
-      'md': '768px', // 48rem
-      'lg': '1024px', // 64rem
-      'xl': '1280px', // 80rem
-      '2xl': '1536px', // 96rem
+      xs: '360px',
+      sm: '619px',
+      md: '768px',
+      lg: '976px',
+      xl: '1440px',
+      '2xl': '1536px', // Le '2xl' avec des guillemets est une bonne pratique
     },
     extend: {
       fontFamily: {
-        cinzel:["Cinzel", 'sans-serif' ],
-        Roboto:["Roboto", 'sans-serif' ],
-        Opensans: ["Open Sans", 'sans-serif' ],
-        poppins :["Poppins", 'sans-serif' ],
-        HouseOfCardsW03Bold :['HouseOfCardsW03Bold', 'cursive']
+        cinzel: ['Cinzel', 'sans-serif'],
+        Roboto: ['Roboto', 'sans-serif'],
+        Opensans: ['Open Sans', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
+        HouseOfCardsW03Bold: ['HouseOfCardsW03Bold', 'cursive'],
       },
     },
   },
-  plugins: [
-    // animate,
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    require('tailwindcss-animate'),
-    // require('tailwindcss-animated'),
-    // animations,
-  ],
+  plugins: [],
 }

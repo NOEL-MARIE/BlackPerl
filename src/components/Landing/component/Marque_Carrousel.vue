@@ -42,7 +42,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-screen overflow-hidden h-96 ">
+  <div class="w-screen overflow-hidden pt-20 pb-11 h-72 ">
     <div class="carousel-containe">
       <div ref="trackRef" class="carousel-track">
         <div

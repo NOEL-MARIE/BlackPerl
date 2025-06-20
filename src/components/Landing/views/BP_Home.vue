@@ -20,30 +20,27 @@ export default {
       Echec,
       Echec1,
       Logo_BlackPurl,
-      // Removed carousel-related data (images, PlayIcons, scrollX, animationFrame, isHovered)
     }
   },
-  // Removed computed property (duplicatedImages) as it's no longer needed
-  // Removed mounted and beforeUnmount hooks as auto-scroll is not needed
-  // Removed methods related to auto-scroll (startAutoScroll, stopAutoScroll, handleMouseEnter, handleMouseLeave)
 }
 </script>
 
 <template>
   <div class="w-screen h-screen overflow-hidden">
-    <div class="relative w-screen overflow-hidden xs:h-[66%] xs:m-0 xs:p-0  md:h-[40vh] flex justify-center items-center">
+    <div
+      class="relative  w-screen mb-12 r:h-[66%] r:m-0 r:p-0 r: mt-[4%] r:h-[6%] flex  justify-evenly items-center"
+    >
       <Motion
         tag="div"
         :initial="{ opacity: 0, y: -50 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 1 }"
-        class="absolute top-[-30%] hidden lg:flex  left-[7%]"
+        class="absolute r:top-[-70%] mt-[10%]  r:w-[50%] r:mt-[20%] r:left-[3%] r:flex left-[7%]"
       >
         <img
           :src="Echec"
           alt="Illustration d'échec"
-          style="width: 68%; height: auto"
-          class="object-contain rotate-12"
+          class="object-contain rotate-12 w-[68%]  r:mb-11 h-auto"
         />
       </Motion>
 
@@ -52,12 +49,12 @@ export default {
         :initial="{ opacity: 0, scale: 0.8 }"
         :animate="{ opacity: 1, scale: 1 }"
         :transition="{ duration: 1.2 }"
-        class="absolute z-40 left-[1%] flex top-[-10%] items-center justify-center   w-full h-full"
+        class=" z-40  left-[1%] flex r:h-[570%] r:w-[70%]   pb-16 top-[-30%] items-center justify-center w-ful h-ful r: w-[40%] r:mt-[12%]"
       >
         <img
           :src="Logo_BlackPurl"
           alt="Logo Black Pearl"
-          class="object-contain  md:h-[69%] xs:h-[40%] top-[30%]"
+          class="object-contain r:h-[5%]  r:h-[100%] l:h-[70%] r:h-[5%] "
         />
       </Motion>
 
@@ -66,20 +63,19 @@ export default {
         :initial="{ opacity: 0, y: 50 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ duration: 1 }"
-        class="absolute z-0 top-[-40%] hidden lg:flex right-[-4%]"
+        class="absolute z-0 r:top-[-180%] mt-[10%]  r:flex right-[-4%]"
       >
         <img
           :src="Echec1"
           alt="Illustration d'échec"
-          style="width: 68%; height: auto"
-          class="-rotate-12"
+          class="object-contain -rotate-12 w-[68%] h-auto"
         />
       </Motion>
     </div>
 
-    <div class="w-screen z-0 overflow-hidden xs:mt-0  md:mt-32">
-      <RealisationsView class="overflow-hidden "/>
-    </div>H
+    <div class="w-screen  hidden   z-0 hidd r:mt-0 hidde r:pt-24">
+      <RealisationsView class="overflow-hidden" />
+    </div>
   </div>
 </template>
 

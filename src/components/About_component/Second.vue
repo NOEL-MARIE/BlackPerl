@@ -2,122 +2,111 @@
 <script setup lang="ts">
 import Carrousel_Left from '@/components/About_component/Carrousel_Left.vue'
 import Carrousel_Right from '@/components/About_component/Carrousel_Right.vue'
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, nextTick, type Ref } from 'vue' // Ajoutez nextTick
 import { gsap } from 'gsap'
 import { SplitText } from 'gsap/SplitText'
-import { ScrollTrigger } from 'gsap/ScrollTrigger' // Importez ScrollTrigger
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 // Enregistrez les plugins
-gsap.registerPlugin(SplitText, ScrollTrigger) // Enregistrez ScrollTrigger ici aussi
+gsap.registerPlugin(SplitText, ScrollTrigger)
 
 // Refs pour chaque bloc de texte
 const boldTextRef = ref<HTMLElement | null>(null)
 const regularTextRef = ref<HTMLElement | null>(null)
 const conquestTextRef = ref<HTMLElement | null>(null)
 
+// Déclarer les instances de SplitText pour pouvoir les réinitialiser/recalculer
+let splitBold: SplitText | null = null
+let splitRegular: SplitText | null = null
+let splitConquest: SplitText | null = null
+
 // --- Animation Functions avec ScrollTrigger ---
 
-const animateBoldTextByLines = () => {
-  if (boldTextRef.value) {
-    const split = new SplitText(boldTextRef.value, { type: 'lines' })
-    const lines = split.lines
+const animateText = (elementRef: Ref<HTMLElement | null>, type: 'lines' | 'words' | 'chars') => {
+  if (elementRef.value) {
+    let splitInstance: SplitText
+    let animationProps: {
+      opacity: number
+      y: number
+      stagger: number
+      duration: number
+      ease: string
+    }
 
-    // Créez une timeline pour l'animation afin de la contrôler plus facilement avec ScrollTrigger
-    const tl = gsap.timeline({
+    // Gérer les instances de SplitText pour le nettoyage
+    // eslint-disable-next-line vue/no-ref-as-operand
+    if (elementRef === boldTextRef) {
+      if (splitBold) splitBold.revert() // Réinitialiser l'ancien split si existe
+      splitBold = new SplitText(elementRef.value, { type: type })
+      splitInstance = splitBold
+      animationProps = { opacity: 0, y: 20, stagger: 0.05, duration: 0.7, ease: 'power3.out' } // Plus rapide
+    // eslint-disable-next-line vue/no-ref-as-operand
+    } else if (elementRef === regularTextRef) {
+      if (splitRegular) splitRegular.revert()
+      splitRegular = new SplitText(elementRef.value, { type: type })
+      splitInstance = splitRegular
+      animationProps = { opacity: 0, y: 15, stagger: 0.008, duration: 0.5, ease: 'power2.out' } // Plus rapide
+    // eslint-disable-next-line vue/no-ref-as-operand
+    } else if (elementRef === conquestTextRef) {
+      if (splitConquest) splitConquest.revert()
+      splitConquest = new SplitText(elementRef.value, { type: type })
+      splitInstance = splitConquest
+      animationProps = { opacity: 0, y: 10, stagger: 0.003, duration: 0.4, ease: 'power1.out' } // Plus rapide
+    } else {
+      return // Sécurité
+    }
+
+    const targets = splitInstance[type] as HTMLElement[] // Les éléments créés par SplitText (lignes, mots, chars)
+
+    gsap.from(targets, {
+      ...animationProps,
       scrollTrigger: {
-        trigger: boldTextRef.value, // L'élément qui déclenchera l'animation
-        start: 'bottom 20%', // Quand le haut de l'élément arrive à 80% de la fenêtre (du haut)
-        // markers: true, // Décommenter pour voir les marqueurs ScrollTrigger (utile pour le débogage)
-        toggleActions: 'play none none none', // play, pause, resume, reverse, restart, reset, complete, none
-        // onEnter, onLeave, onEnterBack, onLeaveBack
+        trigger: elementRef.value,
+        start: 'top 80%', // Déclenche plus tôt quand le haut de l'élément est à 80% du viewport
+        end: 'bottom top', // Fin du déclenchement si besoin (pas toujours nécessaire pour 'play once')
+        // markers: true, // Décommenter pour voir les marqueurs
+        toggleActions: 'play none none none', // Joue une seule fois à l'entrée
       },
     })
-
-// Animation par lignes (plus rapide)
-tl.from(lines, {
-  opacity: 0,
-  y: 20,
-  stagger: 0.07,    // Avant : 0.15
-  duration: 0.8,    // Avant : 0.8
-  ease: 'power3.out',
-})
-  }
-}
-
-const animateRegularTextByWords = () => {
-  if (regularTextRef.value) {
-    const split = new SplitText(regularTextRef.value, { type: 'words' })
-    const words = split.words
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: regularTextRef.value,
-        start: 'bottom 20%', // Déclenchement similaire au premier bloc
-        // markers: true,
-        toggleActions: 'play none none none',
-      },
-    })
-
-// Animation par mots (plus rapide)
-tl.from(words, {
-  opacity: 0,
-  y: 10,
-  stagger: 0.01,    // Avant : 0.02
-  duration: 0.6,    // Avant : 0.6
-  ease: 'power2.out',
-})
-  }
-}
-
-const animateConquestTextByChars = () => {
-  if (conquestTextRef.value) {
-    const split = new SplitText(conquestTextRef.value, { type: 'chars' })
-    const chars = split.chars
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: conquestTextRef.value,
-        start: 'bottom 20%', // Déclenchement similaire
-        // markers: true,
-        toggleActions: 'play none none none',
-      },
-    })
-
-// Animation par caractères (plus rapide)
-tl.from(chars, {
-  opacity: 0,
-  y: 10,
-  stagger: 0.005,   // Avant : 0.01
-  duration: 0.4,    // Avant : 0.4
-  ease: 'power1.out',
-})
   }
 }
 
 // --- Lifecycle Hooks ---
 
 onMounted(() => {
-  // Appelez les fonctions d'animation au montage du composant
-  animateBoldTextByLines()
-  animateRegularTextByWords()
-  animateConquestTextByChars()
+  // nextTick assure que le DOM est complètement mis à jour AVANT que GSAP ne calcule les positions
+  nextTick(() => {
+    animateText(boldTextRef, 'lines')
+    animateText(regularTextRef, 'words')
+    animateText(conquestTextRef, 'chars')
+
+    // Rafraîchir ScrollTrigger après le chargement initial et lors du redimensionnement
+    // C'est CRUCIAL pour que les animations de scroll se recalibrent
+    ScrollTrigger.refresh()
+
+    // Ajoute un écouteur d'événement pour rafraîchir ScrollTrigger au redimensionnement
+    // C'est important car SplitText et ScrollTrigger doivent recalculer leurs positions
+    window.addEventListener('resize', () => ScrollTrigger.refresh());
+  })
 })
 
 onBeforeUnmount(() => {
   // IMPORTANT : Tue tous les ScrollTriggers créés pour éviter les fuites de mémoire.
-  // C'est plus efficace que de tuer les tweens individuels liés aux refs ici.
+  // C'est la meilleure pratique.
   ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
 
-  // Si vous aviez des tweens qui n'étaient PAS contrôlés par ScrollTrigger,
-  // vous devriez toujours les tuer explicitement.
-  // Exemple (si vous aviez une animation non liée au scroll) :
-  // gsap.killTweensOf(someOtherElementRef.value);
+  // Réinitialiser les splits pour nettoyer le DOM des éléments créés par SplitText
+  if (splitBold) splitBold.revert()
+  if (splitRegular) splitRegular.revert()
+  if (splitConquest) splitConquest.revert()
+
+  // Supprimer l'écouteur de redimensionnement
+  window.removeEventListener('resize', () => ScrollTrigger.refresh());
 })
 </script>
 
 <template>
   <div class="relative flex items-center justify-center w-screen mt-24">
-    <!-- Images en arrière-plan gauche et droite -->
     <img
       src="@/assets/images/BOAT_DRAW.png"
       width="751"
@@ -131,11 +120,10 @@ onBeforeUnmount(() => {
       class="absolute right-0 z-10 mb-16 translate-x-1/2 opacity-30"
     />
 
-    <!-- Contenu principal -->
     <div class="relative z-20 folder">
       <div class="tab"></div>
       <div class="body">
-        <div class="flex flex-col text-white h-ful">
+        <div class="flex flex-col text-white h-full">
           <div class="flex-1">
             <div class="flex flex-col items-center justify-center gap-16">
               <div class="flex justify-between mt-11 gap-9">
@@ -157,7 +145,7 @@ onBeforeUnmount(() => {
                     <br />
                     transformons chaque campagne en jeu de pouvoir.
                   </p>
-                  <p >
+                  <p>
                     un terrain d’expérimentation où les marques deviennent des héros <br />
                     culturels. Nous croyons au pouvoir de la culture, à la magie de l’expérience et
                     à

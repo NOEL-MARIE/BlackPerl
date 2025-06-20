@@ -1,5 +1,5 @@
 <template>
-  <div class=" h-screen  flex flex-col space-y-14 gap-16 pb-28">
+  <div class=" h-screen  flex flex-col space-y-14 md:gap-24 pb-28">
     <First />
 
     <gsap3dpositionv1 />

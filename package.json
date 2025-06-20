@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "overrides": {
+    "json-server-auth": {
+      "jsonwebtoken": "^9.0.0"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "serve": "yarn concurrently \"yarn vite\" \"node --watch server/server.cjs \" ",
