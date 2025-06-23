@@ -175,7 +175,7 @@ onBeforeUnmount(() => {
 .slogan-quote {
   position: absolute;
   right: 0;
-  top: 20px;
+ margin-bottom: 50px;
   display: flex;
 
 

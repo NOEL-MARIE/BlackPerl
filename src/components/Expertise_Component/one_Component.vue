@@ -1,5 +1,5 @@
 <template>
-  <section class="flex items-center flex-col h-screen justify-center w-screen text-white">
+  <section class="flex items-center mt-20 flex-col h-screen justify-center w-screen  text-white">
     <div class="h-[550px] pl-44 items-center justify-center w-screen flex flex-row">
       <div class="w-[530px] h-[550px]">
         <div class="flex flex-col gap-2 h-[512px]">
@@ -7,7 +7,7 @@
             <router-link to="/Strategie_360" class="block hover:cursor-pointer">
               <div class="relative w-[512px] h-[188px] bg-black rounded-xl pl-8 pt-2 pr-8">
                 <div
-                  class="absolute top-4 right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065] shadow"
+                  class="absolute   -4 right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065] shadow"
                 >
                   <span class="text-xl text-black font-bold animated-text">+</span>
                 </div>
@@ -38,7 +38,7 @@
                   <div class="flex group flex-col">
                     <div>
                       <div
-                        class="ml-[180px] top4 right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065]"
+                        class="ml-[180px]   4 right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065]"
                       >
                         <span
                           class="text-xl group-hover:rotate-90 group-hover:duration-700 text-black font-bold animated-text"
@@ -88,7 +88,7 @@
               <div class="w-[240px] h-[320px] group gap-2 bg-black rounded-xl p-3">
                 <div class="flex flex-col">
                   <div
-                    class="ml-[199px] top-4 right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065] shadow"
+                    class="ml-[199px]   -4 right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065] shadow"
                   >
                     <span
                       class="text-xl group-hover:rotate-90 group-hover:duration-700 text-black font-bold animated-text"
@@ -136,7 +136,7 @@
                           contenus
                         </div>
                         <div
-                          class="top-4 right-4 ml-24 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065]"
+                          class="  -4 right-4 ml-24 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065]"
                         >
                           <span
                             class="text-xl group-hover:rotate-90 group-hover:duration-700 text-black font-bold animated-text"
@@ -166,7 +166,7 @@
                         Studio de <br />Création
                       </div>
                       <div
-                        class="top-4 ml-80 right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065]"
+                        class="  -4 ml-80 right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065]"
                       >
                         <span
                           class="text-xl group-hover:rotate-90 group-hover:duration-700 text-black font-bold animated-text"
@@ -198,7 +198,7 @@
                       performance IA
                     </div>
                     <div
-                      class="top-4 ml-[155px] right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065]"
+                      class="  -4 ml-[155px] right-4 flex items-center justify-center w-[20px] h-[20px] rounded-full bg-[#F8D065]"
                     >
                       <span
                         class="text-xl group-hover:rotate-90 group-hover:duration-700 text-black font-bold animated-text"

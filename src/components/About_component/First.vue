@@ -74,17 +74,18 @@ const animateHeadline = () => {
 </script>
 
 <template>
-  <div class="z-0 flex flex-col justify-around w-screen h-screen">
-    <div class="flex justify-center w-full h-52">
-      <h1 ref="animatedHeadline" class=" md:text-6xl  xs:text-5xl xs:mt-32 font-cinzel text-center text-[98px] flex-col">
-        DONNEZ VIE À VOTRE <br />
-        MARQUE
-      </h1>
+
+    <div class="z-0 flex flex-col mt-32 justify-around w-screen h-screen">
+      <div class="flex justify-center w-full h-52">
+        <h1 ref="animatedHeadline" class="   font-cinzel leading-none text-center text-[88px] flex-col">
+          DONNEZ VIE À VOTRE <br />
+          MARQUE
+        </h1>
+      </div>
+      <div class="z-0 flex h-1/2 oblique-carousel-viewport mt-44">
+        <TestProfilView />
+      </div>
     </div>
-    <div class="z-0 flex h-1/2 oblique-carousel-viewport mt-44">
-      <TestProfilView />
-    </div>
-  </div>
 </template>
 
 <style scoped>

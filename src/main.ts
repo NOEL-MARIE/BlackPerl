@@ -1,5 +1,5 @@
 import './assets/main.css'
-
+import VueSmoothScroll from 'v-smooth-scroll'
 // Framework Core
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -13,7 +13,7 @@ import router from './router'
 
 // Initialisation de l'application
 const app = createApp(App)
-
+app.use(VueSmoothScroll)
 // Configuration Pinia
 const pinia = createPinia()
 
