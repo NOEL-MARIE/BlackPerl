@@ -1,29 +1,31 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <!-- eslint-disable vue/require-toggle-inside-transition -->
 <template>
-  <div class="carousel-container flex items-center justify-center flex-col h-screen w-screen">
+  <div class="carousel-container flex pt-9 items-center justify-center flex-col h-screen w-screen">
+    <button
+      class="absolute top-5 left-5 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-full"
+      @click="goBack"
+    >
+      Retour
+    </button>
+
     <h2 class="title font-HouseOfCardsW03Bold uppercase text-[#808080]">
       STRATÉGIE MARKETING 360°
     </h2>
-    <p class="w-[1147px] text-2xl">
-      Nous avons imaginé et déployé des campagnes à <b>360°</b>, ancrées dans la culture <br />
-      ivoirienne, pour repositionner, faire émerger ou renforcer des marques à fort <br />
-      potentiel.
-    </p>
+    <div class="flex items-center justify-center ml-64">
 
-    <div class="carousel flex mt-7 w-[1276px]">
-      <!-- Flèche gauche -->
+      <p class="w-[1147px] text-xl ">
+        Nous avons imaginé et déployé des campagnes à <b>360°</b>, ancrées dans la culture <br />
+        ivoirienne, pour repositionner, faire émerger ou renforcer des marques à fort <br />
+        potentiel.
+      </p>
+    </div>
+    <div class="carousel flex mt-7 w-[1206px]">
       <button class="arrow left rotate-180" @click="prevSlide">
         <img :src="Right" alt="left arrow" width="74px" />
       </button>
 
-      <!-- SLVHBVUYBVZUYBUYBRZIBZVLURZVBRVUBEZVIUBEVIULEBZVRIERBVEIRBVLEIURBVEIBVYERIBVEVILUEBVIEU -->
-
-      <!-- SLVHBVUYBVZUYBUYBRZIBZVLURZVBRVUBEZVIUBEVIULEBZVRIERBVEIRBVLEIURBVEIBVYERIBVEVILUEBVIEU -->
-
-      <!-- Contenu du slide -->
-      <div class="slide-content">
-        <!-- Image avec fade -->
+      <div class="slide-content group">
         <transition name="fade" mode="out-in">
           <a
             href="https://madebyshape.co.uk/work/forma/"
@@ -59,7 +61,7 @@
                 </svg>
                 <div class="flex flex-wrap items-center -mb-2 lg:-mb-3 -mr-2">
                   <div
-                    class="bg-gray-50 leading-tight rounded-full mr-2 mb-2 lg:mr-3 lg:mb-3 text-sm pt-2 pb-1.5 px-4 dark:bg-grayDark-400 dark:text-white"
+                    class="bg-gray-50 shadow-slate-200 shadow-inner leading-tight rounded-full mr-2 mb-2 lg:mr-3 lg:mb-3 text-sm pt-2 pb-1.5 px-4 dark:bg-grayDark-400 dark:text-white"
                   >
                     {{ currentSlide.date }} <br />
                     {{ currentSlide.date1 }}
@@ -67,19 +69,19 @@
                 </div>
               </div>
               <div
-                class="w-[490px] h-[490px] rounded-2xl transform-gpu overflow-hidden relative bg-gray-50 dark:bg-grayDark-400 lg:rounded-3xl"
+                class="shadow-2xl rounded-2xl transform-gpu overflow-hidden relative bg-gray-50 dark:bg-grayDark-400 lg:rounded-3xl"
               >
                 <div class="w-[490px] h-[490px] relative overflow-hidden">
                   <div
                     class="w-full transform scale-110 transition-transform xl:group-hover:-translate-y-2.5"
                   >
                     <div
-                      class="relative overflow-hiddenw-[490px] h-[490px]"
+                      class="relative overflow-hidden w-[490px] h-[490px]"
                       style="padding-top: 75%"
                     >
                       <picture class="w-[490px] bg-cover h-[490px] absolute top-0 left-0">
                         <source
-                          class=""
+                          class=" "
                           type="image/webp"
                           :srcset="currentSlide.img"
                           sizes="100vw"
@@ -100,13 +102,14 @@
             </div> </a
         ></transition>
 
-        <!-- Texte avec transition directionnelle -->
         <transition :name="textTransitionName" mode="out-in">
-          <div class="slide-text" v-if="currentSlide" :key="currentSlide.title + currentIndex">
-            <div class="slide-date">{{ currentSlide.date }}</div>
-            <div class="slide-title">{{ currentSlide.title }}</div>
-            <div class="slide-desc">
-              <b>{{ currentSlide.brand }}</b> – {{ currentSlide.subtitle }} <br /><br />
+          <div
+            class="slide-text mt-20"
+            v-if="currentSlide"
+            :key="currentSlide.title + currentIndex"
+          >
+            <div class="slide-desc w-[420px] h-[185px]">
+              <b v-html="currentSlide.brand"></b> – {{ currentSlide.subtitle }} <br /><br />
               {{ currentSlide.description }}
               <br /><br />
               <b>Résultat :</b><br />
@@ -116,13 +119,29 @@
         </transition>
       </div>
 
-      <!-- Flèche droite -->
       <button class="arrow right" @click="nextSlide">
         <img :src="Right" alt="right arrow" width="74px" />
       </button>
     </div>
   </div>
 </template>
+
+<style scoped>
+/* Ajoute ces styles si tu veux que le bouton "Retour" soit positionné absolument */
+.carousel-container {
+  position: relative; /* Important pour que l'absolute du bouton fonctionne */
+}
+
+/* Styles pour les transitions si tu en as besoin, sinon, c'est déjà dans ton template */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
@@ -162,11 +181,11 @@ const slides = ref<Slide[]>([
     date: 'Janvier',
     date1: '2025',
     title: 'NOUVELLE CAMPAGNE\nTEAM BISSO',
-    brand: 'Brand X',
-    subtitle: 'Nouvelle stratégie de visibilité en zone urbaine',
+    brand: 'Céleste',
+    subtitle: ' L’eau officielle de la CAN 2023',
     description:
-      'Une approche moderne combinant affichage urbain, marketing viral et influence locale.',
-    result: 'Augmentation de 25% de la notoriété en 3 semaines.',
+      'Céleste – L’eau officielle de la CAN 2023 Création de la campagne “Céleste, l’eau de <br> la victoire” : Stratégie 360° (vidéos, influence, <br> éditorial) production de 7 épisodes digitaux <br> immersifs avec un influenceur sportif.',
+    result: '+30 millions de vues cumulées, forte <br> notoriété, ancrage culturel pendant la CAN.',
   },
   {
     img: ImgCristaline,
@@ -199,6 +218,19 @@ function prevSlide() {
 function nextSlide() {
   direction.value = 'right'
   currentIndex.value = (currentIndex.value + 1) % slides.value.length
+}
+import { useRouter } from 'vue-router'
+// Nouvelle fonction pour le bouton "Retour"
+const goBack = () => {
+  // Option 1: Revenir à la page précédente dans l'historique du navigateur
+  // window.history.back();
+
+  // Option 2: Si tu utilises Vue Router, tu peux faire ceci:
+
+  const router = useRouter()
+  router.back() // Revient à la route précédente
+  // ou
+  // router.push('/ta-page-precedente'); // Va à une route spécifique
 }
 </script>
 
@@ -235,8 +267,8 @@ function nextSlide() {
   gap: 32px;
 }
 .slide-image {
-  width: 560px;
-  height: 560px;
+  width: 360px;
+  height: 360px;
   object-fit: cover;
   border-radius: 16px;
   box-shadow: 0 2px 8px rgba(255, 152, 0, 0.12);
