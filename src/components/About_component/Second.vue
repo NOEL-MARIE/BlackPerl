@@ -106,67 +106,75 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="relative flex items-center justify-center w-screen mt-24">
+  <div class="relative flex items-center justify-center w-full mt-24 px-4">
+    <!-- Décor gauche -->
     <img
       src="@/assets/images/BOAT_DRAW.png"
-      width="751"
       alt=""
-      class="absolute left-0 z-10 mb-16 -translate-x-1/2 mr-72 opacity-30"
+      class="absolute left-0 z-10 opacity-30 hidden md:block w-[300px] -translate-x-1/2"
     />
+    <!-- Décor droit -->
     <img
       src="@/assets/images/BOAT_DRAW.png"
-      width="751"
       alt=""
-      class="absolute right-0 z-10 mb-16 translate-x-1/2 opacity-30"
+      class="absolute right-0 z-10 opacity-30 hidden md:block w-[300px] translate-x-1/2"
     />
 
-    <div class="relative z-20 folder">
-      <div class="tab"></div>
-      <div class="body">
-        <div class="flex flex-col text-white h-full">
-          <div class="flex-1">
-            <div class="flex flex-col items-center justify-center gap-16">
-              <div class="flex justify-between mt-11 gap-9">
-                <div ref="boldTextRef" class="flex-col flex text-[20px] font-Opensans font-bold">
-                  <p>
-                    L’équipage créatif d’un navire enraciné dans <br />
-                    l’Afrique moderne
-                  </p>
-                  <p>
-                    Black Pearl Entertainment est bien plus <br />
-                    qu’une agence de communication 360°.
-                  </p>
-                </div>
-                <div ref="regularTextRef" class="flex-col gap-5 flex text-[15px] font-Opensans">
-                  <p>
-                    C’est un bateau pirate créatif, où stratégie, storytelling et technologie
-                    s’unissent <br />
-                    pour conquérir les marchés avec audace. Nés d’une légende ivoirienne, nous
-                    <br />
-                    transformons chaque campagne en jeu de pouvoir.
-                  </p>
-                  <p>
-                    un terrain d’expérimentation où les marques deviennent des héros <br />
-                    culturels. Nous croyons au pouvoir de la culture, à la magie de l’expérience et
-                    à
-                    <br />
-                    l’art de surprendre.
-                  </p>
-                </div>
-              </div>
-              <div>
-                <p
-                  ref="conquestTextRef"
-                  class="text-6xl text-center uppercase font-HouseOfCardsW03Bold"
-                >
-                  Ce n’est pas une campagne. C’est une <br />
-                  <span class="text-[rgba(251,221,120,1)]">conquête</span>.
-                </p>
-              </div>
+    <!-- Bloc principal -->
+    <div class="relative z-20 w-full max-w-[1434px]">
+      <!-- TAB positionné en haut du bloc -->
+      <div class="w-full flex mb-6 justify-end">
+        <div class="tab h-[40px] w-[80%]  md:w-[80%]  bg-black rounded-t-xl"></div>
+      </div>
+
+      <!-- Contenu principal -->
+      <div class="bg-black rounded-b-2xl rounded-tl-lg  p-6 md:p-10">
+        <div class="text-white flex flex-col gap-8">
+          <!-- Textes -->
+          <div class="flex flex-col md:flex-row justify-between gap-8">
+            <div ref="boldTextRef" class="text-lg md:text-xl font-bold font-Opensans leading-snug">
+              <p>
+                L’équipage créatif d’un navire enraciné dans <br class="hidden sm:inline" />
+                l’Afrique moderne
+              </p>
+              <p class="mt-4">
+                Black Pearl Entertainment est bien plus <br class="hidden sm:inline" />
+                qu’une agence de communication 360°.
+              </p>
+            </div>
+
+            <div
+              ref="regularTextRef"
+              class="text-sm md:text-base font-Opensans text-gray-200 leading-relaxed"
+            >
+              <p>
+                C’est un bateau pirate créatif, où stratégie, storytelling et technologie
+                s’unissent<br class="hidden sm:inline" />
+                pour conquérir les marchés avec audace. Nés d’une légende ivoirienne,
+                nous<br class="hidden sm:inline" />
+                transformons chaque campagne en jeu de pouvoir.
+              </p>
+              <p class="mt-4">
+                Un terrain d’expérimentation où les marques deviennent des héros<br class="hidden sm:inline" />
+                culturels. Nous croyons au pouvoir de la culture, à la magie de l’expérience<br class="hidden sm:inline" />
+                et à l’art de surprendre.
+              </p>
             </div>
           </div>
 
-          <div class="flex-1 mb">
+          <!-- Conquête -->
+          <div>
+            <p
+              ref="conquestTextRef"
+              class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center uppercase font-HouseOfCardsW03Bold"
+            >
+              Ce n’est pas une campagne. C’est une <br />
+              <span class="text-[rgba(251,221,120,1)]">conquête</span>.
+            </p>
+          </div>
+
+          <!-- Carrousels -->
+          <div class="flex flex-col  justify-between gap-8 mt-12">
             <Carrousel_Left />
             <Carrousel_Right />
           </div>
@@ -211,7 +219,7 @@ onBeforeUnmount(() => {
   position: absolute;
   top: 0;
   right: 0;
-  width: 1100px;
+
   height: 40px;
   background: #000000;
   border-top-right-radius: 15px;

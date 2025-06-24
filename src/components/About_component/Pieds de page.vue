@@ -1,66 +1,81 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div class="hero-bg h-screen w-screen">
-    <div class="hero-content">
-      <h1 ref="heroTitleRef">
+  <div class="hero-bg min-h-screen w-full flex flex-col justify-between">
+    <!-- Hero Content -->
+    <div
+      class="hero-content mb-11 sm:mb-0 px-4 pt-20 sm:px-8 sm:pt-24 lg:px-20 lg:pt-32 text-white max-w-full sm:max-w-[600px]"
+    >
+      <h1 ref="heroTitleRef" class="text-2xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6">
         ENTREZ MAINTENANT<br />
         DANS LE JEU EN 1 MINUTES
       </h1>
-      <p class="hero-desc" ref="heroDescRef">
+      <p ref="heroDescRef" class="text-sm sm:text-base md:text-lg text-gray-200">
         Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
         tincidunt ut laoreet dolore magna aliquam
       </p>
     </div>
-    <div>
-      <footer
-        class="footer-blur h-[190px] mx-14 mb-9 items-center justify-between flex rounded-2xl"
-        ref="footerRef"
-      >
-        <div class="footer-gri w-full flex mx-11">
-          <div class="footer-newsletter ml-20">
-            <label class="newsletter-label">
-              RESTEZ À JOUR
-              <img src="@/assets/images/paper plane.gif" width="48px" class="pl-1" alt="" />
-              <span class="newsletter-icon">
-                <i class="fa-regular fa-paper-plane"></i>
-              </span>
-            </label>
-            <form class="newsletter-form" @submit.prevent="subscribe">
-              <input
-                v-model="email"
-                type="email"
-                class="newsletter-input text-xs w-[244px]"
-                placeholder="Entrez votre e-mail"
-                required
-              />
-              <button type="submit" class="newsletter-btn w-fit">S’inscrire</button>
-            </form>
+
+    <!-- Footer -->
+    <footer
+      ref="footerRef"
+      class="footer-blur mx-4 sm:mx-6 md:mx-14 mb-6 sm:mb-9 h-fit sm:h-[190px] rounded-2xl p-4 sm:p-6 flex flex-col sm:flex-row justify-between gap-6"
+    >
+      <div class="flex flex-col sm:flex-row w-full gap-6 sm:gap-12 px-4 sm:px-8">
+        <!-- Newsletter -->
+        <div class="flex-1 min-w-[240px]">
+          <label
+            class="text-white justify-center sm:justify-start font-bold text-sm sm:text-base mb-3 flex items-center"
+          >
+            RESTEZ À JOUR
+            <img src="@/assets/images/paper plane.gif" class="w-8 h-8 ml-2" alt="" />
+            <span class="ml-2 text-lg">
+              <i class="fa-regular fa-paper-plane"></i>
+            </span>
+          </label>
+          <form @submit.prevent="subscribe" class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <input
+              v-model="email"
+              type="email"
+              class="text-xs sm:text-sm px-3 py-2 w-full sm:w-[244px] rounded outline-none"
+              placeholder="Entrez votre e-mail"
+              required
+            />
+            <button
+              type="submit"
+              class="bg-yellow-400 hover:bg-yellow-300 text-black font-semibold px-4 py-2 rounded w-full sm:w-fit"
+            >
+              S’inscrire
+            </button>
+          </form>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 text-white flex-1">
+          <div class="flex flex-col gap-2">
+            <a href="/" class="hover:underline">Accueil</a>
+            <a href="/about" class="mt-2 hover:underline">À propos</a>
           </div>
-          <div class="footer-links grid grid-cols-3 gap-16 space-x-7 texxs">
-            <div class="footer-col flex flex-col gap-2">
-              <a href="/" class="footer-link">Accueil</a>
-              <a href="/about" class="footer-link mt-10 flex">À propos</a>
-            </div>
-            <div class="footer-col flex flex-col gap-2">
-              <a href="/expertise" class="footer-link">Expertise</a>
-              <a href="/realisations" class="footer-link mt-10">Réalisations</a>
-            </div>
-            <div class="footer-col flex flex-col justify-between gap-2">
-              <a href="/carriere" class="footer-link">Carrière</a>
-              <div class="footer-social-text">
-                <img :src="facebook" alt="Facebook" />
-                <img :src="instagram" alt="Instagram" />
-                <img :src="linkedin" alt="LinkedIn" />
-                <img :src="tiktok" alt="TikTok" />
-                <img :src="youtube" alt="YouTube" />
-              </div>
+          <div class="flex flex-col gap-2">
+            <a href="/expertise" class="hover:underline">Expertise</a>
+            <a href="/realisations" class="mt-2 hover:underline">Réalisations</a>
+          </div>
+          <div class="flex flex-col gap-2">
+            <a href="/carriere" class="hover:underline">Carrière</a>
+            <div class="flex flex-wrap gap-3 mt-2">
+              <img :src="facebook" alt="Facebook" class="w-6" />
+              <img :src="instagram" alt="Instagram" class="w-6" />
+              <img :src="linkedin" alt="LinkedIn" class="w-6" />
+              <img :src="tiktok" alt="TikTok" class="w-6" />
+              <img :src="youtube" alt="YouTube" class="w-6" />
             </div>
           </div>
         </div>
-      </footer>
-      <div class="footer-copy">
-        © 2025 – Black Pearl Entertainment. Tous les droits sont réservés.
       </div>
+    </footer>
+
+    <!-- Footer Copy -->
+    <div class="text-center text-xs sm:text-sm text-gray-500 py-2 px-4">
+      © 2025 – Black Pearl Entertainment. Tous les droits sont réservés.
     </div>
   </div>
 </template>
@@ -68,45 +83,36 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import gsap from 'gsap'
-// IMPORTANT: CustomBounce et CustomEase sont des plugins GSAP du club GreenSock.
-// Assurez-vous d'avoir la bonne licence et de les importer correctement.
-// Si vous n'avez pas accès au club, cette partie de l'animation ne fonctionnera pas.
 import { CustomEase } from 'gsap/CustomEase'
 import { CustomBounce } from 'gsap/CustomBounce'
 
-// --- Importations des images pour le footer social ---
+// Images réseaux sociaux
 import facebook from '@/assets/images/Facebook.png'
 import instagram from '@/assets/images/Instagram.png'
 import linkedin from '@/assets/images/LinkedIn.png'
 import tiktok from '@/assets/images/TikTok.png'
 import youtube from '@/assets/images/YouTube.png'
 
-// --- Enregistrement des plugins CustomEase et CustomBounce ---
 gsap.registerPlugin(CustomEase, CustomBounce)
 
-// --- Références pour les éléments du DOM à animer ---
 const heroTitleRef = ref<HTMLElement | null>(null)
 const heroDescRef = ref<HTMLElement | null>(null)
 const footerRef = ref<HTMLElement | null>(null)
 
-// --- Références pour le formulaire d'email ---
 const email = ref('')
 
-// --- Logique du formulaire d'inscription ---
 function subscribe() {
   alert(`Merci pour votre inscription, ${email.value} !`)
   email.value = ''
 }
 
-// --- Logique d'animation GSAP ---
 onMounted(() => {
-  // 1. Animation du texte du héros
-  const heroTimeline = gsap.timeline({ delay: 0.5 }) // Un petit délai avant que l'animation commence
+  const heroTimeline = gsap.timeline({ delay: 0.5 })
 
   if (heroTitleRef.value) {
     heroTimeline.from(heroTitleRef.value, {
-      x: 50, // Commence 50px plus bas
-      opacity: 0, // Commence invisible
+      x: 50,
+      opacity: 0,
       duration: 2,
       ease: 'power3.out',
     })
@@ -116,30 +122,28 @@ onMounted(() => {
     heroTimeline.from(
       heroDescRef.value,
       {
-        y: 30, // Commence 30px plus bas
-        opacity: 0, // Commence invisible
+        y: 30,
+        opacity: 0,
         duration: 0.8,
         ease: 'power2.out',
       },
-      '-=0.5', // Démarre 0.5s avant la fin de l'animation précédente (l'animation du titre)
+      '-=0.5',
     )
   }
 
-  // 2. Animation CustomBounce pour le footer
   if (footerRef.value) {
-    // Crée une ease CustomBounce personnalisée
     CustomBounce.create('myCustomBounce', {
-      strength: 0.6, // Ajustez la force du rebond (0 à 1)
-      squash: 3, // Ajustez la durée de l'effet d'écrasement/étirement
-      squashID: 'myCustomBounce-squash', // ID pour l'ease de squash/stretch (non utilisée directement ici mais bonne pratique)
+      strength: 0.6,
+      squash: 3,
+      squashID: 'myCustomBounce-squash',
     })
 
     gsap.from(footerRef.value, {
-      x: 200, // Commence 200px plus bas
-      opacity: 0, // Commence invisible
-      duration: 1.5, // Durée de l'animation de rebond
-      ease: 'myCustomBounce', // Applique la ease CustomBounce définie
-      delay: heroTimeline.duration() + 0.5, // Démarre après la fin des animations du héros + un petit délai
+      x: 200,
+      opacity: 0,
+      duration: 1.5,
+      ease: 'myCustomBounce',
+      delay: heroTimeline.duration() + 0.5,
     })
   }
 })
@@ -148,136 +152,9 @@ onMounted(() => {
 <style scoped>
 .hero-bg {
   background: url('@/assets/images/img_cavalier.png') center/cover no-repeat;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.hero-content {
-  padding: 80px 0 0 80px;
-  color: #fff;
-  max-width: 600px;
-}
-.hero-content h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 24px;
-  line-height: 1.1;
-}
-.hero-desc {
-  font-size: 1.15rem;
-  color: #ddd;
-  margin-bottom: 0;
 }
 .footer-blur {
   background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(5px);
-  padding: 32px 0 12px 0;
-}
-.footer-gri {
-  display: flex;
-  width: 100%;
-  margin-left: 11px;
-  margin-right: 11px;
-}
-.footer-newsletter {
-  flex: 1 1 260px;
-  min-width: 240px;
-  margin-bottom: 16px;
-}
-.newsletter-label {
-  color: #fff;
-  font-weight: 700;
-  letter-spacing: 1px;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.newsletter-icon {
-  margin-left: 8px;
-  font-size: 1.1em;
-}
-.newsletter-form {
-  display: flex;
-  gap: 10px;
-}
-.newsletter-input {
-  padding: 8px 12px;
-  border-radius: 4px;
-  border: none;
-  outline: none;
-  min-width: 140px;
-  font-size: 1rem;
-}
-.newsletter-btn {
-  background: #f5c046;
-  color: #222;
-  border: none;
-  padding: 8px 18px;
-  border-radius: 4px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s;
-  /* Correction: W-[43px] n'est pas une classe Tailwind valide. J'ai mis une largeur fixe. */
-}
-.newsletter-btn:hover {
-  background: #ffe08a;
-}
-.footer-links {
-  flex: 2 1 400px;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 16px;
-  /* 'texxs' n'est pas une classe CSS standard, je l'ai retirée. */
-}
-.footer-col {
-  display: flex;
-  flex-direction: column;
-}
-.footer-link {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: text-decoration 0.2s;
-}
-.footer-link:hover {
-  text-decoration: underline;
-}
-.footer-social-text {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  color: #fff;
-}
-.footer-copy {
-  text-align: center;
-  color: #ccc;
-  font-size: 0.93rem;
-  letter-spacing: 0.5px;
-}
-@media (max-width: 900px) {
-  .hero-content {
-    padding: 40px 10px 0 10px;
-    max-width: 100%;
-  }
-  .footer-blur {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  .footer-gri {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 14px;
-    margin-left: 11px;
-    margin-right: 11px;
-  }
-  .footer-links {
-    justify-content: flex-start;
-    gap: 32px;
-  }
-  .footer-social-text {
-    justify-content: flex-start;
-    margin-top: 8px;
-  }
+  backdrop-filter: blur(6px);
 }
 </style>

@@ -53,6 +53,18 @@ onMounted(() => {
     ease: 'power3.out',
   })
 
+  // 💡 Effet de flottaison pour l'ancre
+  if (anchorRef.value) {
+    gsap.to(anchorRef.value, {
+      y: -15,
+      repeat: -1,
+      yoyo: true,
+      duration: 1.2,
+      ease: 'sine.inOut',
+    })
+  }
+
+  // Gestion du drag pour anchorRef
   if (anchorRef.value && sectionRef.value) {
     draggableInstance = Draggable.create(anchorRef.value, {
       type: 'y',
@@ -69,7 +81,6 @@ onMounted(() => {
       },
       onDragEnd() {
         if (this.y < -80 && sectionRef.value) {
-          // Faire sortir la section First
           gsap.to(sectionRef.value, {
             y: -window.innerHeight,
             opacity: 0,
@@ -82,7 +93,6 @@ onMounted(() => {
           })
           gsap.to(anchorRef.value, { y: 0, duration: 0.7, ease: 'power3.out' })
         } else {
-          // Retour à la position initiale
           gsap.to(sectionRef.value, { y: 0, duration: 0.4, ease: 'power3.out' })
           gsap.to(anchorRef.value, { y: 0, duration: 0.4, ease: 'power3.out' })
           gsap.to(logoRef.value, { rotate: 0, duration: 0.5, ease: 'power3.out' })
@@ -91,6 +101,7 @@ onMounted(() => {
     })[0]
   }
 })
+
 
 onUnmounted(() => {
   if (draggableInstance) {
@@ -109,16 +120,16 @@ onUnmounted(() => {
     >
       <div class="mb-10 logo">
         <img
-          ref="logoRef"
-          width="303"
-          height="330"
+
+          width=""
+          height=""
           src="@/assets/images/LogoBlackPEARL.png"
           alt="Logo Black Pearl"
-          class="relative"
-          draggable="false"
+          class="relative W-[10px] h-[250px] md:W-[303px] md:h-[330px]"
+
         />
       </div>
-      <p class="mb-6 text-white">Tirez l’ancre vers le haut, et commencez le jeu</p>
+      <p class="mb-6 text-white text-center md:text-start mx-8 md:mx-0">Tirez l’ancre vers le haut, et commencez le jeu</p>
       <img
         ref="anchorRef"
         src="@/assets/images/Anchor.gif"

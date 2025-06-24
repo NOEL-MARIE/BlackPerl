@@ -8,6 +8,7 @@ module.exports = {
   prefix: '',
 
   content: [
+    './index.html',
     './pages/**/*.{ts,tsx,vue}',
     './components/**/*.{ts,tsx,vue}',
     './app/**/*.{ts,tsx,vue}',
@@ -17,12 +18,21 @@ module.exports = {
   theme: {
     // Définition explicite de tous les breakpoints ici
     screens: {
-      xs: '360px',
-      sm: '619px',
+      xs: '320  px',
+
+      sm: '640px',
+      // => @media (min-width: 640px) { ... }
+
       md: '768px',
-      lg: '976px',
-      xl: '1440px',
-      '2xl': '1536px', // Le '2xl' avec des guillemets est une bonne pratique
+      // => @media (min-width: 768px) { ... }
+
+      lg: '1024px',
+      // => @media (min-width: 1024px) { ... }
+
+      xl: '1280px',
+      // => @media (min-width: 1280px) { ... }
+      //
+      '2xl': '1400px',
     },
     extend: {
       fontFamily: {

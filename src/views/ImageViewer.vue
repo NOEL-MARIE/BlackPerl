@@ -223,10 +223,22 @@ function scrollToActiveThumbnail() {
     <!-- IMAGE VIEWER -->
     <div class="image-viewer w-full flex h-screen text-white pt-32 relative overflow-hidden">
       <!-- Fond en <img> flou -->
+      <picture>
+        <source type="image/webp" srcset="@/assets/images/BackgroundImgViews.jpg" sizes="100vw" />
+        <img
+          src="@/assets/images/BackgroundImgViews.jpg"
+          srcset="@/assets/images/BackgroundImgViews.jpg"
+
+          alt="GN Loader"
+          class="w-full h-full bg-img-blur absolute top-0 left-0 object-center object-cover"
+          loading="lazy"
+
+        />
+      </picture>
       <img
         src="@/assets/images/BackgroundImgViews.jpg"
         alt="Background"
-        class="bg-img-blur w-full h-full bg-contain"
+        class=" w-full bg-img-blur h-full bg-contain"
         aria-hidden="true"
       />
       <div class="main-conten flex justify-between w-full gap-80 mt-9 relative z-10">
@@ -264,7 +276,7 @@ function scrollToActiveThumbnail() {
 
         <!-- Colonne droite -->
         <div class="right-side mr-40 flex flex-col items-end space-y-48 justify-end w-1/2">
-          <div class="flex flex-col items-end mr-14 gap-20 ">
+          <div class="flex flex-col items-end mr-14 gap-20">
             <h2 class="text-4xl text-start m-44 font-bold w-[220px]">{{ currentImage.title }}</h2>
             <p class="font-poppins text-start w-[400px] m" v-html="currentImage.description"></p>
           </div>

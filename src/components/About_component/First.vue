@@ -3,46 +3,14 @@
 <script setup lang="ts">
 import TestProfilView from '@/components/About_component/TestProfilView[1].vue'
 import { ref, onMounted, onBeforeUnmount } from 'vue'
-const images = [
-  'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80',
-  'https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=400&q=80',
-  'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
-  'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=400&q=80',
-  'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=410&q=80',
-]
-
-// Paramètres du carrousel
-const angle = -25 // Angle d'oblique en degrés (négatif = vers le bas à droite)
-const gap = 40 // Espace entre les images
-const speed = 1.2 // Vitesse de défilement
-
-const wrapper = ref<HTMLElement | null>(null)
-let animationFrame: number | null = null
-let offset = 0
-// Ajouter cette fonction dans le <script setup>
-
-function animate() {
-  if (wrapper.value) {
-    offset += speed
-    // On applique la translation oblique
-    wrapper.value.style.transform = `translate3d(${-offset}px, ${offset * Math.tan((angle * Math.PI) / 180)}px, 0)`
-    // Boucle infinie : quand tout est sorti, on reset
-    const totalWidth = (images.length + 1) * (240 + gap)
-    if (offset > totalWidth) offset = 0
-  }
-  animationFrame = requestAnimationFrame(animate)
-}
 
 onMounted(() => {
-  animate()
+
   animateHeadline();
 })
 
 onBeforeUnmount(() => {
-  if (animationFrame) cancelAnimationFrame(animationFrame)
-    if (animatedHeadline.value) {
-    gsap.killTweensOf(animatedHeadline.value);
-  }
+
 })
 // importation des element gsap pour animtion de texte
 import { gsap } from 'gsap';
@@ -75,9 +43,9 @@ const animateHeadline = () => {
 
 <template>
 
-    <div class="z-0 flex flex-col mt-32 justify-around w-screen h-screen">
+    <div class="z-0 flex flex-col  justify-around w-screen h-screen">
       <div class="flex justify-center w-full h-52">
-        <h1 ref="animatedHeadline" class="   font-cinzel leading-none text-center text-[88px] flex-col">
+        <h1 ref="animatedHeadline" class=" text-[70px]   font-cinzel leading-none text-center md:text-[88px] flex-col">
           DONNEZ VIE À VOTRE <br />
           MARQUE
         </h1>
@@ -85,6 +53,8 @@ const animateHeadline = () => {
       <div class="z-0 flex h-1/2 oblique-carousel-viewport mt-44">
         <TestProfilView />
       </div>
+
+
     </div>
 </template>
 
@@ -105,7 +75,7 @@ const animateHeadline = () => {
   border-radius: 32px;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.13);
-  background: #fff;
+  background: #b22121;
   display: flex;
   align-items: center;
   justify-content: center;

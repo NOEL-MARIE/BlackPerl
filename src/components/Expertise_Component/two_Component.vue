@@ -63,43 +63,26 @@ function removeBottomCard(index: number) {
 </script>
 
 <template>
-  <div class="flex flex-col h-screen w-full p-6 bg-white">
+  <div class="flex flex-col w-full px-4 md:px-6 py-6 bg-white">
     <!-- Ligne du haut -->
-    <div class="flex gap-6 justify-center mb-6">
+    <div class="flex flex-wrap justify-center gap-6 mb-6">
       <section
         v-for="(card, i) in topCards"
         :key="'top-' + i"
-        class="relative shadow-lg overflow-hidden transition-transform duration-200 hover:-translate-y-1 hover:scale-105"
-        :style="{
-          borderRadius: card.radius + 'px',
-          width: card.width + 'px',
-          height: card.height + 'px',
-        }"
+        class="relative w-full sm:w-[300px] md:w-[350px] lg:w-[400px] xl:w-[500px] aspect-[16/9] rounded-2xl shadow-lg overflow-hidden transition-transform duration-200 hover:-translate-y-1 hover:scale-105"
         :data-top-index="i"
       >
         <img
           :src="card.image"
           :alt="'Image ' + i"
-          class="w-full h-full object-cover select-none pointer-events-none"
-          :style="{ borderRadius: card.radius + 'px' }"
+          class="w-full h-full object-cover select-none pointer-events-none rounded-2xl"
           draggable="false"
         />
         <div
-          class="absolute inset-0 flex items-end justify-center pb-6 pointer-events-none"
-          style="
-            background: linear-gradient(
-              to top,
-              rgba(0, 0, 0, 0.8) 18%,
-              /* bas plus noir */
-               rgba(0, 0, 0, 0.3) 49%,
-              /* transition plus marquée */
-              rgba(0, 0, 0, 0.1) 100%
-              /* fondu doux vers le haut */
-            );
-          "
+          class="absolute inset-0 flex items-end justify-center pb-6 pointer-events-none bg-gradient-to-t from-black/80 via-black/30 to-black/10"
         >
           <button
-            class="pointer-events-auto border font-cinzel border-white text-white px-7 py-2 rounded-full font-semibold shadow-md bg-black/40 hover:bg-black/60 transition-colors"
+            class="pointer-events-auto border font-cinzel border-white text-white px-6 py-2 rounded-full font-semibold shadow-md bg-black/40 hover:bg-black/60 transition-colors"
             @click="removeTopCard(i)"
           >
             VOIR PROJET
@@ -107,42 +90,26 @@ function removeBottomCard(index: number) {
         </div>
       </section>
     </div>
+
     <!-- Ligne du bas -->
-    <div class="flex gap-6 justify-center">
+    <div class="flex flex-wrap justify-center gap-6">
       <section
         v-for="(card, i) in bottomCards"
         :key="'bottom-' + i"
-        class="relative shadow-lg overflow-hidden transition-transform duration-200 hover:-translate-y-1 hover:scale-105"
-        :style="{
-          borderRadius: card.radius + 'px',
-          width: card.width + 'px',
-          height: card.height + 'px',
-        }"
+        class="relative w-full sm:w-[300px] md:w-[350px] lg:w-[400px] xl:w-[500px] aspect-[16/9] rounded-2xl shadow-lg overflow-hidden transition-transform duration-200 hover:-translate-y-1 hover:scale-105"
         :data-bottom-index="i"
       >
         <img
           :src="card.image"
           :alt="'Image ' + (i + topCards.length)"
-          class=" object-cover select-none pointer-events-none"
-          :style="{ borderRadius: card.radius + 'px' }"
+          class="w-full h-full object-cover select-none pointer-events-none rounded-2xl"
           draggable="false"
         />
         <div
-          class="absolute inset-0 flex items-end justify-center pb-6 pointer-events-none"
-          style="
-            background: linear-gradient(
-              to top,
-              rgba(0, 0, 0, 0.8) 18%,
-              /* bas plus noir */
-               rgba(0, 0, 0, 0.3) 49%,
-              /* transition plus marquée */
-              rgba(0, 0, 0, 0.1) 100%
-              /* fondu doux vers le haut */
-            );
-          "
+          class="absolute inset-0 flex items-end justify-center pb-6 pointer-events-none bg-gradient-to-t from-black/80 via-black/30 to-black/10"
         >
           <button
-            class="pointer-events-auto border border-white text-white px-7 py-2 rounded-full font-semibold shadow-md bg-black/40 hover:bg-black/60 transition-colors"
+            class="pointer-events-auto border font-cinzel border-white text-white px-6 py-2 rounded-full font-semibold shadow-md bg-black/40 hover:bg-black/60 transition-colors"
             @click="removeBottomCard(i)"
           >
             VOIR PROJET

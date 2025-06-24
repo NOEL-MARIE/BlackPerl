@@ -7,7 +7,7 @@
       ref="track"
     >
       <div
-        class="carousel-item items-center justify-center flex bg-white h-[98px] w-[148px] rounded-2xl"
+        class="carousel-item"
         v-for="(logo, index) in logosConcat"
         :key="index"
       >
@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
 
-// IMPORTANT : Remplacez ces imports par vos vrais fichiers SVG
+// Remplace ces chemins par tes vraies images
 import sendChapLogo from '@/assets/images/CELESTE.svg'
 import celesteLogo from '@/assets/images/Carre D\'OR.svg'
 import catLogo from '@/assets/images/CAT.svg'
@@ -36,12 +36,11 @@ const logos = [
 ]
 
 const translateX = ref(0)
-const speed = 0.5 // vitesse de défilement en px par frame
+const speed = 0.5 // vitesse de défilement
 const trackWidth = ref(0)
 let animationFrameId: number | null = null
 const track = ref<HTMLElement | null>(null)
 
-// On concatène les logos pour un défilement infini
 const logosConcat = computed(() => [...logos, ...logos, ...logos])
 
 function animate() {
@@ -55,7 +54,7 @@ function animate() {
 onMounted(() => {
   nextTick(() => {
     if (track.value) {
-      trackWidth.value = track.value.scrollWidth / 3 // largeur d'une série de logos
+      trackWidth.value = track.value.scrollWidth / 3
       animate()
     }
   })
@@ -72,29 +71,59 @@ onBeforeUnmount(() => {
 .carousel {
   width: 100%;
   overflow: hidden;
-  /* margin: 40px auto; */
-  padding: 1vw 0;
+  padding: 1rem 0;
 }
 
 .carousel-track {
   display: flex;
-  transition: transform 0.1s linear ;
   will-change: transform;
 }
 
 .carousel-item {
   flex: 0 0 auto;
-  margin: 0 2vw;
+  margin: 0 1.5rem;
   display: flex;
   align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 1rem;
+  height: 98px;
+  width: 148px;
 }
 
-
-
 .carousel-item img {
-  max-height: 3.3vw;
-  width: auto;
+  max-width: 80%;
+  max-height: 70%;
+  object-fit: contain;
   user-select: none;
   pointer-events: none;
+}
+
+/* Responsive tablettes */
+@media screen and (max-width: 1024px) {
+  .carousel-item {
+    width: 120px;
+    height: 80px;
+    margin: 0 1rem;
+  }
+
+  .carousel-item img {
+    max-width: 75%;
+    max-height: 65%;
+  }
+}
+
+/* Responsive mobiles */
+@media screen and (max-width: 640px) {
+  .carousel-item {
+    width: 90px;
+    height: 60px;
+    margin: 0 0.75rem;
+  }
+
+  .carousel-item img {
+    max-width: 70%;
+    max-height: 60%;
+  }
 }
 </style>

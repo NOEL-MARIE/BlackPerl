@@ -7,11 +7,14 @@
       ref="track"
     >
       <div
-        class="carousel-item items-center justify-center flex bg-white h-[98px] w-[148px] rounded-2xl"
         v-for="(logo, index) in logosConcat"
         :key="index"
+        class="carousel-item"
       >
-        <img :src="logo.src" :alt="logo.alt" width="800px" height="800px" />
+        <img
+          :src="logo.src"
+          :alt="logo.alt"
+        />
       </div>
     </div>
   </div>
@@ -20,7 +23,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
 
-// IMPORTANT : Remplacez ces imports par vos vrais fichiers SVG
+// Remplace par tes vraies images
 import AMGS from '@/assets/images/AMGS.svg'
 import La_Riziere from '@/assets/images/La Riziere.png'
 import Laity from '@/assets/images/Laity.png'
@@ -36,12 +39,11 @@ const logos = [
 ]
 
 const translateX = ref(0)
-const speed = 0.5 // vitesse de défilement en px par frame
+const speed = 0.5
 const trackWidth = ref(0)
 let animationFrameId: number | null = null
 const track = ref<HTMLElement | null>(null)
 
-// On concatène les logos pour un défilement infini
 const logosConcat = computed(() => [...logos, ...logos, ...logos])
 
 function animate() {
@@ -55,7 +57,7 @@ function animate() {
 onMounted(() => {
   nextTick(() => {
     if (track.value) {
-      trackWidth.value = track.value.scrollWidth / 2 // largeur d'une série de logos
+      trackWidth.value = track.value.scrollWidth / 2
       animate()
     }
   })
@@ -69,30 +71,62 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-.carousel-item {
-  flex: 0 0 auto;
-  margin: 0 2vw;
-  display: flex;
-  align-items: center;
-}
-
-.carousel-item img {
-   max-height: 3.3vw; /* équivalent à 50px */
-  width: auto;
-  user-select: none;
-  pointer-events: none;
-}
-
 .carousel {
   width: 100%;
   overflow: hidden;
-  margin: vw auto; /* marge verticale importante */
-  padding: 1vw 0;
+  padding: 1rem 0;
 }
 
 .carousel-track {
   display: flex;
-  transition: transform 0.1s linear;
   will-change: transform;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  margin: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 1rem;
+  height: 98px;
+  width: 148px;
+}
+
+.carousel-item img {
+  max-width: 80%;
+  max-height: 70%;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Responsive tablettes */
+@media screen and (max-width: 1024px) {
+  .carousel-item {
+    width: 120px;
+    height: 80px;
+    margin: 0 1rem;
+  }
+
+  .carousel-item img {
+    max-width: 75%;
+    max-height: 65%;
+  }
+}
+
+/* Responsive mobiles */
+@media screen and (max-width: 640px) {
+  .carousel-item {
+    width: 90px;
+    height: 60px;
+    margin: 0 0.75rem;
+  }
+
+  .carousel-item img {
+    max-width: 70%;
+    max-height: 60%;
+  }
 }
 </style>
