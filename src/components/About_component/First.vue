@@ -44,13 +44,13 @@ const animateHeadline = () => {
 <template>
 
     <div class="z-0 flex flex-col  justify-around w-screen h-screen">
-      <div class="flex justify-center w-full h-52">
-        <h1 ref="animatedHeadline" class=" text-[70px]   font-cinzel leading-none text-center md:text-[88px] flex-col">
+      <div class="flex justify-center w-full md:h-52 h-24">
+        <h1 ref="animatedHeadline" class=" text-[30px]   font-cinzel leading-none text-center md:text-[88px] flex-col">
           DONNEZ VIE À VOTRE <br />
           MARQUE
         </h1>
       </div>
-      <div class="z-0 flex h-1/2 oblique-carousel-viewport mt-44">
+      <div class="z-0 flex md:h-1/2  oblique-carousel-viewport mt-44">
         <TestProfilView />
       </div>
 

@@ -1,30 +1,32 @@
 <template>
-  <section class="w-screen h-screen overflow-hidden">
-
+  <section class="w-screen min-h-screen overflow-hidden bg-white">
     <!-- Header -->
-    <div class="carriere-heade  z-0 flex items-center max-w-9xl h-[36%] gap-60 justify-center">
-      <div class="carriere-titles">
-        <span class="carriere-label mb-6 font-HouseOfCardsW03Bold uppercase text-[#808080] text-[225%] ">CARRIÈRE</span>
-        <h1 class="font-cinzel leading-none pt-3  text-[290%] ">
+    <div class="flex flex-col-reverse md:flex-row items-center justify-center md:gap-20 px-6 md:px-16  ">
+      <!-- Texte -->
+      <div class="text-center md:text-left max-w-2xl">
+        <span class="block mb-4 font-HouseOfCardsW03Bold text-[#808080] uppercase text-xl md:text-2xl lg:text-3xl">
+          CARRIÈRE
+        </span>
+        <h1 class="font-cinzel leading-tight text-3xl md:text-4xl lg:text-5xl">
           EMBARQUEZ SUR LE<br />
           BATEAU PIRATE
         </h1>
-        <p class="font-Opensans pt-4 w-fit">
-          Chez Black Pearl, chaque talent a un rôle stratégique. Rejoignez une équipe <br> passionnée où
-          l’on joue pour gagner.
+        <p class="font-Opensans mt-4 text-base md:text-lg">
+          Chez Black Pearl, chaque talent a un rôle stratégique.<br class="hidden md:inline" />
+          Rejoignez une équipe passionnée où l’on joue pour gagner.
         </p>
       </div>
+
+      <!-- Image du bateau -->
       <img
-        class="pirate-ship mt-20 w-[250px]"
+        class="w-40 md:w-60 lg:w-72 mb-8 md:mb-0"
         src="@/assets/images/BateauPirate_Carriere.jpg"
         alt="Bateau pirate"
-        width="300px"
-        height="300px"
       />
     </div>
 
     <!-- Carrousel des profils -->
-    <div class=" mb-11 overflow-hidden">
+    <div class="mt-12 px-4">
       <Profile_Squad_2 />
     </div>
   </section>
@@ -33,39 +35,3 @@
 <script setup lang="ts">
 import Profile_Squad_2 from '@/components/Profile_Squad.vue'
 </script>
-
-<style scoped>
-
-
-
-
-
-
-
-.carriere-titles p {
-  /* max-width: 420px; */
-}
-
-.pirate-ship {
-
-  /* max-width: 40vw;
-  margin-left: 40px;*/
-  margin-top: -30px;
-}
-
-
-
-
-
-
-/* Responsive */
-@media (max-width: 900px) {
-  .carriere-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .pirate-ship {
-
-  }
-}
-</style>
