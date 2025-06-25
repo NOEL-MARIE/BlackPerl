@@ -24,6 +24,7 @@
         <!-- Newsletter -->
         <div class="flex-1 min-w-[240px]">
           <label
+            for="email"
             class="text-white justify-center sm:justify-start font-bold text-sm sm:text-base mb-3 flex items-center"
           >
             RESTEZ À JOUR
@@ -34,6 +35,8 @@
           </label>
           <form @submit.prevent="subscribe" class="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <input
+              id="email"
+              name="email"
               v-model="email"
               type="email"
               class="text-xs sm:text-sm px-3 py-2 w-full sm:w-[244px] rounded outline-none"

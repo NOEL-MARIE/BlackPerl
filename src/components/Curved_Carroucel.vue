@@ -28,7 +28,8 @@ import Riziere from '@/assets/images/meilleur riz.png'
 import Ketchup from '@/assets/images/le ketchup.png'
 import Maman from '@/assets/images/mama.png'
 
-const ring = ref(null)
+const ring = ref<HTMLElement | null>(null)
+
 const images = [
   Alyssa,
   Riziere,
@@ -44,53 +45,57 @@ const images = [
 
 let xPos = 0
 let isDragging = false
-let autoRotateAnim = null
+let autoRotateAnim: gsap.core.Tween | null = null
 
-function getParallaxOffset(i) {
-  const rotation = gsap.getProperty(ring.value, 'rotationY')
+function getParallaxOffset(i: number) {
+  if (!ring.value) return 0
+  const rotation = gsap.getProperty(ring.value, 'rotationY') as number
   const angleStep = 360 / images.length
   const wrapped = gsap.utils.wrap(0, 360, rotation - 180 - i * angleStep)
   return (wrapped / 360) * 60 - 30
 }
 
-function dragStart(e) {
-  if (e.touches) e.clientX = e.touches[0].clientX
-  xPos = Math.round(e.clientX)
+function dragStart(e: MouseEvent | TouchEvent) {
+  const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
+  xPos = Math.round(clientX)
   isDragging = true
-  gsap.set(ring.value, { cursor: 'grabbing' })
-  if (autoRotateAnim) autoRotateAnim.pause()
+  if (ring.value) gsap.set(ring.value, { cursor: 'grabbing' })
+  autoRotateAnim?.pause()
   window.addEventListener('mousemove', drag)
   window.addEventListener('touchmove', drag)
 }
 
-function drag(e) {
-  if (!isDragging) return
-  if (e.touches) e.clientX = e.touches[0].clientX
-  const delta = Math.round(e.clientX) - xPos
+function drag(e: MouseEvent | TouchEvent) {
+  if (!isDragging || !ring.value) return
+  const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
+  const delta = Math.round(clientX) - xPos
+
   gsap.to(ring.value, {
     rotationY: `-=${delta % 360}`,
     onUpdate: () => {
-      const imgs = ring.value.querySelectorAll('.img')
-      imgs.forEach((el, i) => {
+      const imgs = ring.value?.querySelectorAll('.img')
+      imgs?.forEach((el, i) => {
         const offset = getParallaxOffset(i)
         gsap.set(el, { x: offset })
       })
     },
   })
-  xPos = Math.round(e.clientX)
+
+  xPos = Math.round(clientX)
 }
 
 function dragEnd() {
   isDragging = false
   window.removeEventListener('mousemove', drag)
   window.removeEventListener('touchmove', drag)
-  gsap.set(ring.value, { cursor: 'grab' })
-  if (autoRotateAnim) autoRotateAnim.resume()
+  if (ring.value) gsap.set(ring.value, { cursor: 'grab' })
+  autoRotateAnim?.resume()
 }
 
 onMounted(() => {
-  const imgs = ring.value.querySelectorAll('.img')
+  if (!ring.value) return
 
+  const imgs = ring.value.querySelectorAll('.img')
   gsap.set(ring.value, { rotationY: 180, cursor: 'grab', backgroundColor: 'transparent' })
 
   const angleStep = 360 / images.length
@@ -98,12 +103,12 @@ onMounted(() => {
   imgs.forEach((el, i) => {
     gsap.set(el, {
       rotateY: i * angleStep,
-      transformOrigin: '50% 50% 800px', // augmente la profondeur pour mieux répartir sur grand conteneur
+      transformOrigin: '50% 50% 800px',
       z: -800,
       backfaceVisibility: 'hidden',
       position: 'absolute',
-      width: '700px',   // taille adaptée au conteneur large
-      height: '550px',
+      width: '100%',
+      height: '100%',
       left: '0',
       top: '0',
       cursor: 'pointer',
@@ -135,13 +140,11 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener('mousemove', drag)
   window.removeEventListener('touchmove', drag)
-  if (autoRotateAnim) autoRotateAnim.kill()
+  autoRotateAnim?.kill()
 })
 </script>
 
 <style scoped>
-
-
 html,
 body,
 .stage,
@@ -150,14 +153,14 @@ body,
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-
   user-select: none;
 }
 
 .container {
   perspective: 2000px;
-  width: 2406px;      /* Largeur demandée */
-  height: 594px;      /* Hauteur demandée */
+  width: 100vw;
+  height: 65vh;
+  max-width: 100%;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -177,9 +180,38 @@ body,
 
 .img {
   position: absolute;
-  margin-right: 64px;
+  margin-right: 2vw;
   transition: transform 0.3s ease;
   object-fit: cover;
   object-position: center;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 70vw;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 90vw;
+    height: 70vh;
+  }
+
+  .img {
+    width: 40vw;
+    height: auto;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    width: 70vw;
+    height: 75vh;
+  }
+
+  .img {
+    width: 30vw;
+  }
 }
 </style>
