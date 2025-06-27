@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div class="carousel" aria-label="Carrousel de logos">
+  <div class="carousel w-screen" aria-label="Carrousel de logos">
     <div
-      class="carousel-track"
+      class="carousel-track w-screen"
       :style="{ transform: `translateX(-${translateX}px)` }"
       ref="track"
     >
@@ -69,8 +69,8 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .carousel {
-  width: 100%;
-  overflow: hidden;
+  /* width: 100%; */
+  /* overflow: hidden; */
   padding: 1rem 0;
 }
 

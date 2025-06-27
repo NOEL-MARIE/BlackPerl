@@ -1,5 +1,5 @@
 <template>
-  <div class="container h-screen w-screen xs:mt-14 md:mt-20 "   ref="containerElement">
+  <div class="container h-screen w-screen  md:mt-32 "   ref="containerElement">
     <div id="ring" ref="ringElement">
       <div v-for="(imga, i) in img" :key="i" class="img">
         <img :src="imga" :alt="'Image ' + (i + 1)" class="image-content" />
@@ -102,6 +102,9 @@ function calculateRingRadius(): number {
     // Vous pouvez ajuster cette valeur de 768px si vos breakpoints Tailwind sont différents.
     if (window.matchMedia('(min-width: 728px)').matches) {
       multiplier = 4.3; // Facteur pour les écrans MD et plus grands
+    }
+    if (window.matchMedia('(min-width: 1536px)').matches) {
+      multiplier = 5.8; // Facteur pour les écrans XL et plus grands
     }
 
     // Retourne le rayon calculé basé sur la largeur du conteneur et le multiplicateur approprié
@@ -238,7 +241,6 @@ onUnmounted(() => {
 /* Styles de base de votre CSS */
 html,
 body {
-  overflow: hidden;
   margin: 0;
   padding: 0;
 }
@@ -256,18 +258,18 @@ div {
 
 /* Styles pour les petits écrans (min-width: 540px) */
 @media (min-width: 540px) {
-  .container {
-    perspective: 800px;
-    width: 900px;
-    height: 900px;
-    left: 40%;
-    top: 40%;
-    transform: translate(-50%, -50%);
-  }
+   .container {
+    perspective: 1500px; /* Nouvelle perspective pour LG */
+    width: 580px; /* Largeur de base pour le conteneur 3D */
 
+    height: 500px; /* Hauteur ajustée pour LG */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Centre le conteneur */
+  }
   .img {
     /* Ces dimensions déterminent la taille de chaque "emplacement" d'image dans l'anneau 3D */
-    width: 100%; /* Ajuster si nécessaire pour la taille de l'image */
+    width: 170%; /* Ajuster si nécessaire pour la taille de l'image */
     height: 100%; /* Ajuster si nécessaire pour la taille de l'image */
     display: flex; /* Utilise flexbox pour centrer l'image dans le div */
     justify-content: center;
@@ -277,10 +279,10 @@ div {
 
   .image-content {
     /* Propriétés de l'image pour s'adapter au div .img */
-    object-fit: cover; /* S'assure que l'image s'adapte à son conteneur, en conservant le rapport d'aspect */
-    width: 100%;
-    height: 100%;
-    display: block; /* Supprime l'espace supplémentaire sous l'image */
+    object-fit: contain; /* Assure que l'image s'adapte, en conservant le rapport d'aspect */
+    width: 100%; /* Ces valeurs semblent très grandes, assurez-vous que c'est intentionnel */
+    height: 250%; /* Ces valeurs semblent très grandes, assurez-vous que c'est intentionnel */
+    display: flex; /* Supprime l'espace supplémentaire sous l'image */
   }
 }
 
@@ -314,7 +316,7 @@ div {
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1880px) {
   .container {
     perspective: 1800px; /* Nouvelle perspective pour XL */
     height: 550px; /* Hauteur ajustée pour XL */
@@ -324,12 +326,31 @@ div {
 @media (min-width: 1536px) {
   .container {
     perspective: 2000px; /* Nouvelle perspective pour 2XL */
-    height: 600px; /* Hauteur ajustée pour 2XL */
+    height: 1250px; /* Hauteur ajustée pour 2XL */
+
+  }
+
+  .img {
+    /* Ces dimensions déterminent la taille de chaque "emplacement" d'image dans l'anneau 3D */
+    width: 190%; /* Ajuster si nécessaire pour la taille de l'image */
+    height: 110%; /* Ajuster si nécessaire pour la taille de l'image */
+    display: flex; /* Utilise flexbox pour centrer l'image dans le div */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Cache tout débordement si les images sont légèrement plus grandes que le conteneur */
+  }
+
+  .image-content {
+    /* Propriétés de l'image pour s'adapter au div .img */
+    object-fit: conatin; /* Assure que l'image s'adapte, en conservant le rapport d'aspect */
+    width: 100%; /* Ces valeurs semblent très grandes, assurez-vous que c'est intentionnel */
+    height: 120%; /* Ces valeurs semblent très grandes, assurez-vous que c'est intentionnel */
+    display: block; /* Supprime l'espace supplémentaire sous l'image */
   }
 }
 
 #ring {
-  width: 100%;
+  width: 130%;
   height: 100%;
 }
 

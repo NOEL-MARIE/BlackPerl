@@ -72,8 +72,8 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .carousel {
-  width: 100%;
-  overflow: hidden;
+  /* width: 100%; */
+  /* overflow: hidden; */
   padding: 1rem 0;
 }
 

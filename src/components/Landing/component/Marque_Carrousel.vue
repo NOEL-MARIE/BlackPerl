@@ -36,7 +36,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-screen overflow-hidden py-10 h-52 sm:h-56 md:h-64 md:pb-32 lg:h-72 xl:h-80">
+  <div class="w-screen overflow-hidden   md:h-[4%] md:pb-48  ">
     <div class="relative overflow-hidden w-full">
       <div
         ref="trackRef"
@@ -45,12 +45,12 @@ onMounted(() => {
         <div
           v-for="(img, index) in extendedImages"
           :key="index"
-          class="carousel-item opacity-0 flex-shrink-0 px-6"
+          class="carousel-item opacity-0 md:ml-12 flex-shrink-0 px-6"
         >
           <img
             :src="img.src"
             :alt="img.alt"
-            class="h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 object-contain"
+            class="h-16 sm:h-20 md:h-24 object-contain"
           />
         </div>
       </div>
@@ -64,7 +64,7 @@ onMounted(() => {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(50%);
   }
 }
 

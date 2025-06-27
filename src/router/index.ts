@@ -2,8 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 // Importation des vues
 import Home from '@/views/Home_Section.vue'
+import Return_LINK from '@/components/Landing/component/BlackSection.vue'
 import ImageViewer from '@/views/ImageViewer.vue'
-import ChessboardGallery from '@/components/Landing/component/ChessboardGallery.vue';
+import ChessboardGallery from '@/components/Landing/component/ChessboardGallery.vue'
 import AboutView from '@/views/AboutView.vue'
 import ExpertiseView from '@/views/ExpertiseView.vue'
 import CarriereView from '@/views/CarriereView.vue'
@@ -23,6 +24,11 @@ const router = createRouter({
       path: '/',
       name: 'Home',
       component: Home,
+    },
+    {
+      path: '/Return_LINK',
+      name: 'Return_LINK',
+      component: Return_LINK,
     },
     {
       path: '/Strategie_360',
@@ -96,15 +102,21 @@ const router = createRouter({
     {
       path: '/Scroll_Video',
       name: ' ScrollVideo',
-      component:  Scroll_Video,
+      component: Scroll_Video,
     },
-      {
-    path: '/ches', // C'est le chemin URL que vous voulez
-    name: 'ChessboardGallery', // Un nom unique pour cette route (optionnel mais recommandé)
-    component: ChessboardGallery // Le composant que cette route doit afficher
-  },
+    {
+      path: '/ches', // C'est le chemin URL que vous voulez
+      name: 'ChessboardGallery', // Un nom unique pour cette route (optionnel mais recommandé)
+      component: ChessboardGallery, // Le composant que cette route doit afficher
+    },
   ],
-  scrollBehavior() {
+  scrollBehavior(to) {
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+      }
+    }
     return { top: 0 }
   },
 })

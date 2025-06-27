@@ -1,55 +1,57 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <section class="team-section text-[#111] px-4 py-12 max-w-7xl mx-auto">
-    <h2 class="text-center text-3xl sm:text-4xl font-semibold mb-10" ref="sectionTitleRef">Notre équipe</h2>
+  <section class="team-section text-[#111] h-screen items-center justify-center w-screen flex flex-col px-4 py-12  mx-auto">
+    <h2 class="text-center text-3xl sm:text-4xl font-semibold pb-36" ref="sectionTitleRef">Notre équipe</h2>
 
     <Dot_Gamme class="dot-gamme-component mb-12" />
+<div class="flex items-center justify-center">
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      <div>
-        <p class="text-lg font-semibold mb-2" ref="clientTitleRef">Clients</p>
-        <div class="border-t border-gray-300 pt-4">
-          <p class="text-4xl font-bold text-[#111]" ref="clientNumberRef">0</p>
-          <p class="text-sm text-[#555] leading-snug mt-2" ref="clientDescRef">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-            tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
-          </p>
-        </div>
-      </div>
-
-      <div>
-        <p class="text-lg font-semibold text-[#F8D065] mb-2" ref="referencesTitleRef">Références</p>
-        <div class="border-t border-[#F5C046] pt-4">
-          <p class="text-4xl font-bold text-[#F5C046]" ref="referencesNumberRef">0%</p>
-          <p class="text-sm text-[#555] leading-snug mt-2" ref="referencesDescRef">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-            tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
-          </p>
-        </div>
-      </div>
-
-      <div>
-        <p class="text-lg font-semibold mb-2" ref="ratioTitleRef">Ratio / Homme:Femme</p>
-        <div class="border-t border-gray-300 pt-4">
-          <p class="text-4xl font-bold text-[#111]" ref="ratioNumberRef">0:0</p>
-          <p class="text-sm text-[#555] leading-snug mt-2" ref="ratioDescRef">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-            tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
-          </p>
-        </div>
-      </div>
-
-      <div>
-        <p class="text-lg font-semibold mb-2" ref="projectsTitleRef">Projets réalisés</p>
-        <div class="border-t border-gray-300 pt-4">
-          <p class="text-4xl font-bold text-[#111]" ref="projectsNumberRef">0</p>
-          <p class="text-sm text-[#555] leading-snug mt-2" ref="projectsDescRef">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-            tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
-          </p>
-        </div>
+  <div class="grid max-w-7xl   grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div>
+      <p class="text-lg font-semibold mb-2" ref="clientTitleRef">Clients</p>
+      <div class="border-t border-gray-300 pt-4">
+        <p class="text-4xl font-bold text-[#111]" ref="clientNumberRef">0</p>
+        <p class="text-sm text-[#555] leading-snug mt-2" ref="clientDescRef">
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+          tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
+        </p>
       </div>
     </div>
+
+    <div>
+      <p class="text-lg font-semibold text-[#F8D065] mb-2" ref="referencesTitleRef">Références</p>
+      <div class="border-t border-[#F5C046] pt-4">
+        <p class="text-4xl font-bold text-[#F5C046]" ref="referencesNumberRef">0%</p>
+        <p class="text-sm text-[#555] leading-snug mt-2" ref="referencesDescRef">
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+          tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <p class="text-lg font-semibold mb-2" ref="ratioTitleRef">Ratio / Homme:Femme</p>
+      <div class="border-t border-gray-300 pt-4">
+        <p class="text-4xl font-bold text-[#111]" ref="ratioNumberRef">0:0</p>
+        <p class="text-sm text-[#555] leading-snug mt-2" ref="ratioDescRef">
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+          tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <p class="text-lg font-semibold mb-2" ref="projectsTitleRef">Projets réalisés</p>
+      <div class="border-t border-gray-300 pt-4">
+        <p class="text-4xl font-bold text-[#111]" ref="projectsNumberRef">0</p>
+        <p class="text-sm text-[#555] leading-snug mt-2" ref="projectsDescRef">
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+          tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
   </section>
 </template>
 

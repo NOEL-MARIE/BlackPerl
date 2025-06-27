@@ -1,12 +1,12 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div class="relative z-50  flex flex-col items-center justify-center w-screen min-h-screen bg-black md:pt-40  pb-2 px-4  mt-7 pt-5 md:pb-52">
+  <div class="relative z-50  flex flex-col items-center justify-center w-screen min-h-screen bg-black md:pt-40 xl:space-y-  pb-2 px-4   pt-5 md:pb-52">
     <div>
       <img
         ref="logoBlackPearlRef"
         src="@/assets/images/Logo Black Pearlwhite.png"
         alt="Logo"
-        class="w-[250px] md:w-[350px] lg:w-[444px] h-auto"
+        class="w-[250px] md:w-[350px] xl:w-[844px] h-auto"
       />
     </div>
 
@@ -18,25 +18,25 @@
           ref="typingImageRef"
           src="@/assets/images/Rectangle 155typing.png"
           alt="Clavier"
-          class="w-20 h-14 md:w-28 md:h-20 object-cover"
+          class="w-20 h-14 md:w-28 md:h-20 xl:w-56 xl:h-56 object-cover"
         />
-        <span class="text-4xl md:text-6xl lg:text-8xl italic font-light whitespace-nowrap">ON JOUE</span>
+        <span class="text-4xl md:text-6xl xl:text-9xl lg:text-8xl italic font-light whitespace-nowrap">ON JOUE</span>
       </div>
 
       <!-- Ligne 2 -->
-      <div class="flex flex-col md:flex-row  items-center justify-center gap-4 relative">
-        <span class="text-4xl md:text-6xl lg:text-8xl italic font-light whitespace-nowrap">POUR</span>
+      <div class="flex flex-col md:flex-row xl:flex-row  items-center justify-center gap-4 ">
+        <span class="text-4xl md:text-6xl xl:text-9xl lg:text-8xl italic font-light whitespace-nowrap">POUR</span>
         <img
           ref="cameraImageRef"
           src="@/assets/images/Rectangle 156camera.png"
           alt="Caméra"
-          class="w-20 h-14 md:w-28 md:h-20 object-cover"
+          class="w-20 h-14 md:w-28 xl:w-56 xl:h-56 md:h-20 object-cover"
         />
 
         <!-- Citation -->
-        <div class="flex items-start mt-4  md:mt-0 md:absolute md:right-0 md:bottom-0 text-sm text-center md:text-left">
-          <span class="text-xl mr-2">*</span>
-          <p class=" pl-10 leading-tight font-normal">
+        <div class="flex absolute items-start mt-4  md:mt-0 xl:mr-[500px] md:absolute md:right-0 md:bottom-0 text-sm text-center md:text-left">
+          <span class="text-xl xl:text-8xl xl:mb-[520px]  mr-2">*</span>
+          <p class="  leading-tight xl:text-2xl font-normal">
             "L'AFRIQUE EST NOTRE<br />
             INSPIRATION.<br />
             LE MONDE, NOTRE TERRAIN."
@@ -50,14 +50,14 @@
           ref="cocaImageRef"
           src="@/assets/images/Rectangle 157coca.png"
           alt="Coca"
-          class="w-20 h-14 md:w-28 md:h-20 object-cover"
+          class="w-20 h-14 md:w-28 xl:w-56 xl:h-56 md:h-20 object-cover"
         />
-        <span class="text-4xl md:text-6xl lg:text-8xl italic font-light whitespace-nowrap">GAGNER</span>
+        <span class="text-4xl md:text-6xl lg:text-8xl italic font-light whitespace-nowrap xl:text-9xl">GAGNER</span>
         <img
           ref="pizzaImageRef"
           src="@/assets/images/Rectangle 158pizza.png"
           alt="Pizza"
-          class="w-20 h-14 md:w-28 md:h-20 object-cover"
+          class="w-20 h-14 md:w-28 xl:w-56 xl:h-56 md:h-20 object-cover"
         />
       </div>
     </div>

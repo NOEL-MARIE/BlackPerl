@@ -24,49 +24,49 @@ const images = ref<GalleryImage[]>([
   {
     id: 1,
     url: new URL('@/assets/images/Vectorimg1.png', import.meta.url).href,
-    title: 'Monument',
+    title: 'Laity',
     description: 'Modern architecture with clean geometric lines',
   },
   {
     id: 2,
     url: new URL('@/assets/images/Vectorimg2.png', import.meta.url).href,
-    title: 'Architecture',
+    title: "SOURIRE D'ENFANT",
     description: 'Contemporary building design with unique structural elements',
   },
   {
     id: 3,
     url: new URL('@/assets/images/Vectorimg3.png', import.meta.url).href,
-    title: 'Minimalism',
+    title: 'AJ RENTAL CAR',
     description: 'Simple yet powerful design emphasizing negative space',
   },
   {
     id: 4,
     url: new URL('@/assets/images/Vectorimg4.png', import.meta.url).href,
-    title: 'Abstract',
+    title: 'ALYSSA',
     description: 'Conceptual artwork exploring form and color',
   },
   {
     id: 5,
     url: new URL('@/assets/images/Vectorimg5.png', import.meta.url).href,
-    title: 'Geometry',
+    title: 'CELESTE',
     description: 'Complex patterns formed by intersecting geometric shapes',
   },
   {
     id: 6,
     url: new URL('@/assets/images/Vectorimg6.png', import.meta.url).href,
-    title: 'Stones',
+    title: 'CLEO',
     description: 'Natural textures and organic forms found in stone arrangements',
   },
   {
     id: 7,
     url: new URL('@/assets/images/Vectorimg7.png', import.meta.url).href,
-    title: 'Glass',
+    title: 'MAMAN',
     description: 'Light reflections and transparency in glass architecture',
   },
   {
     id: 8,
     url: new URL('@/assets/images/Vectorimg8.png', import.meta.url).href,
-    title: 'Design',
+    title: 'MEDIANO',
     description: 'Innovative product design with attention to detail',
   },
   {
@@ -138,8 +138,8 @@ onMounted(() => {
 </script>
 
 <template>
-
   <section class="h-screen w-screen flex justify-center items-center relative">
+
     <!-- Arrière-plan -->
     <div class="absolute z-10 flex justify-between items-center">
       <div class="ml-6">
@@ -177,6 +177,12 @@ onMounted(() => {
         </template>
       </div>
     </div>
+        <router-link
+      :to="{ path: '/Return_LINK', hash: '#accueil' }"
+      class="absolute top-6  right-6 z-50 pointer-events-auto border font-cinzel border-white text-white px-6 py-2 rounded-full font-semibold shadow-md bg-black/40 hover:bg-yellow-500 transition-colors"
+    >
+      Retour
+    </router-link>
   </section>
 </template>
 

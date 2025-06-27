@@ -1,28 +1,28 @@
 <template>
   <section
-    class="flex flex-col items-center justify-center w-full px-4 py-12 text-white sm:px-6 md:px-12 lg:px-24 xl:px-32"
+    class="flex flex-col items-center 2xl:h-screen  justify-center w-full px-4 py-12 text-white sm:px-6 md:px-12 lg:px-24 2xl:px-32"
   >
-    <div class="flex flex-col lg:flex-row w-full max-w-7xl gap-8">
+    <div class="flex flex-col lg:flex-row w-full max-w-7xl 2xl:max-w-full 2xl:max-h-full gap-8">
       <!-- Colonne de gauche -->
-      <div class="flex flex-col gap-4 w-full lg:w-[530px]">
+      <div class="flex flex-col gap-4 w-full lg:w-[530px] 2xl:w-1/2">
         <!-- Bloc Stratégie 360° -->
         <router-link to="/Strategie_360" class="block">
-          <div class="relative w-full h-[188px] bg-black rounded-xl p-6 overflow-hidden">
+          <div class="relative w-full h-[188px] 2xl:h-[288px] bg-black rounded-xl p-6 overflow-hidden">
             <div
-              class="absolute top-4 right-4 flex items-center justify-center w-5 h-5 rounded-full bg-[#F8D065] shadow"
+              class="absolute top-4 right-4 flex items-center justify-center w-5 h-5 2xl:w-12 2xl:h-12 rounded-full bg-[#F8D065] shadow"
             >
-              <span class="text-xl text-black font-bold animated-text">+</span>
+              <span class="text-xl 2xl:text-3xl text-black font-bold animated-text">+</span>
             </div>
             <div
-              class="flex flex-col sm:flex-row md:flex-col justify-around mt-4 text-white gap-4 h-full"
+              class="flex     justify-between mt-4 text-white gap-4 h-full"
             >
               <div
-                class="uppercase text-start font-HouseOfCardsW03Bold text-[clamp(1.1rem,2.3vw,28px)] leading-tight break-words overflow-hidden"
+                class="uppercase 2xl:w-2/3 2xl:mt-4 text-start font-HouseOfCardsW03Bold sm:px-7 text-[clamp(1.5rem,2.3vw,58px)] leading-tight  "
               >
                 Stratégie <br />marketing <br />360°
               </div>
               <div
-                class="text-start font-Opensans font-light text-[clamp(0.7rem,1.4vw,14px)] leading-snug break-words overflow-hidden line-clamp-4 sm:line-clamp-none"
+                class="text-start font-Opensans font-light 2xl:w-3/4  2xl:mt-4 text-[clamp(0.7rem,1.4vw,26px)] leading-snug s overflow-hidden line-clamp-4 sm:line-clamp-none"
               >
                 Nous concevons des campagnes intégrées alliant branding, digital, média et terrain,
                 en parfaite cohérence avec vos objectifs de croissance.
@@ -34,7 +34,7 @@
         <!-- Deux petits blocs -->
         <div class="flex flex-col sm:flex-row gap-4">
           <router-link to="/ActivationsView" class="block w-full sm:w-1/2">
-            <div class="bg-black rounded-xl p-4 h-[274px] flex flex-col justify-between">
+            <div class="bg-black rounded-xl p-4 h-[274px] flex flex-col  md:justify-between">
               <div class="flex justify-end">
                 <div class="w-5 h-5 rounded-full bg-[#F8D065] flex items-center justify-center">
                   <span
@@ -43,7 +43,7 @@
                   >
                 </div>
               </div>
-              <div class="flex flex-col gap-4">
+              <div class="flex flex-col pt-11 gap-4">
                 <div
                   class="font-HouseOfCardsW03Bold uppercase text-start text-lg md:text-xl animated-text"
                 >
@@ -57,7 +57,7 @@
             </div>
           </router-link>
           <div
-            class="w-full sm:w-1/2 h-[274px] bg-black rounded-xl overflow-hidden flex items-center justify-center"
+            class="w-full sm:w-1/2 h-[274px] xl bg-black rounded-xl overflow-hidden flex items-center justify-center"
           >
             <img
               src="@/assets/images/Bateau Pirate Noir 1.png"
@@ -69,7 +69,7 @@
       </div>
 
       <!-- Colonne de droite -->
-      <div class="flex flex-col gap-4 w-full">
+      <div class="flex flex-col gap-4 2xl:w-1/2 w-full">
         <div class="flex flex-col md:flex-row gap-4">
           <router-link to="/MediasImmersifsView" class="block md:w-[240px]">
             <div class="bg-black rounded-xl p-4 h-full flex flex-col justify-between">

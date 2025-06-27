@@ -1,32 +1,32 @@
 <template>
-  <section class="w-screen min-h-screen overflow-hidden bg-white">
+  <section class="w-screen flex flex-col justify-evenly xl:justify-normal h-screen overflow-hidden bg-white">
     <!-- Header -->
-    <div class="flex flex-col-reverse md:flex-row items-center justify-center md:gap-20 px-6 md:px-16  ">
+    <div class="flex flex-col md:flex-row items-center justify-center xl:justify-evenly md:gap-20   ">
       <!-- Texte -->
-      <div class="text-center md:text-left max-w-2xl">
-        <span class="block mb-4 font-HouseOfCardsW03Bold text-[#808080] uppercase text-xl md:text-2xl lg:text-3xl">
+      <div class="text-center md:text-left ">
+        <span class="block mb-4 font-HouseOfCardsW03Bold text-[#808080] uppercase text-xl md:text-2xl xl:text-6xl">
           CARRIÈRE
         </span>
-        <h1 class="font-cinzel leading-tight text-3xl md:text-4xl lg:text-5xl">
+        <h1 class="font-cinzel leading-tight text-3xl md:text-4xl xl:text-8xl">
           EMBARQUEZ SUR LE<br />
           BATEAU PIRATE
         </h1>
-        <p class="font-Opensans mt-4 text-base md:text-lg">
-          Chez Black Pearl, chaque talent a un rôle stratégique.<br class="hidden md:inline" />
-          Rejoignez une équipe passionnée où l’on joue pour gagner.
+        <p class="font-Opensans mt-4 text-base md:text-lg xl:text-2xl">
+          Chez Black Pearl, chaque talent a un rôle stratégique.<br class="hidden md:inline xl:hidden" />
+          Rejoignez une équipe <br class="hidden xl:flex"> passionnée où l’on joue pour gagner.
         </p>
       </div>
 
       <!-- Image du bateau -->
       <img
-        class="w-40 md:w-60 lg:w-72 mb-8 md:mb-0"
+        class="w-40 md:w-60 xl:w-[500px] mb-8 md:mb-0"
         src="@/assets/images/BateauPirate_Carriere.jpg"
         alt="Bateau pirate"
       />
     </div>
 
     <!-- Carrousel des profils -->
-    <div class="mt-12 px-4">
+    <div class=" ">
       <Profile_Squad_2 />
     </div>
   </section>

@@ -106,19 +106,9 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="relative flex items-center justify-center w-full mt-24 px-4">
+  <div class="relative bg-black xl:h-screen flex items-center justify-center w-full  px-4">
     <!-- Décor gauche -->
-    <img
-      src="@/assets/images/BOAT_DRAW.png"
-      alt=""
-      class="absolute left-0 z-10 opacity-30 hidden md:block w-[300px] -translate-x-1/2"
-    />
-    <!-- Décor droit -->
-    <img
-      src="@/assets/images/BOAT_DRAW.png"
-      alt=""
-      class="absolute right-0 z-10 opacity-30 hidden md:block w-[300px] translate-x-1/2"
-    />
+
 
     <!-- Bloc principal -->
     <div class="relative z-20 w-full max-w-[1434px]">

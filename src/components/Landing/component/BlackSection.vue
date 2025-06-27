@@ -102,7 +102,6 @@ onMounted(() => {
   }
 })
 
-
 onUnmounted(() => {
   if (draggableInstance) {
     draggableInstance.kill()
@@ -114,22 +113,23 @@ onUnmounted(() => {
 <template>
   <div>
     <section
+      id="galerie"
       v-if="!showVideoSection"
       ref="sectionRef"
       class="flex flex-col items-center justify-center h-screen pt-4 pb-10 font-sans bg-black"
     >
       <div class="mb-10 logo">
         <img
-
           width=""
           height=""
           src="@/assets/images/LogoBlackPEARL.png"
           alt="Logo Black Pearl"
           class="relative W-[10px] h-[250px] md:W-[303px] md:h-[330px]"
-
         />
       </div>
-      <p class="mb-6 text-white text-center md:text-start mx-8 md:mx-0">Tirez l’ancre vers le haut, et commencez le jeu</p>
+      <p class="mb-6 text-white text-center md:text-start mx-8 md:mx-0">
+        Tirez l’ancre vers le haut, et commencez le jeu
+      </p>
       <img
         ref="anchorRef"
         src="@/assets/images/Anchor.gif"
@@ -145,8 +145,7 @@ onUnmounted(() => {
       v-if="showVideoSection"
       ref="videoSectionRef"
       class="flex flex-col items-center bg-white justify-center h-screen"
-    >
-      </section>
+    ></section>
   </div>
 </template>
 

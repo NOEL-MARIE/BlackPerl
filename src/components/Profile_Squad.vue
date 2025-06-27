@@ -1,22 +1,22 @@
 <template>
   <div
     ref="carouselWrapper"
-    class="w-full h-[320px] sm:h-[360px] md:h-[400px] lg:h-[420px] pt-12 relative rounded-2xl"
+    class="w-full h-[320px] sm:h-[360px] md:h-[400px] xl:h-[420px] mt-12 relative rounded-2xl"
     @mouseenter="hovering = true"
     @mouseleave="hovering = false"
   >
     <div
       ref="carousel"
-      class="flex h-full gap-4 px-4 transition-transform duration-700 ease-linear will-change-transform"
+      class="flex h-full w-full gap-4 px-4 transition-transform duration-700 ease-linear will-change-transform"
     >
       <div
         v-for="(item, index) in duplicatedImages"
         :key="index"
-        class="flex-shrink-0 w-[200px] sm:w-[240px] md:w-[280px] lg:w-[300px] h-full group relative bg-white dark:bg-gray-800 rounded-2xl"
+        class="flex-shrink-0 w-[200px] sm:w-[240px] md:w-[280px] xl:w-[300px] h-full group relative bg-white dark:bg-gray-800 rounded-2xl"
         :class="index % 2 === 1 ? '-mt-6 sm:-mt-8' : 'mt-0'"
       >
         <!-- Image -->
-        <picture class="absolute border-2 border-black rounded-2xl top-0 left-0 w-full h-full overflow-hidden">
+        <picture class="absolute border-2  rounded-2xl top-0 left-0 w-full h-full overflow-hidden">
           <img
             :src="item.src"
             :alt="item.alt"
@@ -27,7 +27,7 @@
 
         <!-- Bouton SVG -->
         <div
-          class="absolute top-3 right-3 z-30 bg-[#FBDD78] w-8 h-8 flex items-center justify-center border border-black rounded-tr-3xl rounded-bl-3xl transition-transform group-hover:rotate-90 cursor-pointer"
+          class="absolute top-3 right-3 z-30 bg-[#FBDD78]  duration-700 transition-all w-8 h-8 flex items-center justify-center border border-black rounded-tr-3xl rounded-bl-3xl  group-hover:rotate-90 cursor-pointer"
           aria-label="Profile link"
         >
           <svg
@@ -42,11 +42,11 @@
         <!-- Infos nom & titre -->
         <div class="absolute bottom-0 left-0 z-20 w-full pr-14">
           <div
-            class="relative inline-flex flex-wrap pt-3 pr-5 bg-white dark:bg-gray-800 pointer-events-none rounded-tr-2xl lg:rounded-tr-3xl lg:pr-8"
+            class="relative inline-flex flex-wrap pt-3 pr-5 bg-white dark:bg-gray-800 pointer-events-none rounded-tr-2xl xl:rounded-tr-3xl xl:pr-8"
           >
             <!-- SVG coin droit -->
             <svg
-              class="absolute w-10 h-10 lg:w-12 lg:h-12 text-white dark:text-gray-800 rotate-180 translate-x-full fill-current -bottom-px right-px"
+              class="absolute w-10 h-10 xl:w-12 xl:h-12 text-white dark:text-gray-800 rotate-180 translate-x-full fill-current -bottom-px right-px"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 100 100"
             >
@@ -55,7 +55,7 @@
 
             <!-- SVG coin gauche -->
             <svg
-              class="absolute w-10 h-10 lg:w-12 lg:h-12 text-white dark:text-gray-800 rotate-180 -translate-y-full fill-current top-px left-0"
+              class="absolute w-10 h-10 xl:w-12 xl:h-12 text-white dark:text-gray-800 rotate-180 -translate-y-full fill-current top-px left-0"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 100 100"
             >
@@ -64,7 +64,7 @@
 
             <!-- Textes -->
             <div>
-              <div class="text-sm sm:text-base md:text-lg font-semibold dark:text-white">
+              <div class="text-sm sm:text-base md:text-xl font-semibold dark:text-white">
                 {{ item.title }}
               </div>
               <div class="ml-1 text-xs sm:text-sm font-light leading-tight text-gray-800 dark:text-gray-300">
@@ -99,13 +99,22 @@ const images = [
   { src: imgg, alt: 'Mike', title: 'Mike', subtitle: 'Directeur Artistique' },
 ]
 
-const duplicatedImages = computed(() => [...images, ...images])
+const duplicatedImages = computed(() => {
+  // On calcule combien d'images sont nécessaires pour remplir 2 à 3 fois la largeur du carrousel
+  const targetMin = 3 // nombre de fois à dupliquer
+  let result = [...images]
+  while (result.length < images.length * targetMin) {
+    result = [...result, ...images, ...images, ...images]
+  }
+  return result
+})
+
 
 let animation: gsap.core.Tween | null = null
 
 onMounted(() => {
   if (!carousel.value) return
-  const totalWidth = carousel.value.scrollWidth / 2
+  const totalWidth = carousel.value.scrollWidth / 3
   animation = gsap.to(carousel.value, {
     x: -totalWidth,
     ease: 'linear',

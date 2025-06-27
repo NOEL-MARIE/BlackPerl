@@ -1,3 +1,4 @@
+<!-- eslint-disable @typescript-eslint/no-unused-vars -->
 <template>
   <div class="z-0">
     <section class="h-1/2 mt-28">
@@ -15,74 +16,87 @@
   </div>
 
   <!-- Bloc à placer juste en dessous -->
-  <!-- <div class="w-full flex flex-col items-center mt-64 justify-center">
-    <span class="font-Opensans">Scrollez</span>
-    <img :src="boatGif" alt="" width="84px" height="84px" />
-  </div> -->
+  <div class="w-full hidden xl:flex flex-col items-center mt-64 justify-center">
+    <span class="font-Opensans text-2xl" ref="boatGifRef">Scrollez</span>
+    <img :src="boatGif" class="xl:w-[124px]" alt="" width="" height="84px" ref="boatGifRef" />
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import { gsap } from 'gsap'
 import { Draggable } from 'gsap/Draggable'
 import { Flip } from 'gsap/Flip'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+// Plugins
+gsap.registerPlugin(Draggable, Flip, ScrollTrigger)
+
+// Images
 import Alyssa from '@/assets/images/petit poids.png'
 import Riziere from '@/assets/images/meilleur riz.png'
 import Ketchup from '@/assets/images/le ketchup.png'
 import Maman from '@/assets/images/mama.png'
 import cleo from '@/assets/images/cleo.png'
 import coca from '@/assets/images/Josey curved.png'
-// import boatGif from '@/assets/images/boat.gif'
+import boatGif from '@/assets/images/boat.gif'
 
-gsap.registerPlugin(Draggable, Flip)
-
+// Refs
 const wheel = ref<HTMLElement | null>(null)
 const header = ref<HTMLElement | null>(null)
+const boatGifRef = ref<HTMLElement | null>(null)
 
-const images = [
-  coca,
-  Riziere,
-  Ketchup,
-  Maman,
-  cleo,
-  Alyssa,
-  coca,
-  Riziere,
-  Ketchup,
-  Maman,
-  cleo,
-  Alyssa,
-  cleo,
-  Maman,
-  Ketchup,
-  Riziere,
-  cleo,
-  Alyssa,
-  Ketchup,
-  Maman,
-  cleo,
-  Ketchup,
-  Riziere,
+// Images à afficher
+let images: string[] = []
 
-  Maman,
+const isXL = window.matchMedia('(min-width: 1441px)').matches
+const isLG = window.matchMedia('(min-width: 1025px)').matches
+const isMD = window.matchMedia('(min-width: 768px)').matches
+const isSM = window.matchMedia('(min-width: 481px)').matches
 
-  // Ajoute ou duplique plus d'images ici si besoin
-]
+if (isXL) {
+  images = [
+    coca, Riziere, Ketchup, Maman, cleo, Alyssa,
+    coca, Riziere, Ketchup, Maman, cleo, Alyssa,
+    coca, Riziere, Ketchup, Maman, cleo
+
+  ]
+} else if (isLG) {
+  images = [
+    coca, Riziere, Ketchup, Maman, cleo, Alyssa,
+    coca, Riziere, Ketchup, Maman, cleo, Alyssa,
+    cleo, Maman, Ketchup, Riziere
+  ]
+} else if (isMD) {
+  images = [
+    coca, Riziere, Ketchup, Maman, cleo, Alyssa,
+    coca, Riziere, Ketchup, Maman
+  ]
+} else if (isSM) {
+  images = [
+    coca, Riziere, Ketchup, Maman, cleo, Alyssa,
+    Riziere, Ketchup
+  ]
+} else {
+  images = [
+    coca, Riziere, Ketchup, Maman, cleo
+  ]
+}
+
 
 let currentCard: HTMLElement | null = null
 let draggableInstance: Draggable | null = null
 
 onMounted(() => {
   setupWheel()
+  animateBoatGif()
+
   window.addEventListener('resize', setupWheel)
 })
 
 onUnmounted(() => {
   window.removeEventListener('resize', setupWheel)
-  if (draggableInstance) {
-    draggableInstance.kill()
-  }
+  if (draggableInstance) draggableInstance.kill()
 })
 
 function setupWheel() {
@@ -92,21 +106,37 @@ function setupWheel() {
   const cards = gsap.utils.toArray('.wheel__card')
   if (cards.length === 0) return
 
-  // Rayon du cercle
-  const radius = wheelElement.offsetWidth / 2
-  const center = radius
-
-  // Largeur d'une carte (suppose que toutes ont la même taille)
+  const baseRadius = wheelElement.offsetWidth / 2
+  const center = baseRadius
   const cardWidth = (cards[0] as HTMLElement).offsetWidth
 
-  // Calcul de l'angle slice pour que les cartes soient côte à côte
-  const slice = ((cardWidth + 40) / radius) * (190 / Math.PI)
+  // Dynamique : ajustement du spacing et du radius selon l'écran
+  let spacing = 40
+  let adjustedRadius = baseRadius
 
+  if (window.matchMedia('(min-width: 1441px)').matches) {
+    spacing = 60
+    adjustedRadius = baseRadius * 1.0
+  } else if (window.matchMedia('(min-width: 1025px)').matches) {
+    spacing = 50
+    adjustedRadius = baseRadius * 0.9
+  } else if (window.matchMedia('(min-width: 768px)').matches) {
+    spacing = 40
+    adjustedRadius = baseRadius * 0.85
+  } else if (window.matchMedia('(min-width: 481px)').matches) {
+    spacing = 30
+    adjustedRadius = baseRadius * 0.75
+  } else {
+    spacing = 20
+    adjustedRadius = baseRadius * 0.65
+  }
+
+  const slice = ((cardWidth + spacing) / adjustedRadius) * (200 / Math.PI)
   const DEG2RAD = Math.PI / 180
 
   gsap.set(cards, {
-    x: (i: number) => center + radius * Math.sin(i * slice * DEG2RAD),
-    y: (i: number) => center - radius * Math.cos(i * slice * DEG2RAD),
+    x: (i: number) => center + adjustedRadius * Math.sin(i * slice * DEG2RAD),
+    y: (i: number) => center - adjustedRadius * Math.cos(i * slice * DEG2RAD),
     rotation: (i: number) => i * slice,
     xPercent: -40,
     yPercent: -40,
@@ -119,9 +149,7 @@ function setupWheel() {
     repeat: -1,
   })
 
-  if (draggableInstance) {
-    draggableInstance.kill()
-  }
+  if (draggableInstance) draggableInstance.kill()
 
   draggableInstance = Draggable.create(wheelElement, {
     type: 'rotation',
@@ -132,13 +160,38 @@ function setupWheel() {
   })[0]
 }
 
+function animateBoatGif() {
+  nextTick(() => {
+    if (!boatGifRef.value) return
+
+    gsap.to(boatGifRef.value, {
+      y: -15,
+      repeat: -1,
+      yoyo: true,
+      duration: 1.2,
+      ease: 'sine.inOut',
+    })
+
+    gsap.from(boatGifRef.value, {
+      scale: 0.8,
+      opacity: 0,
+      duration: 1,
+      ease: 'elastic.out(1, 0.5)',
+      scrollTrigger: {
+        trigger: boatGifRef.value,
+        start: 'top 95%',
+        toggleActions: 'play none none none',
+      },
+    })
+  })
+}
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function onClickCard(event: MouseEvent, _index: number) {
   if (!header.value) return
 
   const card = event.currentTarget as HTMLElement
   const image = card.querySelector('img')
-
   if (!image) return
 
   if (card !== currentCard) {
@@ -181,9 +234,9 @@ function closeCurrentCard() {
         gsap.set(img, { width: '200px', height: 'auto' })
       },
     })
-
-    currentCard = null
   }
+
+  currentCard = null
 }
 </script>
 
@@ -229,8 +282,8 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: clamp(150px, 25vw, 320px);
-  height: clamp(150px, 25vw, 300px);
+  width: clamp(150px, 25vw, 420px);
+  height: clamp(150px, 25vw, 200px);
   cursor: pointer;
 }
 
