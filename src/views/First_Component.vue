@@ -1,5 +1,5 @@
 <template>
-  <main class="relative flex flex-col h-screen w-screen ">
+  <main class="relative flex mb-36 flex-col h-screen w-screen ">
     <BP_Home class="overflow-hidden "/>
 
     <Marque_Carrousel class="overflow-hidden bg-transparent " />

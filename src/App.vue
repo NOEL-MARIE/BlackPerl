@@ -3,8 +3,7 @@
   <div class="app-wrapper">
     <Cursor_Follower />
     <NavBar_Component v-if="!isImageRoute" />
-    <transition name="fade">
-    </transition>
+
     <router-view />
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container h-screen w-screen  md:mt-32 "   ref="containerElement">
+  <div class="container h-screen w-screen  md:mt-32  "   ref="containerElement">
     <div id="ring" ref="ringElement">
       <div v-for="(imga, i) in img" :key="i" class="img">
         <img :src="imga" :alt="'Image ' + (i + 1)" class="image-content" />
@@ -32,15 +32,15 @@ import Img1 from '@/assets/images/Kraoké.jpg'
 import Img2 from '@/assets/images/Laity.jpg'
 import Img3 from '@/assets/images/Christaline.png'
 import Img4 from '@/assets/images/lait-rever.jpg'
-import Img5 from '@/assets/images/josey.jpg'
+import Img5 from '@/assets/images/Christaline.png'
 import Img6 from '@/assets/images/Laity.jpg'
 import Img7 from '@/assets/images/Christaline.png'
 import Img8 from '@/assets/images/lait-rever.jpg'
-import Img9 from '@/assets/images/josey.jpg'
+import Img9 from '@/assets/images/lait-rever.jpg'
 import Img10 from '@/assets/images/Laity.jpg'
 import Img11 from '@/assets/images/Christaline.png'
 import Img12 from '@/assets/images/lait-rever.jpg'
-import Img13 from '@/assets/images/josey.jpg'
+import Img13 from '@/assets/images/lait-rever.jpg'
 import Img14 from '@/assets/images/cristaline-rever.png'
 
 // Enregistrement des plugins GSAP

@@ -124,10 +124,10 @@ onUnmounted(() => {
           height=""
           src="@/assets/images/LogoBlackPEARL.png"
           alt="Logo Black Pearl"
-          class="relative W-[10px] h-[250px] md:W-[303px] md:h-[330px]"
+          class="relative W-[10px] h-[250px] md:W-[303px] md:h-[330px] 2xl:w-[600px] 2xl:h-[750px]"
         />
       </div>
-      <p class="mb-6 text-white text-center md:text-start mx-8 md:mx-0">
+      <p class="mb-6 text-white text-center md:text-start mx-8 md:mx-0 2xl:text-4xl">
         Tirez l’ancre vers le haut, et commencez le jeu
       </p>
       <img
@@ -136,7 +136,7 @@ onUnmounted(() => {
         alt="Ancre"
         width="40"
         height="40"
-        class="cursor-grab active:cursor-grabbing touch-none"
+        class="cursor-grab active:cursor-grabbing touch-none 2xl:w-[100px] 2xl:h-[150px]"
         draggable="false"
       />
     </section>

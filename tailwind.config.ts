@@ -18,7 +18,7 @@ module.exports = {
   theme: {
     // Définition explicite de tous les breakpoints ici
     screens: {
-      xs: '320  px',
+      xs: '320px',
 
       sm: '640px',
       // => @media (min-width: 640px) { ... }

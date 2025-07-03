@@ -114,28 +114,28 @@ onBeforeUnmount(() => {
     <div class="relative z-20 w-full max-w-[1434px]">
       <!-- TAB positionné en haut du bloc -->
       <div class="w-full flex mb-6 justify-end">
-        <div class="tab h-[40px] w-[80%]  md:w-[80%]  bg-black rounded-t-xl"></div>
+        <div class="tab h-[40px] w-[90%]  md:w-[80%]  bg-black rounded-t-xl"></div>
       </div>
 
       <!-- Contenu principal -->
       <div class="bg-black rounded-b-2xl rounded-tl-lg  p-6 md:p-10">
-        <div class="text-white flex flex-col gap-8">
+        <div class="text-white flex flex-col gap-8 2xl:gap-12">
           <!-- Textes -->
-          <div class="flex flex-col md:flex-row justify-between gap-8">
-            <div ref="boldTextRef" class="text-lg md:text-xl font-bold font-Opensans leading-snug">
+          <div class="flex flex-col md:flex-row justify-between gap-8 2xl:gap-12">
+            <div ref="boldTextRef" class="text-lg md:text-xl 2xl:text-3xl font-bold font-Opensans leading-snug">
               <p>
                 L’équipage créatif d’un navire enraciné dans <br class="hidden sm:inline" />
                 l’Afrique moderne
               </p>
               <p class="mt-4">
-                Black Pearl Entertainment est bien plus <br class="hidden sm:inline" />
+                Black Pearl Entertainment est bien plus <br class="hidden sm:inline 2xl:hidden" />
                 qu’une agence de communication 360°.
               </p>
             </div>
 
             <div
               ref="regularTextRef"
-              class="text-sm md:text-base font-Opensans text-gray-200 leading-relaxed"
+              class="text-sm md:text-base font-Opensans text-gray-200 2xl:text-2xl leading-relaxed"
             >
               <p>
                 C’est un bateau pirate créatif, où stratégie, storytelling et technologie
@@ -156,9 +156,9 @@ onBeforeUnmount(() => {
           <div>
             <p
               ref="conquestTextRef"
-              class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center uppercase font-HouseOfCardsW03Bold"
+              class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-8xl text-center uppercase font-HouseOfCardsW03Bold"
             >
-              Ce n’est pas une campagne. C’est une <br />
+              Ce n’est pas une campagne. C’est une <br class=" hidden " />
               <span class="text-[rgba(251,221,120,1)]">conquête</span>.
             </p>
           </div>

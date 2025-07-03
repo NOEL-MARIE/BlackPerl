@@ -1,5 +1,5 @@
 <template>
-  <div class="w-screen h-screen relative flex flex-col justify-center items-center">
+  <div class="w-screen h-screen relative flex  flex-col justify-center items-center">
     <div class="relative w-full h-full flex justify-center items-center">
       <!-- Image 1 en haut à gauche -->
       <Motion
@@ -12,7 +12,7 @@
         <img
           :src="Echec"
           alt="Illustration d'échec"
-          class="object-cover rotate-12 "
+          class="object-cover rotate-12 md:w-[45vw]"
         />
       </Motion>
 
@@ -27,7 +27,7 @@
         <img
           :src="Logo_BlackPurl"
           alt="Logo Black Pearl"
-          class="object-contain xs:w-full xs:h-full xs:max-w-full md:mb-[250px] xl:mb-[550px] md:w-[400%] xs:max-h-full"
+          class="object-contain xs:w-full  xs:h-full xs:max-w-full md:mb-[250px] xl:mb-[550px] 2xl:mb-[999px] md:w-[400%] xs:max-h-full"
         />
       </Motion>
 

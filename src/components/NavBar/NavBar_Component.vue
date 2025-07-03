@@ -17,7 +17,7 @@
             v-for="item in links"
             :key="item.name"
             :to="item.to"
-            class="relative flex px-3 py-2 font-medium transition-colors duration-300 text-xm"
+            class="relative flex px-3 py-2 font-medium transition-colors duration-300 text-2xl"
             :class="[
               isImageRoute && !isScrolled ? 'text-white' : 'text-gray-900',
               route.path === item.to ? 'font-bold router-link-active' : '',

@@ -36,8 +36,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-screen overflow-hidden   md:h-[4%] md:pb-48  ">
-    <div class="relative overflow-hidden w-full">
+  <div class="w-screen    md:h-[4%] md:pb-48 2xl:mb-64  ">
+    <div class="relative  w-full">
       <div
         ref="trackRef"
         class="flex animate-scroll whitespace-nowrap"
@@ -50,7 +50,7 @@ onMounted(() => {
           <img
             :src="img.src"
             :alt="img.alt"
-            class="h-16 sm:h-20 md:h-24 object-contain"
+            class="h-16 sm:h-20 md:h-24 2xl:h-48 object-contain"
           />
         </div>
       </div>
