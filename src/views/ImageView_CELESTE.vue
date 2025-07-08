@@ -2,7 +2,6 @@
 import { ref, computed, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
-import NavBar_Component from '@/components/NavBar/NavBar_Component.vue'
 
 const props = defineProps<{ id: string }>()
 const router = useRouter()
@@ -111,10 +110,8 @@ function scrollToActiveThumbnail() {
 
 <template>
   <div>
-    <!-- NAVBAR visible -->
-    <header class="w-screen text-white fixed mb-44 z-10">
-      <NavBar_Component class="bg-transparent" />
-    </header>
+import NavBar_Component from '@/components/NavBar/NavBar_Component.vue'
+
     <!-- IMAGE VIEWER -->
     <div class="image-viewer w-full flex h-screen text-white pt-32 relative overflow-hidden">
       <!-- Fond en <img> flou -->

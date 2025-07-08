@@ -12,12 +12,12 @@
         <!-- Logo -->
 
         <!-- Desktop Links -->
-        <div class="hidden md:flex items-center gap-2 mx-auto">
+        <div class="hidden  md:flex items-center gap-2 mx-auto">
           <router-link
             v-for="item in links"
             :key="item.name"
             :to="item.to"
-            class="relative flex px-3 py-2 font-medium transition-colors duration-300 text-2xl"
+            class="relative span flex px-3 py-2 font-medium transition-colors duration-300 text-xl"
             :class="[
               isImageRoute && !isScrolled ? 'text-white' : 'text-gray-900',
               route.path === item.to ? 'font-bold router-link-active' : '',
@@ -220,6 +220,7 @@ a:hover > span,
   transform-origin: left center;
   transform: scaleX(1);
 }
+
 .router-link-active {
   font-weight: bold;
 }

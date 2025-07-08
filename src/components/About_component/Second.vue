@@ -1,4 +1,5 @@
 <!-- eslint-disable vue/multi-word-component-names -->
+  <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import Carrousel_Left from '@/components/About_component/Carrousel_Left.vue'
 import Carrousel_Right from '@/components/About_component/Carrousel_Right.vue'
@@ -65,7 +66,7 @@ const animateText = (elementRef: Ref<HTMLElement | null>, type: 'lines' | 'words
         start: 'top 80%', // Déclenche plus tôt quand le haut de l'élément est à 80% du viewport
         end: 'bottom top', // Fin du déclenchement si besoin (pas toujours nécessaire pour 'play once')
         // markers: true, // Décommenter pour voir les marqueurs
-        toggleActions: 'play none none none', // Joue une seule fois à l'entrée
+        toggleActions: 'play play play play', // Joue une seule fois à l'entrée
       },
     })
   }
@@ -114,7 +115,7 @@ onBeforeUnmount(() => {
     <div class="relative z-20 w-full max-w-[1434px]">
       <!-- TAB positionné en haut du bloc -->
       <div class="w-full flex mb-6 justify-end">
-        <div class="tab h-[40px] w-[90%]  md:w-[80%]  bg-black rounded-t-xl"></div>
+        <div class=" h-[40px] w-[90%]  md:w-[80%]  bg-black rounded-t-xl"></div>
       </div>
 
       <!-- Contenu principal -->
@@ -158,7 +159,7 @@ onBeforeUnmount(() => {
               ref="conquestTextRef"
               class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-8xl text-center uppercase font-HouseOfCardsW03Bold"
             >
-              Ce n’est pas une campagne. C’est une <br class=" hidden " />
+              Ce n’est pas une campagne. C’est une <br class=" hidden md:flex " />
               <span class="text-[rgba(251,221,120,1)]">conquête</span>.
             </p>
           </div>

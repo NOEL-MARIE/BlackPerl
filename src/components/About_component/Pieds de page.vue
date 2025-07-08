@@ -1,19 +1,19 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div class="hero-bg w-full flex flex-col justify-between xl:justify-between">
-    <div class="flex flex-col justify-around xl:gap-96">
+  <div class="hero-bg w-full flex flex-col justify-between 2xl:justify-between">
+    <div class="flex flex-col justify-around 2xl:gap-96 gap-96">
       <!-- Hero Content -->
       <div
-        class="hero-content mb-11 sm:mb-0 px-4 pt-20 sm:px-8 sm:pt-24 lg:px-20 lg:pt-32 text-white max-w-full sm:max-w-[600px]"
+        class="hero-content mb-11 sm:mb-0 px-4 pt-20 sm:px-8 sm:pt-24 2xl:px-20 2xl:pt-32 text-white max-w-full sm:max-w-[600px]"
       >
         <h1
           ref="heroTitleRef"
-          class="text-2xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6"
+          class="text-2xl sm:text-4xl 2xl:text-5xl font-bold leading-tight mb-6"
         >
           ENTREZ MAINTENANT<br />
           DANS LE JEU EN 1 MINUTES
         </h1>
-        <p ref="heroDescRef" class="text-sm sm:text-base md:text-lg text-gray-200">
+        <p ref="heroDescRef" class="text-sm sm:text-base 2xl:text-lg text-gray-200">
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
           tincidunt ut laoreet dolore magna aliquam
         </p>
@@ -22,19 +22,19 @@
       <!-- Footer -->
       <footer
         ref="footerRef"
-        class="footer-blur mx-4 sm:mx-6 md:mx-14 mb-6 sm:mb-9 h-fit sm:h-[190px] xl:h-[390px] rounded-2xl p-4 sm:p-6 flex flex-col sm:flex-row justify-between gap-6"
+        class="footer-blur mx-4 sm:mx-6 2xl:mx-14 mb-6 sm:mb-9 h-fit sm:h-[190px] 2xl:h-[390px] rounded-2xl p-4 sm:p-6 flex flex-col sm:flex-row justify-between gap-6"
       >
         <div class="flex flex-col sm:flex-row items-center w-full gap-6 sm:gap-12 px-4 sm:px-8">
           <!-- Newsletter -->
           <div class="flex-1 min-w-[240px]">
             <label
               for="email"
-              class="text-white justify-center sm:justify-start font-bold text-sm sm:text-base xl:text-5xl mb-3 flex items-center"
+              class="text-white justify-center sm:justify-start font-bold text-sm sm:text-base 2xl:text-5xl mb-3 flex items-center"
             >
               RESTEZ À JOUR
               <img
                 src="@/assets/images/paper plane.gif"
-                class="w-8 xl:w-32 xl:h-32 h-8 ml-2"
+                class="w-8 2xl:w-32 2xl:h-32 h-8 ml-2"
                 alt=""
               />
               <span class="ml-2 text-lg">
@@ -47,7 +47,7 @@
                 name="email"
                 v-model="email"
                 type="email"
-                class="text-xs sm:text-sm px-3 py-2 w-full sm:w-[244px] xl:w-[474px] xl:h-[74px] rounded outline-none"
+                class="text-xs sm:text-sm px-3 py-2 w-full sm:w-[244px] 2xl:w-[474px] 2xl:h-[74px] rounded outline-none"
                 placeholder="Entrez votre e-mail"
                 required
               />

@@ -1,5 +1,4 @@
 <template>
-
   <div class="app-wrapper">
     <Cursor_Follower />
     <NavBar_Component v-if="!isImageRoute" />
@@ -9,19 +8,28 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
-import { useRoute } from 'vue-router';
-import Cursor_Follower from '@/components/Cursor_Follower.vue';
-import NavBar_Component from './components/NavBar/NavBar_Component.vue';
+import { computed, onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
+import Cursor_Follower from '@/components/Cursor_Follower.vue'
+import NavBar_Component from './components/NavBar/NavBar_Component.vue'
 
-const route = useRoute();
+const route = useRoute()
 
-const isImageRoute = computed(() => route.path.startsWith('/image/'));
+// Liste des préfixes correspondant aux routes ImageViewer
+const imageViewerPrefixes = [
+  '/image/',
+  '/ajrental',
+  '/celeste',
+  '/cleo',
+  '/maman',
+  '/mediano',
+  '/sourire',
+]
 
-
-
-
-
+// Computed qui renvoie true si la route actuelle est une route ImageViewer
+const isImageRoute = computed(() =>
+  imageViewerPrefixes.some(prefix => route.path.startsWith(prefix))
+)
 
 // État du loader
 const isLoading = ref(true)
@@ -29,18 +37,18 @@ const progress = ref(0)
 
 onMounted(() => {
   setTimeout(() => {
-    isLoading.value = false; // Simule la fin du chargement
-  }, 9000);
+    isLoading.value = false // Simule la fin du chargement
+  }, 9000)
+
   const progressInterval = setInterval(() => {
     if (progress.value >= 100) {
       clearInterval(progressInterval)
       progress.value = 100
     } else {
-      progress.value += 100 / 190 // 12s = 120 x 100ms
+      progress.value += 100 / 190 // 12s = 120 x 100ms approx.
     }
   }, 900)
-
-});
+})
 </script>
 
 <style>
@@ -50,8 +58,10 @@ onMounted(() => {
 }
 .loader-overlay {
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0,0,0,0.5);
   display: flex;
   justify-content: center;
@@ -70,3 +80,4 @@ onMounted(() => {
   opacity: 1;
 }
 </style>
+  

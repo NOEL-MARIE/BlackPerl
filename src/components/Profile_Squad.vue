@@ -3,7 +3,7 @@
     ref="carouselWrapper"
     class="
       w-full
-      h-[180px] xs:h-[220px] sm:h-[320px] md:h-[360px] lg:h-[400px] xl:h-[420px] 2xl:h-[440px]
+      h-full  xs:h-[220px] sm:h-[320px] md:h-[360px]  lg:h-[400px] xl:h-[420px] 2xl:h-[440px]
       mt-6 sm:mt-12
       relative rounded-2xl
     "
@@ -31,7 +31,7 @@
         :class="index % 2 === 1 ? '-mt-2 xs:-mt-4 sm:-mt-6 md:-mt-8' : 'mt-0'"
       >
         <!-- Image -->
-        <picture class="absolute border-2 rounded-2xl top-0 left-0 w-full h-full overflow-hidden">
+        <picture class="absolute border-2 rounded-2xl top-0  left-0 w-full h-full overflow-hidden">
           <img
             :src="item.src"
             :alt="item.alt"

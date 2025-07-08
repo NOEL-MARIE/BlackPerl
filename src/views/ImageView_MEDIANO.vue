@@ -2,7 +2,6 @@
 import { ref, computed, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
-import NavBar_Component from '@/components/NavBar/NavBar_Component.vue'
 
 const props = defineProps<{ id: string }>()
 const router = useRouter()
@@ -26,10 +25,7 @@ const allImages = ref<Image[]>([
   },
   {
     id: 2,
-    url: new URL(
-      '@/assets/Archive (1)/Dossier Mediano/007754.jpg',
-      import.meta.url,
-    ).href,
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/007754.jpg', import.meta.url).href,
     Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
     title: 'Allô Coca !',
     description:
@@ -37,20 +33,14 @@ const allImages = ref<Image[]>([
   },
   {
     id: 3,
-    url: new URL(
-      '@/assets/Archive (1)/Dossier Mediano/008843.jpg',
-      import.meta.url,
-    ).href,
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/008843.jpg', import.meta.url).href,
     Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
     title: 'Architecture',
     description: 'Contemporary building design with unique structural elements',
   },
   {
     id: 4,
-    url: new URL(
-      '@/assets/Archive (1)/Dossier Mediano/77-000087.jpg',
-      import.meta.url,
-    ).href,
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/77-000087.jpg', import.meta.url).href,
     Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
 
     title: 'Minimalism',
@@ -58,10 +48,7 @@ const allImages = ref<Image[]>([
   },
   {
     id: 5,
-    url: new URL(
-      '@/assets/Archive (1)/Dossier Mediano/80098.jpg',
-      import.meta.url,
-    ).href,
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/80098.jpg', import.meta.url).href,
     Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
 
     title: 'Abstract',
@@ -69,10 +56,7 @@ const allImages = ref<Image[]>([
   },
   {
     id: 6,
-    url: new URL(
-      '@/assets/Archive (1)/Dossier Mediano/86665.jpg',
-      import.meta.url,
-    ).href,
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/86665.jpg', import.meta.url).href,
     Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
 
     title: 'Allô Coca !',
@@ -81,16 +65,12 @@ const allImages = ref<Image[]>([
   },
   {
     id: 7,
-    url: new URL(
-      '@/assets/Archive (1)/Dossier Mediano/889977.jpg',
-      import.meta.url,
-    ).href,
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/889977.jpg', import.meta.url).href,
     Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
 
     title: 'Architecture',
     description: 'Contemporary building design with unique structural elements',
   },
-
 ])
 
 const currentImageId = ref(parseInt(props.id, 10))
@@ -138,10 +118,7 @@ function scrollToActiveThumbnail() {
 
 <template>
   <div>
-    <!-- NAVBAR visible -->
-    <header class="w-screen text-white fixed mb-44 z-10">
-      <NavBar_Component class="bg-transparent" />
-    </header>
+
     <!-- IMAGE VIEWER -->
     <div class="image-viewer w-full flex h-screen text-white pt-32 relative overflow-hidden">
       <!-- Fond en <img> flou -->

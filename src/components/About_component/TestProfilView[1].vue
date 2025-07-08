@@ -16,9 +16,9 @@
   </div>
 
   <!-- Bloc à placer juste en dessous -->
-  <div class="w-full hidden xl:flex flex-col items-center mt-64 justify-center">
+  <div class="w-full hidden 2xl:flex flex-col items-center mt-64 justify-center">
     <span class="font-Opensans text-2xl" ref="boatGifRef">Scrollez</span>
-    <img :src="boatGif" class="xl:w-[124px]" alt="" width="" height="84px" ref="boatGifRef" />
+    <img :src="boatGif" class="2xl:w-[124px]" alt="" width="" height="84px" ref="boatGifRef" />
   </div>
 </template>
 
@@ -207,8 +207,8 @@ function onClickCard(event: MouseEvent, _index: number) {
       ease: 'power1.inOut',
       onComplete: () => {
         gsap.to(image, {
-          width: '20vw',
-          height: '20vw',
+          width: '200vw', //changer cette valeur a fait rapprocher les blocs d'image
+          height: '10vw',
           maxWidth: '50px',
           maxHeight: '50px',
         })
@@ -282,8 +282,8 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: clamp(150px, 25vw, 420px);
-  height: clamp(150px, 25vw, 200px);
+  width:  18vw;
+  height:  25vw;
   cursor: pointer;
 }
 
@@ -297,8 +297,8 @@ body {
     max-height: 2200px;
   }
   .wheel__card {
-    width: clamp(140px, 22vw, 280px);
-    height: clamp(140px, 22vw, 280px);
+    width: 22vw;
+    height: 22vw;
   }
 }
 

@@ -20,14 +20,14 @@ const animatedHeadline = ref<HTMLElement | null>(null);
 
 <template>
 
-    <div class="z-0 flex flex-col  xl:mt-16 sm:justify-around  w-screen h-screen">
+    <div class="z-0 flex flex-col  2xl:mt-16 sm:justify-around  w-screen h-screen">
       <div class="flex justify-center w-full md:h-52 h-96">
-        <h1 ref="animatedHeadline" class=" text-[30px] xl:md:text-[180px] xl:pb-9   font-cinzel leading-none text-center md:text-[88px] flex-col">
+        <h1 ref="animatedHeadline" class=" text-[30px] 2xl:md:text-[180px] 2xl:pb-9   font-cinzel leading-none text-center md:text-[88px] flex-col">
           DONNEZ VIE À VOTRE <br />
           MARQUE
         </h1>
       </div>
-      <div class="z-0 flex md:h-1/2 h-48  oblique-carousel-viewport sm:mt-44 xl:mt-96">
+      <div class="z-0 flex md:h-1/2   oblique-carousel-viewport sm:mt-44 2xl:mt-96">
         <TestProfilView />
       </div>
 

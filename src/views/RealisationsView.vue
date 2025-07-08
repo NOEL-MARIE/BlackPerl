@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div class="container h-screen w-screen  md:mt-32  "   ref="containerElement">
     <div id="ring" ref="ringElement">
       <div v-for="(imga, i) in img" :key="i" class="img">
@@ -325,15 +325,15 @@ div {
 
 @media (min-width: 1536px) {
   .container {
-    perspective: 2000px; /* Nouvelle perspective pour 2XL */
-    height: 1250px; /* Hauteur ajustée pour 2XL */
+    perspective: 1000px; /* Nouvelle perspective pour 2XL */
+    height: 1200px; /* Hauteur ajustée pour 2XL */
 
   }
 
   .img {
     /* Ces dimensions déterminent la taille de chaque "emplacement" d'image dans l'anneau 3D */
     width: 190%; /* Ajuster si nécessaire pour la taille de l'image */
-    height: 110%; /* Ajuster si nécessaire pour la taille de l'image */
+    height: 100%; /* Ajuster si nécessaire pour la taille de l'image */
     display: flex; /* Utilise flexbox pour centrer l'image dans le div */
     justify-content: center;
     align-items: center;
