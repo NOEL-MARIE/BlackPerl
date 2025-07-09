@@ -31,7 +31,7 @@
         :class="index % 2 === 1 ? '-mt-2 xs:-mt-4 sm:-mt-6 md:-mt-8' : 'mt-0'"
       >
         <!-- Image -->
-        <picture class="absolute border-2 rounded-2xl top-0  left-0 w-full h-full overflow-hidden">
+        <picture class="absolute  border-2 rounded-2xl top-0  left-0 w-full h-full overflow-hidden">
           <img
             :src="item.src"
             :alt="item.alt"

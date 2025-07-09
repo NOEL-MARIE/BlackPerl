@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import RippleButton from '@/components/Inspira_UI/RippleButton.vue'
 
 // Images locales importées
 import AlyssaImg from '@/assets/images/Visuel_alyssa.jpg'
@@ -96,7 +97,7 @@ const bottomCards = ref<ResponsiveCard[]>([
 </script>
 
 <template>
-  <div class="flex flex-col  p-4 w-screen  h-screen  bg-white overflow-auto">
+  <div class="flex flex-col  p-4 w-screen  pt-6 h-screen  bg-white overflow-hidden">
     <!-- Cartes du haut -->
     <div class="flex flex-col xl:flex-row max-w-full w-full  justify-around gap-6 mb-6">
       <section
@@ -121,11 +122,9 @@ const bottomCards = ref<ResponsiveCard[]>([
           class="absolute inset-0 flex items-end justify-center pb-6 pointer-events-none bg-gradient-to-t from-black/80 via-black/30 to-black/10"
           :style="{ borderRadius: card.radius + 'px' }"
         >
-          <button
-            class="pointer-events-auto border font-cinzel border-white text-white px-6 py-2 rounded-full font-semibold shadow-md bg-black/40 hover:bg-black/60 transition-colors"
-          >
+          <RippleButton class="pointer-events-auto">
             VOIR PROJET
-          </button>
+          </RippleButton>
         </div>
       </section>
     </div>
@@ -154,11 +153,9 @@ const bottomCards = ref<ResponsiveCard[]>([
           class="absolute inset-0 flex items-end justify-center pb-6 pointer-events-none bg-gradient-to-t from-black/80 via-black/30 to-black/10"
           :style="{ borderRadius: card.radius + 'px' }"
         >
-          <button
-            class="pointer-events-auto border font-cinzel border-white text-white px-6 py-2 rounded-full font-semibold shadow-md bg-black/40 hover:bg-black/60 transition-colors"
-          >
+          <RippleButton class="pointer-events-auto">
             VOIR PROJET
-          </button>
+          </RippleButton>
         </div>
       </section>
     </div>

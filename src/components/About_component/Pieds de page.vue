@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div class="hero-bg w-full flex flex-col justify-between 2xl:justify-between">
+  <div class="hero-bg w-full flex flex-col overflow-hidden justify-between 2xl:justify-between">
     <div class="flex flex-col justify-around 2xl:gap-96 gap-96">
       <!-- Hero Content -->
       <div
@@ -42,15 +42,8 @@
               </span>
             </label>
             <form @submit.prevent="subscribe" class="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <input
-                id="email"
-                name="email"
-                v-model="email"
-                type="email"
-                class="text-xs sm:text-sm px-3 py-2 w-full sm:w-[244px] 2xl:w-[474px] 2xl:h-[74px] rounded outline-none"
-                placeholder="Entrez votre e-mail"
-                required
-              />
+              <IInput />
+
               <button
                 type="submit"
                 class="bg-yellow-400 hover:bg-yellow-300 text-black font-semibold px-4 py-2 rounded w-full sm:w-fit"
@@ -104,17 +97,16 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import IInput from '@/components/Inspira_UI/IInput.vue'
 import gsap from 'gsap'
 import { CustomEase } from 'gsap/CustomEase'
 import { CustomBounce } from 'gsap/CustomBounce'
-
 // Images réseaux sociaux
 import facebook from '@/assets/images/Facebook.png'
 import instagram from '@/assets/images/Instagram.png'
 import linkedin from '@/assets/images/LinkedIn.png'
 import tiktok from '@/assets/images/TikTok.png'
 import youtube from '@/assets/images/YouTube.png'
-
 gsap.registerPlugin(CustomEase, CustomBounce)
 
 const heroTitleRef = ref<HTMLElement | null>(null)

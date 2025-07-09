@@ -11,6 +11,7 @@
         v-for="(logo, index) in logosConcat"
         :key="index"
       >
+
         <img :src="logo.src" :alt="logo.alt" />
       </div>
     </div>

@@ -3,7 +3,7 @@ import VueSmoothScroll from 'v-smooth-scroll'
 // Framework Core
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-
+import { MotionPlugin } from '@vueuse/motion'
 // Plugins
 import 'vue-toastification/dist/index.css'
 
@@ -14,6 +14,7 @@ import router from './router'
 // Initialisation de l'application
 const app = createApp(App)
 app.use(VueSmoothScroll)
+app.use(MotionPlugin)
 // Configuration Pinia
 const pinia = createPinia()
 
