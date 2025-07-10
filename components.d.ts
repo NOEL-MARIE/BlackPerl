@@ -9,6 +9,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     3DCard: typeof import('./src/components/Inspira_UI/3DCard.vue')['default']
+    BackTop: typeof import('./src/components/Inspira_UI/backTop.vue')['default']
     BlackSection: typeof import('./src/components/Landing/component/BlackSection.vue')['default']
     BP_Home: typeof import('./src/components/Landing/views/BP_Home.vue')['default']
     Carroucel: typeof import('./src/components/Landing/component/Carroucel.vue')['default']

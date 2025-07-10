@@ -1,5 +1,6 @@
 <template>
   <div class="app-wrapper">
+    <backTop />
     <Cursor_Follower />
     <NavBar_Component v-if="!isImageRoute" />
 
@@ -10,6 +11,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import backTop from '@/components/Inspira_UI/backTop.vue'
 import Cursor_Follower from '@/components/Cursor_Follower.vue'
 import NavBar_Component from './components/NavBar/NavBar_Component.vue'
 
@@ -80,4 +82,3 @@ onMounted(() => {
   opacity: 1;
 }
 </style>
-  

@@ -2,12 +2,12 @@
   <section
     class="flex flex-col h-screen overflow-hidden w-screen 2xl:gap-24 items-center justify-center px-4 py-12 text-white sm:px-6 md:px-12 lg:px-24"
   >
-    <Card3D>
+
       <div class="flex flex-col 2xl:gap-52 lg:flex-row w-full max-w-7xl gap-8">
         <!-- Colonne de gauche -->
         <div class="flex 2xl:scale-125 2xl:mt-2 flex-col gap-4 w-full lg:w-[530px] SUPP_2XL:w-1/2">
           <!-- Bloc Stratégie 360° -->
-          <Card3D>
+
             <router-link to="/Strategie_360" class="block group">
               <div
                 class="relative w-full h-[188px] SUPP_2XL:h-[288px] bg-black group-hover:scale-105 transition-transform duration-300 rounded-xl p-6 overflow-hidden"
@@ -32,10 +32,10 @@
                 </div>
               </div>
             </router-link>
-          </Card3D>
+
           <!-- Deux petits blocs -->
           <div class="flex flex-col sm:flex-row gap-4 2xl:gap-8">
-            <!-- <Card3D> -->
+            <!-- -->
             <router-link to="/ActivationsView" class="block w-full sm:w-1/2">
               <div
                 class="bg-black hover:scale-105 transition-transform duration-300 rounded-xl p-4 h-[274px] w-[174px] flex flex-col justify-between"
@@ -60,7 +60,7 @@
                 </div>
               </div>
             </router-link>
-            <!-- </Card3D> -->
+            <!--  -->
             <div
               class="w-full sm:w-1/2 h-[274px] bg-black rounded-xl relative overflow-hidden hover:overflow-auto flex items-center justify-center"
             >
@@ -97,7 +97,7 @@
                 </div>
               </div>
             </router-link>
-            <!-- </Card3D> -->
+            <!--  -->
             <div class="flex flex-col gap-4 w-full">
               <!-- Branding & contenus + image -->
               <div class="flex flex-col sm:flex-row gap-4">
@@ -115,14 +115,14 @@
                   <div
                     class="bg-black hover:scale-105 transition-transform duration-300 rounded-xl p-4 flex flex-col justify-center h-full"
                   >
+                  <div
+                    class="w-5 h-5 rounded-full ml-auto  bg-[#F8D065] flex items-center justify-center"
+                  >
+                    <span class="text-xl text-black font-bold animated-text">+</span>
+                  </div>
                     <div class="flex justify-between items-start">
                       <div class="font-HouseOfCardsW03Bold uppercase text-2xl animated-text">
                         Branding & contenus
-                      </div>
-                      <div
-                        class="w-5 h-5 rounded-full bg-[#F8D065] flex items-center justify-center"
-                      >
-                        <span class="text-xl text-black font-bold animated-text">+</span>
                       </div>
                     </div>
                     <div class="text-xs font-light text-start font-Opensans animated-text">
@@ -197,7 +197,7 @@
           </div>
         </div>
       </div>
-    </Card3D>
+
 
     <!-- Scroll Boat -->
     <div class="flex items-center justify-center mt-12 flex-col">
@@ -208,7 +208,6 @@
 </template>
 
 <script lang="ts">
-import Card3D from '@/components/Inspira_UI/3DCard.vue'
 import boatGif from '@/assets/images/boat.gif'
 import { ref, onMounted } from 'vue'
 import gsap from 'gsap'
@@ -221,7 +220,6 @@ gsap.registerPlugin(ScrollTrigger, CustomEase, CustomBounce)
 export default {
   name: 'ExpertiseSection',
   components: {
-    Card3D,
   },
   data() {
     return {

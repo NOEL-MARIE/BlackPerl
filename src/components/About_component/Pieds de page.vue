@@ -97,7 +97,6 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import IInput from '@/components/Inspira_UI/IInput.vue'
 import gsap from 'gsap'
 import { CustomEase } from 'gsap/CustomEase'
 import { CustomBounce } from 'gsap/CustomBounce'
