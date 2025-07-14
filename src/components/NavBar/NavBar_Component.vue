@@ -12,7 +12,7 @@
         <!-- Logo -->
 
         <!-- Desktop Links -->
-        <div class="hidden  md:flex items-center gap-2 mx-auto">
+        <div class="hidden md:flex items-center gap-2 mx-auto">
           <router-link
             v-for="item in links"
             :key="item.name"

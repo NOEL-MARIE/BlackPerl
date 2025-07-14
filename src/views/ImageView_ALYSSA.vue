@@ -84,7 +84,7 @@ function scrollThumbnails(direction: 'left' | 'right') {
 }
 
 function updateUrl() {
-  router.replace({ name: 'ImageViewer', params: { id: currentImageId.value.toString() } })
+  router.replace({ name: 'ImageView_ALYSSA', params: { id: currentImageId.value.toString() } })
 }
 
 function selectImage(id: number) {

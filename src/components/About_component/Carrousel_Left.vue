@@ -7,12 +7,13 @@
       ref="track"
     >
       <div
-        class="carousel-item"
+        class="carousel-item
+         hover:scale-125 active:scale-75 transition-transform duration-200 ease-in-out"
         v-for="(logo, index) in logosConcat"
         :key="index"
       >
 
-        <img :src="logo.src" :alt="logo.alt" />
+        <img :src="logo.src" :alt="logo.alt" class="" />
       </div>
     </div>
   </div>

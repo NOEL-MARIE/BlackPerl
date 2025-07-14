@@ -101,6 +101,8 @@ import gsap from 'gsap'
 import { CustomEase } from 'gsap/CustomEase'
 import { CustomBounce } from 'gsap/CustomBounce'
 // Images réseaux sociaux
+import IInput from '@/components/Inspira_UI/IInput_cop.vue'
+// Import des images pour les réseaux sociaux
 import facebook from '@/assets/images/Facebook.png'
 import instagram from '@/assets/images/Instagram.png'
 import linkedin from '@/assets/images/LinkedIn.png'

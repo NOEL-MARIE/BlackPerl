@@ -24,6 +24,8 @@ import ImageView_CLEO from '@/views/ImageView_CLEO.vue'
 import ImageView_MAMAN from '@/views/ImageView_MAMAN.vue'
 import ImageView_MEDIANO from '@/views/ImageView_MEDIANO.vue'
 import ImageView_SOURIRE from '@/views/ImageView_SOURIRE.vue'
+import ImageView_LAITY from '@/views/ImageView_LAITY.vue'
+import ImageView_ALYSSA from '@/views/ImageView_ALYSSA.vue'
 // === Import des pages ImageView ===
 const router = createRouter({
   history: createWebHistory(),
@@ -117,7 +119,7 @@ const router = createRouter({
       name: 'ChessboardGallery', // Un nom unique pour cette route (optionnel mais recommandé)
       component: ChessboardGallery, // Le composant que cette route doit afficher
     },
-     // === Routes spécifiques pour chaque page ImageView ===
+    // === Routes spécifiques pour chaque page ImageView ===
     {
       path: '/ajrental',
       name: 'ImageView_AJRENTAL',
@@ -153,6 +155,16 @@ const router = createRouter({
       name: 'ImageView_SOURIRE',
       component: ImageView_SOURIRE,
       // Page : SOURIRE
+    },
+    {
+      path: '/laity',
+      name: 'ImageView_LAITY',
+      component: ImageView_LAITY,
+    },
+    {
+      path: '/alyssa',
+      name: 'ImageView_ALYSSA',
+      component: ImageView_ALYSSA,
     },
   ],
   scrollBehavior(to) {

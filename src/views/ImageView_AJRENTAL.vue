@@ -1,8 +1,11 @@
 <script setup lang="ts">
-import { ref, computed, nextTick, watch } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { ref, computed, nextTick } from 'vue'
+import { useRouter } from 'vue-router'
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
 import NavBar_Component from '@/components/NavBar/NavBar_Component.vue'
+
+const props = defineProps<{ id: string }>()
+const router = useRouter()
 
 interface Image {
   id: number
@@ -12,14 +15,11 @@ interface Image {
   Logo?: string
 }
 
-const router = useRouter()
-const route = useRoute()
-
 const allImages = ref<Image[]>([
   {
     id: 1,
-    url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
+    url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/481313827_639636472149617_9061124142066252892_n.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
     title: 'Allô Coca !',
     description:
       'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud <br>  exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea ',
@@ -27,7 +27,7 @@ const allImages = ref<Image[]>([
   {
     id: 2,
     url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/481313827_639636472149617_9061124142066252892_n.jpg', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
     title: 'Allô Coca !',
     description:
       'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud <br>  exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea ',
@@ -35,28 +35,28 @@ const allImages = ref<Image[]>([
   {
     id: 3,
     url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/481478124_644339968345934_8573990924828231275_n.jpg', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
     title: 'Architecture',
     description: 'Contemporary building design with unique structural elements',
   },
   {
     id: 4,
     url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/482826549_648213684625229_7673528266563523243_n.jpg', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
     title: 'Minimalism',
     description: 'Simple yet powerful design emphasizing negative space',
   },
   {
     id: 5,
     url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/484204025_649876124458985_1212462734216018_n.jpg', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
     title: 'Abstract',
     description: 'Conceptual artwork exploring form and color',
   },
   {
     id: 6,
     url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/498924794_727962969983633_2232564533664147717_n.jpg', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
     title: 'Allô Coca !',
     description:
       'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud <br>  exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea ',
@@ -64,56 +64,44 @@ const allImages = ref<Image[]>([
   {
     id: 7,
     url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Ramadan.jpg', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
     title: 'Architecture',
     description: 'Contemporary building design with unique structural elements',
   },
 ])
 
-// Initialiser currentImageId depuis le paramètre de route
-const currentImageId = ref<number>(Number(route.params.id) || allImages.value[0].id)
-
-// Image courante calculée
-const currentImage = computed(() =>
-  allImages.value.find(img => img.id === currentImageId.value) || allImages.value[0]
+const currentImageId = ref(parseInt(props.id, 10))
+const currentImage = computed(
+  () => allImages.value.find((img) => img.id === currentImageId.value) || allImages.value[0],
 )
-
-// Miniatures (exclure image courante)
-const thumbnails = computed(() =>
-  allImages.value.filter(img => img.id !== currentImageId.value)
-)
+const thumbnails = computed(() => allImages.value.filter((img) => img.id !== currentImageId.value))
 
 const thumbnailsContainer = ref<HTMLElement | null>(null)
 
-// Scroll des miniatures
 function scrollThumbnails(direction: 'left' | 'right') {
   if (!thumbnailsContainer.value) return
   const scrollAmount = 136
-  thumbnailsContainer.value.scrollBy({
-    left: direction === 'left' ? -scrollAmount : scrollAmount,
-    behavior: 'smooth',
-  })
+  if (direction === 'left') {
+    thumbnailsContainer.value.scrollBy({ left: -scrollAmount, behavior: 'smooth' })
+  } else {
+    thumbnailsContainer.value.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+  }
 }
 
-// Met à jour l'URL sans recharger la page
 function updateUrl() {
-  router.replace({ name: 'ImageViewer', params: { id: currentImageId.value.toString() } })
+  router.replace({ name: 'ImageView_AJRENTAL', params: { id: currentImageId.value.toString() } })
 }
 
-// Sélectionne une image (clic miniature)
 function selectImage(id: number) {
-  if (id === currentImageId.value) return
   currentImageId.value = id
   updateUrl()
   scrollToActiveThumbnail()
 }
 
-// Retour à la page galerie
 function goBack() {
-  router.push('/ches')
+  window.location.href = '/ches'
 }
 
-// Scroll vers la miniature active
 function scrollToActiveThumbnail() {
   nextTick(() => {
     if (!thumbnailsContainer.value) return
@@ -123,18 +111,6 @@ function scrollToActiveThumbnail() {
     }
   })
 }
-
-// Synchroniser currentImageId si l'URL change (navigation manuelle)
-watch(
-  () => route.params.id,
-  (newId) => {
-    const idNum = Number(newId)
-    if (!isNaN(idNum) && idNum !== currentImageId.value) {
-      currentImageId.value = idNum
-      scrollToActiveThumbnail()
-    }
-  }
-)
 </script>
 
 <template>
@@ -143,15 +119,15 @@ watch(
     <header class="w-screen text-white fixed mb-44 z-10">
       <NavBar_Component class="bg-transparent" />
     </header>
-
     <!-- IMAGE VIEWER -->
     <div class="image-viewer w-full flex h-screen text-white pt-32 relative overflow-hidden">
-      <!-- Fond flou -->
+      <!-- Fond en <img> flou -->
       <picture>
         <source type="image/webp" srcset="@/assets/images/BackgroundImgViews.jpg" sizes="100vw" />
         <img
           src="@/assets/images/BackgroundImgViews.jpg"
-          alt="Background flou"
+          srcset="@/assets/images/BackgroundImgViews.jpg"
+          alt="GN Loader"
           class="w-full h-full bg-img-blur absolute top-0 left-0 object-center object-cover"
           loading="lazy"
         />
@@ -162,16 +138,15 @@ watch(
         class="w-full bg-img-blur h-full bg-contain"
         aria-hidden="true"
       />
-
-      <div class="main-conten flex justify-between w-full gap-80 mt-9 relative z-10">
+      <div class="main-conten flex justify-between w-full gap-8 mt-9 relative z-10">
         <!-- Colonne gauche -->
         <div class="left-side flex flex-col ml-40 justify-evenly w-1/2">
-          <button class="back-button mt-6 hover:cursor-pointer" @click="goBack">
+          <button class="back-button mt-6 hover:cursor-pointer w-fit group" @click="goBack">
             <span class="cursor-pointer gap-4 text-xl font-Opensans flex items-center mb-14">
               <svg
                 width="11"
                 height="11"
-                class="scale-150"
+                class="scale-150 group-hover:-rotate-180 duration-300"
                 viewBox="0 0 11 11"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -184,8 +159,14 @@ watch(
               Fermer
             </span>
           </button>
+          <div>
+            <img
+              :src="currentImage.url"
+              :alt="currentImage.title"
+              class="main-image 2xl:w-[752px] 2xl:h-[752px] h-[599px] w-[572px] object-contain"
+            />
+          </div>
 
-          <img :src="currentImage.url" :alt="currentImage.title" class="main-image w-[752px] h-[505px]" />
           <img
             class="current-titl w-[182px] h-[82px]"
             :src="currentImage.Logo"
@@ -194,14 +175,14 @@ watch(
         </div>
 
         <!-- Colonne droite -->
-        <div class="right-side mr-40 flex flex-col items-end space-y-48 justify-end w-1/2">
+        <div class="right-side mr-40 gap-28 flex flex-col items-end space-y-4 justify-end w-1/2">
           <div class="flex flex-col items-end mr-14 gap-20">
             <h2 class="text-4xl text-start m-44 font-bold w-[220px]">{{ currentImage.title }}</h2>
-            <p class="font-poppins text-start w-[400px]" v-html="currentImage.description"></p>
+            <p class="font-poppins text-start w-[400px] m" v-html="currentImage.description"></p>
           </div>
 
           <div class="navigation-section fix">
-            <div class="thumbnails-carousel w-[544px]" ref="thumbnailsContainer">
+            <div class="thumbnails-carousel w-[556px] " ref="thumbnailsContainer">
               <div
                 class="thumbnail no-scrollbar mr-3"
                 :class="{ active: image.id === currentImageId }"
@@ -210,7 +191,12 @@ watch(
                 @click="selectImage(image.id)"
               >
                 <div class="mb-2">[{{ String(index).padStart(2, '0') }}]</div>
-                <img :src="image.url" :alt="image.description" class="w-[130px] h-[130px]" />
+
+                <img
+                  :src="image.url"
+                  :alt="image.description"
+                  class="w-[130px] h-[130px] hover:scale-105 duration-200"
+                />
               </div>
             </div>
             <div class="flex gap-2 justify-end mt-4">
@@ -229,9 +215,11 @@ watch(
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE et Edge */
 }
+
 .no-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+
 .image-viewer {
   position: relative;
   overflow: hidden;
@@ -241,6 +229,7 @@ watch(
 .bg-img-blur {
   position: absolute;
   inset: 0;
+
   object-fit: cover;
   filter: blur(10px);
   z-index: 0;
@@ -251,9 +240,7 @@ watch(
   position: relative;
   z-index: 10;
 }
-.main-image {
-  object-fit: contain;
-}
+
 .current-title {
   font-size: 1.5rem;
   color: var(--accent-gold);
@@ -267,6 +254,8 @@ watch(
 .thumbnails-carousel {
   display: flex;
   overflow-x: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE et Edge */
 }
 .thumbnail {
   cursor: pointer;

@@ -9,7 +9,7 @@
       <div
         v-for="(logo, index) in logosConcat"
         :key="index"
-        class="carousel-item"
+        class="carousel-item hover:scale-125 active:scale-75 transition-transform duration-200 ease-in-out"
       >
         <img
           :src="logo.src"

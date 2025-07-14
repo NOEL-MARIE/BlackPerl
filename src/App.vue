@@ -19,14 +19,17 @@ const route = useRoute()
 
 // Liste des préfixes correspondant aux routes ImageViewer
 const imageViewerPrefixes = [
-  '/image/',
+  '/image',
   '/ajrental',
   '/celeste',
   '/cleo',
   '/maman',
   '/mediano',
   '/sourire',
+  '/laity',
 ]
+
+
 
 // Computed qui renvoie true si la route actuelle est une route ImageViewer
 const isImageRoute = computed(() =>

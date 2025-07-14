@@ -12,7 +12,7 @@ const router = useRouter()
 onMounted(() => {
   setTimeout(() => {
     showLoader.value = false
-  }, 3000)
+  }, 14000)
 
   // Ajout écouteur scroll
   window.addEventListener('scroll', onScroll)
@@ -47,7 +47,7 @@ watch(showLoader, async (newVal) => {
 </script>
 
 <template>
-  <section v-if="showLoader" class="flex items-center justify-center w-screen h-screen">
+  <section v-if="showLoader" class="flex overflow-hidden items-center justify-center w-screen h-screen">
     <video src="@/assets/images/Scroll-BP.mp4" autoplay></video>
   </section>
 
