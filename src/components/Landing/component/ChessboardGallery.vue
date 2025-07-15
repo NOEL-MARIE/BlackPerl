@@ -3,16 +3,11 @@
 import { ref, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
 
-// Prop to position button, either 'left' or 'right'
-const props = defineProps<{
-  position: 'left' | 'right'
-}>()
+
 
 const hover = ref(false)
 
-const positionClass = computed(() => {
-  return props.position === 'left' ? 'button-left' : 'button-right'
-})
+
 // import des images d'arrière plan
 import imageOne from '@/assets/images/image 10first.jpg'
 import imageTwo from '@/assets/images/image 11seconde.png'
@@ -684,14 +679,7 @@ onMounted(() => {
       </button>
     </nav>
     <!-- ------------------------------------------------------------------------------------ -->
-    <div
-      class="view-button"
-      :class="positionClass"
-      @mouseenter="hover = true"
-      @mouseleave="hover = false"
-    >
-      <span class="view-text">View</span>
-    </div>
+
   </section>
 </template>
 
