@@ -120,7 +120,7 @@ function selectImage(id: number) {
 }
 
 function goBack() {
-  window.location.href = '/ches'
+  router.push({ name: 'ChessboardGallery' })
 }
 
 function scrollToActiveThumbnail() {

@@ -30,6 +30,7 @@ declare module 'vue' {
     Motion: typeof import('motion-v')['Motion']
     NavBar_Component: typeof import('./src/components/NavBar/NavBar_Component.vue')['default']
     One_Component: typeof import('./src/components/Expertise_Component/one_Component.vue')['default']
+    page: typeof import('./src/components/About_component/Pieds de page.vue')['default']
     'Pieds de page': typeof import('./src/components/About_component/Pieds de page.vue')['default']
     Profile_Squad: typeof import('./src/components/Profile_Squad.vue')['default']
     Profile_Squad_2: typeof import('./src/components/Profile_Squad_2.vue')['default']
