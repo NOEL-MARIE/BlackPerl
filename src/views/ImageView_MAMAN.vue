@@ -246,7 +246,7 @@ function scrollToActiveThumbnail() {
                 :key="image.id"
                 @click="selectImage(image.id)"
               >
-                <div class="mb-2">[{{ String(index).padStart(2, '0') }}]</div>
+                <div class="mb-2">[{{ String(index+1).padStart(2, '0') }}]</div>
 
                 <img
                   :src="image.url"

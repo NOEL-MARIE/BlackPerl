@@ -20,55 +20,55 @@ const allImages = ref<Image[]>([
     id: 1,
     url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/481313827_639636472149617_9061124142066252892_n.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
-    title: 'Allô Coca !',
+    title: 'AJ Rental Car – Louez en Toute Confiance',
     description:
-      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud <br>  exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea ',
+      "Découvrez une vaste sélection de véhicules adaptés à tous vos besoins, que ce soit pour un déplacement urbain ou un road trip en famille.",
   },
   {
     id: 2,
     url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/481313827_639636472149617_9061124142066252892_n.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
-    title: 'Allô Coca !',
+    title: 'Des Tarifs Compétitifs Toute l’Année',
     description:
-      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud <br>  exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea ',
+      "Profitez d’offres attractives et de prix compétitifs, avec des réductions spéciales pour vos locations à long terme, sans compromis sur la qualité.",
   },
   {
     id: 3,
     url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/481478124_644339968345934_8573990924828231275_n.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
-    title: 'Architecture',
-    description: 'Contemporary building design with unique structural elements',
+    title: 'Véhicules Modernes et Bien Entretints',
+    description: 'Chaque voiture est rigoureusement contrôlée pour garantir confort, sécurité et performance lors de votre trajet.',
   },
   {
     id: 4,
     url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/482826549_648213684625229_7673528266563523243_n.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
-    title: 'Minimalism',
-    description: 'Simple yet powerful design emphasizing negative space',
+    title: 'Service Client Dédié et Professionnel',
+    description: 'Une équipe à votre écoute pour vous accompagner avant, pendant et après votre location, garantissant une expérience sans stress.',
   },
   {
     id: 5,
     url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/484204025_649876124458985_1212462734216018_n.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
-    title: 'Abstract',
-    description: 'Conceptual artwork exploring form and color',
+    title: 'Facilité de Réservation en Ligne ou par Téléphone',
+    description: "Réservez votre voiture en quelques clics ou par téléphone avec un accompagnement personnalisé.",
   },
   {
     id: 6,
     url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/498924794_727962969983633_2232564533664147717_n.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
-    title: 'Allô Coca !',
-    description:
-      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud <br>  exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea ',
+    title: 'Large Gamme de Véhicules',
+    description: 'Du véhicule compact à la voiture de luxe, AJ Rental Car propose un choix adapté à tous les goûts et budgets.',
   },
   {
     id: 7,
     url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Ramadan.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
-    title: 'Architecture',
-    description: 'Contemporary building design with unique structural elements',
+    title: 'AJ Rental Car, Partenaire de Vos Déplacements',
+    description: 'Que ce soit pour affaires ou loisirs, faites confiance à AJ Rental Car pour un voyage confortable et sans souci.',
   },
 ])
+
 
 const currentImageId = ref(parseInt(props.id, 10))
 const currentImage = computed(
@@ -190,7 +190,7 @@ function scrollToActiveThumbnail() {
                 :key="image.id"
                 @click="selectImage(image.id)"
               >
-                <div class="mb-2">[{{ String(index).padStart(2, '0') }}]</div>
+                <div class="mb-2">[{{ String(index+1).padStart(2, '0') }}]</div>
 
                 <img
                   :src="image.url"

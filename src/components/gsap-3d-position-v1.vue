@@ -1,6 +1,6 @@
 <template>
 
-  <section ref="firstSectionRef" class=" w-screen overflow h-screen bg-white mt-10 first-component-section">
+  <section ref="firstSectionRef" class=" w-screen  h-screen bg-white mt-10 first-component-section">
     <div ref="ovalBackgroundWrapRef" class="oval-background-wrap z-0 is-taller overflow-hidden">
       <div ref="ovalBackgroundRef" class="oval-background "></div>
     </div>

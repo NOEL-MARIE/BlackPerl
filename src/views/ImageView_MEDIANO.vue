@@ -18,158 +18,142 @@ interface Image {
 const allImages = ref<Image[]>([
   {
     id: 1,
-    url: new URL('@/assets/images/1.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-    title: 'Allô Coca !',
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/007754.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Mediano/Logo mediano.png', import.meta.url).href,
+    title: 'Accueil chaleureux',
     description:
-      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud <br>  exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea ',
+      'Mediano vous accueille dans un environnement pensé pour votre confort et votre bien-être, avec une équipe dédiée à vos soins.',
   },
   {
     id: 2,
-    url: new URL('@/assets/images/2IMG.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-    title: 'Architecture',
-    description: 'Contemporary building design with unique structural elements',
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/008843.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Mediano/Logo mediano.png', import.meta.url).href,
+    title: 'Infrastructures modernes',
+    description: 'Une architecture contemporaine offrant des espaces innovants pour des soins de qualité et adaptés à chaque patient.',
   },
   {
     id: 3,
-    url: new URL('@/assets/images/3.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Minimalism',
-    description: 'Simple yet powerful design emphasizing negative space',
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/77-000087.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Mediano/Logo mediano.png', import.meta.url).href,
+    title: 'Simplicité et efficacité',
+    description: 'Une organisation fluide et accessible pour faciliter votre parcours médical avec rapidité et simplicité.',
   },
   {
     id: 4,
-    url: new URL('@/assets/images/4.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Abstract',
-    description: 'Conceptual artwork exploring form and color',
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/80098.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Mediano/Logo mediano.png', import.meta.url).href,
+    title: 'Approche personnalisée',
+    description: 'Chaque patient bénéficie d’une prise en charge adaptée, attentive et humaine pour un suivi complet.',
   },
   {
     id: 5,
-    url: new URL('@/assets/images/Vectorimg1.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Allô Coca !',
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/86665.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Mediano/Logo mediano.png', import.meta.url).href,
+    title: 'Proximité avec les patients',
     description:
-      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud <br>  exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea ',
+      "Mediano s'engage à rester proche de vous, assurant un suivi régulier et une écoute attentive à chaque étape de votre santé.",
   },
   {
     id: 6,
-    url: new URL('@/assets/images/Vectorimg2.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Architecture',
-    description: 'Contemporary building design with unique structural elements',
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/889977.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Mediano/Logo mediano.png', import.meta.url).href,
+    title: 'Technologies de pointe',
+    description: 'Des équipements modernes pour garantir des diagnostics précis et des traitements innovants.',
   },
   {
     id: 7,
-    url: new URL('@/assets/images/Vectorimg3.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Minimalism',
-    description: 'Simple yet powerful design emphasizing negative space',
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/MEDIANO4.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Mediano/Logo mediano.png', import.meta.url).href,
+    title: 'Espace d’accueil convivial',
+    description: 'Un cadre apaisant favorisant le bien-être des patients et de leurs proches au sein de Mediano.',
   },
   {
     id: 8,
-    url: new URL('@/assets/images/Vectorimg4.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Abstract',
-    description: 'Conceptual artwork exploring form and color',
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/MEDIANO2.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Mediano/Logo mediano.png', import.meta.url).href,
+    title: 'Un accompagnement complet',
+    description: 'Médecins, infirmiers et spécialistes travaillent ensemble pour un suivi global et coordonné.',
   },
   {
     id: 9,
-    url: new URL('@/assets/images/Vectorimg5.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Geometry',
-    description: 'Complex patterns formed by intersecting geometric shapes',
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/MEDIANO.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Mediano/Logo mediano.png', import.meta.url).href,
+    title: 'Conception harmonieuse',
+    description: 'Un design architectural qui allie fonctionnalité et esthétique pour un environnement sain et accueillant.',
   },
   {
     id: 10,
-    url: new URL('@/assets/images/Vectorimg6.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Stones',
-    description: 'Natural textures and organic forms found in stone arrangements',
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/MEDIANO9.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Mediano/Logo mediano.png', import.meta.url).href,
+    title: 'Espaces de soins adaptés',
+    description: 'Des salles modernes et confortables pour garantir la meilleure qualité des traitements et interventions.',
   },
   {
     id: 11,
-    url: new URL('@/assets/images/Vectorimg7.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Glass',
-    description: 'Light reflections and transparency in glass architecture',
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/MEDIANO8.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Mediano/Logo mediano.png', import.meta.url).href,
+    title: 'Lumière et transparence',
+    description: "Des espaces baignés de lumière naturelle, favorisant sérénité et récupération.",
   },
   {
     id: 12,
-    url: new URL('@/assets/images/Vectorimg8.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Design',
-    description: 'Innovative product design with attention to detail',
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/MEDIANO7.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Mediano/Logo mediano.png', import.meta.url).href,
+    title: 'Design fonctionnel',
+    description: 'Chaque détail pensé pour faciliter la circulation et le travail des équipes médicales.',
   },
   {
     id: 13,
-    url: new URL('@/assets/images/Vectorimg9.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Urban',
-    description: 'Contemporary urban architecture and cityscapes',
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/MEDIANO6.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Mediano/Logo mediano.png', import.meta.url).href,
+    title: 'Environnement urbain',
+    description: 'Une implantation stratégique au cœur de la ville pour une accessibilité optimale.',
   },
   {
     id: 14,
-    url: new URL('@/assets/images/Vectorimg10.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Reflection',
-    description: 'Mirror-like surfaces creating stunning reflections',
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/MEDIANO5.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Mediano/Logo mediano.png', import.meta.url).href,
+    title: 'Reflets et transparences',
+    description: 'Des effets de lumière soigneusement travaillés pour une ambiance sereine.',
   },
   {
     id: 15,
-    url: new URL('@/assets/images/Vectorimg11.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Structure',
-    description: 'Bold architectural structures against the sky',
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/MEDIANO4.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Mediano/Logo mediano.png', import.meta.url).href,
+    title: 'Structures audacieuses',
+    description: 'Une architecture innovante qui symbolise le dynamisme et l’excellence des soins.',
   },
   {
     id: 16,
-    url: new URL('@/assets/images/Vectorimg12.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Pattern',
-    description: 'Repeating patterns in modern architecture',
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/MEDIANO3.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Mediano/Logo mediano.png', import.meta.url).href,
+    title: 'Motifs répétitifs',
+    description: 'Des éléments architecturaux qui réunissent esthétique et fonctionnalité au service des patients.',
   },
   {
     id: 17,
-    url: new URL('@/assets/images/Vectorimg13.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Modern',
-    description: 'Clean lines of modern architectural design',
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/MEDIANO2.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Mediano/Logo mediano.png', import.meta.url).href,
+    title: 'Modernité affirmée',
+    description: 'Une vision tournée vers l’avenir avec des installations à la pointe de la technologie.',
   },
   {
     id: 18,
-    url: new URL('@/assets/images/Vectorimg14.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Perspective',
-    description: 'Unique architectural perspectives and angles',
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/MEDIANO.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Mediano/Logo mediano.png', import.meta.url).href,
+    title: 'Perspectives uniques',
+    description: 'Une architecture qui invite à la réflexion et au bien-être par des angles de vue innovants.',
   },
   {
     id: 19,
-    url: new URL('@/assets/images/AFFICH.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Allô Coca !',
+    url: new URL('@/assets/Archive (1)/Dossier Mediano/MEDIANO1.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Mediano/Logo mediano.png', import.meta.url).href,
+    title: 'Une équipe dédiée',
     description:
-      'Lorem ipsum dolor sit amet, <br> consectetuer adipiscing elit, sed diam <br> nonummy nibh euismod tincidunt ut <br> laoreet dolore magna aliquam erat <br> volutpat. Ut wisi enim ad minim veniam, <br> quis nostrud <br><br> exerci tation ullamcorper suscipit<br> lobortis nisl ut aliquip ex ea',
+      'Mediano rassemble des professionnels passionnés engagés pour votre santé et votre proximité quotidienne.',
   },
 ])
+
 
 const currentImageId = ref(parseInt(props.id, 10))
 const currentImage = computed(
@@ -190,7 +174,7 @@ function scrollThumbnails(direction: 'left' | 'right') {
 }
 
 function updateUrl() {
-  router.replace({ name: 'ImageViewer', params: { id: currentImageId.value.toString() } })
+  router.replace({ name: 'ImageView_MEDIANO', params: { id: currentImageId.value.toString() } })
 }
 
 function selectImage(id: number) {
@@ -291,7 +275,7 @@ function scrollToActiveThumbnail() {
                 :key="image.id"
                 @click="selectImage(image.id)"
               >
-                <div class="mb-2">[{{ String(index).padStart(2, '0') }}]</div>
+                <div class="mb-2">[{{ String(index+1).padStart(2, '0') }}]</div>
 
                 <img
                   :src="image.url"

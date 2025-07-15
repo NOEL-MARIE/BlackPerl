@@ -20,156 +20,76 @@ const allImages = ref<Image[]>([
     id: 1,
     url: new URL('@/assets/images/1.png', import.meta.url).href,
     Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-    title: 'Allô Coca !',
+    title: 'L’Instant Coca',
     description:
-      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud <br>  exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea ',
+      'Découvrez la fraîcheur et l’énergie incomparable de Coca, la boisson emblématique qui réunit des moments de partage et de bonheur.',
   },
   {
     id: 2,
     url: new URL('@/assets/images/2IMG.png', import.meta.url).href,
     Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-    title: 'Architecture',
-    description: 'Contemporary building design with unique structural elements',
+    title: 'Design Énergique',
+    description:
+      'Un design moderne et dynamique, reflet de la vitalité et de l’innovation qui font la force de Coca dans le monde entier.',
   },
   {
     id: 3,
     url: new URL('@/assets/images/3.png', import.meta.url).href,
     Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Minimalism',
-    description: 'Simple yet powerful design emphasizing negative space',
+    title: 'Minimalisme Rafraîchissant',
+    description:
+      'La simplicité élégante de Coca souligne son goût unique et sa capacité à s’adapter à tous les moments de la vie.',
   },
   {
     id: 4,
     url: new URL('@/assets/images/4.png', import.meta.url).href,
     Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Abstract',
-    description: 'Conceptual artwork exploring form and color',
+    title: 'Couleurs et Saveurs',
+    description:
+      'Un univers coloré et vibrant qui célèbre la diversité des saveurs et l’esprit festif de Coca.',
   },
   {
     id: 5,
-    url: new URL('@/assets/images/Vectorimg1.png', import.meta.url).href,
+    url: new URL('@/assets/images/Vectorimg9.png', import.meta.url).href,
     Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Allô Coca !',
+    title: 'Urbanité Moderne',
     description:
-      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud <br>  exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea ',
+      'Un reflet de l’énergie urbaine où Coca accompagne les modes de vie actuels avec fraîcheur et style.',
   },
   {
     id: 6,
-    url: new URL('@/assets/images/Vectorimg2.png', import.meta.url).href,
+    url: new URL('@/assets/images/AFFICH.png', import.meta.url).href,
     Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Architecture',
-    description: 'Contemporary building design with unique structural elements',
+    title: 'L’Identité Coca',
+    description:
+      'Une image forte et emblématique illustrant l’esprit convivial et intemporel de Coca dans le cœur des consommateurs.',
   },
   {
     id: 7,
-    url: new URL('@/assets/images/Vectorimg3.png', import.meta.url).href,
+    url: new URL('@/assets/images/coca.jpg', import.meta.url).href,
     Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Minimalism',
-    description: 'Simple yet powerful design emphasizing negative space',
+    title: 'L’Identité Coca',
+    description:
+      'Une image forte et emblématique illustrant l’esprit convivial et intemporel de Coca dans le cœur des consommateurs.',
   },
   {
     id: 8,
-    url: new URL('@/assets/images/Vectorimg4.png', import.meta.url).href,
+    url: new URL('@/assets/images/coco team de poy.jpg', import.meta.url).href,
     Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Abstract',
-    description: 'Conceptual artwork exploring form and color',
+    title: 'L’Identité Coca',
+    description:
+      'Une image forte et emblématique illustrant l’esprit convivial et intemporel de Coca dans le cœur des consommateurs.',
   },
   {
     id: 9,
-    url: new URL('@/assets/images/Vectorimg5.png', import.meta.url).href,
+    url: new URL('@/assets/images/Dj tictok.jpg', import.meta.url).href,
     Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Geometry',
-    description: 'Complex patterns formed by intersecting geometric shapes',
-  },
-  {
-    id: 10,
-    url: new URL('@/assets/images/Vectorimg6.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Stones',
-    description: 'Natural textures and organic forms found in stone arrangements',
-  },
-  {
-    id: 11,
-    url: new URL('@/assets/images/Vectorimg7.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Glass',
-    description: 'Light reflections and transparency in glass architecture',
-  },
-  {
-    id: 12,
-    url: new URL('@/assets/images/Vectorimg8.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Design',
-    description: 'Innovative product design with attention to detail',
-  },
-  {
-    id: 13,
-    url: new URL('@/assets/images/Vectorimg9.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Urban',
-    description: 'Contemporary urban architecture and cityscapes',
-  },
-  {
-    id: 14,
-    url: new URL('@/assets/images/Vectorimg10.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Reflection',
-    description: 'Mirror-like surfaces creating stunning reflections',
-  },
-  {
-    id: 15,
-    url: new URL('@/assets/images/Vectorimg11.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Structure',
-    description: 'Bold architectural structures against the sky',
-  },
-  {
-    id: 16,
-    url: new URL('@/assets/images/Vectorimg12.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Pattern',
-    description: 'Repeating patterns in modern architecture',
-  },
-  {
-    id: 17,
-    url: new URL('@/assets/images/Vectorimg13.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Modern',
-    description: 'Clean lines of modern architectural design',
-  },
-  {
-    id: 18,
-    url: new URL('@/assets/images/Vectorimg14.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Perspective',
-    description: 'Unique architectural perspectives and angles',
-  },
-  {
-    id: 19,
-    url: new URL('@/assets/images/AFFICH.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Allô Coca !',
+    title: 'L’Identité Coca',
     description:
-      'Lorem ipsum dolor sit amet, <br> consectetuer adipiscing elit, sed diam <br> nonummy nibh euismod tincidunt ut <br> laoreet dolore magna aliquam erat <br> volutpat. Ut wisi enim ad minim veniam, <br> quis nostrud <br><br> exerci tation ullamcorper suscipit<br> lobortis nisl ut aliquip ex ea',
+      'Une image forte et emblématique illustrant l’esprit convivial et intemporel de Coca dans le cœur des consommateurs.',
   },
 ])
+
 
 const currentImageId = ref(parseInt(props.id, 10))
 const currentImage = computed(
@@ -291,7 +211,7 @@ function scrollToActiveThumbnail() {
                 :key="image.id"
                 @click="selectImage(image.id)"
               >
-                <div class="mb-2">[{{ String(index).padStart(2, '0') }}]</div>
+                <div class="mb-2">[{{ String(index+1).padStart(2, '0') }}]</div>
 
                 <img
                   :src="image.url"

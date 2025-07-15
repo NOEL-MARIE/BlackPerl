@@ -20,83 +20,77 @@ const allImages = ref<Image[]>([
     id: 1,
     url: new URL('@/assets/Archive (1)/Dissier Laity/6652.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dissier Laity/LAITY logo.png', import.meta.url).href,
-    title: 'Allô Coca !',
+    title: 'L’Engagement Laity',
     description:
-      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud <br>  exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea ',
+      'Symbole de notre coopération, Laity incarne la passion pour un savoir-faire laitier authentique et durable, au service des consommateurs et des producteurs.',
   },
   {
     id: 2,
     url: new URL('@/assets/Archive (1)/Dissier Laity/02_n.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dissier Laity/LAITY logo.png', import.meta.url).href,
-    title: 'Allô Coca !',
+    title: 'Qualité et Tradition',
     description:
-      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud <br>  exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea ',
+      'Alliant respect des terroirs et innovation, Laity garantit des produits d’exception, porteurs d’une histoire régionale forte.',
   },
   {
     id: 3,
     url: new URL('@/assets/Archive (1)/Dissier Laity/443456l.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dissier Laity/LAITY logo.png', import.meta.url).href,
-    title: 'Architecture',
-    description: 'Contemporary building design with unique structural elements',
+    title: 'Innovation Responsable',
+    description: 'Laity réinvente chaque jour la filière laitière avec des pratiques respectueuses, innovantes et durables.',
   },
   {
     id: 4,
     url: new URL('@/assets/Archive (1)/Dissier Laity/4555677692_n.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dissier Laity/LAITY logo.png', import.meta.url).href,
-
-    title: 'Minimalism',
-    description: 'Simple yet powerful design emphasizing negative space',
+    title: 'Simplicité et Efficacité',
+    description: 'Laity cultive la simplicité et la rigueur dans chaque étape pour garantir la meilleure expérience produit.',
   },
   {
     id: 5,
     url: new URL('@/assets/Archive (1)/Dissier Laity/510421_n.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dissier Laity/LAITY logo.png', import.meta.url).href,
-
-    title: 'Abstract',
-    description: 'Conceptual artwork exploring form and color',
+    title: 'Équilibre et Harmonie',
+    description: 'Chaque produit Laity est le fruit d’un parfait équilibre entre tradition et modernité, texture et saveur.',
   },
   {
     id: 6,
     url: new URL('@/assets/Archive (1)/Dissier Laity/5289206950.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dissier Laity/LAITY logo.png', import.meta.url).href,
-
-    title: 'Allô Coca !',
+    title: 'Fierté Coopérative',
     description:
-      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud <br>  exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea ',
+      'Laity valorise le travail collectif, gage d’un succès partagé et d’une qualité reconnue à tous les niveaux de la production.',
   },
   {
     id: 7,
     url: new URL('@/assets/Archive (1)/Dissier Laity/54808.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dissier Laity/LAITY logo.png', import.meta.url).href,
-
-    title: 'Architecture',
-    description: 'Contemporary building design with unique structural elements',
+    title: 'Authenticité et Confiance',
+    description: 'Des racines fortes pour une marque qui inspire confiance et délivre authenticité à chaque produit.',
   },
   {
     id: 8,
     url: new URL('@/assets/Archive (1)/Dissier Laity/6652.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dissier Laity/LAITY logo.png', import.meta.url).href,
-
-    title: 'Architecture',
-    description: 'Contemporary building design with unique structural elements',
+    title: 'Savoir-Faire Local',
+    description: 'Au cœur de la Bretagne, Laity cultive un savoir-faire unique conjuguant terroir et excellence.',
   },
   {
     id: 9,
     url: new URL('@/assets/Archive (1)/Dissier Laity/794614268.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dissier Laity/LAITY logo.png', import.meta.url).href,
-
-    title: 'Architecture',
-    description: 'Contemporary building design with unique structural elements',
+    title: 'L’Excellence au Quotidien',
+    description: 'Laity s’engage pour une qualité supérieure accessible à tous, chaque jour, dans chaque foyer.',
   },
   {
     id: 10,
     url: new URL('@/assets/Archive (1)/Dissier Laity/863679.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dissier Laity/LAITY logo.png', import.meta.url).href,
-
-    title: 'Architecture',
-    description: 'Contemporary building design with unique structural elements',
+    title: 'Tradition et Avenir',
+    description: 'Entre héritage et innovation, Laity construit le futur du lait, conscient de ses racines et de ses responsabilités.',
   },
 ])
+
 const currentImageId = ref(parseInt(props.id, 10))
 const currentImage = computed(
   () => allImages.value.find((img) => img.id === currentImageId.value) || allImages.value[0],
@@ -217,7 +211,7 @@ function scrollToActiveThumbnail() {
                 :key="image.id"
                 @click="selectImage(image.id)"
               >
-                <div class="mb-2">[{{ String(index).padStart(2, '0') }}]</div>
+                <div class="mb-2">[{{ String(index+1).padStart(2, '0') }}]</div>
 
                 <img
                   :src="image.url"

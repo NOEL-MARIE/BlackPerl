@@ -2,6 +2,7 @@
 import { ref, computed, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
+import NavBar_Component from '@/components/NavBar/NavBar_Component.vue'
 
 const props = defineProps<{ id: string }>()
 const router = useRouter()
@@ -17,53 +18,59 @@ interface Image {
 const allImages = ref<Image[]>([
   {
     id: 1,
-    url: new URL('@/assets/Archive (1)/Dossier Alyssa/ALYSSA-LOGO.png', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-    title: 'Allô Coca !',
+    url: new URL('@/assets/Archive (1)/Dossier Alyssa/491966223_1106672191489819_283175830373565507_n.jpg', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Alyssa/ALYSSA-LOGO.png', import.meta.url).href,
+    title: 'L’Essence ALYSSA',
     description:
-      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud <br>  exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea ',
+      'Plongez dans l’univers vibrant d’ALYSSA, où chaque instant devient une expérience unique et pleine d’émotion. Cette image reflète notre passion pour la fraîcheur et l’innovation.',
   },
   {
     id: 2,
     url: new URL('@/assets/Archive (1)/Dossier Alyssa/222567.jpg', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-    title: 'Allô Coca !',
+    Logo: new URL('@/assets/Archive (1)/Dossier Alyssa/ALYSSA-LOGO.png', import.meta.url).href,
+    title: 'L’Énergie ALYSSA',
     description:
-      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud <br>  exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea ',
+      'Laissez-vous emporter par l’énergie communicative d’ALYSSA, symbole d’enthousiasme et de convivialité qui réveille vos sens à chaque regard.',
   },
   {
     id: 3,
     url: new URL('@/assets/Archive (1)/Dossier Alyssa/2298.jpg', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-    title: 'Architecture',
-    description: 'Contemporary building design with unique structural elements',
+    Logo: new URL('@/assets/Archive (1)/Dossier Alyssa/ALYSSA-LOGO.png', import.meta.url).href,
+    title: 'L’Architecture du Style',
+    description: 'Design contemporain et dynamisme : ALYSSA s’inspire des formes audacieuses pour créer son identité visuelle.',
   },
   {
     id: 4,
     url: new URL('@/assets/Archive (1)/Dossier Alyssa/33210kj.jpg', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Minimalism',
-    description: 'Simple yet powerful design emphasizing negative space',
+    Logo: new URL('@/assets/Archive (1)/Dossier Alyssa/ALYSSA-LOGO.png', import.meta.url).href,
+    title: 'L’Élégance Minimaliste',
+    description: 'Une sobriété raffinée au cœur d’ALYSSA, valorisant l’essentiel avec style et authenticité.',
   },
   {
     id: 5,
     url: new URL('@/assets/Archive (1)/Dossier Alyssa/4432.jpg', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Abstract',
-    description: 'Conceptual artwork exploring form and color',
+    Logo: new URL('@/assets/Archive (1)/Dossier Alyssa/ALYSSA-LOGO.png', import.meta.url).href,
+    title: 'L’Art Abstrait ALYSSA',
+    description: 'Une explosion de formes et de couleurs qui célèbre la créativité audacieuse de notre marque.',
   },
   {
     id: 6,
     url: new URL('@/assets/Archive (1)/Dossier Alyssa/9332.jpg', import.meta.url).href,
-    Logo: new URL('@/assets/images/COCA.png', import.meta.url).href,
-
-    title: 'Allô Coca !',
+    Logo: new URL('@/assets/Archive (1)/Dossier Alyssa/ALYSSA-LOGO.png', import.meta.url).href,
+    title: 'Un Instant de Fraîcheur',
     description:
-      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud <br>  exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea ',
+      'ALYSSA incarne la pause rafraîchissante et vibrante qui dynamise votre journée avec authenticité et joie de vivre.',
+  },
+  {
+    id: 7,
+    url: new URL('@/assets/Archive (1)/Dossier Alyssa/ALYSSA-LOGO.png', import.meta.url).href,
+    Logo: new URL('@/assets/Archive (1)/Dossier Alyssa/ALYSSA-LOGO.png', import.meta.url).href,
+    title: 'Le Symbole ALYSSA',
+    description:
+      'Le logo ALYSSA révèle toute l’essence de la marque : moderne, audacieuse et tournée vers un avenir plein de promesses.',
   },
 ])
+
 
 const currentImageId = ref(parseInt(props.id, 10))
 const currentImage = computed(
@@ -110,7 +117,10 @@ function scrollToActiveThumbnail() {
 
 <template>
   <div>
-
+    <!-- NAVBAR visible -->
+    <header class="w-screen text-white fixed mb-44 z-10">
+      <NavBar_Component class="bg-transparent" />
+    </header>
     <!-- IMAGE VIEWER -->
     <div class="image-viewer w-full flex h-screen text-white pt-32 relative overflow-hidden">
       <!-- Fond en <img> flou -->
@@ -119,28 +129,26 @@ function scrollToActiveThumbnail() {
         <img
           src="@/assets/images/BackgroundImgViews.jpg"
           srcset="@/assets/images/BackgroundImgViews.jpg"
-
           alt="GN Loader"
           class="w-full h-full bg-img-blur absolute top-0 left-0 object-center object-cover"
           loading="lazy"
-
         />
       </picture>
       <img
         src="@/assets/images/BackgroundImgViews.jpg"
         alt="Background"
-        class=" w-full bg-img-blur h-full bg-contain"
+        class="w-full bg-img-blur h-full bg-contain"
         aria-hidden="true"
       />
-      <div class="main-conten flex justify-between w-full gap-80 mt-9 relative z-10">
+      <div class="main-conten flex justify-between w-full gap-8 mt-9 relative z-10">
         <!-- Colonne gauche -->
         <div class="left-side flex flex-col ml-40 justify-evenly w-1/2">
-          <button class="back-button mt-6 hover:cursor-pointer" @click="goBack">
+          <button class="back-button mt-6 hover:cursor-pointer w-fit group" @click="goBack">
             <span class="cursor-pointer gap-4 text-xl font-Opensans flex items-center mb-14">
               <svg
                 width="11"
                 height="11"
-                class="scale-150"
+                class="scale-150 group-hover:-rotate-180 duration-300"
                 viewBox="0 0 11 11"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -153,27 +161,30 @@ function scrollToActiveThumbnail() {
               Fermer
             </span>
           </button>
+          <div>
+            <img
+              :src="currentImage.url"
+              :alt="currentImage.title"
+              class="main-image 2xl:w-[752px] 2xl:h-[752px] h-[599px] w-[572px] object-contain"
+            />
+          </div>
+
           <img
-            :src="currentImage.url"
-            :alt="currentImage.title"
-            class="main-image w-[752px] h-[505px]"
-          />
-          <img
-            class="current-titl w-[182px] h-[82px]"
+            class="current-titl w-[182px] h-[182px]"
             :src="currentImage.Logo"
             :alt="currentImage.description"
           />
         </div>
 
         <!-- Colonne droite -->
-        <div class="right-side mr-40 flex flex-col items-end space-y-48 justify-end w-1/2">
+        <div class="right-side mr-40 gap-28 flex flex-col items-end space-y-4 justify-end w-1/2">
           <div class="flex flex-col items-end mr-14 gap-20">
             <h2 class="text-4xl text-start m-44 font-bold w-[220px]">{{ currentImage.title }}</h2>
             <p class="font-poppins text-start w-[400px] m" v-html="currentImage.description"></p>
           </div>
 
           <div class="navigation-section fix">
-            <div class="thumbnails-carousel w-[544px]" ref="thumbnailsContainer">
+            <div class="thumbnails-carousel w-[556px] " ref="thumbnailsContainer">
               <div
                 class="thumbnail no-scrollbar mr-3"
                 :class="{ active: image.id === currentImageId }"
@@ -181,8 +192,13 @@ function scrollToActiveThumbnail() {
                 :key="image.id"
                 @click="selectImage(image.id)"
               >
-                <div class="mb-2">[{{ String(index).padStart(2, '0') }}]</div>
-                <img :src="image.url" :alt="image.description" class="w-[130px] h-[130px]" />
+                <div class="mb-2">[{{ String(index+1).padStart(2, '0') }}]</div>
+
+                <img
+                  :src="image.url"
+                  :alt="image.description"
+                  class="w-[130px] h-[130px] hover:scale-105 duration-200"
+                />
               </div>
             </div>
             <div class="flex gap-2 justify-end mt-4">
@@ -226,9 +242,7 @@ function scrollToActiveThumbnail() {
   position: relative;
   z-index: 10;
 }
-.main-image {
-  object-fit: contain;
-}
+
 .current-title {
   font-size: 1.5rem;
   color: var(--accent-gold);
@@ -242,6 +256,8 @@ function scrollToActiveThumbnail() {
 .thumbnails-carousel {
   display: flex;
   overflow-x: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE et Edge */
 }
 .thumbnail {
   cursor: pointer;

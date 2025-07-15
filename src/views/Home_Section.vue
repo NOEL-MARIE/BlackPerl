@@ -2,7 +2,7 @@
   <div class=" h-screen  flex flex-col space-y-14 md:gap-24 pb-28">
     <First />
 
-    <gsap3dpositionv1 class=""/>
+    <gsap3dpositionv1 />
   </div>
   </template>
 

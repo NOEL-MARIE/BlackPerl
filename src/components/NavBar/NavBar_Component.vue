@@ -1,7 +1,7 @@
 <template>
   <nav
     :class="[
-      '  w-full  font-sans z-50 transition-all duration-300 flex items-center justify-center top-0 left-0',
+      '  w-screen  font-sans z-50 transition-all duration-300 flex items-center justify-center top-0 left-0',
       isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4',
     ]"
     role="navigation"

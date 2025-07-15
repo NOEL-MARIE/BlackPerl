@@ -1,5 +1,5 @@
 <template>
-  <div class="w-screen h-screen relative flex  flex-col justify-center items-center">
+  <div class="w-screen h-screen relative flex  flex-col  justify-center items-center">
     <div class="relative w-full h-full flex justify-center items-center">
       <!-- Image 1 en haut à gauche -->
       <Motion
@@ -48,7 +48,7 @@
     </div>
 
     <!-- Vue des réalisations -->
-    <div class="w-full h-auto z-10 overflow-hidden">
+    <div class="w-full h-auto z-10 overflow-hidden ">
       <RealisationsView />
     </div>
   </div>

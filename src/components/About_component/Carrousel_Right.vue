@@ -9,11 +9,13 @@
       <div
         v-for="(logo, index) in logosConcat"
         :key="index"
-        class="carousel-item hover:scale-125 active:scale-75 transition-transform duration-200 ease-in-out"
+        class="carousel-item hover:scale-125 active:scale-75 transition-transform duration-200 ease-in-out cursor-pointer"
+        @click="goToImage(logo.routeName)"
       >
         <img
           :src="logo.src"
           :alt="logo.alt"
+          draggable="false"
         />
       </div>
     </div>
@@ -22,29 +24,34 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { useRouter } from 'vue-router'
 
-// Remplace par tes vraies images
+// Import des images
 import AMGS from '@/assets/images/AMGS.svg'
 import La_Riziere from '@/assets/images/La Riziere.png'
 import Laity from '@/assets/images/Laity.png'
 import Patte_Maman from '@/assets/images/Patte Maman.png'
 import Sourire_Enfant from '@/assets/images/Sourire Enfant.png'
 
+// Accès au routeur
+const router = useRouter()
+
+// Logos avec nom de route correspondant
 const logos = [
-  { src: AMGS, alt: 'Send Chap' },
-  { src: La_Riziere, alt: 'Céleste' },
-  { src: Laity, alt: 'CAT' },
-  { src: Patte_Maman, alt: "Groupe Carré d'Or" },
-  { src: Sourire_Enfant, alt: 'Nivea' },
+  { src: AMGS, alt: 'Send Chap', routeName: 'ImageView_AJRENTAL' },
+  { src: La_Riziere, alt: 'Céleste', routeName: 'ImageView_CELESTE' },
+  { src: Laity, alt: 'CAT', routeName: 'ImageView_LAITY' },
+  { src: Patte_Maman, alt: "Groupe Carré d'Or", routeName: 'ImageView_MAMAN' },
+  { src: Sourire_Enfant, alt: 'Nivea', routeName: 'ImageView_SOURIRE' },
 ]
+
+const logosConcat = computed(() => [...logos, ...logos, ...logos])
 
 const translateX = ref(0)
 const speed = 0.5
 const trackWidth = ref(0)
-let animationFrameId: number | null = null
 const track = ref<HTMLElement | null>(null)
-
-const logosConcat = computed(() => [...logos, ...logos, ...logos])
+let animationFrameId: number | null = null
 
 function animate() {
   translateX.value -= speed
@@ -52,6 +59,10 @@ function animate() {
     translateX.value = trackWidth.value
   }
   animationFrameId = requestAnimationFrame(animate)
+}
+
+function goToImage(routeName: string) {
+  router.push({ name: routeName })
 }
 
 onMounted(() => {
@@ -92,6 +103,7 @@ onBeforeUnmount(() => {
   border-radius: 1rem;
   height: 98px;
   width: 148px;
+  cursor: pointer;
 }
 
 .carousel-item img {
@@ -100,6 +112,11 @@ onBeforeUnmount(() => {
   object-fit: contain;
   user-select: none;
   pointer-events: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
 }
 
 /* Responsive tablettes */

@@ -20,51 +20,52 @@ const allImages = ref<Image[]>([
     id: 1,
     url: new URL('@/assets/Archive (1)/Dossier Celeste/LogoCeleste.png', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dossier Celeste/LogoCeleste.png', import.meta.url).href,
-    title: 'Allô Coca !',
+    title: 'L’Essence Céleste',
     description:
-      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud <br>  exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea ',
+      'Découvrez la pureté et l’innovation au cœur de Céleste, marque d’excellence reconnue pour sa qualité et son engagement envers le bien-être.',
   },
   {
     id: 2,
     url: new URL('@/assets/Archive (1)/Dossier Celeste/32426351.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dossier Celeste/LogoCeleste.png', import.meta.url).href,
-    title: 'Allô Coca !',
+    title: 'L’Énergie Naturelle',
     description:
-      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud <br>  exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea ',
+      'Céleste puise dans l’esprit de la nature pour offrir des produits qui revitalisent et inspirent, alliant performance et respect de l’environnement.',
   },
   {
     id: 3,
     url: new URL('@/assets/Archive (1)/Dossier Celeste/33180.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dossier Celeste/LogoCeleste.png', import.meta.url).href,
-    title: 'Architecture',
-    description: 'Contemporary building design with unique structural elements',
+    title: 'Design et Sophistication',
+    description:
+      'Une architecture visuelle moderne et raffinée : Céleste conjugue créativité et élégance pour proposer une image forte et mémorable.',
   },
   {
     id: 4,
     url: new URL('@/assets/Archive (1)/Dossier Celeste/4294993.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dossier Celeste/LogoCeleste.png', import.meta.url).href,
-
-    title: 'Minimalism',
-    description: 'Simple yet powerful design emphasizing negative space',
+    title: 'Sobriété Élégante',
+    description:
+      'La beauté simple et authentique caractérise Céleste, avec un design minimaliste qui met en valeur ce qui compte vraiment.',
   },
   {
     id: 5,
     url: new URL('@/assets/Archive (1)/Dossier Celeste/5165353.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dossier Celeste/LogoCeleste.png', import.meta.url).href,
-
-    title: 'Abstract',
-    description: 'Conceptual artwork exploring form and color',
+    title: 'Expression Artistique',
+    description:
+      'Céleste ose l’originalité avec des visuels abstraits qui capturent l’essence de la marque et stimulent l’imagination.',
   },
   {
     id: 6,
     url: new URL('@/assets/Archive (1)/Dossier Celeste/70550.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dossier Celeste/LogoCeleste.png', import.meta.url).href,
-
-    title: 'Allô Coca !',
+    title: 'Fraîcheur et Authenticité',
     description:
-      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud <br>  exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea ',
+      'Un moment de pureté à chaque utilisation : Céleste incarne la confiance et la qualité pour ses consommateurs exigeants.',
   },
 ])
+
 
 const currentImageId = ref(parseInt(props.id, 10))
 const currentImage = computed(
@@ -186,7 +187,7 @@ function scrollToActiveThumbnail() {
                 :key="image.id"
                 @click="selectImage(image.id)"
               >
-                <div class="mb-2">[{{ String(index).padStart(2, '0') }}]</div>
+                <div class="mb-2">[{{ String(index+1).padStart(2, '0') }}]</div>
 
                 <img
                   :src="image.url"

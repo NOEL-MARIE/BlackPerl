@@ -16,7 +16,7 @@
   </div>
 
   <!-- Bloc à placer juste en dessous -->
-  <div class="w-full hidden 2xl:flex flex-col items-center mt-64 justify-center">
+  <div class="w-full hidden md:flex flex-col items-center 2xl:mt-64 mt-11  justify-center">
     <span class="font-Opensans text-2xl" ref="boatGifRef">Scrollez</span>
     <img :src="boatGif" class="2xl:w-[124px]" alt="" width="" height="84px" ref="boatGifRef" />
   </div>
@@ -56,33 +56,50 @@ const isSM = window.matchMedia('(min-width: 481px)').matches
 
 if (isXL) {
   images = [
-    coca, Riziere, Ketchup, Maman, cleo, Alyssa,
-    coca, Riziere, Ketchup, Maman, cleo, Alyssa,
-    coca, Riziere, Ketchup, Maman, cleo
-
+    coca,
+    Riziere,
+    Ketchup,
+    Maman,
+    cleo,
+    Alyssa,
+    coca,
+    Riziere,
+    Ketchup,
+    Maman,
+    cleo,
+    Alyssa,
+    coca,
+    Riziere,
+    Ketchup,
+    Maman,
+    cleo,
   ]
 } else if (isLG) {
   images = [
-    coca, Riziere, Ketchup, Maman, cleo, Alyssa,
-    coca, Riziere, Ketchup, Maman, cleo, Alyssa,
-    cleo, Maman, Ketchup, Riziere
+    coca,
+    Riziere,
+    Ketchup,
+    Maman,
+    cleo,
+    Alyssa,
+    coca,
+    Riziere,
+    Ketchup,
+    Maman,
+    cleo,
+    Alyssa,
+    cleo,
+    Maman,
+    Ketchup,
+    Riziere,
   ]
 } else if (isMD) {
-  images = [
-    coca, Riziere, Ketchup, Maman, cleo, Alyssa,
-    coca, Riziere, Ketchup, Maman
-  ]
+  images = [coca, Riziere, Ketchup, Maman, cleo, Alyssa, coca, Riziere, Ketchup, Maman]
 } else if (isSM) {
-  images = [
-    coca, Riziere, Ketchup, Maman, cleo, Alyssa,
-    Riziere, Ketchup
-  ]
+  images = [coca, Riziere, Ketchup, Maman, cleo, Alyssa, Riziere, Ketchup]
 } else {
-  images = [
-    coca, Riziere, Ketchup, Maman, cleo
-  ]
+  images = [coca, Riziere, Ketchup, Maman, cleo]
 }
-
 
 let currentCard: HTMLElement | null = null
 let draggableInstance: Draggable | null = null
@@ -107,7 +124,9 @@ function setupWheel() {
   if (cards.length === 0) return
 
   const baseRadius = wheelElement.offsetWidth / 2
-  const center = baseRadius
+  // const center = baseRadius
+  const centerX = wheelElement.offsetWidth / 2
+  const centerY = wheelElement.offsetHeight / 2
   const cardWidth = (cards[0] as HTMLElement).offsetWidth
 
   // Dynamique : ajustement du spacing et du radius selon l'écran
@@ -135,11 +154,11 @@ function setupWheel() {
   const DEG2RAD = Math.PI / 180
 
   gsap.set(cards, {
-    x: (i: number) => center + adjustedRadius * Math.sin(i * slice * DEG2RAD),
-    y: (i: number) => center - adjustedRadius * Math.cos(i * slice * DEG2RAD),
+    x: (i: number) => centerX + adjustedRadius * Math.sin(i * slice * DEG2RAD),
+    y: (i: number) => centerY - adjustedRadius * Math.cos(i * slice * DEG2RAD),
     rotation: (i: number) => i * slice,
-    xPercent: -40,
-    yPercent: -40,
+    xPercent: -50,
+    yPercent: -50,
   })
 
   gsap.to(wheelElement, {
@@ -266,15 +285,15 @@ body {
 .wheel {
   position: absolute;
   top: 0;
+  left: 50%;
+  width: 370vw;
+  height: 370vw; /* même que largeur */
+  max-width: 3000px;
+  max-height: 3000px;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 370vw;
-  height: 530vw;
-  max-width: 3000px;
-  max-height: 3000px;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 /* Responsive cards */
@@ -282,8 +301,8 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width:  18vw;
-  height:  25vw;
+  width: 18vw;
+  height: 25vw;
   cursor: pointer;
 }
 

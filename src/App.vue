@@ -1,8 +1,8 @@
 <template>
   <div class="app-wrapper">
-    <backTop />
+    <backTop class="hidden" />
     <Cursor_Follower />
-    <NavBar_Component v-if="!isImageRoute" />
+    <NavBar_Component v-if="!isImageRoute"  class="text-white"/>
 
     <router-view />
   </div>
@@ -27,6 +27,7 @@ const imageViewerPrefixes = [
   '/mediano',
   '/sourire',
   '/laity',
+  '/alyssa',
 ]
 
 
