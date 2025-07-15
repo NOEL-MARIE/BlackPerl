@@ -1,3 +1,4 @@
+<!-- eslint-disable @typescript-eslint/no-unused-vars -->
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
@@ -172,6 +173,7 @@ const images = ref<GalleryImage[]>([
 ])
 
 // Data pour la pagination2
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const images2 = ref<GalleryImage[]>([
   {
     id: 1,
