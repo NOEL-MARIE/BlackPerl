@@ -37,7 +37,7 @@ onMounted(() => {
 
 <template>
   <div class="w-screen    md:h-[4%] md:pb-48 2xl:mb-64  ">
-    <div class="relative  w-full">
+    <div class="relative   w-full">
       <div
         ref="trackRef"
         class="flex animate-scroll whitespace-nowrap"

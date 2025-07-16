@@ -1,6 +1,6 @@
 <template>
-  <div class="w-screen h-screen relative flex  flex-col  justify-center items-center">
-    <div class="relative w-full h-full flex justify-center items-center">
+  <div class="md:w-screen md:h-screen relative flex  flex-col  justify-center items-center">
+    <div class="relative md:w-full md:h-full flex justify-center items-center">
       <!-- Image 1 en haut à gauche -->
       <Motion
         tag="div"
@@ -22,12 +22,12 @@
         :initial="{ opacity: 0, scale: 0.8 }"
         :animate="{ opacity: 1, scale: 1 }"
         :transition="{ duration: 1.2 }"
-        class="z-10 relative flex items-center justify-center w-[70%] h-[40%] sm:w-[60%] sm:h-[50%] md:w-[36%]"
+        class="z-10 relative flex items-center justify-center w-[90%] h-[40%] mb-[19%] md:mb-0 sm:w-[60%] sm:h-[50%] md:w-[36%]"
       >
         <img
           :src="Logo_BlackPurl"
           alt="Logo Black Pearl"
-          class="object-contain xs:w-full  xs:h-full xs:max-w-full md:mb-[250px] xl:mb-[550px] 2xl:mb-[999px] md:w-[400%] xs:max-h-full"
+          class="object-contain xs:w-full   xs:h-full xs:max-w-full md:mb-[250px] 2xl:mb-[550px]  md:w-[400%] xs:max-h-full"
         />
       </Motion>
 
