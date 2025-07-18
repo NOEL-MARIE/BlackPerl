@@ -13,8 +13,6 @@ const currentPage = ref(1)
 // Position : cases de l'échiquier où placer les images (toujours pareil)
 const imagePositions = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27]
 
-
-
 // ==== IMAGES PAR PAGE ====
 const imagesPerPage = [
   // PAGE 1
@@ -108,85 +106,85 @@ const imagesPerPage = [
   [
     {
       id: 1,
-      url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg14.png', import.meta.url).href,
       title: 'Laity',
       description: 'Modern architecture with clean geometric lines',
     },
     {
       id: 2,
-      url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg13.png', import.meta.url).href,
       title: "SOURIRE D'ENFANT",
-      description: 'Contemporary building design with unique elements',
+      description: 'Contemporary building design with unique structural elements',
     },
     {
       id: 3,
-      url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg12.png', import.meta.url).href,
       title: 'AJ RENTAL CAR',
       description: 'Simple yet powerful design emphasizing negative space',
     },
     {
       id: 4,
-      url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg11.png', import.meta.url).href,
       title: 'ALYSSA',
       description: 'Conceptual artwork exploring form and color',
     },
     {
       id: 5,
-      url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg10.png', import.meta.url).href,
       title: 'CELESTE',
       description: 'Complex patterns formed by intersecting geometric shapes',
     },
     {
       id: 6,
-      url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg9.png', import.meta.url).href,
       title: 'CLEO',
       description: 'Natural textures and organic forms found in stone arrangements',
     },
     {
       id: 7,
-      url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg8.png', import.meta.url).href,
       title: 'MAMAN',
       description: 'Light reflections and transparency in glass architecture',
     },
     {
       id: 8,
-      url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg7.png', import.meta.url).href,
       title: 'MEDIANO',
       description: 'Innovative product design with attention to detail',
     },
     {
       id: 9,
-      url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg6.png', import.meta.url).href,
       title: 'Urban',
       description: 'Contemporary urban architecture and cityscapes',
     },
     {
       id: 10,
-      url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg5.png', import.meta.url).href,
       title: 'Reflection',
       description: 'Mirror-like surfaces creating stunning reflections',
     },
     {
       id: 11,
-      url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg4.png', import.meta.url).href,
       title: 'Structure',
       description: 'Bold architectural structures against the sky',
     },
     {
       id: 12,
-      url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg3.png', import.meta.url).href,
       title: 'Pattern',
       description: 'Repeating patterns in modern architecture',
     },
     {
       id: 13,
-      url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg2.png', import.meta.url).href,
       title: 'Modern',
       description: 'Clean lines of modern architectural design',
     },
     {
       id: 14,
-      url: new URL('@/assets/Archive (1)/Dossier AJ Rental Car/Logo.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg1.png', import.meta.url).href,
       title: 'Perspective',
       description: 'Unique architectural perspectives and angles',
     },
@@ -282,85 +280,85 @@ const imagesPerPage = [
   [
     {
       id: 1,
-      url: new URL('@/assets/images/Vectorimg1.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg14.png', import.meta.url).href,
       title: 'Laity',
       description: 'Modern architecture with clean geometric lines',
     },
     {
       id: 2,
-      url: new URL('@/assets/images/Vectorimg2.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg13.png', import.meta.url).href,
       title: "SOURIRE D'ENFANT",
       description: 'Contemporary building design with unique structural elements',
     },
     {
       id: 3,
-      url: new URL('@/assets/images/Vectorimg3.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg12.png', import.meta.url).href,
       title: 'AJ RENTAL CAR',
       description: 'Simple yet powerful design emphasizing negative space',
     },
     {
       id: 4,
-      url: new URL('@/assets/images/Vectorimg4.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg11.png', import.meta.url).href,
       title: 'ALYSSA',
       description: 'Conceptual artwork exploring form and color',
     },
     {
       id: 5,
-      url: new URL('@/assets/images/Vectorimg5.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg10.png', import.meta.url).href,
       title: 'CELESTE',
       description: 'Complex patterns formed by intersecting geometric shapes',
     },
     {
       id: 6,
-      url: new URL('@/assets/images/Vectorimg6.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg9.png', import.meta.url).href,
       title: 'CLEO',
       description: 'Natural textures and organic forms found in stone arrangements',
     },
     {
       id: 7,
-      url: new URL('@/assets/images/Vectorimg7.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg8.png', import.meta.url).href,
       title: 'MAMAN',
       description: 'Light reflections and transparency in glass architecture',
     },
     {
       id: 8,
-      url: new URL('@/assets/images/Vectorimg8.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg7.png', import.meta.url).href,
       title: 'MEDIANO',
       description: 'Innovative product design with attention to detail',
     },
     {
       id: 9,
-      url: new URL('@/assets/images/Vectorimg9.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg6.png', import.meta.url).href,
       title: 'Urban',
       description: 'Contemporary urban architecture and cityscapes',
     },
     {
       id: 10,
-      url: new URL('@/assets/images/Vectorimg10.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg5.png', import.meta.url).href,
       title: 'Reflection',
       description: 'Mirror-like surfaces creating stunning reflections',
     },
     {
       id: 11,
-      url: new URL('@/assets/images/Vectorimg11.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg4.png', import.meta.url).href,
       title: 'Structure',
       description: 'Bold architectural structures against the sky',
     },
     {
       id: 12,
-      url: new URL('@/assets/images/Vectorimg12.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg3.png', import.meta.url).href,
       title: 'Pattern',
       description: 'Repeating patterns in modern architecture',
     },
     {
       id: 13,
-      url: new URL('@/assets/images/Vectorimg13.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg2.png', import.meta.url).href,
       title: 'Modern',
       description: 'Clean lines of modern architectural design',
     },
     {
       id: 14,
-      url: new URL('@/assets/images/Vectorimg14.png', import.meta.url).href,
+      url: new URL('@/assets/images/Vectorimg1.png', import.meta.url).href,
       title: 'Perspective',
       description: 'Unique architectural perspectives and angles',
     },
@@ -582,7 +580,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="flex flex-col items-center justify-center  mt-14 2xl:m-32">
+  <section class="flex flex-col items-center justify-center mt-14 2xl:m-32">
     <section class="h-scree w-screen flex justify-center items-center relative">
       <!-- Arrière-plan -->
       <div class="absolute z-10 flex justify-between items-center">
@@ -620,9 +618,8 @@ onMounted(() => {
         </div>
       </div>
     </section>
-
   </section>
-  <nav class="flex items-center cursor-pointer justify-center space-x-8 mt-9">
+  <nav class="flex items-center cursor-pointer justify-center space-x-8 mt-32">
     <button
       v-for="page in totalPages"
       :key="page"

@@ -1,5 +1,5 @@
 <template>
-  <Hero_section class="bg-white"/>
+  <Hero_section class="bg-white h-screen-xl"/>
   <!-- <Test_Component /> -->
 </template>
 <script setup lang="ts">

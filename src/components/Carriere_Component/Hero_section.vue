@@ -1,6 +1,6 @@
 <template>
   <section
-    class="w-screen flex flex-col justify-evenly 2xl:justify-normal h-screen overflow-hidden bg-white"
+    class="w-screen flex flex-col justify-evenly 2xl:gap-60 2xl:justify-normal h-screen overflow-hidden bg-white"
   >
     <!-- Header -->
     <div class="flex flex-col md:flex-row items-center justify-center 2xl:justify-evenly md:gap-20">

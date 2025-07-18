@@ -13,11 +13,11 @@ const cursor = ref<HTMLElement | null>(null)
 function updateCursor(e: MouseEvent) {
   if (!cursor.value) return
 
-  const cursorSize = 80 // Diamètre du curseur en px
+  const cursorSize = 20 // Diamètre du curseur en px
   const offset = cursorSize / 2 // Centre le curseur
 
   gsap.to(cursor.value, {
-    duration: 0.3,
+    duration: 0.9,
     x: e.clientX - offset,
     y: e.clientY - offset,
     ease: 'power3.out',
@@ -32,7 +32,7 @@ function onMouseOver(e: MouseEvent) {
   if (target.closest('p, span, h1, h2, h3, h4, h5, h6, a, button, li')) {
     gsap.to(cursor.value, {
       duration: 0.3,
-      scale: 2, // Agrandit le curseur
+      scale: 1, // Agrandit le curseur
       backgroundColor: 'rgba(255, 255, 255, 0.6)', // 🔵 Blanc semi-transparent
       borderColor: 'rgba(0, 0, 0)', // 🔵 Blanc opaque
       ease: 'power3.out',
@@ -62,6 +62,11 @@ function onMouseDown() {
 
   gsap.to(cursor.value, {
     scale: 0.7, // Rétrécit
+    backgroundColor: 'rgba(255, 255, 255, 1)', // 🔵 Blanc opaque
+    borderColor: 'rgba(0, 0, 0)', // 🔵 Blanc
+  })
+  gsap.to(cursor.value, {
+    scale: 0.1, // Rétrécit
     backgroundColor: 'rgba(255, 255, 255, 1)', // 🔵 Blanc opaque
     borderColor: 'rgba(0, 0, 0)', // 🔵 Blanc
   })
@@ -107,9 +112,9 @@ onUnmounted(() => {
   position: fixed;
   top: 0;
   left: 0;
-  width: 80px;
-  height: 80px;
-  background-color: rgba(255, 255, 255, 0); /* ⚫ Couleur par défaut : noir */
+  width: 20px;
+  height: 20px;
+  background-color: rgb(0, 0, 0); /* ⚫ Couleur par défaut : noir */
   border-radius: 50%; /* Cercle parfait */
   pointer-events: none; /* Ne bloque pas les clics */
   transform: translate3d(0, 0, 0) scale(1);

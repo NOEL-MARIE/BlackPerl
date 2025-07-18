@@ -1,19 +1,10 @@
-  <template>
-  <div class="container h-screen w-screen  md:mt-32  "   ref="containerElement">
+<template>
+  <div class="container h-screen w-screen md:mt-32" ref="containerElement">
     <div id="ring" ref="ringElement">
       <div v-for="(imga, i) in img" :key="i" class="img">
         <img :src="imga" :alt="'Image ' + (i + 1)" class="image-content" />
-        <div class="flex hover:cursor-pointer items-center justify-center">
-          <img
-            :src="PlayIcons"
-            alt="Play"
-            class="absolute z-10 transition-all duration-300 -translate-x-1/2 -translate-y-1/2 cursor-pointer left-1/2 mt-7 top-1/2 w-14 h-14 opacity-80 hover:opacity-100"
-          />
-          <img
-            :src="PlayIcons"
-            alt="Play"
-            class="absolute z-20 transition-all duration-300 -translate-x-1/2 -translate-y-1/2 cursor-pointer left-1/2 group-hover:scale-150 mt-7 top-1/2 w-14 h-14 opacity-80 hover:opacity-25"
-          />
+        <div class="flex relative hover:cursor-pointer items-center justify-center">
+          <PlayButton/>
         </div>
       </div>
     </div>
@@ -27,7 +18,7 @@ import { gsap } from 'gsap'
 import { Draggable } from 'gsap/Draggable'
 
 // Importation des images
-import PlayIcons from '@/assets/images/Play_Icon.png'
+import PlayButton from '@/components/PlayButton.vue'
 import Img1 from '@/assets/images/Kraoké.jpg'
 import Img2 from '@/assets/images/Laity.jpg'
 import Img3 from '@/assets/images/Christaline.png'
@@ -36,13 +27,17 @@ import Img5 from '@/assets/images/Christaline.png'
 import Img6 from '@/assets/images/Laity.jpg'
 import Img7 from '@/assets/images/Christaline.png'
 import Img8 from '@/assets/images/lait-rever.jpg'
-import Img9 from '@/assets/images/lait-rever.jpg'
 import Img10 from '@/assets/images/Laity.jpg'
 import Img11 from '@/assets/images/Christaline.png'
 import Img12 from '@/assets/images/lait-rever.jpg'
-import Img13 from '@/assets/images/lait-rever.jpg'
 import Img14 from '@/assets/images/cristaline-rever.png'
-
+import celeste from '@/assets/Archive (1)/Dossier Celeste/Celeste.jpg'
+import celeste1 from '@/assets/Archive (1)/Dossier Celeste/celeste 2.jpg'
+import celeste2 from '@/assets/Archive (1)/Dossier Celeste/celeste 3.jpg'
+import celeste3 from '@/assets/Archive (1)/Dossier Celeste/CELESTE4.jpg'
+import celeste4 from '@/assets/Archive (1)/Dossier Celeste/CELESTE5.jpg'
+import celeste5 from '@/assets/Archive (1)/Dossier Celeste/CELESTE6.jpg'
+import celeste6 from '@/assets/Archive (1)/Dossier Celeste/CELESTE7.jpg'
 // Enregistrement des plugins GSAP
 gsap.registerPlugin(Draggable)
 
@@ -61,14 +56,17 @@ const img = [
   Img6,
   Img7,
   Img8,
-  Img9,
   Img10,
   Img11,
   Img12,
-  Img13,
-  Img13,
-  Img13,
   Img14,
+  celeste1,
+  celeste2,
+  celeste,
+  celeste3,
+  celeste4,
+  celeste5,
+  celeste6,
 ]
 
 // Nombre d'images dans l'anneau
@@ -93,29 +91,29 @@ function setupGSAPAnimations() {
 
   // Calcule le rayon de l'anneau en fonction de la taille du conteneur
   // et du nombre d'images pour s'assurer qu'elles s'adaptent correctement.
-function calculateRingRadius(): number {
-  if (containerElement.value) {
-    const containerWidth = containerElement.value.offsetWidth;
-    let multiplier = 3.0; // Facteur par défaut pour les petits écrans (XS)
+  function calculateRingRadius(): number {
+    if (containerElement.value) {
+      const containerWidth = containerElement.value.offsetWidth
+      let multiplier = 7 // Facteur par défaut pour les petits écrans (XS)
 
-    // Détecte la taille d'écran "md" (768px par défaut pour Tailwind CSS)
-    // Vous pouvez ajuster cette valeur de 768px si vos breakpoints Tailwind sont différents.
-    if (window.matchMedia('(min-width: 728px)').matches) {
-      multiplier = 4.3; // Facteur pour les écrans MD et plus grands
-    }
-    if (window.matchMedia('(min-width: 1536px)').matches) {
-      multiplier = 5.8; // Facteur pour les écrans XL et plus grands
+      // Détecte la taille d'écran "md" (768px par défaut pour Tailwind CSS)
+      // Vous pouvez ajuster cette valeur de 768px si vos breakpoints Tailwind sont différents.
+      if (window.matchMedia('(min-width: 728px)').matches) {
+        multiplier = 4.3 // Facteur pour les écrans MD et plus grands
+      }
+      if (window.matchMedia('(min-width: 1536px)').matches) {
+        multiplier = 7.8 // Facteur pour les écrans XL et plus grands
+      }
+
+      // Retourne le rayon calculé basé sur la largeur du conteneur et le multiplicateur approprié
+      return containerWidth * multiplier
     }
 
-    // Retourne le rayon calculé basé sur la largeur du conteneur et le multiplicateur approprié
-    return containerWidth * multiplier;
+    // Valeur de secours si le conteneur n'est pas encore monté.
+    // Idéalement, cette valeur devrait être une estimation raisonnable pour le cas par défaut.
+    // Vous pourriez la baser sur la largeur par défaut du conteneur en l'absence de JS.
+    return 3900 // La valeur par défaut de secours pourrait aussi être ajustée si nécessaire.
   }
-
-  // Valeur de secours si le conteneur n'est pas encore monté.
-  // Idéalement, cette valeur devrait être une estimation raisonnable pour le cas par défaut.
-  // Vous pourriez la baser sur la largeur par défaut du conteneur en l'absence de JS.
-  return 3900; // La valeur par défaut de secours pourrait aussi être ajustée si nécessaire.
-}
   // const ringRadius = 2300 // Cette valeur doit correspondre à la translation z dans transformOrigin
   const ringRadius = calculateRingRadius() // Cette valeur doit correspondre à la translation z dans transformOrigin
 
@@ -238,6 +236,8 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+
+
 /* Styles de base de votre CSS */
 html,
 body {
@@ -257,20 +257,19 @@ div {
 }
 
 /* Styles pour les petits écrans (min-width: 540px) */
-@media (min-width: 540px) {
-   .container {
-    perspective: 1500px; /* Nouvelle perspective pour LG */
-    width: 580px; /* Largeur de base pour le conteneur 3D */
-
-    height: 500px; /* Hauteur ajustée pour LG */
+@media (min-width: 320px) {
+  .container {
+    perspective: 500px; /* Nouvelle perspective pour LG */
+    width: 180px; /* Largeur de base pour le conteneur 3D */
+    height: 180px; /* Hauteur ajustée pour LG */
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%); /* Centre le conteneur */
   }
   .img {
     /* Ces dimensions déterminent la taille de chaque "emplacement" d'image dans l'anneau 3D */
-    width: 170%; /* Ajuster si nécessaire pour la taille de l'image */
-    height: 100%; /* Ajuster si nécessaire pour la taille de l'image */
+    width: 100px; /* Ajuster si nécessaire pour la taille de l'image */
+    height: 300px; /* Ajuster si nécessaire pour la taille de l'image */
     display: flex; /* Utilise flexbox pour centrer l'image dans le div */
     justify-content: center;
     align-items: center;
@@ -279,13 +278,12 @@ div {
 
   .image-content {
     /* Propriétés de l'image pour s'adapter au div .img */
-    object-fit: contain; /* Assure que l'image s'adapte, en conservant le rapport d'aspect */
-    width: 100%; /* Ces valeurs semblent très grandes, assurez-vous que c'est intentionnel */
-    height: 250%; /* Ces valeurs semblent très grandes, assurez-vous que c'est intentionnel */
+    object-fit: cover; /* Assure que l'image s'adapte, en conservant le rapport d'aspect */
+    width: 150%; /* Ces valeurs semblent très grandes, assurez-vous que c'est intentionnel */
+    height: 90%; /* Ces valeurs semblent très grandes, assurez-vous que c'est intentionnel */
     display: flex; /* Supprime l'espace supplémentaire sous l'image */
   }
 }
-
 
 @media (min-width: 640px) {
   .container {
@@ -325,9 +323,9 @@ div {
 
 @media (min-width: 1536px) {
   .container {
-    perspective: 1000px; /* Nouvelle perspective pour 2XL */
+    perspective: 1500px; /* Nouvelle perspective pour 2XL */
     height: 1200px; /* Hauteur ajustée pour 2XL */
-
+    /* Largeur ajustée pour 2XL */
   }
 
   .img {

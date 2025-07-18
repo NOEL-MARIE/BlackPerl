@@ -22,7 +22,7 @@
       <!-- Footer -->
       <footer
         ref="footerRef"
-        class="footer-blur mx-4 sm:mx-6 2xl:mx-14 mb-6 sm:mb-9 h-fit sm:h-[190px] 2xl:h-[390px] rounded-2xl p-4 sm:p-6 flex flex-col sm:flex-row justify-between gap-6"
+        class="footer-blur mx-4 sm:mx-6 2xl:mx-14 mb-6 sm:mb-9 h-fit sm:h-[190px] 2xl:h-[390px] rounded-2xl p-4 sm:p-6 flex flex-col 2xl:mt-44 sm:flex-row justify-between gap-6"
       >
         <div class="flex flex-col sm:flex-row items-center w-full gap-6 sm:gap-12 px-4 sm:px-8">
           <!-- Newsletter -->
@@ -89,8 +89,8 @@
     </div>
 
     <!-- Footer Copy -->
-    <div class="text-center text-xs sm:text-sm text-gray-500 py-2 px-4">
-      © 2025 – Black Pearl Entertainment. Tous les droits sont réservés.
+    <div class="text-center text-xs sm:text-sm text-white py-2 px-4">
+       &copy; {{CurrentYears}} – Black Pearl Entertainment. Tous droits réservés.
     </div>
   </div>
 </template>
@@ -115,7 +115,7 @@ const heroDescRef = ref<HTMLElement | null>(null)
 const footerRef = ref<HTMLElement | null>(null)
 
 const email = ref('')
-
+const CurrentYears = new Date().getFullYear()
 function subscribe() {
   alert(`Merci pour votre inscription, ${email.value} !`)
   email.value = ''

@@ -1,6 +1,6 @@
 <template>
-  <div class="md:w-screen md:h-screen relative flex  flex-col  justify-center items-center">
-    <div class="relative md:w-full md:h-full flex justify-center items-center">
+  <div class="md:w-screen md:h-screen relative flex justify-evenly flex-col   items-center">
+    <div class="relative md:w-full md:h-full flex justify-center mb-28 items-center">
       <!-- Image 1 en haut à gauche -->
       <Motion
         tag="div"
@@ -27,7 +27,7 @@
         <img
           :src="Logo_BlackPurl"
           alt="Logo Black Pearl"
-          class="object-contain xs:w-full   xs:h-full xs:max-w-full md:mb-[250px] 2xl:mb-[550px]  md:w-[400%] xs:max-h-full"
+          class="object-contain xs:w-full mb-40    xs:h-full xs:max-w-full md:mb-[250px] 2xl:mb-[550px]  md:w-[400%] xs:max-h-full"
         />
       </Motion>
 
