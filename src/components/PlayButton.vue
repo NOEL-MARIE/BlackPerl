@@ -7,8 +7,8 @@
         xmlns="http://www.w3.org/2000/svg"
         x="0px"
         y="0px"
-        width="213.7px"
-        height="213.7px"
+        width="313.7px"
+        height="513.7px"
         viewBox="0 0 213.7 213.7"
         xml:space="preserve"
       >
@@ -78,7 +78,7 @@
   transition: all 0.7s ease-in-out;
   stroke-dasharray: 240;
   stroke-dashoffset: 480;
-  stroke: #000;
+  stroke: #ffffff;
   transform: translateY(0);
 }
 

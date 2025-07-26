@@ -2,21 +2,39 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import TestProfilView from '@/components/About_component/TestProfilView[1].vue'
-import { ref, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
+// gsap + SplitText
+import { gsap } from 'gsap'
+import { SplitText } from 'gsap/SplitText'
 
+gsap.registerPlugin(SplitText)
+
+const animatedHeadline = ref<HTMLElement | null>(null)
+
+let split: SplitText | null = null
+let animation: gsap.core.Tween | null = null
+
+onMounted(() => {
+  if (!animatedHeadline.value) return
+
+  split = new SplitText(animatedHeadline.value, { type: "chars" })
+
+  animation = gsap.from(split.chars, {
+    duration: 1,
+    y: 50,
+    opacity: 0,
+    ease: "power3.out",
+    stagger: 0.05,
+  })
+})
 
 onBeforeUnmount(() => {
-
+  animation?.kill()
+  split?.revert()
 })
-// importation des element gsap pour animtion de texte
-import { gsap } from 'gsap';
-import { SplitText } from 'gsap/SplitText';
-gsap.registerPlugin(SplitText);
-// Create a ref to link my H1 element in the template
-const animatedHeadline = ref<HTMLElement | null>(null);
-
 </script>
+
 
 <template>
 
@@ -37,7 +55,7 @@ const animatedHeadline = ref<HTMLElement | null>(null);
 
 <style scoped>
 .oblique-carousel-viewport {
-  /* overflow: hidden; */
+  overflow: hidden;
   position: relative;
 }
 .oblique-carousel-wrapper {

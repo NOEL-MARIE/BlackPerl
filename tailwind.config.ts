@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 // const animate = require('tailwindcss-animate')
 // import animations from '@midudev/tailwind-animations'
 

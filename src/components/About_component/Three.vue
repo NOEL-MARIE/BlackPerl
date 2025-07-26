@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div class="relative z-50  flex flex-col items-center justify-center w-screen min-h-screen bg-black md:pt-40 2xl:space-y-  pb-2 px-4   pt-5 md:pb-52">
+  <div class="relative z-50  flex flex-col items-center justify-center w-screen h-screen bg-black md:pt-40 2xl:space-y-  pb-2 px-4   pt-5 md:pb-52">
     <div>
       <img
         ref="logoBlackPearlRef"

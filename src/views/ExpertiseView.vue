@@ -6,9 +6,9 @@ import Pieds_De_Page from '@/components/About_component/Pieds de page.vue'
 
 <template>
   <div>
-    <one class="w-screen h-screen" />
-    <two class="w-screen h-screen" />
-    <Pieds_De_Page class="w-screen h-screen" />
+    <one class="" />
+    <two class="" />
+    <Pieds_De_Page class="" />
   </div>
 </template>
 

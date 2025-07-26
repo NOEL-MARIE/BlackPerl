@@ -97,9 +97,9 @@ const bottomCards = ref<ResponsiveCard[]>([
 </script>
 
 <template>
-  <div class="flex flex-col max-w-full  p-4 w-screen  pt-6 h-screen  bg-white overflow-hidden">
+  <div class="flex flex-col max-w-full  p-4 w-screen  pt-6  bg-white overflow-hidde h-scree">
     <!-- Cartes du haut -->
-    <div class="flex flex-col xl:flex-row max-w-full w-full  justify-around gap-6 mb-6">
+    <div class="flex flex-col xl:flex-row max-w-full  w-full  justify-around gap-6 mb-6">
       <section
         v-for="(card, i) in topCards"
         :key="'top-' + i"

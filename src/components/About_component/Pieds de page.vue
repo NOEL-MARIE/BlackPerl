@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div class="hero-bg w-full flex flex-col overflow-hidden justify-between 2xl:justify-between">
+  <div class="hero-bg  w-full flex flex-col overflow-hidde  justify-between 2xl:justify-between">
     <div class="flex flex-col justify-around 2xl:gap-96 gap-96">
       <!-- Hero Content -->
       <div

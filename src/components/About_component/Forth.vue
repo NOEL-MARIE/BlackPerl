@@ -1,14 +1,14 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <section
-    class="team-section text-[#111] h-screen items-center justify-evenly w-screen flex flex-col px-4 py-12 mx-auto"
+    class="team-section text-[#111]  items-center justify-evenly w-screen flex flex-col px-4 p-40 mx-auto"
   >
     <h2 class="text-center text-3xl sm:text-4xl font-semibold pb-3" ref="sectionTitleRef">
       Notre équipe
     </h2>
 
-    <Dot_Gamme class="dot-gamme-component pb-12" />
-    <div class="flex items-center justify-center">
+    <Dot_Gamme class=" pb-12" />
+    <div class="flex items-center mt-12 justify-center">
       <div class="grid max-w-7xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <div>
           <p class="text-lg font-semibold mb-2" ref="clientTitleRef">Clients</p>

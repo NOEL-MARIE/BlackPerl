@@ -1,10 +1,10 @@
 <template>
   <!-- <Image_Forme /> -->
-  <First_components class="overflow-hidden h-screen w-screen" />
-  <Second_components class="overflow-hidden h-screen w-screen" />
-  <Three_components class="overflow-hidden h-screen w-screen" />
-  <Forth_components class="overflow-hidden h-screen w-screen" />
-  <Pieds_De_Page_components class="overflow-hidden h-screen w-screen" />
+  <First_components class="" />
+  <Second_components class="" />
+  <Three_components class="" />
+  <Forth_components class="" />
+  <Pieds_De_Page_components class="" />
 </template>
 <script setup lang="ts">
 // import Image_Forme from '@/components/Image_Forme.vue'

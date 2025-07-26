@@ -3,7 +3,7 @@
     <div id="ring" ref="ringElement">
       <div v-for="(imga, i) in img" :key="i" class="img">
         <img :src="imga" :alt="'Image ' + (i + 1)" class="image-content" />
-        <div class="flex relative hover:cursor-pointer items-center justify-center">
+        <div class="flex relative hover:cursor-pointer mt-[330px] items-center justify-center">
           <PlayButton/>
         </div>
       </div>
@@ -259,8 +259,8 @@ div {
 /* Styles pour les petits écrans (min-width: 540px) */
 @media (min-width: 320px) {
   .container {
-    perspective: 500px; /* Nouvelle perspective pour LG */
-    width: 180px; /* Largeur de base pour le conteneur 3D */
+    perspective: 400px; /* Nouvelle perspective pour LG */
+    width: 140px; /* Largeur de base pour le conteneur 3D */
     height: 180px; /* Hauteur ajustée pour LG */
     left: 50%;
     top: 50%;
@@ -268,8 +268,8 @@ div {
   }
   .img {
     /* Ces dimensions déterminent la taille de chaque "emplacement" d'image dans l'anneau 3D */
-    width: 100px; /* Ajuster si nécessaire pour la taille de l'image */
-    height: 300px; /* Ajuster si nécessaire pour la taille de l'image */
+    width: 300px; /* Ajuster si nécessaire pour la taille de l'image */
+    height: 500px; /* Ajuster si nécessaire pour la taille de l'image */
     display: flex; /* Utilise flexbox pour centrer l'image dans le div */
     justify-content: center;
     align-items: center;

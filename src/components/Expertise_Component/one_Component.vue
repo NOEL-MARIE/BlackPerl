@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex flex-col  h-screen overflow-hidden w-screen 2xl:gap-24 items-center justify-center px-4 py-12 text-white sm:px-6 md:px-12 lg:px-24"
+    class="flex flex-col  h-scree overflow-hidden w-screen 2xl:gap-24 items-center justify-center px-4 py-12 text-white sm:px-6 md:px-12 lg:px-24"
   >
 
       <div class="flex flex-col 2xl:gap-52 lg:flex-row w-full max-w-7xl gap-8">

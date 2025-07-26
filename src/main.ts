@@ -7,6 +7,9 @@ import { MotionPlugin } from '@vueuse/motion'
 // Plugins
 import 'vue-toastification/dist/index.css'
 
+import { VueQueryPlugin, QueryClient } from '@tanstack/vue-query';
+const queryClient = new QueryClient();
+
 // Application Core
 import App from '@/App.vue'
 import router from './router'
@@ -26,3 +29,5 @@ app.use(router)
 
 // Montage de l'application
 app.mount('#app')
+// Installez le plugin VueQuery avec le QueryClient préalablement créé
+app.use(VueQueryPlugin, { queryClient });
