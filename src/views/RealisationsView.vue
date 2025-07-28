@@ -131,10 +131,10 @@ function setupGSAPAnimations() {
     })
     .from(images, {
       // Anime les images en vue
-      duration: 2.5,
+      duration: .4,
       y: 200,
       opacity: 0,
-      stagger: 0.3, // Anime les images en décalé
+      stagger: 0.1, // Anime les images en décalé
       ease: 'expo',
       onComplete: startAutoScroll, // Démarre le défilement automatique une fois l'animation d'entrée terminée
     })

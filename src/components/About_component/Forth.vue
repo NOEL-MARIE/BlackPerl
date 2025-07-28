@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <section
-    class="team-section text-[#111]  items-center justify-evenly w-screen flex flex-col px-4 p-40 mx-auto"
+    class="team-section text-[#111] z-50  overflow-hiddene  items-center justify-evenly w-screen flex flex-col px-4 p-40 mx-auto"
   >
     <h2 class="text-center text-3xl sm:text-4xl font-semibold pb-3" ref="sectionTitleRef">
       Notre équipe

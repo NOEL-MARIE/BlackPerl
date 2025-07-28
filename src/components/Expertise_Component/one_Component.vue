@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex flex-col  h-scree overflow-hidden w-screen 2xl:gap-24 items-center justify-center px-4 py-12 text-white sm:px-6 md:px-12 lg:px-24"
+    class="flex flex-col  2xl:h-screen-xl overflow-hidden w-screen 2xl:gap-24 items-center justify-center px-4 py-12 text-white sm:px-6 md:px-12 lg:px-24"
   >
 
       <div class="flex flex-col 2xl:gap-52 lg:flex-row w-full max-w-7xl gap-8">
@@ -8,7 +8,7 @@
         <div class="flex 2xl:scale-125 2xl:mt-2 flex-col gap-4 w-full lg:w-[530px] SUPP_2XL:w-1/2">
           <!-- Bloc Stratégie 360° -->
 
-            <router-link to="/Strategie_360" class="block group">
+            <router-link to="/Strategie_360" class="block  group">
               <div
                 class="relative w-full h-[188px] SUPP_2XL:h-[288px] bg-black group-hover:scale-105 transition-transform duration-300 rounded-xl p-6 overflow-hidden"
               >
@@ -38,10 +38,10 @@
             <!-- -->
             <router-link to="/ActivationsView" class="block w-full sm:w-1/2">
               <div
-                class="bg-black hover:scale-105 transition-transform duration-300 rounded-xl p-4 h-[274px] w-[174px] flex flex-col justify-between"
+                class="bg-black hover:scale-105 w-full transition-transform duration-300 rounded-xl p-4 h-[274px] md:w-[174px] flex flex-col md:justify-between gap-9"
               >
                 <div class="flex justify-end">
-                  <div class="w-5 h-5 rounded-full bg-[#F8D065] flex items-center justify-center">
+                  <div class="w-5 h-5 rounded-full bg-[#F8D065] flex  items-center justify-center">
                     <span class="text-xl text-black font-bold animated-text">+</span>
                   </div>
                 </div>

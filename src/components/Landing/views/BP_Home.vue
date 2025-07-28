@@ -6,7 +6,7 @@
         tag="div"
         :initial="{ opacity: 0, y: -50 }"
         :animate="{ opacity: 1, y: 0 }"
-        :transition="{ duration: 1 }"
+        :transition="{ duration: .2 }"
         class="absolute top-[0%] left-[0%] z-0 hidden md:flex  md:top-[-11%] md:w-[30%] md:left-[10%]"
       >
         <img
@@ -21,7 +21,7 @@
         tag="div"
         :initial="{ opacity: 0, scale: 0.8 }"
         :animate="{ opacity: 1, scale: 1 }"
-        :transition="{ duration: 1.2 }"
+        :transition="{ duration: .2 }"
         class="z-10 relative flex items-center justify-center w-[90%] h-[40%] mb-[19%] md:mb-0 sm:w-[60%] sm:h-[50%] md:w-[36%]"
       >
         <img
@@ -36,7 +36,7 @@
         tag="div"
         :initial="{ opacity: 0, y: 50 }"
         :animate="{ opacity: 1, y: 0 }"
-        :transition="{ duration: 1 }"
+        :transition="{ duration: .2 }"
         class="absolute bottom-[5%] right-[5%] z-0 hidden md:block md:w-[27%] md:top-[-11%] md:right-[12%]  "
       >
         <img

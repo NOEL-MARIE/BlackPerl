@@ -71,8 +71,8 @@ if (isXL) {
     coca,
     Riziere,
     Ketchup,
-    Maman,
-    cleo,
+
+
   ]
 } else if (isLG) {
   images = [
@@ -134,7 +134,7 @@ function setupWheel() {
   let adjustedRadius = baseRadius
 
   if (window.matchMedia('(min-width: 1441px)').matches) {
-    spacing = 60
+    spacing = 47
     adjustedRadius = baseRadius * 1.0
   } else if (window.matchMedia('(min-width: 1025px)').matches) {
     spacing = 50

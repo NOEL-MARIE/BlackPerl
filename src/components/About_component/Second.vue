@@ -107,7 +107,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="relative bg-black xl:h-screen flex items-center justify-center w-full  px-4">
+  <div class="relative bg-black xl:h-screen flex items-center justify-center w-screen overflow-hidden  px-4">
     <!-- Décor gauche -->
 
 
@@ -165,7 +165,7 @@ onBeforeUnmount(() => {
           </div>
 
           <!-- Carrousels -->
-          <div class="flex flex-col  justify-between w-screen overflow-hidden gap-8 mt-12">
+          <div class="flex flex-col  justify-between w-screen overflow-hidde gap-8 mt-12">
             <Carrousel_Left />
             <Carrousel_Right />
           </div>

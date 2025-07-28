@@ -1,19 +1,17 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div class="carousel w-screen" aria-label="Carrousel de logos">
+  <div class="carousel w-screen " aria-label="Carrousel de logos">
     <div
-      class="carousel-track w-screen"
+      class="carousel-track flex will-change-transform"
       :style="{ transform: `translateX(-${translateX}px)` }"
       ref="track"
     >
       <div
         class="carousel-item
-         hover:scale-125 active:scale-75 transition-transform duration-200 ease-in-out"
+          hover:scale-125 active:scale-75 transition-transform duration-200 ease-in-out"
         v-for="(logo, index) in logosConcat"
         :key="index"
       >
-
-        <img :src="logo.src" :alt="logo.alt" class="" />
+        <img :src="logo.src" :alt="logo.alt" />
       </div>
     </div>
   </div>
@@ -22,9 +20,8 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
 
-// Remplace ces chemins par tes vraies images
 import sendChapLogo from '@/assets/images/CELESTE.svg'
-import celesteLogo from '@/assets/images/Carre D\'OR.svg'
+import celesteLogo from "@/assets/images/Carre D'OR.svg"
 import catLogo from '@/assets/images/CAT.svg'
 import groupeCarreDorLogo from '@/assets/images/Nivea.svg'
 import niveaLogo from '@/assets/images/SendChap.svg'
@@ -35,15 +32,20 @@ const logos = [
   { src: catLogo, alt: 'CAT' },
   { src: groupeCarreDorLogo, alt: "Groupe Carré d'Or" },
   { src: niveaLogo, alt: 'Nivea' },
+  { src: sendChapLogo, alt: 'Send Chap' },
+  { src: celesteLogo, alt: 'Céleste' },
+  { src: catLogo, alt: 'CAT' },
+  { src: groupeCarreDorLogo, alt: "Groupe Carré d'Or" },
+  { src: niveaLogo, alt: 'Nivea' },
 ]
 
-const translateX = ref(0)
-const speed = 0.5 // vitesse de défilement
-const trackWidth = ref(0)
-let animationFrameId: number | null = null
-const track = ref<HTMLElement | null>(null)
+const logosConcat = computed(() => [...logos, ...logos, ...logos, ...logos])
 
-const logosConcat = computed(() => [...logos, ...logos, ...logos])
+const translateX = ref(0)
+const speed = 0.9 // pixels par frame
+const trackWidth = ref(0)
+const track = ref<HTMLElement | null>(null)
+let animationFrameId: number | null = null
 
 function animate() {
   translateX.value += speed
@@ -56,7 +58,7 @@ function animate() {
 onMounted(() => {
   nextTick(() => {
     if (track.value) {
-      trackWidth.value = track.value.scrollWidth / 3
+      trackWidth.value = track.value.scrollWidth / 3 // largeur d’une répétition du carrousel
       animate()
     }
   })
@@ -71,9 +73,10 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .carousel {
-  /* width: 100%; */
+  /* Assurez-vous que l’overflow cache bien la partie hors écran */
   /* overflow: hidden; */
-  padding: 1rem 0;
+  /* white-space: nowrap; */
+  /* width: 100vw; */
 }
 
 .carousel-track {
@@ -91,10 +94,19 @@ onBeforeUnmount(() => {
   border-radius: 1rem;
   height: 98px;
   width: 148px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.carousel-item:hover {
+  transform: scale(1.25);
+}
+
+.carousel-item:active {
+  transform: scale(0.75);
 }
 
 .carousel-item img {
-  max-width: 80%;
+  /* max-width: 80%; */
   max-height: 70%;
   object-fit: contain;
   user-select: none;

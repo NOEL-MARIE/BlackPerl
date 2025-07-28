@@ -2,10 +2,10 @@
   <div
     ref="carouselWrapper"
     class="
-      w-full
-      h-full  xs:h-[440px] overflow-hidden sm:h-[320px] md:h-[360px]  lg:h-[400px] xl:h-[520px] 2xl:h-[440px]
+      w-screen 
+      h-full  xs:h-[220px] sm:h-[320px] md:h-[360px]  lg:h-[400px] xl:h-[420px] 2xl:h-[440px]
       mt-6 sm:mt-12
-
+      relative rounded-2xl
     "
     @mouseenter="hovering = true"
     @mouseleave="hovering = false"
@@ -16,7 +16,7 @@
         flex h-full w-full
         gap-2 xs:gap-3 sm:gap-4
         px-1 xs:px-2 sm:px-4
-        transition-transform duration-700 mt-8 ease-linear will-change-transform
+        transition-transform duration-700 ease-linear will-change-transform
       "
     >
       <div
@@ -24,14 +24,14 @@
         :key="index"
         class="
           flex-shrink-0
-          w-[120px] xs:w-[160px] mt-7 sm:w-[200px] md:w-[240px] lg:w-[280px] xl:w-[300px] 2xl:w-[340px]
+          w-[120px] xs:w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] xl:w-[300px] 2xl:w-[340px]
           h-full group relative
           bg-white dark:bg-gray-800 rounded-2xl
         "
         :class="index % 2 === 1 ? '-mt-2 xs:-mt-4 sm:-mt-6 md:-mt-8' : 'mt-0'"
       >
         <!-- Image -->
-        <picture class="absolute  border-2 rounded-2xl top-0   left-0 w-full h-full overflow-hidden">
+        <picture class="absolute border-2 rounded-2xl top-0  left-0 w-full h-full overflow-hidden">
           <img
             :src="item.src"
             :alt="item.alt"

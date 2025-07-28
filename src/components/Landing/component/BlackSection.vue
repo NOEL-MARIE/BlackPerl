@@ -122,7 +122,7 @@ onUnmounted(() => {
           height=""
           src="@/assets/images/LogoBlackPEARL.png"
           alt="Logo Black Pearl"
-          class="relative W-[10px] h-[250px] md:W-[303px] md:h-[430px] 2xl:w-[600px] 2xl:h-[750px]"
+          class="relative W-[10px] h-[250px] md:W-[303px] md:h-[303px] 2xl:w-[600px] 2xl:h-[600px]"
         />
       </div>
       <p class="mb-6 text-white text-center md:text-start mx-8 md:mx-0 text-2xl 2xl:text-4xl">
@@ -136,7 +136,7 @@ onUnmounted(() => {
         alt="Ancre"
         width="40"
         height="40"
-        class="cursor-grab active:cursor-grabbing touch-none 2xl:w-[100px] 2xl:h-[150px]"
+        class="cursor-grab active:cursor-grabbing touch-none 2xl:w-[100px] 2xl:h-[100px]"
         draggable="false"
       />
     </section>
