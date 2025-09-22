@@ -579,7 +579,7 @@ onMounted(() => {
 })
 </script>
 
-<template>
+<template> 
   <section class="flex flex-col items-center justify-center mt-14 2xl:m-32">
     <section class="h-scree w-screen flex justify-center items-center relative">
       <!-- Arrière-plan -->
@@ -767,4 +767,86 @@ onMounted(() => {
     grid-template-rows: repeat(7, 1fr);
   }
 }
+/* Responsif ultra large (4K, 2K) */
+@media (min-width: 1600px) {
+  .chessboard-gallery {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .image-container img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Grand écran standard (≥1280px) */
+@media (min-width: 1280px) and (max-width: 1599px) {
+  .chessboard-gallery {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .image-container img {
+    width: 170px;
+    height: 170px;
+  }
+}
+
+/* Écrans intermédiaires (tablettes paysage & petits laptops) */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .chessboard-gallery {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+  }
+
+  .image-container img {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+/* Smartphones standards (portrait ≤ 767px) */
+@media (max-width: 767px) {
+  .chessboard-gallery {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    padding: 0 10px;
+  }
+
+  .image-container img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .view-number {
+    width: 32px;
+    height: 40px;
+    font-size: 1rem;
+    padding-top: 10px;
+  }
+
+  .view-text {
+    font-size: 1rem;
+  }
+}
+
+/* Très petits téléphones (≤ 400px) */
+@media (max-width: 400px) {
+  .chessboard-gallery {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+  }
+
+  .image-container img {
+    width: 80px;
+    height: 80px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+}
+
 </style>

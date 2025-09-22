@@ -140,7 +140,7 @@ const links = [
   { name: 'Accueil', to: '/' },
   { name: 'À propos', to: '/about' },
   { name: 'Expertise', to: '/expertise' },
-  { name: 'Réalisations', to: '/realisations' },
+  { name: 'Articles', to: '/Articles' },
   { name: 'Carrière', to: '/carriere' },
 ]
 

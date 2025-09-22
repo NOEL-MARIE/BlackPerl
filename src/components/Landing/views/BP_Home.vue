@@ -36,7 +36,7 @@
         tag="div"
         :initial="{ opacity: 0, y: 50 }"
         :animate="{ opacity: 1, y: 0 }"
-        :transition="{ duration: .2 }"
+        :transition="{ duration: .5 }"
         class="absolute bottom-[5%] right-[5%] z-0 hidden md:block md:w-[27%] md:top-[-11%] md:right-[12%]  "
       >
         <img
@@ -56,6 +56,7 @@
 
 <script lang="ts">
 import { Motion } from '@motionone/vue'
+
 import RealisationsView from '@/views/RealisationsView.vue'
 
 import Echec from '@/assets/images/image 10first.jpg'

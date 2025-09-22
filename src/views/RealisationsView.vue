@@ -4,7 +4,7 @@
       <div v-for="(imga, i) in img" :key="i" class="img">
         <img :src="imga" :alt="'Image ' + (i + 1)" class="image-content" />
         <div class="flex relative hover:cursor-pointer mt-[330px] items-center justify-center">
-          <PlayButton/>
+          <PlayButton />
         </div>
       </div>
     </div>
@@ -22,11 +22,10 @@ import PlayButton from '@/components/PlayButton.vue'
 import Img1 from '@/assets/images/Kraoké.jpg'
 import Img2 from '@/assets/images/Laity.jpg'
 import Img3 from '@/assets/images/Christaline.png'
-import Img4 from '@/assets/images/lait-rever.jpg'
+
 import Img5 from '@/assets/images/Christaline.png'
 import Img6 from '@/assets/images/Laity.jpg'
 import Img7 from '@/assets/images/Christaline.png'
-import Img8 from '@/assets/images/lait-rever.jpg'
 import Img10 from '@/assets/images/Laity.jpg'
 import Img11 from '@/assets/images/Christaline.png'
 import Img12 from '@/assets/images/lait-rever.jpg'
@@ -51,18 +50,17 @@ const img = [
   Img1,
   Img2,
   Img3,
-  Img4,
+
   Img5,
   Img6,
   Img7,
-  Img8,
   Img10,
   Img11,
   Img12,
   Img14,
+  celeste,
   celeste1,
   celeste2,
-  celeste,
   celeste3,
   celeste4,
   celeste5,
@@ -131,7 +129,7 @@ function setupGSAPAnimations() {
     })
     .from(images, {
       // Anime les images en vue
-      duration: .4,
+      duration: 0.4,
       y: 200,
       opacity: 0,
       stagger: 0.1, // Anime les images en décalé
@@ -236,8 +234,6 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-
-
 /* Styles de base de votre CSS */
 html,
 body {

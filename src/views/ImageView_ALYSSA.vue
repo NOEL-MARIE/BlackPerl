@@ -18,7 +18,10 @@ interface Image {
 const allImages = ref<Image[]>([
   {
     id: 1,
-    url: new URL('@/assets/Archive (1)/Dossier Alyssa/491966223_1106672191489819_283175830373565507_n.jpg', import.meta.url).href,
+    url: new URL(
+      '@/assets/Archive (1)/Dossier Alyssa/491966223_1106672191489819_283175830373565507_n.jpg',
+      import.meta.url,
+    ).href,
     Logo: new URL('@/assets/Archive (1)/Dossier Alyssa/ALYSSA-LOGO.png', import.meta.url).href,
     title: 'L’Essence ALYSSA',
     description:
@@ -37,21 +40,24 @@ const allImages = ref<Image[]>([
     url: new URL('@/assets/Archive (1)/Dossier Alyssa/2298.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dossier Alyssa/ALYSSA-LOGO.png', import.meta.url).href,
     title: 'L’Architecture du Style',
-    description: 'Design contemporain et dynamisme : ALYSSA s’inspire des formes audacieuses pour créer son identité visuelle.',
+    description:
+      'Design contemporain et dynamisme : ALYSSA s’inspire des formes audacieuses pour créer son identité visuelle.',
   },
   {
     id: 4,
     url: new URL('@/assets/Archive (1)/Dossier Alyssa/33210kj.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dossier Alyssa/ALYSSA-LOGO.png', import.meta.url).href,
     title: 'L’Élégance Minimaliste',
-    description: 'Une sobriété raffinée au cœur d’ALYSSA, valorisant l’essentiel avec style et authenticité.',
+    description:
+      'Une sobriété raffinée au cœur d’ALYSSA, valorisant l’essentiel avec style et authenticité.',
   },
   {
     id: 5,
     url: new URL('@/assets/Archive (1)/Dossier Alyssa/4432.jpg', import.meta.url).href,
     Logo: new URL('@/assets/Archive (1)/Dossier Alyssa/ALYSSA-LOGO.png', import.meta.url).href,
     title: 'L’Art Abstrait ALYSSA',
-    description: 'Une explosion de formes et de couleurs qui célèbre la créativité audacieuse de notre marque.',
+    description:
+      'Une explosion de formes et de couleurs qui célèbre la créativité audacieuse de notre marque.',
   },
   {
     id: 6,
@@ -115,29 +121,32 @@ function scrollToActiveThumbnail() {
 </script>
 
 <template>
-  <div>
+  <div class="h-screen">
     <!-- NAVBAR visible -->
-    <header class="w-screen text-white fixed z-10 bg-transparent mb-44">
-      <NavBar_Component />
+    <header class="xl:w-screen  text-white fixed mb-44 z-10">
+      <NavBar_Component class="" />
     </header>
 
     <!-- IMAGE VIEWER -->
-    <main class="image-viewer  h-full w-full flex flex-col md:flex-row md:h-screen text-white pt-32 relative overflow-hidden px-4 md:px-10 2xl:px-40">
+    <main
+      class="image-viewer w-full flex xl:h-full md:justify-center xl:gap-[400px] 2xl:gap-[900px] text-white pt-32 relative overflow-hidden"
+    >
       <!-- Background flou -->
       <picture class="pointer-events-none absolute inset-0 -z-10">
         <source type="image/webp" srcset="@/assets/images/BackgroundImgViews.jpg" sizes="100vw" />
         <img
           src="@/assets/images/BackgroundImgViews.jpg"
           alt="Background flou"
-          class="w-full h-full object-cover object-center filter blur-[10px]"
+          class="w-full h-full bg-img-blur absolute top-0 left-0 object-center object-cover"
           loading="lazy"
         />
       </picture>
 
       <!-- Colonne gauche -->
-      <section class="left-sid flex flex-col justify-evenly w-full md:w-1/2 max-w-[752px] px-4 md:px-0 mb-8 md:mb-0">
-        <div class=" flex justify-between">
-
+      <section
+        class="left-sid flex  flex-col justify-between w-full  md:w-1/2 max-w-[752px] px-4 md:px-0 mb-8 md:mb-0"
+      >
+        <div class="flex justify-between">
           <button
             class="back-button mt-6 hover:cursor-pointer w-fit group inline-flex items-center gap-2 text-xl font-Opensans mb-14"
             @click="goBack"
@@ -145,26 +154,28 @@ function scrollToActiveThumbnail() {
             type="button"
           >
             <svg
-
-              class="scale-150 group-hover:-rotate-180 w-2 md:w-8 transition-transform duration-300"
+              class="scale-150 group-hover:-rotate-180 w-2 md:w-2.5 transition-transform duration-300"
               viewBox="0 0 11 11"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
               focusable="false"
             >
-              <path d="M0.7737 0L0 0.7737L4.7263 5.5L0 10.2263L0.7737 11L5.5 6.2737L10.2263 11L11 10.2263L6.2737 5.5L11 0.7737L10.2263 0L5.5 4.7263L0.7737 0Z" fill="white" />
+              <path
+                d="M0.7737 0L0 0.7737L4.7263 5.5L0 10.2263L0.7737 11L5.5 6.2737L10.2263 11L11 10.2263L6.2737 5.5L11 0.7737L10.2263 0L5.5 4.7263L0.7737 0Z"
+                fill="white"
+              />
             </svg>
             Fermer
           </button>
-          <div class="md:hidden">
-                    <img
-          v-if="currentImage.Logo"
-          :src="currentImage.Logo"
-          :alt="currentImage.title + ' logo'"
-          class="current-logo w-[82px] h-[82px] mt-6 object-contain"
-          loading="lazy"
-        />
+          <div class="lg:hidden">
+            <img
+              v-if="currentImage.Logo"
+              :src="currentImage.Logo"
+              :alt="currentImage.title + ' logo'"
+              class="current-logo w-[82px] h-[82px] mt-6 object-contain"
+              loading="lazy"
+            />
           </div>
         </div>
 
@@ -172,7 +183,7 @@ function scrollToActiveThumbnail() {
           <img
             :src="currentImage.url"
             :alt="currentImage.title"
-            class="main-image w-full max-w-[752px] h-auto max-h-[752px] object-contain"
+            class="main-image w-[572px] md:w-[550px] max-w-full 2xl:w-[752px] h-auto 2xl:max-h-[752px] object-cover"
             loading="lazy"
           />
         </div>
@@ -181,42 +192,52 @@ function scrollToActiveThumbnail() {
           v-if="currentImage.Logo"
           :src="currentImage.Logo"
           :alt="currentImage.title + ' logo'"
-          class="current-logo w-[182px] hidden md:flex h-[182px] mt-6 object-contain"
+          class="md:w-44 xl:h-[100px] 2xl:w-[232px] hidden lg:flex 2xl:h-[282px] mt-6 object-contain"
           loading="lazy"
         />
       </section>
 
       <!-- Colonne droite -->
-      <aside class="right-sid flex text-center flex-col items-end w-full md:w-1/2 max-w-[600px] pr-4 md:pr-0 space-y-10">
-        <div class="text-right">
-          <h2 class="text-4xl font-bold mb-6 leading-tight text-center md:text-normal" aria-live="polite">{{ currentImage.title }}</h2>
-          <p class="font-poppins text-lg leading-relaxed text-center md:text-normal" v-html="currentImage.description"></p>
+      <aside
+        class="right-sid flex text-center  lg:gap-80 flex-col 2xl:gap-48 2xl:mt-[400px] mt-28 items-end w-full md:w-1/2 max-w-[600px] pr-4 md:pr-0 space-y-10"
+      >
+        <div class="text-right xl:mb-48">
+          <h2
+            class="text-4xl font-bold mb-6 leading-tight text-center md:text-normal"
+            aria-live="polite"
+          >
+            {{ currentImage.title }}
+          </h2>
+          <p
+            class="font-poppins text-xl leading-relaxed text-center md:text-normal"
+            v-html="currentImage.description"
+          ></p>
         </div>
 
         <!-- Navigation miniature -->
-          <div class="navigation-section fix">
-            <div class="thumbnails-carousel w-[556px] " ref="thumbnailsContainer">
-              <div
-                class="thumbnail no-scrollbar mr-3"
-                :class="{ active: image.id === currentImageId }"
-                v-for="(image, index) in thumbnails"
-                :key="image.id"
-                @click="selectImage(image.id)"
-              >
-                <div class="mb-2">[{{ String(index+1).padStart(2, '0') }}]</div>
+        <div class="navigation-section fix">
+          <div class="thumbnails-carousel w-[556px] 2xl:w-[956px]" ref="thumbnailsContainer">
+            <div
+              class="thumbnail no-scrollbar mr-3"
+              :class="{ active: image.id === currentImageId }"
+              v-for="(image, index) in thumbnails"
+              :key="image.id"
+              @click="selectImage(image.id)"
+            >
+              <div class="mb-2">[{{ String(index + 1).padStart(2, '0') }}]</div>
 
-                <img
-                  :src="image.url"
-                  :alt="image.description"
-                  class="w-[130px] h-[130px] hover:scale-105 duration-200"
-                />
-              </div>
-            </div>
-            <div class=" gap-2 justify-end mt-4n  hidden md:flex">
-              <ChevronLeft @click="scrollThumbnails('left')" class="cursor-pointer" />
-              <ChevronRight @click="scrollThumbnails('right')" class="cursor-pointer" />
+              <img
+                :src="image.url"
+                :alt="image.description"
+                class="w-[130px] h-[130px] 2xl:w-[230px] 2xl:h-[230px] hover:scale-105 duration-200"
+              />
             </div>
           </div>
+          <div class="gap-2 justify-end mt-4n hidden md:flex">
+            <ChevronLeft @click="scrollThumbnails('left')" class="cursor-pointer" />
+            <ChevronRight @click="scrollThumbnails('right')" class="cursor-pointer" />
+          </div>
+        </div>
       </aside>
     </main>
   </div>
@@ -252,9 +273,6 @@ function scrollToActiveThumbnail() {
 }
 
 /* Logo */
-.current-logo {
-  object-fit: contain;
-}
 
 /* Right side (title + description + carousel) */
 .right-side h2 {
@@ -288,11 +306,6 @@ function scrollToActiveThumbnail() {
 }
 
 /* Scroll buttons */
-.flex > svg {
-  width: 24px;
-  height: 24px;
-  color: white;
-}
 
 /* Accessibility focus outline */
 .thumbnail:focus-visible {
@@ -312,11 +325,6 @@ function scrollToActiveThumbnail() {
     width: 100% !important;
     max-width: none !important;
     padding: 0 1rem;
-  }
-
-  .main-image {
-    max-width: 100% !important;
-    max-height: unset !important;
   }
 
   .right-side h2 {

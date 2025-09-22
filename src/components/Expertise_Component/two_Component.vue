@@ -97,7 +97,7 @@ const bottomCards = ref<ResponsiveCard[]>([
 </script>
 
 <template>
-  <div class="flex flex-col max-w-full  p-4 w-screen  pt-6  bg-white overflow-hidde h-scree">
+  <div class="flex flex-col max-w-full  p-4 w-full  pt-6  bg-white overflow-hidde ">
     <!-- Cartes du haut -->
     <div class="flex flex-col xl:flex-row max-w-full  w-full  justify-around gap-6 mb-6">
       <section
@@ -110,7 +110,7 @@ const bottomCards = ref<ResponsiveCard[]>([
         <img
           :src="card.image"
           :alt="'Image ' + i"
-          class="w-full h-full  object-cover select-none pointer-events-none"
+          class="w-full h-full max-w-full object-cover select-none pointer-events-none"
           :style="{
           width: card.size[screenSize].width + 'px',
           height: card.size[screenSize].height + 'px',

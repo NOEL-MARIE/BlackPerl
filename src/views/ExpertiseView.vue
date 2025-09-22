@@ -5,7 +5,7 @@ import Pieds_De_Page from '@/components/About_component/Pieds de page.vue'
 </script>
 
 <template>
-  <div>
+  <div class="md:h-screen">
     <one class="" />
     <two class="" />
     <Pieds_De_Page class="" />

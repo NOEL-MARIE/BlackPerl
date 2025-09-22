@@ -29,6 +29,7 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@unovis/ts": "^1.5.2",
     "@unovis/vue": "^1.5.2",
+    "@unpic/vue": "^1.0.0",
     "@vee-validate/zod": "^4.15.1",
     "@vueuse/components": "^13.4.0",
     "@vueuse/core": "^12.8.2",

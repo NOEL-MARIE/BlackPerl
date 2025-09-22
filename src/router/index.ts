@@ -8,7 +8,10 @@ import ChessboardGallery from '@/components/Landing/component/ChessboardGallery.
 import AboutView from '@/views/AboutView.vue'
 import ExpertiseView from '@/views/ExpertiseView.vue'
 import CarriereView from '@/views/CarriereView.vue'
+// ===page realisation a modifer en articles ===
 import RealisationsView from '@/components/Landing/component/ChessboardGallery.vue'
+// ===page realisation a modifer en articles ===
+
 import Strategie_360View from '@/components/Expertise_Component/three_Component.vue'
 import ActivationsView from '@/views/ActivationsView.vue'
 import MediasImmersifsView from '@/views/MediasImmersifsView.vue'
@@ -111,59 +114,59 @@ const router = createRouter({
     },
 
     {
-      path: '/Scroll_Video',
+      path: '/ChessboardGallery',
       name: ' ScrollVideo',
       component: Scroll_Video,
     },
     {
-      path: '/ches', // C'est le chemin URL que vous voulez
+      path: '/ChessboardGallery', // C'est le chemin URL que vous voulez
       name: 'ChessboardGallery', // Un nom unique pour cette route (optionnel mais recommandé)
       component: ChessboardGallery, // Le composant que cette route doit afficher
     },
     // === Routes spécifiques pour chaque page ImageView ===
     {
-      path: '/ajrental',
+      path: '/ajrentalGallery',
       name: 'ImageView_AJRENTAL',
       component: ImageView_AJRENTAL,
       // Page : AJRENTAL
     },
     {
-      path: '/celeste',
+      path: '/celesteGallery',
       name: 'ImageView_CELESTE',
       component: ImageView_CELESTE,
       // Page : CELESTE
     },
     {
-      path: '/cleo',
+      path: '/cleoGallery',
       name: 'ImageView_CLEO',
       component: ImageView_CLEO,
       // Page : CLEO
     },
     {
-      path: '/maman',
+      path: '/mamanGallery',
       name: 'ImageView_MAMAN',
       component: ImageView_MAMAN,
       // Page : MAMAN
     },
     {
-      path: '/mediano',
+      path: '/medianoGallery',
       name: 'ImageView_MEDIANO',
       component: ImageView_MEDIANO,
       // Page : MEDIANO
     },
     {
-      path: '/sourire',
+      path: '/sourireGallery',
       name: 'ImageView_SOURIRE',
       component: ImageView_SOURIRE,
       // Page : SOURIRE
     },
     {
-      path: '/laity',
+      path: '/laityGallery',
       name: 'ImageView_LAITY',
       component: ImageView_LAITY,
     },
     {
-      path: '/alyssa',
+      path: '/alyssaGallery',
       name: 'ImageView_ALYSSA',
       component: ImageView_ALYSSA,
     },
